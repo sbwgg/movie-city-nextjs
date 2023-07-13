@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Header from '@/components/header/index';
 
 const Default = props => {
     const router = useRouter();
@@ -31,6 +32,7 @@ const Default = props => {
                 <title>{title}</title>
             </Head>
             <main>
+                <Header/>
                 <div className="page">
                     {children}
                 </div>

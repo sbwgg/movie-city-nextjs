@@ -1,0 +1,19 @@
+a,
+button,
+input,
+textarea {
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0;
+    }
+}
+
+a {
+    display: inline-block;
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}

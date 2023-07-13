@@ -1,0 +1,8 @@
+.btn {
+    @apply text-sm px-2 py-1;
+
+    &-primary {
+        @apply bg-primary-blue text-white rounded-[6px] hover:bg-secondary-blue
+        transition-colors duration-300;
+    }
+}

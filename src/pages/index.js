@@ -1,10 +1,10 @@
 import Default from '@/layouts/Default';
-import NextDefault from '@/components/pages/NextDefault';
+import TopPopularMovies from '@/components/pages/home/top-popular-movies';
 
 const Home = () => {
     return (
         <Default title="Create Next App">
-            <NextDefault/>
+            <TopPopularMovies/>
         </Default>
     )
 }

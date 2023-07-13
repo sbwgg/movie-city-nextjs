@@ -1,14 +1,20 @@
+@import './global/fonts';
+@import './global/reset';
+@import './global/utilities';
+@import 'node_modules/swiper/swiper.min.css';
+@import 'node_modules/swiper/modules/navigation';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     :root {
-        --color-primary-green: 9, 44, 25;
-        --color-primary-light-green: 216, 248, 13;
-        --color-primary-gray: 246, 246, 246;
+        --color-primary-blue: 88, 181, 230;
+        --color-primary-gray: 206, 212, 218;
+        --color-black: 0, 0, 0;
 
-        --color-secondary-blue: 36, 90, 199;
+        --color-secondary-blue: 68, 141, 180;
         --color-secondary-red: 232, 67, 67;
         --color-secondary-green: 64, 147, 69;
         --color-secondary-pink: 99, 81, 171;
@@ -23,18 +29,25 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
+        //--color-primary-orange: #58B5E6;
+        //--color-primary-gray: #ced4da;
+        //--color-black: 255, 255, 255;
     }
 }
 
 body {
+    font-family: 'Montserrat', sans-serif;
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-                    to bottom,
-                    transparent,
-                    rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+.page {
+    @apply lg:pt-[100px];
+}
+
+.main-container {
+    @apply mx-auto lg:max-w-[92%] min-[1400px]:max-w-[1320px];
+}
+
+a:hover {
+    cursor: url('../assets/images/icons/cursor-mouse-inverse.png'), auto;
 }

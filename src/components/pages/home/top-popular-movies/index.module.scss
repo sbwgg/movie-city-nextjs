@@ -1,0 +1,37 @@
+.topPopularMovies {
+    &Slider {
+        @apply py-2 relative;
+    }
+}
+
+.popularMovie {
+    @apply m-4;
+
+    &Image {
+        @apply relative overflow-hidden;
+        box-shadow: 0 10px 20px 0 #00000030, 0 6px 6px 0 #0000003b;
+
+        img {
+            @apply transition-all duration-500;
+
+            &:first-child {
+            }
+
+            &:last-child {
+                @apply absolute top-0;
+                clip-path: inset(100% 0 0 0);
+            }
+        }
+
+        &:hover img {
+
+            &:first-child {
+                @apply scale-110;
+            }
+
+            &:last-child {
+                clip-path: inset(0 0 0 0);
+            }
+        }
+    }
+}
