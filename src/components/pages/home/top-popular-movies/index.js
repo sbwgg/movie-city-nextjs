@@ -8,10 +8,30 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import styles from './index.module.scss';
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
+import { floatUpVariants, fadeInVariants } from '@/helpers/motion-animations';
 
 const TopPopularMovies = () => {
     const dispatch = useDispatch();
     const popularMovieData = useSelector(state => state.home.popularMovies);
+
+    const swiperOptions = {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        speed: 800,
+        modules: [Navigation],
+        navigation: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+            1024: {
+                slidesPerView: 7,
+                slidesPerGroup: 7
+            }
+        }
+    };
 
     useEffect(() => {
         popularMovies()
@@ -21,28 +41,19 @@ const TopPopularMovies = () => {
     return (
         <section className={styles.topPopularMovies}>
             <div className={classNames([styles.topPopularMoviesSlider, 'custom-navigations'])}>
-                <Swiper
-                    slidesPerView={3}
-                    slidesPerGroup={3}
-                    speed={500}
-                    modules={[Navigation]}
-                    navigation
-                    breakpoints={{
-                        768: {
-                            slidesPerView: 4,
-                            slidesPerGroup: 4
-                        },
-                        1024: {
-                            slidesPerView: 8,
-                            slidesPerGroup: 8
-                        }
-                    }}
-                >
+                <Swiper {...swiperOptions}>
                     {popularMovieData.map((item, key) =>
-                        <SwiperSlide key={`popular-movie-${key}`}>
+                        <SwiperSlide key={`popular-movie-${item.id}`}>
                             <NextLink href="#." className={styles.popularMovie}>
                                 <figure>
-                                    <div className={styles.popularMovieImage}>
+									<motion.div
+										className={styles.popularMovieImage}
+										initial="floatDown"
+										animate="floatUp"
+										exit="floatDown"
+										variants={floatUpVariants}
+										transition={{type: 'spring', stiffness: 100, delay: key * 0.12}}
+									>
                                         <ImageComponent
                                             src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${item.poster_path}`}
                                             width={300} height={450} alt={item.title}
@@ -51,10 +62,17 @@ const TopPopularMovies = () => {
                                             src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${item.backdrop_path}`}
                                             width={300} height={450} alt={item.title}
                                         />
-                                    </div>
-                                    <figcaption className="mt-3">
+                                    </motion.div>
+                                    <motion.figcaption
+                                        className="mt-3"
+                                        initial="hide"
+                                        animate="show"
+                                        exit="hide"
+                                        variants={fadeInVariants}
+                                        transition={{type: 'tween', delay: key * 0.15}}
+                                    >
                                         <p className="text-center text-sm">{item.title}</p>
-                                    </figcaption>
+                                    </motion.figcaption>
                                 </figure>
                             </NextLink>
                         </SwiperSlide>

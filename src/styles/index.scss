@@ -35,6 +35,10 @@
     }
 }
 
+html {
+    cursor: url('../assets/images/icons/mac-cursor.svg'), auto;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     color: rgb(var(--foreground-rgb));
@@ -48,6 +52,8 @@ body {
     @apply mx-auto lg:max-w-[92%] min-[1400px]:max-w-[1320px];
 }
 
-a:hover {
-    cursor: url('../assets/images/icons/cursor-mouse-inverse.png'), auto;
+a,
+button,
+[class*="button"]{
+    cursor: url('../assets/images/icons/mac-pointer.svg'), auto;
 }
