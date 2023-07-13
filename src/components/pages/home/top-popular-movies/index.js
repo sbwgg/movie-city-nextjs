@@ -55,10 +55,12 @@ const TopPopularMovies = () => {
 										transition={{type: 'spring', stiffness: 100, delay: key * 0.12}}
 									>
                                         <ImageComponent
+                                            className="transition-transform duration-500"
                                             src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${item.poster_path}`}
                                             width={300} height={450} alt={item.title}
                                         />
                                         <ImageComponent
+                                            className="absolute inset-0 transition-[clip-path] duration-[700ms]"
                                             src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${item.backdrop_path}`}
                                             width={300} height={450} alt={item.title}
                                         />
