@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
+const { i18n } = require('./services/next-i18next.config');
+
 const nextConfig = {
     i18n: {
-        locales: ["en"],
-        defaultLocale: "en",
+        locales: i18n.locales,
+        defaultLocale: i18n.defaultLocale,
+        localeDetection: false
     },
 
     env: {

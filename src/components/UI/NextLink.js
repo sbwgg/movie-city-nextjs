@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 
 const NextLink = props => {
     const {
@@ -6,8 +7,10 @@ const NextLink = props => {
         children
     } = props;
 
+    const router = useRouter();
+
     return (
-        <Link href={href} {...props}>
+        <Link href={href} {...props} locale={router.locale}>
             {children}
         </Link>
     )

@@ -10,10 +10,13 @@ import styles from './index.module.scss';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import { floatUpVariants, fadeInVariants } from '@/helpers/motion-animations';
+import { useRouter } from 'next/router'
 
 const TopPopularMovies = () => {
     const dispatch = useDispatch();
     const popularMovieData = useSelector(state => state.global.popularMovies);
+    const router = useRouter();
+    const currentLang =  router.locale;
 
     const swiperOptions = {
         slidesPerView: 2,
@@ -34,7 +37,7 @@ const TopPopularMovies = () => {
     };
 
     useEffect(() => {
-        popularMovies()
+        popularMovies(currentLang)
             .then(res => dispatch(getPopularMovies(res)));
     },[]);
 

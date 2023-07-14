@@ -6,6 +6,7 @@ import useScrollDirection from '@/hooks/useScrollDirection';
 import NextLink from '@/components/UI/NextLink';
 import Input from '@/components/UI/Input';
 import Button from '@/components/UI/Button';
+import LanguageSwitch from '@/components/language-switch';
 
 const Index = () => {
     const {isSticky, isDown} = useScrollDirection();
@@ -41,6 +42,7 @@ const Index = () => {
                         </motion.svg>
                     </NextLink>
                     <div className={styles.navInner}>
+                        <LanguageSwitch/>
                         <div className="flex items-center h-[fit] my-auto gap-4">
                             <Input id="search" placeholder="Search..."/>
                             <Button design="primary">Search</Button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import {Provider} from 'react-redux';
+import { appWithTranslation } from 'next-i18next'
 import store from '../store';
 import '../styles/index.scss';
 
@@ -19,4 +20,4 @@ const MyApp = ({Component, pageProps}) => {
     )
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
