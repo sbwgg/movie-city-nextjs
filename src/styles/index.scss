@@ -12,6 +12,7 @@
     :root {
         --color-primary-blue: 88, 181, 230;
         --color-primary-gray: 206, 212, 218;
+        --color-pink-primary: 216, 36, 124;
         --color-black: 0, 0, 0;
 
         --color-secondary-blue: 68, 141, 180;
@@ -29,7 +30,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        //--color-primary-orange: #58B5E6;
+        //--color-primary-blue: #58B5E6;
         //--color-primary-gray: #ced4da;
         //--color-black: 255, 255, 255;
     }
@@ -42,6 +43,7 @@ html {
 body {
     font-family: 'Montserrat', sans-serif;
     color: rgb(var(--foreground-rgb));
+    min-height: 100vh;
 }
 
 .page {

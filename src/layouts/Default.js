@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Header from '@/components/header/index';
+import TopPopularMovies from '@/components/top-popular-movies';
 
 const Default = props => {
     const router = useRouter();
@@ -34,6 +35,7 @@ const Default = props => {
             <main>
                 <Header/>
                 <div className="page">
+                    <TopPopularMovies/>
                     {children}
                 </div>
             </main>

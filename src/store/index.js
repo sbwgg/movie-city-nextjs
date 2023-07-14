@@ -1,10 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
-import headerSlice from './slices/headerSlice';
-import homeSlice from './slices/homeSlice';
+import globalSlice from './slices/globalSlice';
+import movieSlice from './slices/movieSlice';
 
 export default configureStore({
     reducer: {
-        header: headerSlice,
-        home: homeSlice
+        global: globalSlice,
+        movie: movieSlice
     }
-})
+});
