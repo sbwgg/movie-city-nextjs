@@ -7,7 +7,7 @@ const LanguageSwitch = () => {
 
 	return(
 		<div>
-			<ul>
+			<ul className="flex items-center gap-2">
 				{router.locales.map(locale => (
 					<li key={locale}>
 						<button

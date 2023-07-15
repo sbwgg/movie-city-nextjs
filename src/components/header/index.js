@@ -45,10 +45,12 @@ const Index = () => {
                         </motion.svg>
                     </NextLink>
                     <div className={styles.navInner}>
-                        <LanguageSwitch/>
-                        <div className="flex items-center h-[fit] my-auto gap-4">
-                            <Input id="search" placeholder={t('search')}/>
-                            <Button design="primary">{t('search')}</Button>
+                        <div className="flex items-center gap-2">
+                            <LanguageSwitch/>
+                            <div className="flex items-center h-[fit-content] gap-4">
+                                <Input id="search" placeholder={t('search')}/>
+                                <Button design="primary">{t('search')}</Button>
+                            </div>
                         </div>
                         <ThemeSwitch/>
                     </div>

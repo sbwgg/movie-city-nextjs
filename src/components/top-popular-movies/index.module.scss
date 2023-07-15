@@ -8,8 +8,8 @@
     @apply m-4;
 
     &Image {
-        @apply relative overflow-hidden;
-        box-shadow: 0 10px 20px 0 #00000030, 0 6px 6px 0 #0000003B;
+        @apply relative overflow-hidden ;
+        box-shadow: var(--popular-shadow);
 
         &::after {
             @apply content-[''] absolute w-full h-full inset-0 mix-blend-screen
