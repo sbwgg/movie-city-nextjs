@@ -1,14 +1,14 @@
 import React from 'react';
-import { useTheme } from "next-themes";
+import {useTheme} from 'next-themes';
 
 const ThemeSwitch = () => {
-	const { theme, setTheme } = useTheme();
+	const {systemTheme, theme, setTheme} = useTheme();
+	const currentTheme = theme === 'system' ? systemTheme : theme;
+
 	return (
-		<div>
-			<input type="checkbox"
-				   onChange={() => theme === "dark"? setTheme('light'): setTheme("dark")}
-			/>
-		</div>
+		<input type="checkbox"
+			   onChange={() => currentTheme === 'dark' ? setTheme('light') : setTheme('dark')}
+		/>
 	)
 }
 
