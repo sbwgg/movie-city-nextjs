@@ -1,8 +1,9 @@
 import React from 'react';
 import {useRouter} from 'next/router';
+import Cookies from 'js-cookie';
 
 const LanguageSwitch = () => {
-	const router = useRouter()
+	const router = useRouter();
 
 	return(
 		<div>
@@ -16,6 +17,7 @@ const LanguageSwitch = () => {
 									pathname: router.pathname,
 									query: router.query,
 								}, null, { locale })
+								Cookies.set('NEXT_LOCALE', locale, {expires: 14});
 							}}
 						>
 							{locale.toUpperCase()}

@@ -1,7 +1,8 @@
 import Default from '@/layouts/Default';
 import TopPopularMovies from '@/components/top-popular-movies';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 
-const Home = () => {
+const Home = ({locale}) => {
     return (
         <Default title="Create Next App">
             {/*<TopPopularMovies/>*/}
@@ -10,3 +11,10 @@ const Home = () => {
 }
 
 export default Home;
+
+export const getServerSideProps = async ({ locale }) => ({
+    props: {
+        locale,
+        ...(await serverSideTranslations(locale, ['common', 'homePage'])),
+    }
+});

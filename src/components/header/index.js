@@ -7,9 +7,12 @@ import NextLink from '@/components/UI/NextLink';
 import Input from '@/components/UI/Input';
 import Button from '@/components/UI/Button';
 import LanguageSwitch from '@/components/language-switch';
+import {useTranslation} from 'next-i18next';
+import ThemeSwitch from '@/components/theme-switch';
 
 const Index = () => {
     const {isSticky, isDown} = useScrollDirection();
+    const {t} = useTranslation();
 
     const slideRightVariants = {
         toIn: {
@@ -44,9 +47,10 @@ const Index = () => {
                     <div className={styles.navInner}>
                         <LanguageSwitch/>
                         <div className="flex items-center h-[fit] my-auto gap-4">
-                            <Input id="search" placeholder="Search..."/>
-                            <Button design="primary">Search</Button>
+                            <Input id="search" placeholder={t('search')}/>
+                            <Button design="primary">{t('search')}</Button>
                         </div>
+                        <ThemeSwitch/>
                     </div>
                 </nav>
             </div>

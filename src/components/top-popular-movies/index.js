@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import { floatUpVariants, fadeInVariants } from '@/helpers/motion-animations';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 const TopPopularMovies = () => {
     const dispatch = useDispatch();
