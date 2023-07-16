@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { popularMovies } from '../../../services/api';
 import { getPopularMovies } from '@/store/slices/globalSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,7 +7,6 @@ import NextLink from '@/components/UI/NextLink';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import styles from './index.module.scss';
-import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import { floatUpVariants, fadeInVariants } from '@/helpers/motion-animations';
 import { useRouter } from 'next/router';
@@ -17,13 +16,18 @@ const TopPopularMovies = () => {
     const popularMovieData = useSelector(state => state.global.popularMovies);
     const router = useRouter();
     const currentLang =  router.locale;
+    const prevBtn = useRef(null);
+    const nextBtn = useRef(null);
 
     const swiperOptions = {
         slidesPerView: 2,
         slidesPerGroup: 2,
         speed: 800,
         modules: [Navigation],
-        navigation: true,
+        navigation: {
+            prevEl: prevBtn.current,
+            nextEl: nextBtn.current
+        },
         breakpoints: {
             768: {
                 slidesPerView: 3,
@@ -43,7 +47,7 @@ const TopPopularMovies = () => {
 
     return (
         <section className={styles.topPopularMovies}>
-            <div className={classNames([styles.topPopularMoviesSlider, 'custom-navigations'])}>
+            <div className={styles.topPopularMoviesSlider}>
                 <Swiper {...swiperOptions}>
                     {popularMovieData.map((item, key) => {
                         return (
@@ -72,7 +76,7 @@ const TopPopularMovies = () => {
                                             variants={fadeInVariants}
                                             transition={{type: 'tween', delay: key * 0.15}}
                                         >
-                                            <p className="text-center text-sm">{item.title}</p>
+                                            <p className={styles.popularMovieTitle}>{item.title}</p>
                                         </motion.figcaption>
                                     </figure>
                                 </NextLink>
@@ -80,6 +84,14 @@ const TopPopularMovies = () => {
                         )
                     })}
                 </Swiper>
+                <button
+                    ref={prevBtn}
+                    className={styles.popularMovieNavigationPrev}
+                ><span/></button>
+                <button
+                    ref={nextBtn}
+                    className={styles.popularMovieNavigationNext}
+                ><span/></button>
             </div>
         </section>
     )

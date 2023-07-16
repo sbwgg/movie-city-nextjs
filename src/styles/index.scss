@@ -16,12 +16,12 @@
         --color-black: 0, 0, 0;
 
         --color-secondary-blue: 68, 141, 180;
-        --color-secondary-red: 232, 67, 67;
-        --color-secondary-green: 64, 147, 69;
+        --color-secondary-gray: 219, 219, 219;
         --color-secondary-pink: 99, 81, 171;
 
         --popular-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.19),
         0 6px 6px 0 rgba(0, 0, 0, 0.23);
+        --inner-shadow: -2px -2px 92px -3px rgba(0, 0, 0, 0.23) inset;
     }
 }
 
@@ -35,13 +35,16 @@ html {
             --color-black: 255, 255, 255;
 
             --color-secondary-blue: 158, 45, 90;
+            --color-secondary-gray: 58, 58, 58;
 
             --popular-shadow: 0 10px 20px 0 rgba(153, 153, 153, 0.19),
             0 6px 6px 0 rgba(41, 41, 41, 0.23);
+            --inner-shadow: -2px -2px 92px -3px rgba(153, 153, 153, 0.19) inset;
         }
 
         .theme-switcher > span {
             @apply translate-x-[33px];
+            box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
         }
     }
 }
@@ -65,4 +68,9 @@ label,
 button,
 [class*="button"]{
     cursor: url('../assets/images/icons/mac-pointer.svg'), auto;
+}
+
+.swiper-button-disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }

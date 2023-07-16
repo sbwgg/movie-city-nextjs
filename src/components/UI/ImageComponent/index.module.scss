@@ -1,0 +1,10 @@
+.ImageComponent {
+    &Container {
+        @apply w-full h-full;
+    }
+
+    &Fallback {
+        @apply bg-secondary-gray w-[19.532vw] h-[29.297vw];
+        box-shadow: var(--inner-shadow);
+    }
+}

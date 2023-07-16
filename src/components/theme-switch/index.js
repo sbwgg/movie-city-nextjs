@@ -7,10 +7,14 @@ const ThemeSwitch = () => {
 	const {systemTheme, theme, setTheme} = useTheme();
 	const currentTheme = theme === 'system' ? systemTheme : theme;
 
+	const changeCurrentTheme = () => {
+		return currentTheme === 'dark' ? setTheme('light') : setTheme('dark');
+	};
+
 	return (
 		<div>
-			<input type="checkbox" id="theme-switcher" className="hidden"
-				   onChange={() => currentTheme === 'dark' ? setTheme('light') : setTheme('dark')}
+			<input type="checkbox" id="theme-switcher"
+				   className="hidden" onChange={changeCurrentTheme}
 			/>
 			<label htmlFor="theme-switcher" className={classNames([styles.toggleButton, 'theme-switcher'])}>
 				<span/>

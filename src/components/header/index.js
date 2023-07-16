@@ -48,7 +48,7 @@ const Index = () => {
                         <div className="flex items-center gap-2">
                             <LanguageSwitch/>
                             <div className="flex items-center h-[fit-content] gap-4">
-                                <Input id="search" placeholder={t('search')}/>
+                                <Input id="search" placeholder={`${t('search')}...`}/>
                                 <Button design="primary">{t('search')}</Button>
                             </div>
                         </div>

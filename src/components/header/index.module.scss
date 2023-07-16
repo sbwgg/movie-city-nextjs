@@ -17,10 +17,6 @@
 .nav {
     @apply w-full relative flex lg:gap-10;
 
-    & > a > svg path {
-        @apply transition-colors duration-300;
-    }
-
     &Inner {
         @apply w-full flex flex-col items-center lg:flex-row lg:justify-between;
     }

@@ -21,4 +21,51 @@
             @apply w-full h-full object-cover;
         }
     }
+
+    &Navigation {
+        &Prev,
+        &Next {
+            @apply w-[35px] h-[35px] bg-primary-blue lg:w-[40px] lg:h-[40px] rounded-full
+            transition-all absolute top-[47%] translate-y-[-50%] z-[2]
+            hover:bg-secondary-blue;
+
+            span {
+                @apply inline-block h-full w-full
+                bg-20 bg-no-repeat bg-center;
+            }
+        }
+
+        &Prev {
+            @apply left-[20px];
+            box-shadow: inset 5px -5px 4px rgba(53, 53, 53, 0.3);
+
+            &:focus {
+                box-shadow: inset 5px -5px 4px rgba(53, 53, 53, 0.3);
+            }
+
+            span {
+                @apply bg-[url('../../assets/svg/arrow-previous.svg')];
+            }
+        }
+
+        &Next {
+            @apply right-[20px];
+            box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
+
+            &:focus {
+                box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
+            }
+
+            span {
+              @apply bg-[url('../../assets/svg/arrow-next.svg')]
+            }
+        }
+    }
+
+    &Title {
+        @apply text-ellipsis overflow-hidden text-sm text-center;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
 }

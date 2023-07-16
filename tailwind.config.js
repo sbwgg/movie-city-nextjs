@@ -15,13 +15,11 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'dark',
+  darkMode: 'class',
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      backgroundSize: {
+        '20': '20px'
       },
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif']
@@ -29,7 +27,8 @@ module.exports = {
       colors: {
         'primary-blue': withOpacity('--color-primary-blue'),
         'secondary-blue': withOpacity('--color-secondary-blue'),
-        'primary-gray': withOpacity('--color-primary-gray')
+        'primary-gray': withOpacity('--color-primary-gray'),
+        'secondary-gray': withOpacity('--color-secondary-gray'),
       },
     },
   },
