@@ -39,7 +39,7 @@ const TopPopularMovies = () => {
     useEffect(() => {
         popularMovies(currentLang)
             .then(res => dispatch(getPopularMovies(res)));
-    },[]);
+    },[currentLang]);
 
     return (
         <section className={styles.topPopularMovies}>
