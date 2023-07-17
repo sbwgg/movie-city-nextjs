@@ -16,10 +16,12 @@ const Index = props => {
 
     return (
         <div className={
-            classNames([styles.ImageComponentContainer, isError && styles.ImageComponentFallback])
+            classNames([styles.ImageComponentContainer, isError && `${styles.ImageComponentFallback} fallback-img`])
         }>
             <Image
                 src={src ? imgSrc : fallBackSrc}
+                width={props.width || 300}
+                height={props.height || 450}
                 onError={() => {
                     setImgSrc(fallBackSrc);
                     setError(true);

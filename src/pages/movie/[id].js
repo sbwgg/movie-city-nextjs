@@ -75,7 +75,7 @@ const Id = ({locale}) => {
             />
             <Swiper {...swiperOptions}>
                 {movieCast.map(item =>
-                    <SwiperSlide key={item.id}>
+                    <SwiperSlide key={item.id} className="!h-auto">
                         <figure>
                             <ImageComponent
                                 src={IMAGE_PATH(item.profile_path)}

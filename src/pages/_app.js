@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
-import { appWithTranslation } from 'next-i18next';
-import { ThemeProvider } from 'next-themes';
 import store from '../store';
 import '../styles/index.scss';
+import { appWithTranslation } from 'next-i18next';
+import { ThemeProvider } from 'next-themes';
 
 const MyApp = ({Component, pageProps}) => {
 	return (

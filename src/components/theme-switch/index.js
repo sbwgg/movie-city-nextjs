@@ -12,7 +12,7 @@ const ThemeSwitch = () => {
 	};
 
 	return (
-		<div>
+		<div className={styles.toggleContainer}>
 			<input type="checkbox" id="theme-switcher"
 				   className="hidden" onChange={changeCurrentTheme}
 			/>

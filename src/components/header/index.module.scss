@@ -1,15 +1,14 @@
 .header {
     @apply flex w-full fixed top-0 left-0 z-10
     transition-transform duration-300 backdrop-blur-[5px]
-    border-solid border-b-[1px] border-primary-blue;
-    background-color: rgba(var(--header-bg), 0.7);
+    border-solid border-b-[1px] border-primary-blue bg-header;
 
     &Sticky {
-        @apply translate-y-0;
+        @apply lg:translate-y-0;
     }
 
     &Down {
-        @apply translate-y-[-100%];
+        @apply lg:translate-y-[-100%];
     }
 
     &Inner {
@@ -28,30 +27,56 @@
         @apply lg:w-full lg:before:hidden;
 
         &::before {
-            @apply content-[''] fixed top-0 left-0 w-full h-[100dvh] bg-gray-50
-            opacity-0 transition-opacity pointer-events-none duration-500;
+            @apply content-[''] fixed top-0 left-0 w-full h-[100dvh] bg-mobileBackground
+            opacity-0 transition-opacity pointer-events-none duration-500 z-[3];
         }
+    }
+
+    &Items {
+        @apply flex items-start gap-5 flex-col pt-14
+        lg:flex-row lg:items-center lg:pt-0;
     }
 
     &Container {
-        @apply h-[100dvh] w-10/12 flex flex-col items-center fixed top-0 z-10
-        left-[-83.333333%] bg-green-200 transition-[left] duration-500
+        @apply h-[100dvh] w-10/12 flex flex-col items-center fixed top-0 z-10 py-7 px-4
+        left-[-83.333333%] bg-[rgb(var(--header-bg))] transition-[left] duration-500
         lg:flex-row lg:justify-between lg:w-full lg:bg-[transparent] lg:h-full
-        lg:static;
+        lg:static lg:p-0;
+
+        @media screen and (max-width: 1023.8px) {
+            box-shadow: 8px 5px 20px -10px rgba(0, 0, 0, 0.86);
+        }
     }
 
     &Open {
-        &::before {
-            @apply opacity-25 pointer-events-auto;
-        }
+        @apply before:opacity-25 before:pointer-events-auto;
 
         & > div {
             @apply left-0;
         }
     }
 
-    &Toggler {
-        @apply w-[25px] h-[25px] absolute top-[50%] translate-y-[-50%] right-[15px]
+    &Close {
+        @apply absolute top-[21px] right-[16px]
         lg:hidden;
+    }
+
+    &Toggler {
+        @apply w-[30px] h-[30px] absolute top-[50%] right-[15px] lg:hidden;
+        animation: wiggle 550ms linear infinite both;
+    }
+}
+
+@keyframes wiggle {
+    0%, 50%, 100% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-50%) rotate(6deg);
+    }
+
+    75% {
+        transform: translateY(-50%) rotate(-6deg);
     }
 }

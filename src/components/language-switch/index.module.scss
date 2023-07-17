@@ -1,0 +1,13 @@
+.languageSwitch {
+    &Container {
+        @apply flex items-center gap-2;
+    }
+
+    &Item {
+        @apply border-b-[2px] border-solid border-[transparent];
+
+        &Active {
+            @apply border-primary-blue;
+        }
+    }
+}

@@ -18,6 +18,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      backgroundColor: {
+        'header': 'rgba(var(--header-bg), 0.7)',
+        'mobileBackground': 'rgb(var(--navigation-background))'
+      },
       backgroundSize: {
         '20': '20px'
       },

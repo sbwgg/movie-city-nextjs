@@ -1,4 +1,8 @@
 .toggle {
+    &Container {
+        @apply absolute top-[28px] left-[16px]
+        lg:static;
+    }
     &Button {
         @apply relative bg-primary-blue transition-colors duration-300 w-[60px] h-[30px] rounded-[200px] inline-block
         before:bg-[url('../../assets/svg/sun.svg')] before:left-[5px]

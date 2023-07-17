@@ -24,6 +24,7 @@
         --inner-shadow: -2px -2px 92px -3px rgba(0, 0, 0, 0.23) inset;
         --header-bg: 245, 245, 245;
         --header-shadow: inset 4px -13px 50px -20px rgba(0,0,0,0.66);
+        --navigation-background: 0, 0, 0;
     }
 }
 
@@ -43,6 +44,7 @@ html {
             0 6px 6px 0 rgba(41, 41, 41, 0.23);
             --inner-shadow: -2px -2px 92px -3px rgba(153, 153, 153, 0.19) inset;
             --header-bg: 46, 48, 51;
+            --navigation-background: 249, 250, 251;
         }
 
         .theme-switcher > span {
@@ -76,4 +78,12 @@ button,
 .swiper-button-disabled {
     opacity: 0.5;
     pointer-events: none;
+}
+
+figure {
+    @apply flex flex-col h-full;
+
+    .fallback-img {
+        @apply lg:w-full lg:h-full;
+    }
 }

@@ -4,7 +4,7 @@
     }
 
     &Fallback {
-        @apply w-full h-full lg:w-[19.532vw] lg:h-[29.297vw] max-w-[300px] max-h-[450px] bg-secondary-gray
+        @apply w-full h-full max-w-[300px] max-h-[450px] bg-secondary-gray
         flex items-center justify-center;
         box-shadow: var(--inner-shadow);
     }

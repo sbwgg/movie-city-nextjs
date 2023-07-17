@@ -5,7 +5,7 @@
 }
 
 .popularMovie {
-    @apply p-4 w-full h-full lg:m-4 lg:p-0;
+    @apply p-4 w-full h-full lg:m-4 lg:p-0 lg:w-[unset];
 
     &Image {
         @apply relative overflow-hidden ;
