@@ -7,6 +7,7 @@ import {useRouter} from 'next/router';
 import ImageComponent from '@/components/UI/ImageComponent';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import {IMAGE_PATH} from '@/constants';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import MaleFallback from '@/assets/svg/male-fallback.svg';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
 
@@ -39,6 +40,16 @@ const Id = ({locale}) => {
 
     },[currentLocale, queryId]);
 
+    const swiperOptions = {
+        slidesPerView: 2.5,
+
+        breakpoints: {
+            1024:{
+                slidesPerView: 6.5
+            }
+        }
+    }
+
     return (
         <Default title={movieData.title}
                  description={movieData.overview}
@@ -62,22 +73,26 @@ const Id = ({locale}) => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
             />
-            <div className="flex flex-wrap">
+            <Swiper {...swiperOptions}>
                 {movieCast.map(item =>
-                    <div key={item.id} className="h-full">
-                        <ImageComponent
-                            src={IMAGE_PATH(item.profile_path)}
-                            fallBackSrc={item.gender === 1 ? FemaleFallback : MaleFallback}
-                            width={300}
-                            height={450}
-                            alt={item.name}
-                            className="h-full"
-                        />
-                        <p>{item.name}</p>
-                        <p>{item.character}</p>
-                    </div>
+                    <SwiperSlide key={item.id}>
+                        <figure>
+                            <ImageComponent
+                                src={IMAGE_PATH(item.profile_path)}
+                                fallBackSrc={item.gender === 1 ? FemaleFallback : MaleFallback}
+                                width={300}
+                                height={450}
+                                alt={item.name}
+                                className="h-full"
+                            />
+                            <figcaption>
+                                <p>{item.name}</p>
+                                <p>{item.character}</p>
+                            </figcaption>
+                        </figure>
+                    </SwiperSlide>
                 )}
-            </div>
+            </Swiper>
         </Default>
     )
 }

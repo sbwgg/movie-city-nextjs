@@ -1,5 +1,8 @@
 .header {
-    @apply flex w-full fixed top-0 left-0 z-10 transition-transform duration-300;
+    @apply flex w-full fixed top-0 left-0 z-10
+    transition-transform duration-300 backdrop-blur-[5px]
+    border-solid border-b-[1px] border-primary-blue;
+    background-color: rgba(var(--header-bg), 0.7);
 
     &Sticky {
         @apply translate-y-0;
@@ -10,14 +13,45 @@
     }
 
     &Inner {
-        @apply w-full lg:px-2 lg:py-[10px];
+        @apply w-full p-3 lg:px-2 lg:py-[10px];
     }
 }
 
 .nav {
-    @apply w-full relative flex lg:gap-10;
+    @apply w-full flex lg:gap-10 lg:relative;
+
+    svg {
+        @apply w-full h-full;
+    }
 
     &Inner {
-        @apply w-full flex flex-col items-center lg:flex-row lg:justify-between;
+        @apply lg:w-full lg:before:hidden;
+
+        &::before {
+            @apply content-[''] fixed top-0 left-0 w-full h-[100dvh] bg-gray-50
+            opacity-0 transition-opacity pointer-events-none duration-500;
+        }
+    }
+
+    &Container {
+        @apply h-[100dvh] w-10/12 flex flex-col items-center fixed top-0 z-10
+        left-[-83.333333%] bg-green-200 transition-[left] duration-500
+        lg:flex-row lg:justify-between lg:w-full lg:bg-[transparent] lg:h-full
+        lg:static;
+    }
+
+    &Open {
+        &::before {
+            @apply opacity-25 pointer-events-auto;
+        }
+
+        & > div {
+            @apply left-0;
+        }
+    }
+
+    &Toggler {
+        @apply w-[25px] h-[25px] absolute top-[50%] translate-y-[-50%] right-[15px]
+        lg:hidden;
     }
 }

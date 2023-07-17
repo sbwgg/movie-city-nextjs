@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.scss';
 import classNames from 'classnames';
 import {motion} from 'framer-motion';
@@ -11,6 +11,7 @@ import {useTranslation} from 'next-i18next';
 import ThemeSwitch from '@/components/theme-switch';
 
 const Index = () => {
+    const [navOpen, setNavOpen] = useState(false);
     const {isSticky, isDown} = useScrollDirection();
     const {t} = useTranslation();
 
@@ -30,7 +31,7 @@ const Index = () => {
         <header className={classNames([styles.header, isSticky ? styles.headerSticky : isDown ? styles.headerDown : ''])}>
             <div className={classNames(styles.headerInner, 'main-container')}>
                 <nav className={styles.nav}>
-                    <NextLink href="/" className="max-w-[120px]">
+                    <NextLink href="/" className="max-w-[55px] lg:max-w-[120px]">
                         <motion.svg
                             initial="toOut"
                             animate="toIn"
@@ -44,17 +45,24 @@ const Index = () => {
                             <path fillRule="evenodd" clipRule="evenodd" d="M85.8957 93.6358C88.5562 106.281 96.475 106.77 104.383 103.466C112.28 100.157 118.729 93.6536 116.069 81.0044L110.793 55.8714C108.147 43.2263 100.228 42.7369 92.3365 46.0414C84.441 49.3527 77.977 55.8495 80.6334 68.4946L85.8957 93.6358ZM94.189 54.8911C96.6964 53.8425 97.7834 55.6622 98.255 57.9113L104.763 88.9491C105.241 91.194 105.034 93.5606 102.514 94.6161C100.006 95.662 98.925 93.845 98.4478 91.5932L91.9304 60.554C91.4738 58.3105 91.6789 55.9411 94.189 54.8911ZM148.939 83.6225L145.906 24.8049L134.775 29.4683L138.53 74.2204L138.389 74.2901L126.58 32.8836L113.796 38.247L133.291 90.1782L148.939 83.6225ZM176.416 72.1245L164.84 16.8793L152.904 21.8695L164.501 77.112L176.416 72.1245ZM213.909 56.4265L212.144 48.0566L199.367 53.4077L195.597 35.406L207.939 30.2299L206.187 21.8586L193.839 27.0279L191.295 14.9229L204.085 9.56759L202.318 1.18811L177.617 11.5309L189.202 66.7733L213.909 56.4265Z" fill="rgb(var(--color-primary-blue))"/>
                         </motion.svg>
                     </NextLink>
-                    <div className={styles.navInner}>
-                        <div className="flex items-center gap-2">
-                            <LanguageSwitch/>
-                            <div className="flex items-center h-[fit-content] gap-4">
-                                <Input id="search" placeholder={`${t('search')}...`}/>
-                                <Button design="primary">{t('search')}</Button>
+                    <div className={classNames([styles.navInner, navOpen && styles.navOpen])}>
+                        <div className={styles.navContainer}>
+                            <div className="flex items-start gap-2 flex-col lg:flex-row lg:items-center">
+                                <LanguageSwitch/>
+                                <div className="flex items-center h-[fit-content] gap-4">
+                                    <Input id="search" placeholder={`${t('search')}...`}/>
+                                    <Button design="primary">{t('search')}</Button>
+                                </div>
                             </div>
+                            <ThemeSwitch/>
                         </div>
-                        <ThemeSwitch/>
                     </div>
                 </nav>
+                <button className={styles.navToggler}
+                        onClick={() => setNavOpen(!navOpen)}
+                >
+                    <span/> test
+                </button>
             </div>
         </header>
     )
