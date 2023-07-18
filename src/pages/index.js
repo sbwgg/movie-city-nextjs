@@ -1,5 +1,5 @@
 import Default from '@/layouts/Default';
-import TopPopularMovies from '@/components/top-popular-movies';
+import TopPopularMovies from '@/components/popular-movies';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 
 const Home = ({locale}) => {

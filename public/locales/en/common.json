@@ -1,3 +1,23 @@
 {
-  "search": "Search"
+  "global": {
+    "search": "Search"
+  },
+  "movie": {
+    "title": "Title",
+    "originalTitle": "Original Title",
+    "year": "Year",
+    "tagline": "Tagline",
+    "genre": "Genre",
+    "budget": "Budget",
+    "duration": "Duration",
+    "min": "Min",
+    "country": "Country",
+    "rating": "Movie Rating",
+    "totalVotes": "Total Votes",
+    "about": "About Film"
+  },
+  "popularity": "Popularity",
+  "topMovies":  "Top Movies",
+  "toCinema": "To The Cinema",
+  "similarMovies": "Similar Movies"
 }

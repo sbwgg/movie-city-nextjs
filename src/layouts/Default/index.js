@@ -2,9 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Header from '@/components/header/index';
-import TopPopularMovies from '@/components/top-popular-movies';
+import PopularMovies from '@/components/popular-movies';
+import TopMovies from '@/components/top-movies';
+import styles from './index.module.scss';
 
-const Default = props => {
+const Index = props => {
     const router = useRouter();
 
     const {
@@ -35,12 +37,19 @@ const Default = props => {
             <main>
                 <Header/>
                 <div className="page">
-                    <TopPopularMovies/>
-                    {children}
+                    <PopularMovies/>
+                    <div className={styles.defaultLayout}>
+                        <div className={styles.defaultLeft}>
+                            {children}
+                        </div>
+                        <div className={styles.defaultRight}>
+                            <TopMovies/>
+                        </div>
+                    </div>
                 </div>
             </main>
         </>
     );
 }
 
-export default Default;
+export default Index;

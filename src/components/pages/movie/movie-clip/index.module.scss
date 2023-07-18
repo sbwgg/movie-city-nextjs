@@ -1,0 +1,10 @@
+.clip {
+    &Container {
+        @apply w-full bg-primary-gray p-5 rounded-[6px] overflow-hidden mb-8;
+
+        iframe {
+            @apply mx-auto max-lg:w-full;
+            box-shadow: var(--popular-shadow);
+        }
+    }
+}

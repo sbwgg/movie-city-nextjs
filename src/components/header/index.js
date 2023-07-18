@@ -63,8 +63,8 @@ const Index = () => {
                             <div className={styles.navItems}>
                                 <LanguageSwitch/>
                                 <div className="flex items-center h-[fit-content] gap-4">
-                                    <Input id="search" placeholder={`${t('search')}...`}/>
-                                    <Button design="primary">{t('search')}</Button>
+                                    <Input id="search" placeholder={`${t('global.search')}...`}/>
+                                    <Button design="primary">{t('global.search')}</Button>
                                 </div>
                                 <button
                                     className={styles.navClose}

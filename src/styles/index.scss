@@ -11,7 +11,7 @@
 @layer base {
     :root {
         --color-primary-blue: 88, 181, 230;
-        --color-primary-gray: 206, 212, 218;
+        --color-primary-gray: 231, 231, 231;
         --color-pink-primary: 216, 36, 124;
         --color-black: 0, 0, 0;
 
@@ -34,7 +34,7 @@ html {
     &.dark {
         &:root {
             --color-primary-blue: 250, 78, 147;
-            --color-primary-gray: 206, 212, 218;
+            --color-primary-gray: 32, 32, 32;
             --color-black: 255, 255, 255;
 
             --color-secondary-blue: 158, 45, 90;
@@ -75,9 +75,8 @@ button,
     cursor: url('../assets/images/icons/mac-pointer.svg'), auto;
 }
 
-.swiper-button-disabled {
-    opacity: 0.5;
-    pointer-events: none;
+h3 {
+    @apply text-xl mb-3;
 }
 
 figure {
@@ -85,5 +84,19 @@ figure {
 
     .fallback-img {
         @apply lg:w-full lg:h-full;
+
+        img {
+            @apply object-contain;
+        }
+    }
+
+    .full-sized & {
+        & > div {
+            @apply h-full;
+        }
+
+        .fallback-img {
+            @apply max-w-[unset] max-h-[unset];
+        }
     }
 }

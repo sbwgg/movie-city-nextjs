@@ -1,3 +1,23 @@
 {
-  "search": "Поиск"
+  "global": {
+    "search": "Поиск"
+  },
+  "movie": {
+    "title": "Название",
+    "originalTitle": "Оригинальное Название",
+    "year": "Год",
+    "tagline": "Слоган",
+    "genre": "Жанр",
+    "budget": "Бюджет",
+    "duration": "Продолжительность",
+    "min": "мин",
+    "country": "Страна",
+    "rating": "Рейтинг Фильма",
+    "totalVotes": "Общие Отзывы",
+    "about": "Описание"
+  },
+  "popularity": "Популярность",
+  "topMovies":  "Топовые Фильмы",
+  "toCinema": "В Кинотеатрах",
+  "similarMovies": "Похожие Фильмы"
 }

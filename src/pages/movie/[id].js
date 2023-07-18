@@ -1,22 +1,23 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
-import {getMovieById, getMovieClip, getMovieCast} from '../../../services/movie';
-import {storeMovieById, storeMovieClip, storeMovieCast} from '@/store/slices/movieSlice';
+import {getMovieById, getMovieClip, getMovieCast, getSimilarMovies} from '../../../services/movie';
+import {storeMovieById, storeMovieClip, storeMovieCast, storeSimilarMovies} from '@/store/slices/movieSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import {useRouter} from 'next/router';
-import ImageComponent from '@/components/UI/ImageComponent';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import {IMAGE_PATH} from '@/constants';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import MaleFallback from '@/assets/svg/male-fallback.svg';
-import FemaleFallback from '@/assets/svg/female-fallback.svg';
+import Movie from '@/components/movie';
+import MovieClip from '@/components/pages/movie/movie-clip';
+import Cast from '@/components/pages/movie/cast';
+import SimilarMovies from '@/components/pages/movie/similar-movies';
 
 const Id = ({locale}) => {
     const router = useRouter();
     const dispatch = useDispatch();
-    const movieData = useSelector(state => state.movie.movies);
+    const movieData = useSelector(state => state.movie.movieItem);
     const movieClip = useSelector(state => state.movie.movieClip);
     const movieCast = useSelector(state => state.movie.movieCast);
+    const similarMovies = useSelector(state => state.movie.similarMovies);
     const queryId = router.query.id;
     const currentLocale = router.locale;
 
@@ -29,70 +30,31 @@ const Id = ({locale}) => {
                 .then(res => dispatch(storeMovieClip(res)));
 
             getMovieCast(queryId, currentLocale)
-                .then(res => dispatch(storeMovieCast(res)))
+                .then(res => dispatch(storeMovieCast(res)));
+
+            getSimilarMovies(queryId, currentLocale)
+                .then(res => dispatch(storeSimilarMovies(res)))
 
             return () => {
                 dispatch(storeMovieById({}));
                 dispatch(storeMovieClip({}));
                 dispatch(storeMovieCast([]));
+                dispatch(storeSimilarMovies([]));
             };
         }
 
     },[currentLocale, queryId]);
 
-    const swiperOptions = {
-        slidesPerView: 2.5,
-
-        breakpoints: {
-            1024:{
-                slidesPerView: 6.5
-            }
-        }
-    }
-
     return (
-        <Default title={movieData.title}
-                 description={movieData.overview}
-                 image={IMAGE_PATH(movieData.backdrop_path)}
+        <Default
+            title={movieData.title}
+            description={movieData.overview}
+            image={IMAGE_PATH(movieData.backdrop_path)}
         >
-            <div>
-                <ImageComponent
-                    src={IMAGE_PATH(movieData.poster_path)}
-                    alt={movieData.title}
-                    width={300}
-                    height={450}
-                    priority
-                />
-                <p>{movieData.title}</p>
-                <p>{movieData.overview}</p>
-            </div>
-
-            <iframe width="560" height="315"
-                    src={`https://www.youtube.com/embed/${movieClip.key}`}
-                    title="YouTube video player" frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-            />
-            <Swiper {...swiperOptions}>
-                {movieCast.map(item =>
-                    <SwiperSlide key={item.id} className="!h-auto">
-                        <figure>
-                            <ImageComponent
-                                src={IMAGE_PATH(item.profile_path)}
-                                fallBackSrc={item.gender === 1 ? FemaleFallback : MaleFallback}
-                                width={300}
-                                height={450}
-                                alt={item.name}
-                                className="h-full"
-                            />
-                            <figcaption>
-                                <p>{item.name}</p>
-                                <p>{item.character}</p>
-                            </figcaption>
-                        </figure>
-                    </SwiperSlide>
-                )}
-            </Swiper>
+            <Movie movie={movieData}/>
+            {movieClip && <MovieClip clipKey={movieClip.key}/>}
+            <Cast castData={movieCast}/>
+            <SimilarMovies similarMoviesData={similarMovies}/>
         </Default>
     )
 }

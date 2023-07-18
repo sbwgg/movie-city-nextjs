@@ -4,15 +4,19 @@ export const globalSlice = createSlice({
     name: 'global',
     initialState: {
         popularMovies: [],
+        topMovies: []
     },
 
     reducers: {
-        getPopularMovies: (state, action) => {
+        setPopularMovies: (state, action) => {
             state.popularMovies = action.payload;
+        },
+        setTopMovies: (state, action) => {
+            state.topMovies = action.payload;
         }
     }
 })
 
-export const {getPopularMovies} = globalSlice.actions;
+export const {setPopularMovies, setTopMovies} = globalSlice.actions;
 
 export default globalSlice.reducer;

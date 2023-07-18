@@ -1,0 +1,18 @@
+.default {
+    &Layout {
+        @apply grid gap-5
+        max-lg:px-[20px]
+        lg:max-xl:max-w-[94%]
+        lg:mx-auto
+        xl:max-w-[1370px] xl:px-7;
+
+        @media (min-width: 1024px) {
+            width: 100%;
+            grid-template-columns: 1fr .5fr;
+        }
+    }
+
+    &Left {
+        @apply overflow-hidden;
+    }
+}
