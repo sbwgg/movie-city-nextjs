@@ -1,5 +1,13 @@
 .similar {
     &Wrapper {
-        @apply bg-primary-gray;
+        @apply bg-primary-gray py-5;
+
+        h3 {
+            @apply px-5;
+        }
+    }
+
+    &Slider {
+        @apply relative;
     }
 }

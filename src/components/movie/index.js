@@ -56,7 +56,7 @@ const Movie = props => {
                 <h3>{t('movie.about')}</h3>
                 <p>{movie.overview}</p>
             </div>
-            {movie.vote_average && <div className={styles.movieRatings}>
+            {movie.vote_average > 0 && <div className={styles.movieRatings}>
                 <StarRatings
                     rating={movie.vote_average}
                     starRatedColor="rgb(var(--color-primary-blue))"

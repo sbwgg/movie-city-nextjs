@@ -14,10 +14,11 @@
     "country": "Country",
     "rating": "Movie Rating",
     "totalVotes": "Total Votes",
-    "about": "About Film"
+    "about": "About Film",
+    "cast": "Cast",
+    "similarMovies": "Similar Movies"
   },
   "popularity": "Popularity",
   "topMovies":  "Top Movies",
-  "toCinema": "To The Cinema",
-  "similarMovies": "Similar Movies"
+  "toCinema": "To The Cinema"
 }

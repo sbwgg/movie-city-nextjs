@@ -1,5 +1,5 @@
 .movie {
-    @apply p-4 w-full h-full;
+    @apply w-full h-full;
 
     &Image {
         @apply relative overflow-hidden ;
@@ -18,8 +18,5 @@
 
     &Title {
         @apply text-ellipsis overflow-hidden text-sm text-center;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
     }
 }

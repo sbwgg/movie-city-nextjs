@@ -9,7 +9,11 @@ export const getMovieById = async (id, locale) => {
 
 export const getMovieClip = async id => {
 	return await axios.get(`${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`)
-		.then((response) =>  response.data.results[0])
+		.then((response) => {
+			return response.data.results.find(el =>
+				el.type === 'Trailer' && el.name.includes('Trailer')
+			)
+		})
 		.catch((error) => console.log(error))
 }
 
