@@ -5,6 +5,7 @@ import {IMAGE_PATH} from '@/constants';
 import NextLink from '@/components/UI/NextLink';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
+import {BACKDROP_PATH} from '@/constants';
 
 const Movie = props => {
     const {
@@ -13,9 +14,13 @@ const Movie = props => {
 
     const {t} = useTranslation();
 
+    const dynamicImages = {
+        backgroundImage: `url(${BACKDROP_PATH(movie.backdrop_path)})`
+    };
+
     return (
         <section className={styles.movieWrapper}>
-            <div className={styles.movieDetailsContainer}>
+            <div className={styles.movieDetailsContainer} style={dynamicImages}>
                 <ImageComponent
                     src={IMAGE_PATH(movie.poster_path)}
                     alt={'Title:' + movie.title}

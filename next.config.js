@@ -11,7 +11,8 @@ const nextConfig = {
     env: {
         BASE_URL: process.env.BASE_URL,
         API_KEY: process.env.API_KEY,
-        IMAGE_PATH: process.env.IMAGE_PATH
+        IMAGE_PATH: process.env.IMAGE_PATH,
+        BACKDROP_PATH: process.env.BACKDROP_PATH
     },
 
     images: {
