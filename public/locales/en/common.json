@@ -17,9 +17,10 @@
     "about": "About Film",
     "cast": "Cast",
     "similarMovies": "Similar Movies",
-    "recommendedMovies": "Recommendations"
+    "recommendedMovies": "Recommendations",
+    "popularity": "Popularity"
   },
-  "popularity": "Popularity",
   "topMovies":  "Top Movies",
-  "toCinema": "To The Cinema"
+  "toCinema": "To The Cinema",
+  "searchResults": "Search Results for"
 }

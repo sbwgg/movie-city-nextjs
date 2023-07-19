@@ -1,18 +1,73 @@
 .movie {
-    @apply w-full h-full;
+    @apply w-full h-full relative;
+
+    &Details {
+        @apply max-lg:hidden
+        absolute w-full h-full inset-0 z-[2] p-2 text-white
+        opacity-0 invisible transition-all duration-500;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        ul {
+            @apply text-sm my-5;
+
+            li span {
+                @apply text-gray-300 font-bold;
+            }
+        }
+
+        &Average {
+            @apply flex w-[40px] h-[40px] rounded-full bg-primary-blue
+            items-center justify-center mx-auto border-solid border-[1px] border-secondary-blue;
+            box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
+        }
+
+        &Ratings {
+            @apply mb-2;
+
+            & > div {
+                @apply flex justify-center #{!important};
+            }
+
+            div {
+                @apply p-0 #{!important};
+            }
+
+            svg {
+                @apply w-[13px] h-[13px] #{!important};
+            }
+
+            path {
+                @apply transition-none #{!important};
+            }
+        }
+    }
 
     &Image {
-        @apply relative overflow-hidden ;
+        @apply relative h-full;
         box-shadow: var(--popular-shadow);
 
         &::after {
             @apply content-[''] absolute w-full h-full inset-0 mix-blend-screen
             bg-cover bg-no-repeat bg-[url('../../assets/images/poster-texture.jpg')];
-            box-shadow: inset 0 0 25px 25px #000;
+            box-shadow: inset 0 0 25px 25px #000000;
+        }
+
+        div {
+            @apply overflow-hidden;
         }
 
         img {
             @apply w-full h-full object-cover;
+        }
+
+        &Detailed:hover {
+            img {
+                @apply scale-[1.5];
+            }
+
+            & > div:not(:only-child):last-child {
+                @apply opacity-100 visible;
+            }
         }
     }
 

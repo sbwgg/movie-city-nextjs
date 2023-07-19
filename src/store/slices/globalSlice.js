@@ -5,7 +5,7 @@ export const globalSlice = createSlice({
     initialState: {
         popularMovies: [],
         topMovies: [],
-        searchResults: {}
+        searchResults: []
     },
 
     reducers: {

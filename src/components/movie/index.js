@@ -22,7 +22,7 @@ const Movie = props => {
             let convertedHours = hrs <= 9 ? `0${hrs}` : hrs
             let convertedMinutes = mins <= 9 ? `0${mins}` : mins
 
-            return convertedHours + ':' + convertedMinutes;
+            return `${convertedHours}:${convertedMinutes}`
         }
     };
 

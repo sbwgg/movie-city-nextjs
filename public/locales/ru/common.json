@@ -17,9 +17,10 @@
     "about": "Описание",
     "cast": "Актерский состав",
     "similarMovies": "Похожие фильмы",
-    "recommendedMovies": "Рекомендуемые фильмы"
+    "recommendedMovies": "Рекомендуемые фильмы",
+    "popularity": "Популярность"
   },
-  "popularity": "Популярность",
   "topMovies":  "Топовые фильмы",
-  "toCinema": "В Кинотеатрах"
+  "toCinema": "В Кинотеатрах",
+  "searchResults": "Результаты поиска"
 }

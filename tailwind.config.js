@@ -35,6 +35,8 @@ module.exports = {
         'montserrat': ['Montserrat', 'sans-serif']
       },
       colors: {
+        'white-black': withOpacity('--color-white'),
+        'black-white': withOpacity('--color-black'),
         'primary-blue': withOpacity('--color-primary-blue'),
         'secondary-blue': withOpacity('--color-secondary-blue'),
         'primary-gray': withOpacity('--color-primary-gray'),

@@ -40,6 +40,10 @@ const Index = () => {
         return setNavOpen(false);
     };
 
+    const handleSearchQuery = e => {
+        return setSearchQuery(e.target.value)
+    };
+
     useClickOutSide(mobileMenuContainer, closeMobileMenu, mobileMenuTrigger);
 
     return (
@@ -69,7 +73,8 @@ const Index = () => {
                                         id="search"
                                         placeholder={`${t('global.search')}...`}
                                         value={searchQuery}
-                                        onChange={e => setSearchQuery(e.target.value)}
+                                        autocomplete="off"
+                                        onChange={handleSearchQuery}
                                     />
                                     <NextLink href={`/search/${searchQuery}`}>
                                         <Button design="primary">{t('global.search')}</Button>
