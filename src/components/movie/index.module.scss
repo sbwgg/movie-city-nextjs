@@ -36,6 +36,10 @@
 
     &About {
         @apply w-full p-5 bg-primary-gray;
+
+        p {
+            @apply text-sm;
+        }
     }
 
     &Ratings {

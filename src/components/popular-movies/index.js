@@ -13,8 +13,8 @@ const PopularMovies = () => {
     const popularMovieData = useSelector(state => state.global.popularMovies);
     const router = useRouter();
     const currentLang =  router.locale;
-    const prevBtn = useRef(null);
-    const nextBtn = useRef(null);
+    const slidePrev = useRef(null);
+    const slideNext = useRef(null);
 
     const swiperOptions = {
         slidesPerView: 2,
@@ -22,8 +22,8 @@ const PopularMovies = () => {
         speed: 800,
         modules: [Navigation],
         navigation: {
-            prevEl: prevBtn.current,
-            nextEl: nextBtn.current
+            prevEl: slidePrev.current,
+            nextEl: slideNext.current
         },
         breakpoints: {
             768: {
@@ -54,10 +54,10 @@ const PopularMovies = () => {
                         )
                     })}
                 </Swiper>
-                <button ref={prevBtn} className="swiper-nav-prev">
+                <button ref={slidePrev} className="swiper-nav-prev">
                     <span/>
                 </button>
-                <button ref={nextBtn} className="swiper-nav-next">
+                <button ref={slideNext} className="swiper-nav-next">
                     <span/>
                 </button>
             </div>

@@ -14,6 +14,7 @@
         --color-primary-gray: 231, 231, 231;
         --color-pink-primary: 216, 36, 124;
         --color-black: 0, 0, 0;
+        --color-white: 255, 255, 255;
 
         --color-secondary-blue: 68, 141, 180;
         --color-secondary-gray: 219, 219, 219;
@@ -36,6 +37,7 @@ html {
             --color-primary-blue: 250, 78, 147;
             --color-primary-gray: 32, 32, 32;
             --color-black: 255, 255, 255;
+            --color-white: 0, 0, 0;
 
             --color-secondary-blue: 158, 45, 90;
             --color-secondary-gray: 58, 58, 58;
@@ -76,11 +78,11 @@ button,
 }
 
 h3 {
-    @apply text-xl mb-3;
+    @apply text-xl mb-3 text-primary-blue font-bold;
 }
 
 figure {
-    @apply flex flex-col h-full;
+    //@apply flex flex-col h-full;
 
     .fallback-img {
         @apply lg:w-full lg:h-full;

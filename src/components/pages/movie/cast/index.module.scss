@@ -1,0 +1,30 @@
+.cast {
+    &Wrapper {
+        @apply overflow-hidden bg-primary-gray mb-10 py-5;
+
+        h3 {
+            @apply px-5;
+        }
+    }
+
+    &Slider {
+        @apply relative;
+    }
+
+    &Card {
+        @apply bg-[rgb(var(--color-white))] rounded-[6px] overflow-hidden
+        flex flex-col h-full;
+
+        &Info {
+            @apply py-3 px-2;
+
+            h4 {
+                @apply font-bold text-[15px];
+            }
+
+            h5 {
+                @apply text-sm italic;
+            }
+        }
+    }
+}

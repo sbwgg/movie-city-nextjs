@@ -27,7 +27,8 @@ const Id = ({locale}) => {
                 .then(res => dispatch(storeMovieById(res)));
 
             getMovieClip(queryId)
-                .then(res => dispatch(storeMovieClip(res)));
+                .then(res => dispatch(storeMovieClip(res)))
+                .then(res => console.log(res));
 
             getMovieCast(queryId, currentLocale)
                 .then(res => dispatch(storeMovieCast(res)));
@@ -52,8 +53,8 @@ const Id = ({locale}) => {
             image={IMAGE_PATH(movieData.backdrop_path)}
         >
             <Movie movie={movieData}/>
-            {movieClip && <MovieClip clipKey={movieClip.key}/>}
             <Cast castData={movieCast}/>
+            {movieClip && <MovieClip clipKey={movieClip.key}/>}
             <SimilarMovies similarMoviesData={similarMovies}/>
         </Default>
     )

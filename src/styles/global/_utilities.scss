@@ -52,3 +52,14 @@
         pointer-events: none;
     }
 }
+
+.text-oneline {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.full-figure {
+    @apply flex flex-col h-full;
+}
