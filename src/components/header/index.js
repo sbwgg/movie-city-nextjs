@@ -10,9 +10,11 @@ import LanguageSwitch from '@/components/language-switch';
 import {useTranslation} from 'next-i18next';
 import ThemeSwitch from '@/components/theme-switch';
 import useClickOutSide from '@/hooks/useClickOutSide';
+import {debounce} from '@/helpers/utilities';
 
 const Index = () => {
     const [navOpen, setNavOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
     const {isSticky, isDown} = useScrollDirection();
     const mobileMenuTrigger = useRef(null);
     const mobileMenuContainer = useRef(null);
@@ -63,8 +65,15 @@ const Index = () => {
                             <div className={styles.navItems}>
                                 <LanguageSwitch/>
                                 <div className="flex items-center h-[fit-content] gap-4">
-                                    <Input id="search" placeholder={`${t('global.search')}...`}/>
-                                    <Button design="primary">{t('global.search')}</Button>
+                                    <Input
+                                        id="search"
+                                        placeholder={`${t('global.search')}...`}
+                                        value={searchQuery}
+                                        onChange={e => setSearchQuery(e.target.value)}
+                                    />
+                                    <NextLink href={`/search/${searchQuery}`}>
+                                        <Button design="primary">{t('global.search')}</Button>
+                                    </NextLink>
                                 </div>
                                 <button
                                     className={styles.navClose}

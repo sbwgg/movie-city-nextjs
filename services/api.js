@@ -13,3 +13,13 @@ export const getTopMovies = async (locale, page) => {
             .then((response) => response.data)
             .catch((error) => console.error(error))
 };
+
+export const getSearchResults = async (keyword, locale) => {
+        return await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=${locale}`, {
+                params: {
+                    query: keyword.query
+                }
+        })
+        .then(response => response.data.results)
+        .catch((error) => console.log(error))
+}
