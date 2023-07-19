@@ -1,12 +1,4 @@
 .cast {
-    &Wrapper {
-        @apply overflow-hidden bg-primary-gray mb-10 py-5;
-
-        h3 {
-            @apply px-5;
-        }
-    }
-
     &Slider {
         @apply relative;
     }

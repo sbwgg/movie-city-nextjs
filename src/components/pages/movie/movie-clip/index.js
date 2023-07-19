@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './index.module.scss';
+import classNames from 'classnames';
 
 const MovieClip = props => {
     const {clipKey} = props;
 
     return (
-        <section className={styles.clipContainer}>
+        <section className={classNames([styles.clipContainer, 'movie-info-wrapper'])}>
             <iframe width="560" height="315"
                     src={`https://www.youtube.com/embed/${clipKey}`}
                     title="YouTube video player" frameBorder="0"

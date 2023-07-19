@@ -59,7 +59,7 @@ html {
 body {
     font-family: 'Montserrat', sans-serif;
     color: rgb(var(--foreground-rgb));
-    min-height: 100vh;
+    @apply bg-primary-gray min-h-[100vh];
 }
 
 .page {

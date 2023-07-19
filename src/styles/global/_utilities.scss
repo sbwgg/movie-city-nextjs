@@ -63,3 +63,11 @@
 .full-figure {
     @apply flex flex-col h-full;
 }
+
+.movie-info-wrapper {
+    @apply rounded-[6px] overflow-hidden mb-8 w-full bg-primary-gray py-5;
+
+    h3 {
+        @apply px-5;
+    }
+}

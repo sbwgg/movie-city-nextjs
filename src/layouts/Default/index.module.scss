@@ -3,16 +3,33 @@
         @apply grid gap-5
         max-lg:px-[20px]
         lg:max-xl:max-w-[94%]
-        lg:mx-auto
+        lg:mx-auto lg:w-full
         xl:max-w-[1370px] xl:px-7;
 
         @media (min-width: 1024px) {
-            width: 100%;
             grid-template-columns: 1fr .5fr;
+        }
+    }
+
+    &Container {
+        @apply bg-no-repeat bg-center-top bg-fixed bg-cover;
+
+        & > div {
+            @apply relative z-[1];
+
+            &::after {
+                @apply content-[''] w-full h-full fixed inset-0 z-[-1] bg-main-radial backdrop-blur-[2px];
+            }
         }
     }
 
     &Left {
         @apply overflow-hidden;
+    }
+
+    &Poster {
+        @apply mt-7 p-2;
+
+        background-color: rgba(var(--color-white), 0.5);
     }
 }

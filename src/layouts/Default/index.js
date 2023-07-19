@@ -5,6 +5,8 @@ import Header from '@/components/header/index';
 import PopularMovies from '@/components/popular-movies';
 import TopMovies from '@/components/top-movies';
 import styles from './index.module.scss';
+import classNames from 'classnames';
+import {IMAGE_PATH, BACKDROP_PATH} from '@/constants';
 
 const Index = props => {
     const router = useRouter();
@@ -13,8 +15,13 @@ const Index = props => {
         title,
         description,
         children,
-        image
+        image,
+        backgroundPoster
     } = props;
+
+    const dynamicBackground = {
+        backgroundImage: `url(${BACKDROP_PATH(backgroundPoster)})`
+    };
 
     return (
         <>
@@ -24,13 +31,13 @@ const Index = props => {
                 <meta property="og:url" content={router.asPath}/>
                 <meta property="og:title" content={title}/>
                 <meta property="og:description" content={description}/>
-                <meta property="og:image" content={image}/>
+                <meta property="og:image" content={IMAGE_PATH(image)}/>
                 <meta property="twitter:card" content="summary_large_image"/>
                 <meta property="twitter:site" content="@"/>
                 <meta property="twitter:url" content={router.asPath}/>
                 <meta property="twitter:title" content={title}/>
                 <meta property="twitter:description" content={description}/>
-                <meta property="twitter:image" content={image}/>
+                <meta property="twitter:image" content={IMAGE_PATH(image)}/>
                 <link rel="canonical" href={router.asPath}/>
                 <title>{title}</title>
             </Head>
@@ -38,12 +45,22 @@ const Index = props => {
                 <Header/>
                 <div className="page">
                     <PopularMovies/>
-                    <div className={styles.defaultLayout}>
-                        <div className={styles.defaultLeft}>
-                            {children}
-                        </div>
-                        <div className={styles.defaultRight}>
-                            <TopMovies/>
+                    <div className={backgroundPoster && styles.defaultContainer}
+                         style={backgroundPoster && dynamicBackground}
+                    >
+                        <div className={styles.defaultLayout}>
+                            <div className={classNames([
+                                styles.defaultLeft,
+                                backgroundPoster && styles.defaultPoster
+                            ])}>
+                                {children}
+                            </div>
+                            <div className={classNames([
+                                styles.defaultRight,
+                                backgroundPoster && styles.defaultPoster
+                            ])}>
+                                <TopMovies/>
+                            </div>
                         </div>
                     </div>
                 </div>

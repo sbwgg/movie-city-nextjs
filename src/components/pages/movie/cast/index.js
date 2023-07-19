@@ -39,7 +39,7 @@ const Cast = props => {
     };
 
     return (
-        <section className={styles.castWrapper}>
+        <section className="movie-info-wrapper">
             <h3>{t('movie.cast')}</h3>
             <div className={styles.castSlider}>
                 <Swiper {...castSwiperOptions}>

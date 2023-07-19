@@ -16,7 +16,8 @@
     "totalVotes": "Total Votes",
     "about": "About Film",
     "cast": "Cast",
-    "similarMovies": "Similar Movies"
+    "similarMovies": "Similar Movies",
+    "recommendedMovies": "Recommendations"
   },
   "popularity": "Popularity",
   "topMovies":  "Top Movies",

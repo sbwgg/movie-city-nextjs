@@ -8,12 +8,16 @@
         rounded-[6px] overflow-hidden lg:min-h-[250px];
 
         li {
-            @apply flex items-start gap-1 py-[12px] px-[15px] text-[15px]
+            @apply gap-1 py-[12px] px-[15px] text-[15px]
             border-b-[1px] border-solid border-primary-blue [&:last-child]:border-none
             lg:min-h-[49px];
 
             &:nth-child(odd) {
                 background-color: rgba(var(--color-primary-blue), 0.2);
+            }
+
+            & > * {
+                @apply ml-1;
             }
 
             span, a {
@@ -29,16 +33,20 @@
             @apply flex flex-col gap-4 lg:flex-row;
 
             & > div {
-                @apply w-[59.33333%];
+                @apply w-[59.33333%] mx-auto lg:mx-0;
             }
         }
     }
 
     &About {
-        @apply w-full p-5 bg-primary-gray;
+        @apply px-5;
 
         p {
             @apply text-sm;
+        }
+
+        h3 {
+            @apply px-0;
         }
     }
 

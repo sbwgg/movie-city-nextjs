@@ -6,30 +6,39 @@ export const movieSlice = createSlice({
         movieItem: {},
         movieClip: {},
         movieCast: [],
-        similarMovies: []
+        similarMovies: [],
+        recommendations: []
     },
 
     reducers: {
         storeMovieById: (state, action) => {
             state.movieItem = action.payload;
         },
-        storeMovieClip: (state, action) => {
+
+        storeClip: (state, action) => {
             state.movieClip = action.payload;
         },
-        storeMovieCast: (state, action) => {
+
+        storeCast: (state, action) => {
             state.movieCast = action.payload;
         },
-        storeSimilarMovies: (state, action) => {
+
+        storeSimilar: (state, action) => {
             state.similarMovies = action.payload;
+        },
+
+        storeRecommendations: (state, action) => {
+            state.recommendations = action.payload;
         }
     }
 })
 
 export const {
     storeMovieById,
-    storeMovieClip,
-    storeMovieCast,
-    storeSimilarMovies
+    storeClip,
+    storeCast,
+    storeSimilar,
+    storeRecommendations
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

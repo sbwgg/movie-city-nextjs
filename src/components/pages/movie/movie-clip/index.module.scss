@@ -1,6 +1,6 @@
 .clip {
     &Container {
-        @apply w-full bg-primary-gray p-5 rounded-[6px] overflow-hidden mb-8;
+        @apply p-5;
 
         iframe {
             @apply mx-auto max-lg:w-full;

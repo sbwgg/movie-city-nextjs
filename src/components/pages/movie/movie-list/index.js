@@ -5,16 +5,17 @@ import MovieCard from '@/components/movie-card';
 import styles from './index.module.scss';
 import {useTranslation} from 'next-i18next';
 
-const SimilarMovies = props => {
+const MovieList = props => {
     const {
-        similarMoviesData = []
+        moviesData = [],
+        title
     } = props;
 
     const slidePrev = useRef(null);
     const slideNext = useRef(null);
     const {t} = useTranslation();
 
-    const similarMoviesSwiperOptions = {
+    const moviesSwiperOptions = {
         slidesPerView: 2,
         slidesPerGroup: 2,
         speed: 800,
@@ -36,11 +37,11 @@ const SimilarMovies = props => {
     };
 
     return (
-        <section className={styles.similarWrapper}>
-            <h3>{t('movie.similarMovies')}</h3>
-            <div className={styles.similarSlider}>
-                <Swiper {...similarMoviesSwiperOptions}>
-                    {similarMoviesData.map((item, index) => {
+        <section className="movie-info-wrapper">
+            <h3>{t(title)}</h3>
+            <div className={styles.movieListSlider}>
+                <Swiper {...moviesSwiperOptions}>
+                    {moviesData.map((item, index) => {
                         return (
                             <SwiperSlide key={item.id} className="!h-auto full-sized">
                                 <MovieCard movie={item} delay={index} />
@@ -59,4 +60,4 @@ const SimilarMovies = props => {
     )
 }
 
-export default SimilarMovies;
+export default MovieList;
