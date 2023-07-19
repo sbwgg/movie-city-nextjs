@@ -14,6 +14,18 @@ const Movie = props => {
 
     const {t} = useTranslation();
 
+    const toHoursAndMinutes = totalMinutes => {
+        if (totalMinutes) {
+            const hrs = Math.floor(totalMinutes / 60);
+            const mins = totalMinutes % 60;
+
+            let convertedHours = hrs <= 9 ? `0${hrs}` : hrs
+            let convertedMinutes = mins <= 9 ? `0${mins}` : mins
+
+            return convertedHours + ':' + convertedMinutes;
+        }
+    };
+
     return (
         <section className={styles.movieWrapper}>
             <div className={styles.movieDetailsContainer}>
@@ -40,8 +52,11 @@ const Movie = props => {
                             })}
                         </li>
                     }
-                    <li>{t('movie.budget')}: <span>{movie.budget}$</span></li>
-                    <li>{t('movie.duration')}: <span>{movie.runtime} {t('movie.min')}</span></li>
+                    {movie.budget > 0 && <li>{t('movie.budget')}: <span>{movie.budget}$</span></li>}
+                    <li>
+                        {t('movie.duration')}:
+                        <span>{movie.runtime} {t('movie.min')} / {toHoursAndMinutes(movie.runtime)}</span>
+                    </li>
                     {movie.production_countries &&
                         <li>{t('movie.country')}:
                             {movie.production_countries.map((country, key) => {

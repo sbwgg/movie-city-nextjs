@@ -18,7 +18,7 @@
             @apply relative z-[1];
 
             &::after {
-                @apply content-[''] w-full h-full fixed inset-0 z-[-1] bg-main-radial backdrop-blur-[2px];
+                @apply content-[''] w-full h-full fixed inset-0 z-[-1] bg-main-radial;
             }
         }
     }
