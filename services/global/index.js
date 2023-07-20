@@ -29,3 +29,9 @@ export const getSearchResults = async (keyword, locale) => {
         .then(response => response.data.results)
         .catch((error) => console.log(error))
 }
+
+export const getGenres = async locale => {
+    return await axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${locale}`)
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error))
+}

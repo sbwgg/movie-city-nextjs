@@ -1,11 +1,13 @@
 import Default from '@/layouts/Default';
-import ToCinema from '@/components/pages/home/to-cinema';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import ToCinema from '@/components/pages/home/to-cinema';
+import Trending from '@/components/pages/home/trending';
 
 const Home = ({locale}) => {
     return (
         <Default title="Create Next App">
             <ToCinema/>
+            <Trending/>
         </Default>
     )
 }

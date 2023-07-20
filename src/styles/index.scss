@@ -24,8 +24,10 @@
         0 6px 6px 0 rgba(0, 0, 0, 0.23);
         --inner-shadow: -2px -2px 92px -3px rgba(0, 0, 0, 0.23) inset;
         --header-bg: 245, 245, 245;
-        --header-shadow: inset 4px -13px 50px -20px rgba(0,0,0,0.66);
+        --header-shadow: inset 4px -13px 50px -20px rgba(0, 0, 0, 0.66);
         --navigation-background: 0, 0, 0;
+        --card-label-shadow: 0 14px 28px rgba(0, 0, 0, 0.2509803922),
+        0 10px 10px rgba(0, 0, 0, 0.2196078431);
     }
 }
 
@@ -47,6 +49,8 @@ html {
             --inner-shadow: -2px -2px 92px -3px rgba(153, 153, 153, 0.19) inset;
             --header-bg: 46, 48, 51;
             --navigation-background: 249, 250, 251;
+            --card-label-shadow: 0 14px 28px rgba(255, 255, 255, 0.2509803922),
+            0 10px 10px rgba(255, 255, 255, 0.2196078431);
         }
 
         .theme-switcher > span {
@@ -73,7 +77,7 @@ body {
 a,
 label,
 button,
-[class*="button"]{
+[class*="button"] {
     cursor: url('../assets/images/icons/mac-pointer.svg'), auto;
 }
 

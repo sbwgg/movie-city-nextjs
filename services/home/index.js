@@ -6,3 +6,9 @@ export const getCinema = async locale => {
         .then((response) => response.data.results)
         .catch((error) => console.log(error))
 }
+
+export const getTrending = async (locale, time) => {
+    return await axios.get(`${BASE_URL}/trending/movie/${time}?api_key=${API_KEY}&language=${locale}`)
+        .then((response) => response.data.results)
+        .catch((error) => console.log(error))
+}

@@ -4,7 +4,7 @@
         transition-all duration-300;
 
         &:hover {
-            box-shadow: 0 14px 28px #00000040, 0 10px 10px #00000038;
+            box-shadow: var(--card-label-shadow);
             transform: scale(1.03);
         }
 
@@ -17,6 +17,10 @@
 
     &Image {
         @apply w-1/4;
+
+        img {
+            transform: translateZ(0);
+        }
     }
 
     &Details {

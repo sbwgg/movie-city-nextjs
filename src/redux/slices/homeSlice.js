@@ -3,16 +3,21 @@ import {createSlice} from '@reduxjs/toolkit';
 export const homeSlice = createSlice({
     name: 'HOME',
     initialState: {
-        cinemaMovies: []
+        cinemaMovies: [],
+        trendingMovies: []
     },
 
    reducers: {
        setCinema: (state, action) => {
            state.cinemaMovies = action.payload;
+       },
+
+       setTrending: (state, action) => {
+           state.trendingMovies = action.payload;
        }
    }
 });
 
-export const {setCinema} = homeSlice.actions;
+export const {setCinema, setTrending} = homeSlice.actions;
 
 export default homeSlice.reducer;
