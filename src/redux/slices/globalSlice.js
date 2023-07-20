@@ -4,7 +4,10 @@ export const globalSlice = createSlice({
     name: 'GLOBAL',
     initialState: {
         popularMovies: [],
-        topMovies: [],
+        topMovies: {
+            page: 0,
+            movies: []
+        },
         searchResults: []
     },
 
@@ -13,8 +16,8 @@ export const globalSlice = createSlice({
             state.popularMovies = action.payload;
         },
 
-        setTopMovies: (state, action) => {
-            state.topMovies = action.payload;
+        setTopMovies: (state, {payload}) => {
+            state.topMovies = payload;
         },
 
         setSearchResults: (state, action) => {

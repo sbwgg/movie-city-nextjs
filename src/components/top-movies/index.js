@@ -10,16 +10,22 @@ import Button from '@/components/UI/Button';
 
 const TopMovies = () => {
     const [refresh, setRefresh] = useState(1);
-    const topMovieData = useSelector(state => state.global.topMovies)
+    const {topMovies} = useSelector(state => state.global);
     const router = useRouter();
     const currentLang = router.locale;
 
     useEffect(() => {
         getTopMovies(currentLang, refresh)
-            .then(res => dispatch(setTopMovies(res.results.slice(0, 10))));
+            .then(res => dispatch(setTopMovies({
+                ...topMovies,
+                movies: res.results.slice(0, 10)
+            })));
 
         return () => {
-            dispatch(setTopMovies([]));
+            dispatch(setTopMovies({
+                ...topMovies,
+                movies: []
+            }));
         }
 
     },[currentLang, refresh]);
@@ -40,7 +46,7 @@ const TopMovies = () => {
                     </svg>
                 </Button>
             </div>
-            {topMovieData.map((item, key) => {
+            {topMovies.movies.map((item, key) => {
                 return (
                     <MovieCardLabel
                         key={key}

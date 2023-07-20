@@ -9,6 +9,7 @@ export const getPopularMovies = async locale => {
 };
 
 export const getTopMovies = async (locale, page) => {
+    // use fetch to GET
     const url = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=${locale}&page=${page || 1}`;
     const options = {method: 'GET', headers: {accept: 'application/json'}};
 
