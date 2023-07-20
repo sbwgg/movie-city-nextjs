@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
-import {getSearchResults} from '../../../services/api';
-import {setSearchResults} from '@/store/slices/globalSlice';
-import {useDispatch, useSelector} from 'react-redux';
+import {getSearchResults} from '../../../services/global';
+import {setSearchResults} from '@/redux/slices/globalSlice';
+import {useSelector} from 'react-redux';
+import {dispatch} from '@/helpers';
 import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import MovieCard from '@/components/movie-card';
@@ -10,7 +11,6 @@ import {useTranslation} from 'next-i18next';
 
 const Query = () => {
     const router = useRouter();
-    const dispatch = useDispatch();
     const searchResults = useSelector(state => state.global.searchResults);
     const keyword = router.query;
     const locale = router.locale;

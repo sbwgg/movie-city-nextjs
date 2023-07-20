@@ -10,7 +10,6 @@ import LanguageSwitch from '@/components/language-switch';
 import {useTranslation} from 'next-i18next';
 import ThemeSwitch from '@/components/theme-switch';
 import useClickOutSide from '@/hooks/useClickOutSide';
-import {debounce} from '@/helpers/utilities';
 
 const Index = () => {
     const [navOpen, setNavOpen] = useState(false);
@@ -68,18 +67,24 @@ const Index = () => {
                         <div className={styles.navContainer} ref={mobileMenuContainer}>
                             <div className={styles.navItems}>
                                 <LanguageSwitch/>
-                                <div className="flex items-center h-[fit-content] gap-4">
+                                <form
+                                    autoComplete="off"
+                                    className="flex items-center h-[fit-content] gap-4"
+                                    onSubmit={e => {e.preventDefault(); return false;}}
+                                >
                                     <Input
+                                        debounce
+                                        debounceTimeout={500}
+                                        minLength={2}
                                         id="search"
                                         placeholder={`${t('global.search')}...`}
                                         value={searchQuery}
-                                        autocomplete="off"
                                         onChange={handleSearchQuery}
                                     />
                                     <NextLink href={`/search/${searchQuery}`}>
                                         <Button design="primary">{t('global.search')}</Button>
                                     </NextLink>
-                                </div>
+                                </form>
                                 <button
                                     className={styles.navClose}
                                     onClick={closeMobileMenu}

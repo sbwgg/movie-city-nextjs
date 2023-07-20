@@ -1,0 +1,5 @@
+.cinemaWrapper {
+    & > section {
+        @apply py-2 bg-secondary-gray;
+    }
+}

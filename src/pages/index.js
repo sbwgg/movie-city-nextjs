@@ -1,11 +1,11 @@
 import Default from '@/layouts/Default';
-import TopPopularMovies from '@/components/popular-movies';
+import ToCinema from '@/components/pages/home/to-cinema';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 
 const Home = ({locale}) => {
     return (
         <Default title="Create Next App">
-            {/*<TopPopularMovies/>*/}
+            <ToCinema/>
         </Default>
     )
 }

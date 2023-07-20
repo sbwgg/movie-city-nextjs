@@ -1,0 +1,37 @@
+.movieCard {
+    &Label {
+        @apply flex bg-secondary-gray rounded-[6px] overflow-hidden
+        transition-all duration-300;
+
+        &:hover {
+            box-shadow: 0 14px 28px #00000040, 0 10px 10px #00000038;
+            transform: scale(1.03);
+        }
+
+        &Container {
+            @apply
+            [&:first-child]:mt-12
+            [&:not(:last-child)]:mb-5;
+        }
+    }
+
+    &Image {
+        @apply w-1/4;
+    }
+
+    &Details {
+        @apply w-3/4 p-2 relative;
+
+        h4 {
+            @apply font-bold mb-2;
+        }
+
+        p {
+            @apply text-sm;
+        }
+
+        span {
+            @apply absolute right-[15px];
+        }
+    }
+}

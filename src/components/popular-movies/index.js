@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import MovieCard from '@/components/movie-card';
-import { getPopularMovies } from '../../../services/api';
-import { setPopularMovies } from '@/store/slices/globalSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import {getPopularMovies} from '../../../services/global';
+import { setPopularMovies } from '@/redux/slices/globalSlice';
+import { useSelector } from 'react-redux';
+import {dispatch} from '@/helpers';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
 const PopularMovies = () => {
-    const dispatch = useDispatch();
     const popularMovieData = useSelector(state => state.global.popularMovies);
     const router = useRouter();
     const currentLang =  router.locale;

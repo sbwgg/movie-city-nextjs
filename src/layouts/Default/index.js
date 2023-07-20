@@ -9,8 +9,6 @@ import classNames from 'classnames';
 import {IMAGE_PATH, BACKDROP_PATH} from '@/constants';
 
 const Index = props => {
-    const router = useRouter();
-
     const {
         title,
         description,
@@ -18,6 +16,8 @@ const Index = props => {
         image,
         backgroundPoster
     } = props;
+
+    const router = useRouter();
 
     const dynamicBackground = {
         backgroundImage: `url(${BACKDROP_PATH(backgroundPoster)})`

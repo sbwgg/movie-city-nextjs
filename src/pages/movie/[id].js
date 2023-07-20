@@ -1,18 +1,18 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
 import {getMovieById, getClip, getCast, getSimilar, getRecommendations} from '../../../services/movie';
-import {storeMovieById, storeClip, storeCast, storeSimilar, storeRecommendations} from '@/store/slices/movieSlice';
-import {useSelector, useDispatch} from 'react-redux';
+import {storeMovieById, storeClip, storeCast, storeSimilar, storeRecommendations} from '@/redux/slices/movieSlice';
+import {useSelector} from 'react-redux';
+import {dispatch} from '@/helpers';
 import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Movie from '@/components/movie';
 import MovieClip from '@/components/pages/movie/movie-clip';
 import Cast from '@/components/pages/movie/cast';
-import MovieList from '@/components/pages/movie/movie-list';
+import MovieList from '@/components/movie-list';
 
 const Id = ({locale}) => {
     const router = useRouter();
-    const dispatch = useDispatch();
     const movieData = useSelector(state => state.movie.movieItem);
     const movieClip = useSelector(state => state.movie.movieClip);
     const movieCast = useSelector(state => state.movie.movieCast);

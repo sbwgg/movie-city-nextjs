@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './index.module.scss';
 import classNames from 'classnames';
+import {DebounceInput} from 'react-debounce-input';
 
 const Index = props => {
     const {
@@ -10,18 +11,31 @@ const Index = props => {
         name,
         placeholder,
         onChange,
+        debounce,
         ...rest
     } = props;
 
     return (
         <div className={classNames([styles.inputWrapper, className ? className : ''])}>
-            <input type={type}
-                   id={id}
-                   name={name}
-                   placeholder={placeholder}
-                   onChange={onChange}
-                   {...rest}
-            />
+            {debounce ? (
+                <DebounceInput
+                    type={type}
+                    id={id}
+                    name={name}
+                    placeholder={placeholder}
+                    onChange={onChange}
+                    {...rest}
+                />
+            ) : (
+                <input
+                    type={type}
+                    id={id}
+                    name={name}
+                    placeholder={placeholder}
+                    onChange={onChange}
+                    {...rest}
+                />
+            )}
         </div>
     )
 }

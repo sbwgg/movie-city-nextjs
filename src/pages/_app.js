@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
-import store from '../store';
+import store from '../redux/store';
 import '../styles/index.scss';
 import { appWithTranslation } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';

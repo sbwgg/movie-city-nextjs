@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 export const globalSlice = createSlice({
-    name: 'global',
+    name: 'GLOBAL',
     initialState: {
         popularMovies: [],
         topMovies: [],
@@ -23,6 +23,10 @@ export const globalSlice = createSlice({
     }
 })
 
-export const {setPopularMovies, setTopMovies, setSearchResults} = globalSlice.actions;
+export const {
+    setPopularMovies,
+    setTopMovies,
+    setSearchResults
+} = globalSlice.actions;
 
 export default globalSlice.reducer;

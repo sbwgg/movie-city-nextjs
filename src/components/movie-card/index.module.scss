@@ -16,9 +16,7 @@
         }
 
         &Average {
-            @apply flex w-[40px] h-[40px] rounded-full bg-primary-blue
-            items-center justify-center mx-auto border-solid border-[1px] border-secondary-blue;
-            box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
+           @apply mx-auto;
         }
 
         &Ratings {

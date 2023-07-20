@@ -3,7 +3,9 @@ import {API_KEY, BASE_URL} from '@/constants';
 
 export const getMovieById = async (id, locale) => {
 	return await axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=${locale}`)
-		.then((response) => response.data)
+		.then((response) => {
+			return response.data
+		})
 		.catch((error) => console.log(error))
 };
 

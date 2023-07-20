@@ -8,6 +8,7 @@ import ImageComponent from '@/components/UI/ImageComponent';
 import {IMAGE_PATH} from '@/constants';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
+import {roundNumber} from '@/helpers';
 
 const MovieCard = props => {
     const {
@@ -44,7 +45,11 @@ const MovieCard = props => {
                                     <li><span>{t('movie.totalVotes')}: </span> {movie.vote_count}</li>
                                     <li><span>{t('movie.popularity')}: </span>{movie.popularity}</li>
                                 </ul>
-                                <span className={styles.movieDetailsAverage}>{Math.round(movie.vote_average * 100) / 100}</span>
+                                <span className={classNames([
+                                    styles.movieDetailsAverage, 'vote-circle'
+                                ])}>
+                                    {roundNumber(movie.vote_average)}
+                                </span>
                             </div>
                         }
                     </motion.div>
