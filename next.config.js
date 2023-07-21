@@ -16,7 +16,23 @@ const nextConfig = {
     },
 
     images: {
-        domains: ['image.tmdb.org']
+        domains: ['image.tmdb.org'],
+        dangerouslyAllowSVG: true
+    },
+
+    async redirects() {
+        return [
+            {
+                source: '/movie',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/search',
+                destination: '/',
+                permanent: true
+            }
+        ]
     }
 }
 

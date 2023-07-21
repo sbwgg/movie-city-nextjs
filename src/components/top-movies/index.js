@@ -18,7 +18,7 @@ const TopMovies = () => {
         getTopMovies(currentLang, refresh)
             .then(res => dispatch(setTopMovies({
                 ...topMovies,
-                movies: res.results.slice(0, 10)
+                movies: res
             })));
 
         return () => {

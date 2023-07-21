@@ -5,7 +5,9 @@ import store from '../redux/store';
 import '../styles/index.scss';
 import { appWithTranslation } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';
-import '@/configs/axios';
+import NProgress from 'nprogress';
+
+NProgress.configure({easing: 'linear', speed: 700, showSpinner: false});
 
 const MyApp = ({Component, pageProps}) => {
 	return (

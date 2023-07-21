@@ -1,27 +1,30 @@
-import axios from 'axios';
-import {API_KEY, BASE_URL} from '@/constants';
+import {$api} from '../../api';
+import {API_KEY} from '@/constants';
 
 // GET
 export const getPopularMovies = async locale => {
-        return await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=${locale}&page=2`)
+        return await $api().get(`/movie/popular?api_key=${API_KEY}&language=${locale}&page=2`)
             .then((response) => response.data.results)
             .catch((error) => console.log(error))
 };
 
 export const getTopMovies = async (locale, page) => {
-    // use fetch to GET
-    const url = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=${locale}&page=${page || 1}`;
-    const options = {method: 'GET', headers: {accept: 'application/json'}};
+    return await $api().get(`/movie/top_rated?api_key=${API_KEY}&language=${locale}&page=${page || 1}`)
+        .then((response) => response.data.results.slice(0, 10))
+        .catch((error) => console.log(error))
 
-    return await fetch(url, options)
-        .then((res) => {
-            return res.json()
-        })
-        .catch(err => console.log(err))
+    // const url = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=${locale}&page=${page || 1}`;
+    // const options = {method: 'GET', headers: {accept: 'application/json'}};
+    //
+    // return await fetch(url, options)
+    //     .then((res) => {
+    //         return res.json()
+    //     })
+    //     .catch(err => console.log(err))
 };
 
 export const getSearchResults = async (keyword, locale) => {
-        return await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=${locale}`, {
+        return await $api().get(`/search/movie?api_key=${API_KEY}&language=${locale}`, {
                 params: {
                     query: keyword.query
                 }
@@ -31,7 +34,7 @@ export const getSearchResults = async (keyword, locale) => {
 }
 
 export const getGenres = async locale => {
-    return await axios.get(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${locale}`)
+    return await $api().get(`/genre/movie/list?api_key=${API_KEY}&language=${locale}`)
         .then((response) => console.log(response))
         .catch((error) => console.log(error))
 }
