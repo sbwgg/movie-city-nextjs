@@ -20,6 +20,9 @@
     "recommendedMovies": "Рекомендуемые фильмы",
     "popularity": "Популярность"
   },
+  "today": "Сегодня",
+  "week": "На этой неделе",
+  "trending": "В тренде",
   "topMovies":  "Топовые фильмы",
   "toCinema": "В Кинотеатрах",
   "searchResults": "Результаты поиска"

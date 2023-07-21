@@ -1,7 +1,8 @@
 .movieCard {
     &Label {
         @apply flex bg-secondary-gray rounded-[6px] overflow-hidden
-        transition-all duration-300;
+        duration-300;
+        transition-property: box-shadow, transform;
 
         &:hover {
             box-shadow: var(--card-label-shadow);

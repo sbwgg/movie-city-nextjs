@@ -5,6 +5,7 @@ import store from '../redux/store';
 import '../styles/index.scss';
 import { appWithTranslation } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';
+import '@/configs/axios';
 
 const MyApp = ({Component, pageProps}) => {
 	return (

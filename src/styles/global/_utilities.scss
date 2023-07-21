@@ -77,3 +77,13 @@
     items-center justify-center border-solid border-[1px] border-secondary-blue;
     box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
 }
+
+#nprogress {
+    .bar {
+        background-color: rgb(var(--color-primary-blue)) !important;
+    }
+
+    .peg {
+        box-shadow: none !important;
+    }
+}

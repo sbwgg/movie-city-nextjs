@@ -38,6 +38,7 @@ module.exports = {
         'white-black': withOpacity('--color-white'),
         'black-white': withOpacity('--color-black'),
         'primary-blue': withOpacity('--color-primary-blue'),
+        'primary-pink': withOpacity('--color-primary-pink'),
         'secondary-blue': withOpacity('--color-secondary-blue'),
         'primary-gray': withOpacity('--color-primary-gray'),
         'secondary-gray': withOpacity('--color-secondary-gray'),

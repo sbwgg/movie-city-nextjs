@@ -11,6 +11,7 @@
 @layer base {
     :root {
         --color-primary-blue: 88, 181, 230;
+        --color-primary-pink: 250, 78, 147;
         --color-primary-gray: 231, 231, 231;
         --color-pink-primary: 216, 36, 124;
         --color-black: 0, 0, 0;
@@ -37,6 +38,7 @@ html {
     &.dark {
         &:root {
             --color-primary-blue: 250, 78, 147;
+            --color-primary-pink: 88, 181, 230;
             --color-primary-gray: 32, 32, 32;
             --color-black: 255, 255, 255;
             --color-white: 0, 0, 0;

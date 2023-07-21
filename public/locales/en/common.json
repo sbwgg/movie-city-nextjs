@@ -20,6 +20,9 @@
     "recommendedMovies": "Recommendations",
     "popularity": "Popularity"
   },
+  "today": "Today",
+  "week": "This Week",
+  "trending": "Trending",
   "topMovies":  "Top Movies",
   "toCinema": "Now Playing",
   "searchResults": "Search Results for"
