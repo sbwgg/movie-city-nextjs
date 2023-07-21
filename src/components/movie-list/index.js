@@ -7,7 +7,7 @@ import {useTranslation} from 'next-i18next';
 
 const MovieList = props => {
     const {
-        moviesData = [],
+        movies = [],
         title
     } = props;
 
@@ -41,7 +41,7 @@ const MovieList = props => {
             <h3>{t(title)}</h3>
             <div className={styles.movieListSlider}>
                 <Swiper {...moviesSwiperOptions}>
-                    {moviesData.map((item, index) => {
+                    {movies.map((item, index) => {
                         return (
                             <SwiperSlide key={item.id} className="!h-auto full-sized">
                                 <MovieCard movie={item} delay={index} />

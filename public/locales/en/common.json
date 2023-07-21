@@ -18,7 +18,8 @@
     "cast": "Cast",
     "similarMovies": "Similar Movies",
     "recommendedMovies": "Recommendations",
-    "popularity": "Popularity"
+    "popularity": "Popularity",
+    "reviews": "Reviews"
   },
   "today": "Today",
   "week": "This Week",

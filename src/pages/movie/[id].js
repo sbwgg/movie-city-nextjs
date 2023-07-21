@@ -1,23 +1,32 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
-import {getMovieById, getClip, getCast, getSimilar, getRecommendations} from '../../../services/movie';
-import {storeMovieById, storeClip, storeCast, storeSimilar, storeRecommendations} from '@/redux/slices/movieSlice';
+import {getMovieById, getClip, getCast, getSimilar, getRecommendations, getReviews} from '../../../services/movie';
+import {
+    storeMovieById,
+    storeClip,
+    storeCast,
+    storeSimilar,
+    storeRecommendations,
+    storeReviews
+} from '@/redux/slices/movieSlice';
 import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
 import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
-import Movie from '@/components/movie';
+import Movie from '@/components/pages/movie';
 import MovieClip from '@/components/pages/movie/movie-clip';
 import Cast from '@/components/pages/movie/cast';
 import MovieList from '@/components/movie-list';
+import Reviews from '@/components/pages/movie/reviews';
 
 const Id = ({locale}) => {
     const router = useRouter();
-    const movieData = useSelector(state => state.movie.movieItem);
-    const movieClip = useSelector(state => state.movie.movieClip);
-    const movieCast = useSelector(state => state.movie.movieCast);
-    const similarMovies = useSelector(state => state.movie.similarMovies);
+    const movieData = useSelector(state => state.movie.item);
+    const movieClip = useSelector(state => state.movie.clip);
+    const movieCast = useSelector(state => state.movie.cast);
+    const similarMovies = useSelector(state => state.movie.similar);
     const recommended = useSelector(state => state.movie.recommendations);
+    const movieReviews = useSelector(state => state.movie.reviews);
     const queryId = router.query.id;
     const currentLocale = router.locale;
 
@@ -38,12 +47,16 @@ const Id = ({locale}) => {
             getRecommendations(queryId, currentLocale)
                 .then(res => dispatch(storeRecommendations(res)));
 
+            getReviews(queryId)
+                .then(res => dispatch(storeReviews(res)));
+
             return () => {
                 dispatch(storeMovieById({}));
                 dispatch(storeClip({}));
                 dispatch(storeCast([]));
                 dispatch(storeSimilar([]));
                 dispatch(storeRecommendations([]));
+                dispatch(storeReviews([]));
             };
         }
 
@@ -57,18 +70,21 @@ const Id = ({locale}) => {
             backgroundPoster={movieData.backdrop_path}
         >
             <Movie movie={movieData}/>
-            <Cast castData={movieCast}/>
+            <Cast cast={movieCast}/>
             {movieClip && <MovieClip clipKey={movieClip.key}/>}
-            <MovieList
-                key="recommended"
-                title="movie.recommendedMovies"
-                moviesData={recommended}
-            />
+            {recommended > 0 &&
+                <MovieList
+                    key="recommended"
+                    title="movie.recommendedMovies"
+                    movies={recommended}
+                />
+            }
             <MovieList
                 key="similars"
                 title="movie.similarMovies"
-                moviesData={similarMovies}
+                movies={similarMovies}
             />
+            <Reviews reviews={movieReviews}/>
         </Default>
     )
 }

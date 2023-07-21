@@ -23,7 +23,7 @@ const ToCinema = () => {
             <MovieList
                 key="cinema-movies"
                 title="toCinema"
-                moviesData={cinemaMovies}
+                movies={cinemaMovies}
             />
         </div>
     )

@@ -3,9 +3,7 @@ import {API_KEY} from '@/constants';
 
 export const getMovieById = async (id, locale) => {
 	return await $api().get(`/movie/${id}?api_key=${API_KEY}&language=${locale}`)
-		.then((response) => {
-			return response.data
-		})
+		.then((response) => response.data)
 		.catch((error) => console.log(error))
 };
 
@@ -36,3 +34,9 @@ export const getRecommendations = async (id, locale) => {
 		.then((response) => response.data.results)
 		.catch((error) => console.error(error))
 };
+
+export const getReviews = async id => {
+	return await $api().get(`/movie/${id}/reviews?api_key=${API_KEY}`)
+		.then((response) => response.data.results.slice(0, 10))
+		.catch((error) => console.log(error))
+}

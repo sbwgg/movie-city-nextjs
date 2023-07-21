@@ -51,7 +51,7 @@ const Trending = () => {
 			<MovieList
 				key="trending"
 				title="trending"
-				moviesData={trendingList}
+				movies={trendingList}
 			/>
 		</div>
 	)

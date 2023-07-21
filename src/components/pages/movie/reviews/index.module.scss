@@ -1,0 +1,51 @@
+.review {
+    &Wrapper {
+        @apply px-5;
+
+        h3 {
+            @apply px-0;
+        }
+    }
+
+    &Item {
+        @apply p-5 [&:not(:last-child)]:mb-5 rounded-[6px]
+        bg-secondary-gray;
+    }
+
+    &Author {
+        @apply mb-4 grid grid-cols-[70px_1fr] gap-4 items-center;
+
+        & > div:first-child {
+            @apply w-[70px] h-[70px] rounded-full flex items-center justify-center
+            overflow-hidden p-[3px] bg-color-linear;
+        }
+
+        &Avatar {
+            @apply w-full h-full object-cover object-top rounded-full;
+        }
+
+        span {
+            @apply font-bold;
+        }
+
+        &Info {
+            @apply flex flex-col items-start;
+
+            div {
+                @apply p-0 #{!important};
+            }
+
+            svg {
+                @apply w-[13px] h-[13px] #{!important};
+            }
+
+            path {
+                @apply transition-none #{!important};
+            }
+        }
+    }
+
+    &Content {
+        @apply text-[13px] italic break-words lg:px-3;
+    }
+}

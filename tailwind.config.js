@@ -23,7 +23,8 @@ module.exports = {
         'mobileBackground': 'rgb(var(--navigation-background))'
       },
       backgroundImage: {
-        'main-radial': 'radial-gradient(circle, rgba(2,0,36,0) 0%, rgba(0,0,0,0.8015581232492998) 100%)'
+        'main-radial': 'radial-gradient(circle, rgba(2,0,36,0) 0%, rgba(0,0,0,0.8015581232492998) 100%)',
+        'color-linear': 'linear-gradient(to right,rgb(88, 181, 230) 0, rgb(250, 78, 147) 100%)'
       },
       backgroundPosition: {
         'center-top': 'center top'

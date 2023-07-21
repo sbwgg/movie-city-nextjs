@@ -10,7 +10,7 @@ import {useTranslation} from 'next-i18next';
 
 const Cast = props => {
     const {
-        castData = []
+        cast = []
     } = props;
 
     const slidePrev = useRef(null);
@@ -43,7 +43,7 @@ const Cast = props => {
             <h3>{t('movie.cast')}</h3>
             <div className={styles.castSlider}>
                 <Swiper {...castSwiperOptions}>
-                    {castData.map(item =>
+                    {cast.map(item =>
                         <SwiperSlide key={item.id} className="!h-auto p-3">
                             <figure className={styles.castCard}>
                                 <ImageComponent
