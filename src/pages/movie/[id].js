@@ -72,13 +72,11 @@ const Id = ({locale}) => {
             <Movie movie={movieData}/>
             <Cast cast={movieCast}/>
             {movieClip && <MovieClip clipKey={movieClip.key}/>}
-            {recommended > 0 &&
-                <MovieList
-                    key="recommended"
-                    title="movie.recommendedMovies"
-                    movies={recommended}
-                />
-            }
+            <MovieList
+                key="recommended"
+                title="movie.recommendedMovies"
+                movies={recommended}
+            />
             <MovieList
                 key="similars"
                 title="movie.similarMovies"
