@@ -14,7 +14,8 @@ const Index = props => {
         description,
         children,
         image,
-        backgroundPoster
+        backgroundPoster,
+        secondary
     } = props;
 
     const router = useRouter();
@@ -44,23 +45,37 @@ const Index = props => {
             <main>
                 <Header/>
                 <div className="page">
-                    <PopularMovies/>
-                    <div className={backgroundPoster && styles.defaultContainer}
+                    {!secondary && <PopularMovies/>}
+                    <div className={classNames([
+                        styles.defaultLayout,
+                        backgroundPoster && styles.defaultLayoutPoster
+                    ])}
                          style={backgroundPoster && dynamicBackground}
                     >
-                        <div className={styles.defaultLayout}>
-                            <div className={classNames([
-                                styles.defaultLeft,
-                                backgroundPoster && styles.defaultPoster
-                            ])}>
-                                {children}
-                            </div>
-                            <div className={classNames([
-                                styles.defaultRight,
-                                backgroundPoster && styles.defaultPoster
-                            ])}>
-                                <TopMovies/>
-                            </div>
+                        <div className={classNames([
+                            styles.defaultContainer,
+                            secondary && styles.defaultContainerFull
+                        ])}>
+                            {!secondary ? (
+                                <>
+                                    <div className={classNames([
+                                        styles.defaultLeft,
+                                        backgroundPoster && styles.defaultPoster
+                                    ])}>
+                                        {children}
+                                    </div>
+                                    <div className={classNames([
+                                        styles.defaultRight,
+                                        backgroundPoster && styles.defaultPoster
+                                    ])}>
+                                        <TopMovies/>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    {children}
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>

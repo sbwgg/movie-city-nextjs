@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import classNames from 'classnames';
 import {motion} from 'framer-motion';
 import {fadeInVariants, floatUpVariants} from '@/helpers/motion-animations';
-import ImageComponent from '@/components/UI/ImageComponent';
+import ImageComponent from '@/components/UI/image-component';
 import {IMAGE_PATH} from '@/constants';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';

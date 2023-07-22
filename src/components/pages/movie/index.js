@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss';
-import ImageComponent from '@/components/UI/ImageComponent';
-import {IMAGE_PATH} from '@/constants';
+import ImageComponent from '@/components/UI/image-component';
 import NextLink from '@/components/UI/NextLink';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
@@ -30,10 +29,10 @@ const Movie = props => {
         <section className={styles.movieWrapper}>
             <div className={styles.movieDetailsContainer}>
                 <ImageComponent
-                    src={IMAGE_PATH(movie.poster_path)}
+                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                     alt={'Title:' + movie.title}
-                    width={300}
-                    height={450}
+                    width={500}
+                    height={750}
                     priority
                 />
                 <ul className={styles.movieDetails}>

@@ -37,7 +37,7 @@ const TopMovies = () => {
     };
 
     return(
-        <section className="pt-2">
+        <section>
             <div className="flex items-center justify-between mb-5">
                 <h3 className="mb-0">{t('topMovies')}</h3>
                 <Button onClick={updateTopMovies}>

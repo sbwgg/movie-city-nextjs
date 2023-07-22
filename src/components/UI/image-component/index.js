@@ -22,6 +22,7 @@ const Index = props => {
                 src={src ? imgSrc : fallBackSrc}
                 width={props.width || 300}
                 height={props.height || 450}
+                quality={80}
                 onError={() => {
                     setImgSrc(fallBackSrc);
                     setError(true);

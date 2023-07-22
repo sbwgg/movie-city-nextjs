@@ -1,8 +1,9 @@
 import React, {useRef} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
+import NextLink from '@/components/UI/NextLink';
 import {Navigation} from 'swiper/modules';
 import styles from './index.module.scss';
-import ImageComponent from '@/components/UI/ImageComponent';
+import ImageComponent from '@/components/UI/image-component';
 import {IMAGE_PATH} from '@/constants';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
 import MaleFallback from '@/assets/svg/male-fallback.svg';
@@ -10,7 +11,8 @@ import {useTranslation} from 'next-i18next';
 
 const Cast = props => {
     const {
-        cast = []
+        cast = [],
+        movieId
     } = props;
 
     const slidePrev = useRef(null);
@@ -61,6 +63,9 @@ const Cast = props => {
                             </figure>
                         </SwiperSlide>
                     )}
+                    <SwiperSlide className="!h-auto p-3">
+                        <NextLink href={`/movie/${movieId}/cast`}>View More</NextLink>
+                    </SwiperSlide>
                 </Swiper>
                 <button ref={slidePrev} className="swiper-nav-prev">
                     <span/>

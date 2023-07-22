@@ -17,7 +17,7 @@ export const getClip = async id => {
 		.catch((error) => console.log(error))
 };
 
-export const getCast = async (id, locale) => {
+export const getMovieCast = async (id, locale) => {
 	return await $api().get(`/movie/${id}/credits?api_key=${API_KEY}&language=${locale}`)
 		.then((response) => response.data.cast.slice(0, 9))
 		.catch((error) => console.log(error))

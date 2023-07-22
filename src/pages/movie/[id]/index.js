@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
-import {getMovieById, getClip, getCast, getSimilar, getRecommendations, getReviews} from '../../../services/movie';
+import {getMovieById, getClip, getMovieCast, getSimilar, getRecommendations, getReviews} from '../../../../services/movie';
 import {
     storeMovieById,
     storeClip,
-    storeCast,
+    storeMovieCast,
     storeSimilar,
     storeRecommendations,
     storeReviews
@@ -14,12 +14,12 @@ import {dispatch} from '@/helpers';
 import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Movie from '@/components/pages/movie';
-import MovieClip from '@/components/pages/movie/movie-clip';
-import Cast from '@/components/pages/movie/cast';
+import MovieClip from '@/components/pages/movie/partials/movie-clip';
+import Cast from '@/components/pages/movie/partials/cast';
 import MovieList from '@/components/movie-list';
-import Reviews from '@/components/pages/movie/reviews';
+import Reviews from '@/components/pages/movie/partials/reviews';
 
-const Id = ({locale}) => {
+const Index = ({locale}) => {
     const router = useRouter();
     const movieData = useSelector(state => state.movie.item);
     const movieClip = useSelector(state => state.movie.clip);
@@ -38,8 +38,8 @@ const Id = ({locale}) => {
             getClip(queryId)
                 .then(res => dispatch(storeClip(res)));
 
-            getCast(queryId, currentLocale)
-                .then(res => dispatch(storeCast(res)));
+            getMovieCast(queryId, currentLocale)
+                .then(res => dispatch(storeMovieCast(res)));
 
             getSimilar(queryId, currentLocale)
                 .then(res => dispatch(storeSimilar(res)));
@@ -53,7 +53,7 @@ const Id = ({locale}) => {
             return () => {
                 dispatch(storeMovieById({}));
                 dispatch(storeClip({}));
-                dispatch(storeCast([]));
+                dispatch(storeMovieCast([]));
                 dispatch(storeSimilar([]));
                 dispatch(storeRecommendations([]));
                 dispatch(storeReviews([]));
@@ -70,7 +70,7 @@ const Id = ({locale}) => {
             backgroundPoster={movieData.backdrop_path}
         >
             <Movie movie={movieData}/>
-            <Cast cast={movieCast}/>
+            <Cast cast={movieCast} movieId={queryId}/>
             {movieClip && <MovieClip clipKey={movieClip.key}/>}
             <MovieList
                 key="recommended"
@@ -87,7 +87,7 @@ const Id = ({locale}) => {
     )
 }
 
-export default Id;
+export default Index;
 
 export const getServerSideProps = async ({ locale }) => ({
     props: {

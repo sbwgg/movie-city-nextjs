@@ -1,6 +1,6 @@
 import React from 'react';
 import {IMAGE_PATH} from '@/constants';
-import ImageComponent from '@/components/UI/ImageComponent';
+import ImageComponent from '@/components/UI/image-component';
 import styles from './index.module.scss';
 import classNames from 'classnames';
 import StarRatings from 'react-star-ratings/build/star-ratings';
