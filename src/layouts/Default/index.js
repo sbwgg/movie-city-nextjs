@@ -40,7 +40,7 @@ const Index = props => {
                 <meta property="twitter:description" content={description}/>
                 <meta property="twitter:image" content={IMAGE_PATH(image)}/>
                 <link rel="canonical" href={router.asPath}/>
-                <title>{title}</title>
+                <title>{title || 'Movie City'}</title>
             </Head>
             <main>
                 <Header/>

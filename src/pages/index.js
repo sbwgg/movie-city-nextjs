@@ -5,7 +5,7 @@ import Trending from '@/components/pages/home/trending';
 
 const Home = ({locale}) => {
     return (
-        <Default title="Create Next App">
+        <Default title="Movie City">
             <ToCinema/>
             <Trending/>
         </Default>

@@ -1,6 +1,13 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
-import {getMovieById, getClip, getMovieCast, getSimilar, getRecommendations, getReviews} from '../../../../services/movie';
+import {
+    getMovieById,
+    getClip,
+    getMovieCast,
+    getSimilar,
+    getRecommendations,
+    getReviews
+} from '../../../../services/movie';
 import {
     storeMovieById,
     storeClip,

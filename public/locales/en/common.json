@@ -2,6 +2,9 @@
   "global": {
     "search": "Search"
   },
+  "pageTitles": {
+    "cast": "Cast & Crew"
+  },
   "movie": {
     "title": "Title",
     "originalTitle": "Original Title",

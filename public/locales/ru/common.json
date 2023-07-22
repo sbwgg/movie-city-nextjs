@@ -2,6 +2,9 @@
   "global": {
     "search": "Поиск"
   },
+  "pageTitles": {
+    "cast": "Актеры и съемочная группа"
+  },
   "movie": {
     "title": "Название",
     "originalTitle": "Оригинальное название",

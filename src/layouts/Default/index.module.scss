@@ -1,13 +1,14 @@
 .default {
     &Container {
-        @apply grid gap-5
+        @apply grid gap-5 min-h-[100vh]
         max-lg:px-[20px]
         lg:max-xl:max-w-[94%]
         lg:mx-auto lg:w-full lg:grid-cols-[1fr_.5fr]
         xl:max-w-[1370px] xl:px-7;
 
         &Full {
-            @apply block mt-7;
+            @apply block mt-[-80px] pt-[80px]
+            lg:mt-[-94px] lg:pt-[94px];
         }
     }
 
