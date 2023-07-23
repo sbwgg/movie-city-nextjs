@@ -7,6 +7,7 @@ import {useTranslation} from 'next-i18next';
 import {roundNumber} from '@/helpers';
 import {motion} from 'framer-motion';
 import {fadeInVariants} from '@/helpers/motion-animations';
+import classNames from 'classnames';
 
 const MovieCardLabel = props => {
     const {
@@ -27,7 +28,7 @@ const MovieCardLabel = props => {
         >
             <NextLink
                 href={`/movie/${movie.id}`}
-                className={styles.movieCardLabel}
+                className={classNames([styles.movieCardLabel, 'card-label-hover'])}
             >
                 <div className={styles.movieCardImage}>
                     <ImageComponent

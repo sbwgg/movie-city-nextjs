@@ -3,11 +3,12 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import NextLink from '@/components/UI/NextLink';
 import {Navigation} from 'swiper/modules';
 import styles from './index.module.scss';
+import {useTranslation} from 'next-i18next';
+import {sliderListOptions} from '@/helpers';
 import ImageComponent from '@/components/UI/image-component';
 import {IMAGE_PATH} from '@/constants';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
 import MaleFallback from '@/assets/svg/male-fallback.svg';
-import {useTranslation} from 'next-i18next';
 
 const Cast = props => {
     const {
@@ -19,38 +20,24 @@ const Cast = props => {
     const slideNext = useRef(null);
     const {t} = useTranslation();
 
-    const castSwiperOptions = {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
-        speed: 800,
-        modules: [Navigation],
-        navigation: {
-            prevEl: slidePrev.current,
-            nextEl: slideNext.current
-        },
-        breakpoints: {
-            768:{
-                slidesPerView: 3,
-                slidesPerGroup: 3
-            },
-            1024:{
-                slidesPerView: 4.5,
-                slidesPerGroup: 4
-            }
-        }
-    };
-
     return (
         <section className="movie-info-wrapper">
             <h3>{t('movie.cast')}</h3>
             <div className={styles.castSlider}>
-                <Swiper {...castSwiperOptions}>
+                <Swiper
+                    {...sliderListOptions}
+                    modules={[Navigation]}
+                    navigation={{
+                        prevEl: slidePrev.current,
+                        nextEl: slideNext.current
+                    }}
+                >
                     {cast.map(item =>
                         <SwiperSlide key={item.id} className="!h-auto p-3">
                             <figure className={styles.castCard}>
                                 <ImageComponent
                                     src={IMAGE_PATH(item.profile_path)}
-                                    fallBackSrc={item.gender === 1 ? FemaleFallback : MaleFallback}
+                                    fallBackSrc={cast.gender === 1 ? FemaleFallback : MaleFallback}
                                     width={300}
                                     height={450}
                                     alt={item.name}
@@ -64,7 +51,11 @@ const Cast = props => {
                         </SwiperSlide>
                     )}
                     <SwiperSlide className="!h-auto p-3">
-                        <NextLink href={`/movie/${movieId}/cast`}>View More</NextLink>
+                        <NextLink
+                            className={styles.castCardMore}
+                            href={`/movie/${movieId}/cast`}>
+                            <p>View More</p>
+                        </NextLink>
                     </SwiperSlide>
                 </Swiper>
                 <button ref={slidePrev} className="swiper-nav-prev">

@@ -1,4 +1,4 @@
-import {$api} from '../../api';
+import {$api} from '@/api';
 import {API_KEY} from '@/constants';
 
 export const getCinema = async locale => {

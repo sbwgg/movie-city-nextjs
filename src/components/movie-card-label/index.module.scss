@@ -1,13 +1,6 @@
 .movieCard {
     &Label {
-        @apply flex bg-secondary-gray rounded-[6px] overflow-hidden
-        duration-300;
-        transition-property: box-shadow, transform;
-
-        &:hover {
-            box-shadow: var(--card-label-shadow);
-            transform: scale(1.03);
-        }
+        @apply flex;
 
         &Container {
             @apply
@@ -18,10 +11,6 @@
 
     &Image {
         @apply w-1/4;
-
-        img {
-            transform: translateZ(0);
-        }
     }
 
     &Details {

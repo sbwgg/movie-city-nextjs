@@ -7,7 +7,7 @@ import {
     getSimilar,
     getRecommendations,
     getReviews
-} from '../../../../services/movie';
+} from '@/services/movie';
 import {
     storeMovieById,
     storeClip,
@@ -21,10 +21,10 @@ import {dispatch} from '@/helpers';
 import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Movie from '@/components/pages/movie';
-import MovieClip from '@/components/pages/movie/partials/movie-clip';
-import Cast from '@/components/pages/movie/partials/cast';
+import MovieClip from '@/components/pages/movie/movie-clip';
+import Cast from '@/components/pages/movie/cast';
 import MovieList from '@/components/movie-list';
-import Reviews from '@/components/pages/movie/partials/reviews';
+import Reviews from '@/components/pages/movie/reviews';
 
 const Index = ({locale}) => {
     const router = useRouter();

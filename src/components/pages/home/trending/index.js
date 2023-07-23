@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router';
-import {getTrending} from '../../../../../services/home';
+import {getTrending} from '@/services/home';
 import {setTrending} from '@/redux/slices/homeSlice';
 import {dispatch} from '@/helpers';
 import {useSelector} from 'react-redux';
@@ -22,31 +22,35 @@ const Trending = () => {
 
 	},[trendingBy, currentLang]);
 
+	const trendingLabels = [
+		{
+			type: 'day',
+			title: 'today'
+		},
+		{
+			type: 'week',
+			title: 'week'
+		}
+	];
+
 	return (
 		<div className={styles.trendingWrapper}>
 			<div className={styles.trendingFilter}>
-				<div className={trendingBy === 'day' ? styles.trendingActive : ''}>
-					<input
-						type="checkbox"
-						id="trending-today"
-						className="hidden"
-						onChange={() => setTrendingBy('day')}
-					/>
-					<label htmlFor="trending-today">
-						<span>{t('today')}</span>
-					</label>
-				</div>
-				<div className={trendingBy === 'week' ? styles.trendingActive : ''}>
-					<input
-						type="checkbox"
-						id="trending-week"
-						className="hidden"
-						onChange={() => setTrendingBy('week')}
-					/>
-					<label htmlFor="trending-week">
-						<span>{t('week')}</span>
-					</label>
-				</div>
+				{trendingLabels.map(trending =>
+					<div key={trending.type}
+						 className={trendingBy === trending.type ? styles.trendingActive : ''}
+					>
+						<input
+							type="checkbox"
+							id={`trending-${trending.title}`}
+							className="hidden"
+							onChange={() => setTrendingBy(trending.type)}
+						/>
+						<label htmlFor={`trending-${trending.title}`}>
+							<span>{t(trending.title)}</span>
+						</label>
+					</div>
+				)}
 			</div>
 			<MovieList
 				key="trending"

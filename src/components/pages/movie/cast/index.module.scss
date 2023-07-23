@@ -18,5 +18,13 @@
                 @apply text-sm italic;
             }
         }
+
+        &More {
+            @apply h-full w-full flex items-center justify-center
+            rounded-[6px] overflow-hidden bg-color-linear;
+
+            p {
+                @apply font-bold tracking-[0.6px] italic;            }
+        }
     }
 }

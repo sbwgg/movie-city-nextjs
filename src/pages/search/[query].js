@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
-import {getSearchResults} from '../../../services/global';
+import {getSearchResults} from '@/services/global';
 import {setSearchResults} from '@/redux/slices/globalSlice';
 import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';

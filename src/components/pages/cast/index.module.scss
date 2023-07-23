@@ -1,0 +1,19 @@
+.cast {
+    &Container {
+        @apply my-10 p-5 grid gap-5
+        md:grid-cols-2;
+        background-color: rgba(var(--color-white), 0.5);
+    }
+
+    &Content {
+        @apply md:max-w-[450px];
+
+        &Title {
+            @apply text-[20px] font-bold mb-5;
+
+            span {
+                @apply text-lg italic opacity-70 ml-2;
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router';
-import {getTopMovies} from '../../../services/global';
+import {getTopMovies} from '@/services/global';
 import {setTopMovies} from '@/redux/slices/globalSlice';
 import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';

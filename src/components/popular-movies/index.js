@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import MovieCard from '@/components/movie-card';
-import {getPopularMovies} from '../../../services/global';
+import {getPopularMovies} from '@/services/global';
 import { setPopularMovies } from '@/redux/slices/globalSlice';
 import { useSelector } from 'react-redux';
 import {dispatch} from '@/helpers';

@@ -18,11 +18,14 @@
     "rating": "Movie Rating",
     "totalVotes": "Total Votes",
     "about": "About Film",
-    "cast": "Cast",
     "similarMovies": "Similar Movies",
     "recommendedMovies": "Recommendations",
     "popularity": "Popularity",
     "reviews": "Reviews"
+  },
+  "cast": {
+    "cast": "Cast",
+    "crew": "Crew"
   },
   "today": "Today",
   "week": "This Week",

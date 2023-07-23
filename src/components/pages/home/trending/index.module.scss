@@ -16,8 +16,7 @@
             py-1 px-3 rounded-[30px] overflow-hidden transition-opacity duration-300;
 
             span {
-                @apply max-md:text-[12px];
-                background-image: linear-gradient(to right,rgb(88, 181, 230) 0, rgb(250, 78, 147) 100%);
+                @apply max-md:text-[12px] bg-color-linear;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }

@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import {useRouter} from 'next/router';
 import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
-import {getCinema} from '../../../../../services/home';
+import {getCinema} from '@/services/home';
 import {setCinema} from '@/redux/slices/homeSlice';
 import MovieList from '@/components/movie-list';
 
