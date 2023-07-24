@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
 import {getCinema} from '@/services/home';
 import {setCinema} from '@/redux/slices/homeSlice';
-import MovieList from '@/components/movie-list';
+import SliderList from '@/components/slider-list';
 
 const ToCinema = () => {
     const router = useRouter();
@@ -20,10 +20,10 @@ const ToCinema = () => {
 
     return (
         <div className={styles.cinemaWrapper}>
-            <MovieList
+            <SliderList
                 key="cinema-movies"
                 title="toCinema"
-                movies={cinemaMovies}
+                items={cinemaMovies}
             />
         </div>
     )

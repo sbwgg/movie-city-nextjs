@@ -1,0 +1,38 @@
+.person {
+    &Item {
+        @apply flex flex-col h-full;
+    }
+
+    &Primary {
+        @apply bg-[rgb(var(--color-white))] rounded-[6px] overflow-hidden
+        flex flex-col h-full;
+
+        &Info {
+            @apply py-3 px-2;
+
+            h4 {
+                @apply font-bold text-[15px];
+            }
+
+            h5 {
+                @apply text-sm italic;
+            }
+        }
+    }
+
+    &Secondary {
+        @apply grid grid-cols-[90px_1fr];
+
+        & > div:first-child {
+            @apply h-[133px] w-[90px];
+        }
+
+        &Info {
+            @apply p-2;
+
+            h5 {
+                @apply text-sm italic opacity-70;
+            }
+        }
+    }
+}

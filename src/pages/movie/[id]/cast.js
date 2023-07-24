@@ -44,7 +44,7 @@ const CastPage = () => {
 	return (
 		<Default
 			secondary
-			title={`${t('pageTitles.cast')} - ${movieData.title}`}
+			title={t('pageTitles.cast')}
 			description={`${movieData.title} - ${t('pageTitles.cast')}`}
 			image={movieData.backdrop_path}
 			backgroundPoster={movieData.backdrop_path}

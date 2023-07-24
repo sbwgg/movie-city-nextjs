@@ -5,7 +5,7 @@ import {setTrending} from '@/redux/slices/homeSlice';
 import {dispatch} from '@/helpers';
 import {useSelector} from 'react-redux';
 import styles from './index.module.scss';
-import MovieList from '@/components/movie-list';
+import SliderList from '@/components/slider-list';
 import {useTranslation} from 'next-i18next';
 
 const Trending = () => {
@@ -52,10 +52,10 @@ const Trending = () => {
 					</div>
 				)}
 			</div>
-			<MovieList
+			<SliderList
 				key="trending"
 				title="trending"
-				movies={trendingList}
+				items={trendingList}
 			/>
 		</div>
 	)

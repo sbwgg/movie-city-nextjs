@@ -7,7 +7,7 @@
         xl:max-w-[1370px] xl:px-7;
 
         &Full {
-            @apply block mt-[-80px] pt-[80px]
+            @apply block mt-[-80px] pt-[80px] pb-10
             lg:mt-[-94px] lg:pt-[94px];
         }
     }

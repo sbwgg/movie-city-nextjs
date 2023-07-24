@@ -22,8 +22,7 @@ import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Movie from '@/components/pages/movie';
 import MovieClip from '@/components/pages/movie/movie-clip';
-import Cast from '@/components/pages/movie/cast';
-import MovieList from '@/components/movie-list';
+import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/movie/reviews';
 
 const Index = ({locale}) => {
@@ -77,17 +76,23 @@ const Index = ({locale}) => {
             backgroundPoster={movieData.backdrop_path}
         >
             <Movie movie={movieData}/>
-            <Cast cast={movieCast} movieId={queryId}/>
+            <SliderList
+                key="cast-members"
+                title="cast.cast"
+                type="cast"
+                items={movieCast}
+                movieId={queryId}
+            />
             {movieClip && <MovieClip clipKey={movieClip.key}/>}
-            <MovieList
+            <SliderList
                 key="recommended"
                 title="movie.recommendedMovies"
-                movies={recommended}
+                items={recommended}
             />
-            <MovieList
+            <SliderList
                 key="similars"
                 title="movie.similarMovies"
-                movies={similarMovies}
+                items={similarMovies}
             />
             <Reviews reviews={movieReviews}/>
         </Default>
