@@ -26,14 +26,17 @@ const PersonList = props => {
 	// console.log(personsGroupByCategory)
 
 
-	const filteredCategories = person.reduce((current, updated) => {
-		(current[updated.department] = current[updated.department] || [])
-			.push(updated);
+	const filteredCategories = person.reduce((groupedCrew, person) => {
+		const department = person.department;
 
-		return current;
+		if (groupedCrew[department] == null) groupedCrew[department] = []
+		groupedCrew[department].push(person)
+
+		return groupedCrew;
 	}, {});
 
 	const categoriesNew = Object.keys(filteredCategories).sort();
+	console.log(filteredCategories, categoriesNew);
 
 
 	return (
