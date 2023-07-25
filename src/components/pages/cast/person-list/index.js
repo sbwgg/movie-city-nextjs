@@ -48,10 +48,7 @@ const PersonList = props => {
 									return (
 										<li key={`category-${index}-item-${key}`}
 											className={styles.personItemContainer}>
-											<PersonCard
-												secondary
-												member={newPerson}
-											/>
+											<PersonCard secondary member={newPerson}/>
 										</li>
 									)
 								})}
@@ -66,10 +63,7 @@ const PersonList = props => {
 							return (
 								<li key={newPerson.id}
 									className={styles.personItemContainer}>
-									<PersonCard
-										secondary
-										member={newPerson}
-									/>
+									<PersonCard secondary member={newPerson}/>
 								</li>
 							)
 						})}

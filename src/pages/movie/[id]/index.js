@@ -94,7 +94,10 @@ const Index = ({locale}) => {
                 title="movie.similarMovies"
                 items={similarMovies}
             />
-            <Reviews reviews={movieReviews}/>
+            <Reviews
+                movieTitle={movieData.title}
+                reviews={movieReviews}
+            />
         </Default>
     )
 }

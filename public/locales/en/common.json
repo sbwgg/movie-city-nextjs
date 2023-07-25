@@ -21,7 +21,9 @@
     "similarMovies": "Similar Movies",
     "recommendedMovies": "Recommendations",
     "popularity": "Popularity",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "missingReview": "We don't have any reviews for",
+    "viewMore": "View More"
   },
   "cast": {
     "cast": "Cast",

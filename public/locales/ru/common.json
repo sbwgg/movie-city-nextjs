@@ -22,7 +22,9 @@
     "similarMovies": "Похожие фильмы",
     "recommendedMovies": "Рекомендуемые фильмы",
     "popularity": "Популярность",
-    "reviews": "Комментарии"
+    "reviews": "Отзывы",
+    "missingReview": "У нас нет отзывов для",
+    "viewMore": "Подробно"
   },
   "cast": {
     "cast": "Актеры",

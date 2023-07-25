@@ -51,7 +51,7 @@ const SliderList = props => {
                             <NextLink
                                 className='view-more-link'
                                 href={`/movie/${movieId}/cast`}>
-                                <p>View More</p>
+                                <p>{t('movie.viewMore')}</p>
                             </NextLink>
                         </SwiperSlide>
                     }
