@@ -9,8 +9,8 @@ import {useTranslation} from 'next-i18next';
 import Button from '@/components/UI/Button';
 
 const TopMovies = () => {
-    const [refresh, setRefresh] = useState(topMovies.page);
     const {topMovies} = useSelector(state => state.global);
+    const [refresh, setRefresh] = useState(topMovies.page);
     const router = useRouter();
     const currentLang = router.locale;
 
