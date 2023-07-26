@@ -1,21 +1,7 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
-import {
-    getMovieById,
-    getClip,
-    getMovieCast,
-    getSimilar,
-    getRecommendations,
-    getReviews
-} from '@/services/movie';
-import {
-    storeMovieById,
-    storeClip,
-    storeMovieCast,
-    storeSimilar,
-    storeRecommendations,
-    storeReviews
-} from '@/redux/slices/movieSlice';
+import { fetchMovieData } from '@/services/movie';
+import { storeMovieData } from '@/redux/slices/movieSlice';
 import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
 import {useRouter} from 'next/router';
@@ -27,42 +13,34 @@ import Reviews from '@/components/pages/movie/reviews';
 
 const Index = ({locale}) => {
     const router = useRouter();
-    const movieData = useSelector(state => state.movie.item);
-    const movieClip = useSelector(state => state.movie.clip);
-    const movieCast = useSelector(state => state.movie.cast);
-    const similarMovies = useSelector(state => state.movie.similar);
-    const recommended = useSelector(state => state.movie.recommendations);
-    const movieReviews = useSelector(state => state.movie.reviews);
+    const { movie } = useSelector(state => state.movie);
     const queryId = router.query.id;
     const currentLocale = router.locale;
 
     useEffect(() => {
         if (queryId) {
-            getMovieById(queryId, currentLocale)
-                .then(res => dispatch(storeMovieById(res)));
+            const fetchData = async () => {
+                try {
+                    const data = await fetchMovieData(queryId, currentLocale);
+                    data && dispatch(storeMovieData(data));
+                } catch (error) {
+                    console.error(error);
+                }
+            };
 
-            getClip(queryId)
-                .then(res => dispatch(storeClip(res)));
-
-            getMovieCast(queryId, currentLocale)
-                .then(res => dispatch(storeMovieCast(res)));
-
-            getSimilar(queryId, currentLocale)
-                .then(res => dispatch(storeSimilar(res)));
-
-            getRecommendations(queryId, currentLocale)
-                .then(res => dispatch(storeRecommendations(res)));
-
-            getReviews(queryId)
-                .then(res => dispatch(storeReviews(res)));
+            fetchData();
 
             return () => {
-                dispatch(storeMovieById({}));
-                dispatch(storeClip({}));
-                dispatch(storeMovieCast([]));
-                dispatch(storeSimilar([]));
-                dispatch(storeRecommendations([]));
-                dispatch(storeReviews([]));
+                dispatch(
+                    storeMovieData({
+                        info: {},
+                        clip: {},
+                        cast: [],
+                        similar: [],
+                        recommendations: [],
+                        reviews: []
+                    })
+                )
             };
         }
 
@@ -70,33 +48,33 @@ const Index = ({locale}) => {
 
     return (
         <Default
-            title={movieData.title}
-            description={movieData.overview}
-            image={movieData.backdrop_path}
-            backgroundPoster={movieData.backdrop_path}
+            title={movie.info.title}
+            description={movie.info.overview}
+            image={movie.info.backdrop_path}
+            backgroundPoster={movie.info.backdrop_path}
         >
-            <Movie movie={movieData}/>
+            <Movie movie={movie.info}/>
             <SliderList
                 key="cast-members"
                 title="cast.cast"
                 type="cast"
-                items={movieCast}
+                items={movie.cast}
                 movieId={queryId}
             />
-            {movieClip && <MovieClip clipKey={movieClip.key}/>}
+            {movie.clip && <MovieClip clipKey={movie.clip.key}/>}
             <SliderList
                 key="recommended"
                 title="movie.recommendedMovies"
-                items={recommended}
+                items={movie.recommendations}
             />
             <SliderList
                 key="similars"
                 title="movie.similarMovies"
-                items={similarMovies}
+                items={movie.similar}
             />
             <Reviews
-                movieTitle={movieData.title}
-                reviews={movieReviews}
+                movieTitle={movie.info.title}
+                reviews={movie.reviews}
             />
         </Default>
     )
