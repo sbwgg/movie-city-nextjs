@@ -9,13 +9,13 @@ import {useTranslation} from 'next-i18next';
 import Button from '@/components/UI/Button';
 
 const TopMovies = () => {
-    const [refresh, setRefresh] = useState(1);
+    const [refresh, setRefresh] = useState(topMovies.page);
     const {topMovies} = useSelector(state => state.global);
     const router = useRouter();
     const currentLang = router.locale;
 
     useEffect(() => {
-        getTopMovies(currentLang, refresh)
+        getTopMovies(currentLang, topMovies.page)
             .then(res => dispatch(setTopMovies({
                 ...topMovies,
                 movies: res
@@ -33,6 +33,10 @@ const TopMovies = () => {
     const {t} = useTranslation();
 
     const updateTopMovies = () => {
+        dispatch(setTopMovies({
+            ...topMovies,
+            page: refresh + 1
+        }))
         return setRefresh(refresh + 1);
     };
 

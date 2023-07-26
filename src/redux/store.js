@@ -22,7 +22,7 @@ const customizedMiddleware = getDefaultMiddleware({
     serializableCheck: false,
 });
 
-const persistedReducer = persistReducer(persistConfig, combinedReducers)
+const persistedReducer = persistReducer(persistConfig, combinedReducers);
 
 export default configureStore({
     reducer: persistedReducer,
