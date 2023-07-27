@@ -8,35 +8,9 @@ const PersonList = props => {
 		type = 'cast'
 	} = props;
 
-	// const categories = [];
-
-	// person.forEach(item => {
-	// 	if (!categories.includes(item.known_for_department)) {
-	// 		categories.push(item.known_for_department)
-	// 	}
-	// });
-	//
-	// const personsGroupByCategory = categories.map(category => {
-	// 	return {
-	// 		category: category,
-	// 		persons: person.filter(item => item.known_for_department === category)
-	// 	}
-	// });
-
-	// console.log(personsGroupByCategory)
-
-
-	const filteredCategories = person.reduce((groupedCrew, person) => {
-		const department = person.department;
-
-		if (groupedCrew[department] == null) groupedCrew[department] = []
-		groupedCrew[department].push(person)
-
-		return groupedCrew;
-	}, {});
+	const filteredCategories = person;
 
 	const categoriesNew = Object.keys(filteredCategories).sort();
-
 
 	return (
 		<>

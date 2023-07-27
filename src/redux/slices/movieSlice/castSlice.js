@@ -3,26 +3,20 @@ import {createSlice} from '@reduxjs/toolkit';
 export const castSlice = createSlice({
 	name: 'CAST',
 	initialState: {
-		cast: [],
-		crew: [],
-		movieData: {}
+		data: {
+			cast:[],
+			crew: [],
+			movieData: {}
+		}
 	},
 
 	reducers: {
-		storeCast: (state, action) => {
-			state.cast = action.payload
-		},
-
-		storeCrew: (state, action) => {
-			state.crew = action.payload;
-		},
-
-		storeMovieByID: (state, action) => {
-			state.movieData = action.payload;
-		},
+		storeCredits: (state, {payload}) => {
+			state.data = {...state.data, ...payload};
+		}
 	}
 })
 
-export const {storeCast, storeCrew, storeMovieByID} = castSlice.actions;
+export const {storeCredits} = castSlice.actions;
 
 export default castSlice.reducer;

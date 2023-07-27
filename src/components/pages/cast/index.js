@@ -11,6 +11,8 @@ const Cast = props => {
 
 	const {t} = useTranslation();
 
+	const totalCrewMembers = Object.values(crewData).reduce((total, department) => total + department.length, 0);
+
 	return (
 		<section className={styles.castContainer}>
 			<div className={styles.castContent}>
@@ -23,7 +25,7 @@ const Cast = props => {
 			<div className={styles.castContent}>
 				<h2 className={styles.castContentTitle}>
 					{t('cast.crew')}
-					{crewData.length > 0 && <span>{crewData.length}</span>}
+					{totalCrewMembers > 0 && <span>{totalCrewMembers}</span>}
 				</h2>
 				<PersonList key="crew-members" person={crewData} type="crew"/>
 			</div>

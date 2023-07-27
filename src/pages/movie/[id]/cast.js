@@ -4,15 +4,14 @@ import Cast from '@/components/pages/cast';
 import {useRouter} from 'next/router';
 import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
-import {getCast, getCrew} from '@/services/movie/cast';
-import {getMovieById} from '@/services/movie';
-import {storeCast, storeCrew, storeMovieByID} from '@/redux/slices/movieSlice/castSlice';
+import {fetchCastData} from '@/services/movie/cast';
+import {storeCredits} from '@/redux/slices/movieSlice/castSlice';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import {useTranslation} from 'next-i18next';
 
 const CastPage = () => {
 	const router = useRouter();
-	const {cast, crew, movieData} = useSelector(state => state.cast);
+	const { cast, crew, movieData } = useSelector(state => state.cast.data);
 	const query = router.query.id;
 	const currentLocale = router.locale;
 
@@ -20,23 +19,27 @@ const CastPage = () => {
 
 	useEffect(() => {
 		if (query) {
-			getCast(query, currentLocale)
-				.then(res => dispatch(storeCast(res)))
+			const fetchData = async () => {
+				try {
+					const data = await fetchCastData(query, currentLocale);
+					data && dispatch(storeCredits(data));
 
-			getCrew(query, currentLocale)
-				.then(res => dispatch(storeCrew(res)))
+				} catch (error) {
+					console.error(error);
+				}
+			};
 
-			getMovieById(query, currentLocale)
-				.then(res => dispatch(storeMovieByID(res)))
-
+			fetchData();
 
 			return () => {
-				dispatch(storeCast([]));
-				dispatch(storeCrew([]));
-				dispatch(storeMovieByID({}));
+				dispatch(storeCredits({
+					cast:[],
+					crew: [],
+					movieData: {}
+				}))
 			}
 		}
-	},[query, currentLocale]);
+	}, [query, currentLocale]);
 
 	return (
 		<Default
