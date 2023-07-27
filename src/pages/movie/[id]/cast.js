@@ -6,16 +6,13 @@ import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
 import {getCast, getCrew} from '@/services/movie/cast';
 import {getMovieById} from '@/services/movie';
-import {storeCast, storeCrew} from '@/redux/slices/movieSlice/castSlice';
-import {storeMovieById} from '@/redux/slices/movieSlice';
+import {storeCast, storeCrew, storeMovieByID} from '@/redux/slices/movieSlice/castSlice';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import {useTranslation} from 'next-i18next';
 
 const CastPage = () => {
 	const router = useRouter();
-	const castMembers = useSelector(state => state.cast.cast);
-	const crewMembers = useSelector(state => state.cast.crew);
-	const movieData = useSelector(state => state.movie.item);
+	const {cast, crew, movieData} = useSelector(state => state.cast);
 	const query = router.query.id;
 	const currentLocale = router.locale;
 
@@ -30,13 +27,13 @@ const CastPage = () => {
 				.then(res => dispatch(storeCrew(res)))
 
 			getMovieById(query, currentLocale)
-				.then(res => dispatch(storeMovieById(res)))
+				.then(res => dispatch(storeMovieByID(res)))
 
 
 			return () => {
 				dispatch(storeCast([]));
 				dispatch(storeCrew([]));
-				dispatch(storeMovieById({}));
+				dispatch(storeMovieByID({}));
 			}
 		}
 	},[query, currentLocale]);
@@ -50,8 +47,8 @@ const CastPage = () => {
 			backgroundPoster={movieData.backdrop_path}
 		>
 			<Cast
-				castData={castMembers}
-				crewData={crewMembers}
+				castData={cast}
+				crewData={crew}
 			/>
 		</Default>
 	)

@@ -11,7 +11,7 @@ import {useTranslation} from 'next-i18next';
 
 const Query = () => {
     const router = useRouter();
-    const searchResults = useSelector(state => state.global.searchResults);
+    const {searchResults} = useSelector(state => state.global);
     const keyword = router.query;
     const locale = router.locale;
 

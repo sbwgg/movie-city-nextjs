@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
 const PopularMovies = () => {
-    const popularMovieData = useSelector(state => state.global.popularMovies);
+    const {popularMovies} = useSelector(state => state.global);
     const router = useRouter();
     const currentLang =  router.locale;
     const slidePrev = useRef(null);
@@ -46,7 +46,7 @@ const PopularMovies = () => {
         <section className={styles.popularMovies}>
             <div className={styles.popularMoviesSlider}>
                 <Swiper {...swiperOptions}>
-                    {popularMovieData.map((item, key) => {
+                    {popularMovies.map((item, key) => {
                         return (
                             <SwiperSlide key={`popular-movie-${item.id}`}>
                                 <MovieCard movie={item} delay={key}/>

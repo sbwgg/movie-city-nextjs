@@ -4,7 +4,8 @@ export const castSlice = createSlice({
 	name: 'CAST',
 	initialState: {
 		cast: [],
-		crew: []
+		crew: [],
+		movieData: {}
 	},
 
 	reducers: {
@@ -14,10 +15,14 @@ export const castSlice = createSlice({
 
 		storeCrew: (state, action) => {
 			state.crew = action.payload;
-		}
+		},
+
+		storeMovieByID: (state, action) => {
+			state.movieData = action.payload;
+		},
 	}
 })
 
-export const {storeCast, storeCrew} = castSlice.actions;
+export const {storeCast, storeCrew, storeMovieByID} = castSlice.actions;
 
 export default castSlice.reducer;

@@ -3,22 +3,26 @@ import globalSlice from './slices/globalSlice';
 import homeSlice from './slices/homeSlice';
 import movieSlice from './slices/movieSlice';
 import castSlice from './slices/movieSlice/castSlice';
+import persistSlice from '@/redux/slices/persistSlice';
 import storage from 'redux-persist/lib/storage';
 import {persistReducer} from 'redux-persist';
 
 const persistConfig = {
-    key: '_next',
-    storage
+    key: 'persist',
+    storage,
+    whitelist: ['persist']
 }
 
 const combinedReducers = combineReducers({
     global: globalSlice,
     home: homeSlice,
     movie: movieSlice,
-    cast: castSlice
+    cast: castSlice,
+    persist: persistSlice
 });
 
 const customizedMiddleware = getDefaultMiddleware({
+    immutableCheck: false,
     serializableCheck: false,
 });
 

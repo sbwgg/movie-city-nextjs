@@ -36,7 +36,6 @@ const PersonList = props => {
 	}, {});
 
 	const categoriesNew = Object.keys(filteredCategories).sort();
-	console.log(filteredCategories, categoriesNew);
 
 
 	return (

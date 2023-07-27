@@ -1,8 +1,8 @@
 import {$api} from '@/api';
 import {API_KEY} from '@/constants';
 
-const getMovieById = (id, locale) => {
-	return $api().get(`/movie/${id}?api_key=${API_KEY}&language=${locale}`)
+export const getMovieById = async (id, locale) => {
+	return await $api().get(`/movie/${id}?api_key=${API_KEY}&language=${locale}`)
 		.then((response) => response.data)
 		.catch((error) => console.error(error))
 };
