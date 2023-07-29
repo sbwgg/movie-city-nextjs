@@ -13,7 +13,7 @@
     }
 
     &Layout {
-        @apply bg-no-repeat bg-center-top bg-fixed bg-cover;
+        @apply bg-no-repeat bg-center-top bg-fixed bg-cover pb-[50px];
 
         &Poster > div {
             @apply relative z-[1];

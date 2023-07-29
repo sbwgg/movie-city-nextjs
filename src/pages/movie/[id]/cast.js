@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Default from '@/layouts/Default';
 import Cast from '@/components/pages/cast';
+import MovieLabel from '@/components/pages/cast/movie-label';
 import {useRouter} from 'next/router';
 import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
@@ -49,6 +50,7 @@ const CastPage = () => {
 			image={movieData.backdrop_path}
 			backgroundPoster={movieData.backdrop_path}
 		>
+			<MovieLabel movie={movieData}/>
 			<Cast
 				castData={cast}
 				crewData={crew}

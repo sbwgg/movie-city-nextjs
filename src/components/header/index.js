@@ -14,7 +14,7 @@ import useClickOutSide from '@/hooks/useClickOutSide';
 const Index = () => {
     const [navOpen, setNavOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const {isSticky, isDown} = useScrollDirection();
+    const {isDown} = useScrollDirection();
     const mobileMenuTrigger = useRef(null);
     const mobileMenuContainer = useRef(null);
     const {t} = useTranslation();
@@ -46,7 +46,7 @@ const Index = () => {
     useClickOutSide(mobileMenuContainer, closeMobileMenu, mobileMenuTrigger);
 
     return (
-        <header className={classNames([styles.header, isSticky ? styles.headerSticky : isDown ? styles.headerDown : ''])}>
+        <header className={classNames([styles.header, isDown ? styles.headerDown : ''])}>
             <div className={classNames(styles.headerInner, 'main-container')}>
                 <nav className={styles.nav}>
                     <NextLink href="/" className="max-w-[55px] lg:max-w-[120px]">

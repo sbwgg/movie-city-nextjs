@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Header from '@/components/header/index';
+import Footer from '@/components/footer';
 import PopularMovies from '@/components/popular-movies';
 import TopMovies from '@/components/top-movies';
 import styles from './index.module.scss';
@@ -79,6 +80,7 @@ const Index = props => {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </main>
         </>
     );

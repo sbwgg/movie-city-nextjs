@@ -18,6 +18,7 @@ const LanguageSwitch = () => {
 				>
 					<button
 						type="button"
+						className="gradient-text"
 						onClick={() => {
 							router.push({
 								pathname: router.pathname,

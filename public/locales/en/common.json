@@ -8,7 +8,7 @@
   "movie": {
     "title": "Title",
     "originalTitle": "Original Title",
-    "year": "Year",
+    "year": "Release Date",
     "tagline": "Tagline",
     "genre": "Genre",
     "budget": "Budget",
@@ -23,7 +23,8 @@
     "popularity": "Popularity",
     "reviews": "Reviews",
     "missingReview": "We don't have any reviews for",
-    "viewMore": "View More"
+    "viewMore": "View More",
+    "back": "Back to main"
   },
   "cast": {
     "cast": "Cast",
@@ -34,5 +35,6 @@
   "trending": "Trending",
   "topMovies":  "Top Movies",
   "toCinema": "Now Playing",
-  "searchResults": "Search Results for"
+  "searchResults": "Search Results for",
+  "noResults": "There are no results that matched your query."
 }

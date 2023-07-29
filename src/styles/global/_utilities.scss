@@ -110,3 +110,9 @@
         @apply font-bold tracking-[0.6px] italic;
     }
 }
+
+.gradient-text {
+    @apply bg-color-linear #{!important};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

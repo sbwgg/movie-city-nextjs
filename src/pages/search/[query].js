@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Default from '@/layouts/Default';
 import {getSearchResults} from '@/services/global';
 import {setSearchResults} from '@/redux/slices/globalSlice';
@@ -11,6 +11,7 @@ import {useTranslation} from 'next-i18next';
 
 const Query = () => {
     const router = useRouter();
+    const [isEmpty, setEmpty] = useState(false);
     const {searchResults} = useSelector(state => state.global);
     const keyword = router.query;
     const locale = router.locale;
@@ -20,7 +21,10 @@ const Query = () => {
     useEffect(() => {
         if (keyword) {
             getSearchResults(keyword, locale)
-                .then(res => dispatch(setSearchResults(res)));
+                .then(res => {
+                    dispatch(setSearchResults(res))
+                    setEmpty(res.length === 0)
+                })
 
             return () => {
                 dispatch(setSearchResults([]));
@@ -30,7 +34,7 @@ const Query = () => {
 
     return (
         <Default title={t('searchResults')}>
-            <section className="grid grid-cols-2 lg:grid-cols-3">
+            <section className={`grid${!isEmpty ? ' grid-cols-2 lg:grid-cols-3' : ''}`}>
                 {searchResults.map(((movie, key) => {
                     return (
                         <MovieCard
@@ -41,6 +45,11 @@ const Query = () => {
                         />
                     )
                 }))}
+                {isEmpty &&
+                    <h1 className="text-center text-secondary-blue font-bold mt-4">
+                        {t('noResults')}
+                    </h1>
+                }
             </section>
         </Default>
     )

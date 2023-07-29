@@ -57,7 +57,7 @@
     }
 
     &Close {
-        @apply absolute top-[21px] right-[16px]
+        @apply absolute top-[21px] right-[16px] w-[40px] h-[40px]
         lg:hidden;
     }
 

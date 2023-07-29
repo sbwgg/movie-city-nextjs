@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {throttle} from '@/helpers';
 
 const useScrollDirection = () => {
 	const [isUp, setIsUp] = useState(false);
@@ -23,9 +24,9 @@ const useScrollDirection = () => {
 			scrollY = currentScrollY;
 		};
 
-		document.addEventListener('scroll', handleScrollDirection);
+		document.addEventListener('scroll', throttle(handleScrollDirection, 100));
 
-		return () => document.removeEventListener('scroll', handleScrollDirection);
+		return () => document.removeEventListener('scroll', throttle(handleScrollDirection, 100));
 	},[]);
 
 	return {isUp, isDown};

@@ -4,7 +4,8 @@ export const globalSlice = createSlice({
     name: 'GLOBAL',
     initialState: {
         popularMovies: [],
-        searchResults: []
+        searchResults: [],
+        footerMovie: {}
     },
 
     reducers: {
@@ -14,13 +15,18 @@ export const globalSlice = createSlice({
 
         setSearchResults: (state, action) => {
             state.searchResults = action.payload;
+        },
+
+        setFooterMovie: (state, action) => {
+            state.footerMovie = action.payload;
         }
     }
 })
 
 export const {
     setPopularMovies,
-    setSearchResults
+    setSearchResults,
+    setFooterMovie
 } = globalSlice.actions;
 
 export default globalSlice.reducer;

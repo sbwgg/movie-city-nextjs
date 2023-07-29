@@ -1,4 +1,5 @@
 import store from '@/redux/store';
+import moment from 'moment';
 
 export const dispatch = action => {
     store.dispatch(action);
@@ -24,15 +25,19 @@ export const roundNumber = number => {
     return Math.round(number * 100) / 100;
 };
 
-export const throttle = (func, limit) => {
-    let inThrottle;
-    return function () {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => (inThrottle = false), limit);
-        }
-    };
+export const extractYear = date => {
+    return moment(date, 'YYYY/MM/DD').year();
 };
+
+export const throttle = (callbackFn, limit) => {
+    let wait = false;
+    return function () {
+        if (!wait) {
+            callbackFn.call();
+            wait = true;
+            setTimeout(function () {
+                wait = false;
+            }, limit);
+        }
+    }
+}

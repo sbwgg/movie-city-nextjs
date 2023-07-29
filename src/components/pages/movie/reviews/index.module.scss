@@ -43,6 +43,14 @@
                 @apply transition-none #{!important};
             }
         }
+
+        &Rating {
+            @apply flex items-center;
+
+            & > span {
+                @apply text-sm opacity-50 italic font-normal pt-1 pl-2;
+            }
+        }
     }
 
     &Content {

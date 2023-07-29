@@ -1,0 +1,21 @@
+.movieLabel {
+    @apply flex;
+
+    & > figcaption {
+        @apply pt-1 pl-2 lg:px-3;
+
+        h1 {
+            @apply text-[16px] lg:text-[24px] italic;
+        }
+
+        & > a {
+            @apply w-fit mt-2 flex items-center gap-2;
+        }
+    }
+
+    &Wrapper {
+        @apply mt-10 p-5;
+        background-color: rgba(var(--color-white), 0.5);
+        box-shadow: rgba(var(--color-black), 0.15) 0 48px 100px 0;
+    }
+}

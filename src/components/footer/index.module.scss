@@ -1,0 +1,22 @@
+.footer {
+    @apply h-[700px] w-full;
+
+    &Inner {
+        @apply h-full w-full flex flex-col items-center justify-center
+        bg-no-repeat bg-center-top bg-fixed bg-cover;
+
+        & > section {
+            @apply w-[100vw] h-[61vw] lg:w-[795px] lg:h-[470px];
+
+            iframe {
+                @apply w-full h-full;
+            }
+        }
+
+        & > a {
+            @apply font-bold italic text-[18px] mb-5
+            p-[10px_20px] rounded-[30px]
+            lg:text-[24px] bg-primary-gray;
+        }
+    }
+}

@@ -1,9 +1,9 @@
-@import './global/fonts';
-@import './global/reset';
-@import './global/utilities';
-@import 'node_modules/swiper/swiper.min.css';
-@import 'node_modules/swiper/modules/navigation';
-@import 'node_modules/nprogress/nprogress.css';
+@forward './global/fonts';
+@forward './global/reset';
+@forward './global/utilities';
+@forward 'node_modules/swiper/swiper.min.css';
+@forward 'node_modules/swiper/modules/navigation';
+@forward 'node_modules/nprogress/nprogress.css';
 
 @tailwind base;
 @tailwind components;
@@ -30,6 +30,8 @@
         --navigation-background: 0, 0, 0;
         --card-label-shadow: 0 14px 28px rgba(0, 0, 0, 0.2509803922),
         0 10px 10px rgba(0, 0, 0, 0.2196078431);
+
+        --linear-gradient-main: linear-gradient(to right, rgb(250, 78, 147) 0, rgb(88, 181, 230) 100%);
     }
 }
 
@@ -54,6 +56,8 @@ html {
             --navigation-background: 249, 250, 251;
             --card-label-shadow: 0 14px 28px rgba(255, 255, 255, 0.2509803922),
             0 10px 10px rgba(255, 255, 255, 0.2196078431);
+
+            --linear-gradient-main: linear-gradient(to right,rgb(88, 181, 230) 0, rgb(250, 78, 147) 100%);
         }
 
         .theme-switcher > span {

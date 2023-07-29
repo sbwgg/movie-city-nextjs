@@ -47,7 +47,7 @@ const Trending = () => {
 							onChange={() => setTrendingBy(trending.type)}
 						/>
 						<label htmlFor={`trending-${trending.title}`}>
-							<span>{t(trending.title)}</span>
+							<span className="gradient-text">{t(trending.title)}</span>
 						</label>
 					</div>
 				)}

@@ -67,10 +67,12 @@ const Movie = props => {
                     }
                 </ul>
             </div>
-            <div className={classNames([styles.movieAbout, 'movie-info-wrapper'])}>
-                <h3>{t('movie.about')}</h3>
-                <p>{movie.overview}</p>
-            </div>
+            {movie.overview &&
+                <div className={classNames([styles.movieAbout, 'movie-info-wrapper'])}>
+                    <h3>{t('movie.about')}</h3>
+                    <p>{movie.overview}</p>
+                </div>
+            }
             {movie.vote_average > 0 && <div className={styles.movieRatings}>
                 <StarRatings
                     rating={movie.vote_average}

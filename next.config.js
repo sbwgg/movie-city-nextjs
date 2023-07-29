@@ -21,18 +21,17 @@ const nextConfig = {
     },
 
     async redirects() {
-        return [
-            {
-                source: '/movie',
+        const routes = ['movie', 'search'];
+
+        const redirects = routes.map((redirect) => {
+            return {
+                source: `/${redirect}`,
                 destination: '/',
-                permanent: true
-            },
-            {
-                source: '/search',
-                destination: '/',
-                permanent: true
+                permanent: true,
             }
-        ]
+        })
+
+        return redirects;
     }
 }
 

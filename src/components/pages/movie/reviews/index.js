@@ -37,13 +37,17 @@ const Reviews = props => {
 									<div className={styles.reviewAuthorInfo}>
 										<span>{review.author_details.username}</span>
 										{review.author_details.rating > 0 &&
-											<StarRatings
-												rating={review.author_details.rating}
-												starRatedColor="rgb(var(--color-primary-blue))"
-												numberOfStars={10}
-												starEmptyColor="rgba(var(--color-black), 0.4)"
-												name='rating'
-											/>
+											<div className={styles.reviewAuthorRating}>
+												<StarRatings
+													rating={review.author_details.rating}
+													starRatedColor="rgb(var(--color-primary-blue))"
+													numberOfStars={10}
+													starEmptyColor="rgba(var(--color-black), 0.4)"
+													name="rating"
+												/>
+
+												<span>{review.author_details.rating}/10</span>
+											</div>
 										}
 									</div>
 								</div>

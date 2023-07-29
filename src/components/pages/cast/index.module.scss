@@ -3,6 +3,7 @@
         @apply mt-10 p-5 grid gap-5
         md:grid-cols-2;
         background-color: rgba(var(--color-white), 0.5);
+        box-shadow: rgba(var(--color-black), 0.15) 0 48px 100px 0;
     }
 
     &Content {
