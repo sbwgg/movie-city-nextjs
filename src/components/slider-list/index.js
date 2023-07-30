@@ -13,7 +13,9 @@ const SliderList = props => {
         items = [],
         title,
         type = 'movie',
-        movieId
+        movieId,
+        movieTitle,
+        emptyMessage
     } = props;
 
     const slidePrev = useRef(null);
@@ -32,29 +34,37 @@ const SliderList = props => {
                         nextEl: slideNext.current
                     }}
                 >
-                    {items.map((item, index) => {
-                        return (
-                            <SwiperSlide
-                                key={item.id}
-                                className={`!h-auto full-sized${type === 'cast' ? ' p-3' : ''}`}
-                            >
-                                {type === 'cast' ? (
-                                    <CastCard member={item}/>
-                                ) : (
-                                    <MovieCard movie={item} delay={index} />
-                                )}
-                            </SwiperSlide>
-                        )
-                    })}
-                    {type === 'cast' &&
-                        <SwiperSlide className="!h-auto p-3">
-                            <NextLink
-                                className='view-more-link'
-                                href={`/movie/${movieId}/cast`}>
-                                <p>{t('movie.viewMore')}</p>
-                            </NextLink>
-                        </SwiperSlide>
-                    }
+                    {items.length > 0 ? (
+                        <>
+                            {items.map((item, index) => {
+                                return (
+                                    <SwiperSlide
+                                        key={item.id}
+                                        className={`!h-auto full-sized${type === 'cast' ? ' p-3' : ''}`}
+                                    >
+                                        {type === 'cast' ? (
+                                            <CastCard member={item}/>
+                                        ) : (
+                                            <MovieCard movie={item} delay={index} />
+                                        )}
+                                    </SwiperSlide>
+                                )
+                            })}
+                            {type === 'cast' &&
+                                <SwiperSlide className="!h-auto p-3">
+                                    <NextLink
+                                        className='view-more-link'
+                                        href={`/movie/${movieId}/cast`}>
+                                        <p>{t('movie.viewMore')}</p>
+                                    </NextLink>
+                                </SwiperSlide>
+                            }
+                        </>
+                    ) : (
+                        <h3 className={styles.sliderListEmpty}>
+                            {t(emptyMessage)} {movieTitle}
+                        </h3>
+                    )}
                 </Swiper>
                 <button ref={slidePrev} className="swiper-nav-prev">
                     <span/>

@@ -72,6 +72,10 @@
     }
 }
 
+.movie-info-wrapper {
+    @apply rounded-[6px] overflow-hidden bg-primary-gray p-5;
+}
+
 .vote-circle {
     @apply flex w-[40px] h-[40px] rounded-full bg-primary-blue
     items-center justify-center border-solid border-[1px] border-secondary-blue;

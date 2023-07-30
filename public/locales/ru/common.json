@@ -24,6 +24,9 @@
     "popularity": "Популярность",
     "reviews": "Отзывы",
     "missingReview": "У нас нет отзывов для",
+    "missingRecommendations": "У нас нет рекомендации для",
+    "missingSimilars": "У нас нет похожих на",
+    "missingCast": "У нас нет список актерев на",
     "viewMore": "Подробно",
     "back": "Вернуться на главную"
   },

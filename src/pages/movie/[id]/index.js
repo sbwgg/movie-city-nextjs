@@ -54,30 +54,30 @@ const Index = ({locale}) => {
             backgroundPoster={movie.info.backdrop_path}
         >
             <Movie movie={movie.info}/>
-            {movie.cast &&
-                <SliderList
-                    key="cast-members"
-                    title="cast.cast"
-                    type="cast"
-                    items={movie.cast}
-                    movieId={queryId}
-                />
-            }
+            <SliderList
+                type="cast"
+                title="cast.cast"
+                key="cast-members"
+                emptyMessage="movie.missingCast"
+                movieId={queryId}
+                movieTitle={movie.info.title}
+                items={movie.cast}
+            />
             {movie.clip && <MovieClip clipKey={movie.clip.key}/>}
-            {movie.recommendations.length > 0 &&
-                <SliderList
-                    key="recommended"
-                    title="movie.recommendedMovies"
-                    items={movie.recommendations}
-                />
-            }
-            {movie.similar.length > 0 &&
-                <SliderList
-                    key="similars"
-                    title="movie.similarMovies"
-                    items={movie.similar}
-                />
-            }
+            <SliderList
+                key="recommended"
+                title="movie.recommendedMovies"
+                emptyMessage="movie.missingRecommendations"
+                items={movie.recommendations}
+                movieTitle={movie.info.title}
+            />
+            <SliderList
+                key="similars"
+                title="movie.similarMovies"
+                emptyMessage="movie.missingSimilars"
+                items={movie.similar}
+                movieTitle={movie.info.title}
+            />
             <Reviews
                 movieTitle={movie.info.title}
                 reviews={movie.reviews}

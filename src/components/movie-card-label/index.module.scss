@@ -17,7 +17,7 @@
         @apply w-3/4 p-2 relative;
 
         h4 {
-            @apply font-bold mb-2;
+            @apply font-bold mb-2 max-md:text-[14px];
         }
 
         p {
@@ -25,7 +25,7 @@
         }
 
         span {
-            @apply absolute right-[15px];
+            @apply ml-auto;
         }
     }
 }

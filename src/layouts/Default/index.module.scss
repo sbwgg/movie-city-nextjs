@@ -1,7 +1,7 @@
 .default {
     &Container {
         @apply grid gap-5 min-h-[100vh]
-        max-lg:px-[20px]
+        max-lg:px-[15px]
         lg:max-xl:max-w-[94%]
         lg:mx-auto lg:w-full lg:grid-cols-[1fr_.5fr]
         xl:max-w-[1370px] xl:px-7;
@@ -17,10 +17,6 @@
 
         &Poster > div {
             @apply relative z-[1];
-
-            &::after {
-                @apply content-[''] w-full h-full fixed inset-0 z-[-1] bg-main-radial;
-            }
         }
     }
 
@@ -29,7 +25,7 @@
     }
 
     &Right {
-        @apply p-2;
+        @apply lg:p-2;
     }
 
     &Left, &Right {

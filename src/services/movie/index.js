@@ -7,11 +7,11 @@ export const getMovieById = async (id, locale) => {
 		.catch((error) => console.error(error))
 };
 
-const getClip = id => {
-	return $api().get(`/movie/${id}/videos?api_key=${API_KEY}`)
+const getClip = (id, locale) => {
+	return $api().get(`/movie/${id}/videos?api_key=${API_KEY}&language=${locale}`)
 		.then((response) => {
 			return response.data.results.find(el =>
-				el.type === 'Trailer' && el.name.includes('Trailer')
+				el.type === 'Trailer'
 			)
 		})
 		.catch((error) => console.error(error))
@@ -44,7 +44,7 @@ const getReviews = id => {
 export const fetchMovieData = async (id, locale) => {
 	const promises = [
 		getMovieById(id, locale),
-		getClip(id),
+		getClip(id, locale),
 		getMovieCast(id, locale),
 		getSimilar(id, locale),
 		getRecommendations(id, locale),

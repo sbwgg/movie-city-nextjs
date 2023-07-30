@@ -19,7 +19,7 @@ const Reviews = props => {
 			styles.reviewWrapper, 'movie-info-wrapper'
 		])}>
 			<h3>{t('movie.reviews')}</h3>
-			{reviews.length >= 1 ? (
+			{reviews.length ? (
 				<>
 					{reviews.map((review) => {
 						return (

@@ -9,12 +9,12 @@
         }
 
         & > a {
-            @apply w-fit mt-2 flex items-center gap-2;
+            @apply w-fit mt-2 flex items-center gap-2 max-md:text-[14px];
         }
     }
 
     &Wrapper {
-        @apply mt-10 p-5;
+        @apply mt-10 p-3 md:p-5;
         background-color: rgba(var(--color-white), 0.5);
         box-shadow: rgba(var(--color-black), 0.15) 0 48px 100px 0;
     }

@@ -23,6 +23,9 @@
     "popularity": "Popularity",
     "reviews": "Reviews",
     "missingReview": "We don't have any reviews for",
+    "missingRecommendations": "We don't have any recommendations for",
+    "missingSimilars": "We don't have anything similar for",
+    "missingCast": "We don't have the list of Cast and Crew for",
     "viewMore": "View More",
     "back": "Back to main"
   },
