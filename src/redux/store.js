@@ -1,7 +1,6 @@
 import {combineReducers, configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import globalSlice from './slices/globalSlice';
 import homeSlice from './slices/homeSlice';
-import movieSlice from './slices/movieSlice';
 import castSlice from './slices/movieSlice/castSlice';
 import persistSlice from '@/redux/slices/persistSlice';
 import storage from 'redux-persist/lib/storage';
@@ -16,7 +15,6 @@ const persistConfig = {
 const combinedReducers = combineReducers({
     global: globalSlice,
     home: homeSlice,
-    movie: movieSlice,
     cast: castSlice,
     persist: persistSlice
 });

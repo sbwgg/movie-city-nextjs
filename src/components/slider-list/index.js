@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import {sliderListOptions} from '@/helpers';
@@ -15,11 +15,10 @@ const SliderList = props => {
         type = 'movie',
         movieId,
         movieTitle,
-        emptyMessage
+        emptyMessage,
+        listType
     } = props;
 
-    const slidePrev = useRef(null);
-    const slideNext = useRef(null);
     const {t} = useTranslation();
 
     return (
@@ -30,8 +29,8 @@ const SliderList = props => {
                     {...sliderListOptions}
                     modules={[Navigation]}
                     navigation={{
-                        prevEl: slidePrev.current,
-                        nextEl: slideNext.current
+                        prevEl: `.swiper-${listType}-prev`,
+                        nextEl: `.swiper-${listType}-next`
                     }}
                 >
                     {items.length > 0 ? (
@@ -66,10 +65,10 @@ const SliderList = props => {
                         </h3>
                     )}
                 </Swiper>
-                <button ref={slidePrev} className="swiper-nav-prev">
+                <button className={`swiper-nav-prev swiper-${listType}-prev`}>
                     <span/>
                 </button>
-                <button ref={slideNext} className="swiper-nav-next">
+                <button className={`swiper-nav-next swiper-${listType}-next`}>
                     <span/>
                 </button>
             </div>

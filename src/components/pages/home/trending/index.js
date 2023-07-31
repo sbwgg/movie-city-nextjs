@@ -53,7 +53,7 @@ const Trending = () => {
 				)}
 			</div>
 			<SliderList
-				key="trending"
+				listType="trending"
 				title="trending"
 				items={trendingList}
 			/>

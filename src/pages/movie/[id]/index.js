@@ -1,95 +1,77 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Default from '@/layouts/Default';
 import { fetchMovieData } from '@/services/movie';
-import { storeMovieData } from '@/redux/slices/movieSlice';
-import {useSelector} from 'react-redux';
-import {dispatch} from '@/helpers';
-import {useRouter} from 'next/router';
-import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Movie from '@/components/pages/movie';
 import MovieClip from '@/components/pages/movie/movie-clip';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/movie/reviews';
 
-const Index = ({locale}) => {
-    const router = useRouter();
-    const { movie } = useSelector(state => state.movie);
-    const queryId = router.query.id;
-    const currentLocale = router.locale;
+const Index = ({ movie }) => {
+    if (!movie.info) {
+        return <div>Loading...</div>;
+    }
 
-    useEffect(() => {
-        if (queryId) {
-            const fetchData = async () => {
-                try {
-                    const data = await fetchMovieData(queryId, currentLocale);
-                    data && dispatch(storeMovieData(data));
-                } catch (error) {
-                    console.error(error);
-                }
-            };
+    const movieWithDefaultClip = {
+        ...movie,
+        clip: movie.clip || null,
+    };
 
-            fetchData();
-
-            return () => {
-                dispatch(
-                    storeMovieData({
-                        info: {},
-                        clip: {},
-                        cast: [],
-                        similar: [],
-                        recommendations: [],
-                        reviews: []
-                    })
-                )
-            };
-        }
-
-    },[currentLocale, queryId]);
+    const { info, clip, cast, recommendations, similar, reviews } = movieWithDefaultClip;
 
     return (
         <Default
-            title={movie.info.title}
-            description={movie.info.overview}
-            image={movie.info.backdrop_path}
-            backgroundPoster={movie.info.backdrop_path}
+            title={info.title}
+            description={info.overview}
+            image={info.backdrop_path}
+            backgroundPoster={info.backdrop_path}
         >
-            <Movie movie={movie.info}/>
+            <Movie movie={info} />
             <SliderList
+                listType="cast-members"
                 type="cast"
                 title="cast.cast"
-                key="cast-members"
                 emptyMessage="movie.missingCast"
-                movieId={queryId}
-                movieTitle={movie.info.title}
-                items={movie.cast}
+                movieId={info.id}
+                movieTitle={info.title}
+                items={cast}
             />
-            {movie.clip && <MovieClip clipKey={movie.clip.key}/>}
+            {clip ? <MovieClip clipKey={clip.key} /> : null}
             <SliderList
-                key="recommended"
+                listType="recommended"
                 title="movie.recommendedMovies"
                 emptyMessage="movie.missingRecommendations"
-                items={movie.recommendations}
-                movieTitle={movie.info.title}
+                items={recommendations}
+                movieTitle={info.title}
             />
             <SliderList
-                key="similars"
+                listType="similars"
                 title="movie.similarMovies"
                 emptyMessage="movie.missingSimilars"
-                items={movie.similar}
-                movieTitle={movie.info.title}
+                items={similar}
+                movieTitle={info.title}
             />
-            <Reviews
-                movieTitle={movie.info.title}
-                reviews={movie.reviews}
-            />
+            <Reviews movieTitle={info.title} reviews={reviews} />
         </Default>
-    )
-}
+    );
+};
 
 export default Index;
 
-export const getServerSideProps = async ({ locale }) => ({
-    props: {
-        ...(await serverSideTranslations(locale))
+export const getServerSideProps = async ({ locale, query }) => {
+    const { id: queryId } = query;
+    if (!queryId) {
+        return {
+            notFound: true,
+        };
     }
-});
+
+    const movie = await fetchMovieData(queryId, locale);
+
+    return {
+        props: {
+            movie,
+            ...(await serverSideTranslations(locale)),
+        },
+    };
+};

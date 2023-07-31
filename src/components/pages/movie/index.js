@@ -8,7 +8,7 @@ import classNames from 'classnames';
 
 const Movie = props => {
     const {
-        movie = {}
+        movie = {},
     } = props;
 
     const {t} = useTranslation();
