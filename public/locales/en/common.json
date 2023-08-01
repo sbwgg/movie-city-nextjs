@@ -39,5 +39,6 @@
   "topMovies":  "Top Movies",
   "toCinema": "Now Playing",
   "searchResults": "Search Results for",
-  "noResults": "There are no results that matched your query."
+  "noResults": "There are no results that matched your query.",
+  "loader": "Loading"
 }

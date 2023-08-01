@@ -1,6 +1,6 @@
 .sliderList {
     &Slider {
-        @apply relative;
+        @apply relative min-h-[20.05vw];
     }
 
     &Empty {

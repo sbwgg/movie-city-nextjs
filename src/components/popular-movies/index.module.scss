@@ -1,5 +1,9 @@
 .popularMovies {
     &Slider {
         @apply py-2 relative z-[2] bg-primary-gray;
+
+        & > div {
+            @apply min-h-[22.5vw];
+        }
     }
 }

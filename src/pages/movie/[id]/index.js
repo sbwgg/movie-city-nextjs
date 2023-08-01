@@ -6,10 +6,11 @@ import Movie from '@/components/pages/movie';
 import MovieClip from '@/components/pages/movie/movie-clip';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/movie/reviews';
+import Loader from '@/components/loader';
 
 const Index = ({ movie }) => {
     if (!movie.info) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
 
     const movieWithDefaultClip = {
