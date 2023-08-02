@@ -1,12 +1,14 @@
 import Default from '@/layouts/Default';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import {getCinema} from '@/services/home';
+import MoviesPaginate from '@/components/pages/home/movies-paginate';
 import ToCinema from '@/components/pages/home/to-cinema';
 import Trending from '@/components/pages/home/trending';
 
 const Home = ({ locale, cinemaMovieData }) => {
     return (
         <Default title="Movie City">
+            <MoviesPaginate/>
             <ToCinema moviesListData={cinemaMovieData}/>
             <Trending />
         </Default>

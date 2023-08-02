@@ -1,0 +1,27 @@
+.pagination {
+    &Wrapper {
+        @apply relative;
+    }
+
+    &Container {
+        @apply flex items-center justify-center gap-3;
+    }
+
+    &Item {
+        @apply p-[8px_12px] bg-primary-blue text-white rounded-[6px]
+        flex items-center justify-center hover:bg-secondary-blue transition-colors;
+        box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
+
+        svg {
+            @apply fill-white;
+        }
+
+        &Active {
+            @apply bg-primary-pink pointer-events-none;
+        }
+
+        &Rewind {
+            @apply absolute left-[12px];
+        }
+    }
+}
