@@ -1,11 +1,11 @@
 import React from 'react';
+import classNames from 'classnames';
 import styles from './index.module.scss';
 import ImageComponent from '@/components/UI/image-component';
+import NextLink from '@/components/UI/NextLink';
 import {IMAGE_PATH} from '@/constants';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
 import MaleFallback from '@/assets/svg/male-fallback.svg';
-import NextLink from '@/components/UI/NextLink';
-import classNames from 'classnames';
 
 const PersonCard = props => {
     const {

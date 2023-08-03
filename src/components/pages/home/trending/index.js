@@ -1,26 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import {useRouter} from 'next/router';
+import {useSelector} from 'react-redux';
+import {useTranslation} from 'next-i18next';
+import styles from './index.module.scss';
+import useCurrentLocale from '@/hooks/useCurrentLocale';
 import {getTrending} from '@/services/home';
 import {setTrending} from '@/redux/slices/homeSlice';
 import {dispatch} from '@/helpers';
-import {useSelector} from 'react-redux';
-import styles from './index.module.scss';
 import SliderList from '@/components/slider-list';
-import {useTranslation} from 'next-i18next';
 
 const Trending = () => {
 	const [trendingBy, setTrendingBy] = useState('day');
-	const router = useRouter();
-	const currentLang = router.locale;
+	const locale = useCurrentLocale();
 	const trendingList = useSelector(state => state.home.trendingMovies);
 
 	const {t} = useTranslation();
 
 	useEffect(() => {
-		getTrending(currentLang, trendingBy)
+		getTrending(locale, trendingBy)
 			.then(res => dispatch(setTrending(res)))
 
-	},[trendingBy, currentLang]);
+	},[trendingBy, locale]);
 
 	const trendingLabels = [
 		{

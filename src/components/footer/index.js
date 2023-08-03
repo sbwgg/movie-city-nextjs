@@ -1,31 +1,30 @@
 import React, {useEffect, useState} from 'react';
-import styles from './index.module.scss';
-import NextLink from '@/components/UI/NextLink';
-import MovieClip from '@/components/pages/movie/movie-clip';
-import {useRouter} from 'next/router';
-import {dispatch} from '@/helpers';
 import {useSelector} from 'react-redux';
+import styles from './index.module.scss';
+import useCurrentLocale from '@/hooks/useCurrentLocale';
+import {dispatch} from '@/helpers';
 import {getFooterMovie} from '@/services/global';
 import {setFooterMovie} from '@/redux/slices/globalSlice';
 import {BACKDROP_PATH} from '@/constants';
 import {$api} from '@/api';
 import {API_KEY} from '@/constants';
 import {extractYear} from '@/helpers';
+import NextLink from '@/components/UI/NextLink';
+import MovieClip from '@/components/pages/movie/movie-clip';
 
 const Footer = () => {
-	const router = useRouter();
-	const currentLang = router.locale;
-	const {footerMovie} = useSelector(state => state.global);
 	const [details, setDetails] = useState([]);
+	const {footerMovie} = useSelector(state => state.global);
+	const locale = useCurrentLocale();
 
 	useEffect(() => {
-		async function fetchAndSetMovieData(currentLang) {
+		async function fetchAndSetMovieData(locale) {
 			try {
-				const res = await getFooterMovie(currentLang);
+				const res = await getFooterMovie(locale);
 				dispatch(setFooterMovie(res));
 
 				if (res && res.id) {
-					const response = await $api().get(`/movie/${res.id}/videos?api_key=${API_KEY}&language=${currentLang}`);
+					const response = await $api().get(`/movie/${res.id}/videos?api_key=${API_KEY}&language=${locale}`);
 					setDetails(response.data.results[0]);
 				}
 			} catch (error) {
@@ -33,8 +32,8 @@ const Footer = () => {
 			}
 		}
 
-		fetchAndSetMovieData(currentLang);
-	},[currentLang]);
+		fetchAndSetMovieData(locale);
+	},[locale]);
 
 	const footerBackground = {
 		backgroundImage: `

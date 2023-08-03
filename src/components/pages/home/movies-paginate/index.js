@@ -1,28 +1,27 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import styles from './index.module.scss';
-import {useRouter} from 'next/router';
-import {dispatch} from '@/helpers';
 import {useSelector} from 'react-redux';
-import {getMoviePaginations} from '@/services/home';
+import styles from './index.module.scss';
+import useCurrentLocale from '@/hooks/useCurrentLocale';
 import {setPaginatedList} from '@/redux/slices/homeSlice';
+import {getMoviePaginations} from '@/services/home';
 import Pagination from '@/components/pagination';
 import MovieCard from '@/components/movie-card';
+import {dispatch} from '@/helpers';
 
 const MoviesPaginate = () => {
-    const router = useRouter();
-    const currentLang = router.locale;
+    const locale = useCurrentLocale();
     const {paginatedList} = useSelector(state => state.home);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
-        getMoviePaginations(currentLang, currentPage)
+        getMoviePaginations(locale, currentPage)
             .then(res => {
                 dispatch(setPaginatedList(res.results));
                 setTotalPages(res.total_pages);
             });
 
-    },[currentLang, currentPage]);
+    },[locale, currentPage]);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);

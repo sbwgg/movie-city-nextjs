@@ -26,7 +26,7 @@ export const globalSlice = createSlice({
 export const {
     setPopularMovies,
     setSearchResults,
-    setFooterMovie
+    setFooterMovie,
 } = globalSlice.actions;
 
 export default globalSlice.reducer;

@@ -1,23 +1,33 @@
-import React, { useState, useRef } from 'react';
-import styles from './index.module.scss';
+import React, { useState, useRef, useEffect } from 'react';
+import {useSelector} from 'react-redux';
+import {useTranslation} from 'next-i18next';
 import classNames from 'classnames';
 import {motion} from 'framer-motion';
+import styles from './index.module.scss';
+import useCurrentLocale from '@/hooks/useCurrentLocale';
 import useScrollDirection from '@/hooks/useScrollDirection';
+import useClickOutSide from '@/hooks/useClickOutSide';
+import useBreakpoint from '@/hooks/useBreakpoint';
+import {setGenres} from '@/redux/slices/genreSlice';
 import NextLink from '@/components/UI/NextLink';
 import Input from '@/components/UI/Input';
 import Button from '@/components/UI/Button';
 import LanguageSwitch from '@/components/language-switch';
-import {useTranslation} from 'next-i18next';
 import ThemeSwitch from '@/components/theme-switch';
-import useClickOutSide from '@/hooks/useClickOutSide';
+import {getGenres} from '@/services/genre';
+import {dispatch} from '@/helpers';
 
 const Index = () => {
     const [navOpen, setNavOpen] = useState(false);
+    const [showGenres, setShowGenres] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const {isDown} = useScrollDirection();
     const mobileMenuTrigger = useRef(null);
     const mobileMenuContainer = useRef(null);
     const {t} = useTranslation();
+    const locale = useCurrentLocale();
+    const {genreList} = useSelector(state => state.genre);
+    const isMobile = useBreakpoint('(max-width: 1023.8px)');
 
     const slideRightVariants = {
         toIn: {
@@ -36,17 +46,28 @@ const Index = () => {
     };
 
     const closeMobileMenu = () => {
-        return setNavOpen(false);
+        setNavOpen(false);
+        setShowGenres(false);
     };
 
     const handleSearchQuery = e => {
         return setSearchQuery(e.target.value)
     };
 
+    const toggleGenresDropdown = () => {
+        setShowGenres(!showGenres);
+    }
+
     useClickOutSide(mobileMenuContainer, closeMobileMenu, mobileMenuTrigger);
 
+    useEffect(() => {
+        getGenres(locale)
+            .then(res => dispatch(setGenres(res)));
+
+    },[locale]);
+
     return (
-        <header className={classNames([styles.header, isDown ? styles.headerDown : ''])}>
+        <header className={classNames([styles.header, (isDown && !showGenres) ? styles.headerDown : ''])}>
             <div className={classNames(styles.headerInner, 'main-container')}>
                 <nav className={styles.nav}>
                     <NextLink href="/" className="max-w-[55px] lg:max-w-[120px]">
@@ -85,6 +106,34 @@ const Index = () => {
                                         <Button design="primary">{t('global.search')}</Button>
                                     </NextLink>
                                 </form>
+                                <ul className={styles.navList}>
+                                    <li className={classNames([
+                                        styles.navListItem,
+                                        (showGenres && isMobile) && styles.navListItemOpen
+                                    ])}
+                                        onClick={toggleGenresDropdown}>
+                                        <p className="gradient-text">
+                                            {t('genre')}
+                                        </p>
+
+                                        <div className={classNames([
+                                            styles.navDropdown,
+                                            showGenres && styles.navDropdownActive
+                                        ])}>
+                                            <ul className={styles.navDropdownBody}>
+                                                {genreList.map(genre => {
+                                                    return (
+                                                        <li key={genre.id}>
+                                                            <NextLink href={`/genre/${genre.id}`}>
+                                                                {genre.name}
+                                                            </NextLink>
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
                                 <button
                                     className={styles.navClose}
                                     onClick={closeMobileMenu}

@@ -1,14 +1,14 @@
 import React from 'react';
-import NextLink from '@/components/UI/NextLink';
-import styles from './index.module.scss';
 import classNames from 'classnames';
 import {motion} from 'framer-motion';
-import {fadeInVariants, floatUpVariants} from '@/helpers/motion-animations';
-import ImageComponent from '@/components/UI/image-component';
-import {IMAGE_PATH} from '@/constants';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
+import styles from './index.module.scss';
+import NextLink from '@/components/UI/NextLink';
+import ImageComponent from '@/components/UI/image-component';
+import {IMAGE_PATH} from '@/constants';
 import {roundNumber} from '@/helpers';
+import {fadeInVariants, floatUpVariants} from '@/helpers/motion-animations';
 
 const MovieCard = props => {
     const {

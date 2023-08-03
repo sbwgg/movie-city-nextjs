@@ -65,6 +65,56 @@
         @apply w-[30px] h-[30px] absolute top-[50%] right-[15px] lg:hidden;
         animation: wiggle 550ms linear infinite both;
     }
+
+    &List {
+        &Item {
+            @apply max-lg:border-b-[2px] max-lg:border-solid max-lg:border-primary-blue;
+
+            & > p {
+                @apply cursor-pointer pb-[5px] transition-[padding] duration-300
+                lg:pb-0;
+            }
+
+            &Open {
+                @apply max-lg:pb-[15px];
+
+                p {
+                    @apply pb-[15px];
+                }
+            }
+        }
+    }
+
+    &Dropdown {
+        @apply
+        max-lg:grid max-lg:grid-rows-[0fr] max-lg:transition-all max-lg:duration-[400ms]
+
+        lg:backdrop-blur-[5px] lg:bg-header
+        lg:border-solid lg:border-[1px] lg:border-primary-blue
+        lg:absolute lg:top-[83px] lg:p-4 lg:transition-all
+        lg:opacity-0 lg:invisible lg:translate-y-[-20px]
+        lg:pointer-events-none;
+
+        &Active {
+            @apply
+            max-lg:grid-rows-[1fr]
+            lg:translate-y-0 lg:opacity-100 lg:visible lg:pointer-events-auto;
+        }
+
+        &Body {
+            @apply overflow-hidden grid gap-3 grid-cols-2
+            lg:grid-cols-2;
+
+            a {
+                @apply capitalize w-fit transition-colors
+                hover:text-primary-blue;
+            }
+
+            li {
+                @apply max-lg:text-[clamp(12px,3.2vw,18px)]
+            }
+        }
+    }
 }
 
 @keyframes wiggle {

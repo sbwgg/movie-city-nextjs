@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
+import {useSelector} from 'react-redux';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import {getSearchResults} from '@/services/global';
 import {setSearchResults} from '@/redux/slices/globalSlice';
-import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
-import {useRouter} from 'next/router';
-import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import MovieCard from '@/components/movie-card';
-import {useTranslation} from 'next-i18next';
 
 const Query = () => {
     const router = useRouter();

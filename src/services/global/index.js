@@ -38,9 +38,3 @@ export const getFooterMovie = async locale => {
         .then((response) => response.data.results[0])
         .catch((error) => console.log(error))
 }
-
-export const getGenres = async locale => {
-    return await $api().get(`/genre/movie/list?api_key=${API_KEY}&language=${locale}`)
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error))
-}

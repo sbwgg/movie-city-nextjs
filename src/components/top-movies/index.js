@@ -1,26 +1,25 @@
 import React, {useEffect} from 'react';
-import {useRouter} from 'next/router';
+import {useSelector} from 'react-redux';
+import {useTranslation} from 'next-i18next';
+import useCurrentLocale from '@/hooks/useCurrentLocale';
+import MovieCardLabel from '@/components/movie-card-label';
+import Button from '@/components/UI/Button';
 import {getTopMovies} from '@/services/global';
 import {setTopMovies} from '@/redux/slices/persistSlice';
-import {useSelector} from 'react-redux';
 import {dispatch} from '@/helpers';
-import MovieCardLabel from '@/components/movie-card-label';
-import {useTranslation} from 'next-i18next';
-import Button from '@/components/UI/Button';
 
 const TopMovies = () => {
 	const {topMovies} = useSelector(state => state.persist);
-	const router = useRouter();
-	const currentLang = router.locale;
+	const locale = useCurrentLocale();
 
 	useEffect(() => {
-		getTopMovies(currentLang, topMovies.page).then((res) => {
+		getTopMovies(locale, topMovies.page).then((res) => {
 			dispatch(setTopMovies({
 				...topMovies,
 				data: res
 			}));
 		});
-	}, [currentLang, topMovies.page]);
+	}, [locale, topMovies.page]);
 
 	const {t} = useTranslation();
 

@@ -1,18 +1,17 @@
 import React, { useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import styles from './index.module.scss';
+import useCurrentLocale from '@/hooks/useCurrentLocale';
 import MovieCard from '@/components/movie-card';
 import {getPopularMovies} from '@/services/global';
 import { setPopularMovies } from '@/redux/slices/globalSlice';
-import { useSelector } from 'react-redux';
 import {dispatch} from '@/helpers';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 
 const PopularMovies = () => {
     const {popularMovies} = useSelector(state => state.global);
-    const router = useRouter();
-    const currentLang =  router.locale;
+    const locale =  useCurrentLocale();
     const slidePrev = useRef(null);
     const slideNext = useRef(null);
 
@@ -38,9 +37,9 @@ const PopularMovies = () => {
     };
 
     useEffect(() => {
-        getPopularMovies(currentLang)
+        getPopularMovies(locale)
             .then(res => dispatch(setPopularMovies(res)));
-    },[currentLang]);
+    },[locale]);
 
     return (
         <section className={styles.popularMovies}>

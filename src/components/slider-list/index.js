@@ -1,12 +1,12 @@
 import React from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
-import {sliderListOptions} from '@/helpers';
+import {useTranslation} from 'next-i18next';
+import styles from './index.module.scss';
 import MovieCard from '@/components/movie-card';
 import CastCard from '@/components/person-card';
-import styles from './index.module.scss';
-import {useTranslation} from 'next-i18next';
 import NextLink from '@/components/UI/NextLink';
+import {sliderListOptions} from '@/helpers';
 
 const SliderList = props => {
     const {

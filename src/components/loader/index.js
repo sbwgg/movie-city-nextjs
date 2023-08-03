@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './index.module.scss';
 import {useTranslation} from 'next-i18next';
+import styles from './index.module.scss';
 
 const Loader = () => {
 	const {t} = useTranslation();

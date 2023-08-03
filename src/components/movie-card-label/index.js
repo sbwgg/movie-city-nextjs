@@ -1,13 +1,13 @@
 import React from 'react';
+import {useTranslation} from 'next-i18next';
+import {motion} from 'framer-motion';
+import classNames from 'classnames';
 import styles from './index.module.scss';
 import NextLink from '@/components/UI/NextLink';
 import ImageComponent from '@/components/UI/image-component';
 import {IMAGE_PATH} from '@/constants';
-import {useTranslation} from 'next-i18next';
 import {roundNumber} from '@/helpers';
-import {motion} from 'framer-motion';
 import {fadeInVariants} from '@/helpers/motion-animations';
-import classNames from 'classnames';
 
 const MovieCardLabel = props => {
     const {
