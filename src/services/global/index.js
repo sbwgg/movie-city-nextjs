@@ -23,13 +23,13 @@ export const getTopMovies = async (locale, page) => {
     //     .catch(err => console.log(err))
 };
 
-export const getSearchResults = async (keyword, locale) => {
-        return await $api().get(`/search/movie?api_key=${API_KEY}&language=${locale}`, {
+export const getSearchResults = async (keyword, locale, page) => {
+        return await $api().get(`/search/movie?api_key=${API_KEY}&language=${locale}&page=${page || 1}`, {
                 params: {
                     query: keyword.query
                 }
         })
-        .then(response => response.data.results)
+        .then((response) => response.data)
         .catch((error) => console.log(error))
 }
 

@@ -8,10 +8,13 @@ import {getSearchResults} from '@/services/global';
 import {setSearchResults} from '@/redux/slices/globalSlice';
 import {dispatch} from '@/helpers';
 import MovieCard from '@/components/movie-card';
+import Pagination from '@/components/pagination';
 
 const Query = () => {
     const router = useRouter();
     const [isEmpty, setEmpty] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const {searchResults} = useSelector(state => state.global);
     const keyword = router.query;
     const locale = router.locale;
@@ -20,20 +23,32 @@ const Query = () => {
 
     useEffect(() => {
         if (keyword) {
-            getSearchResults(keyword, locale)
+            getSearchResults(keyword, locale, currentPage)
                 .then(res => {
-                    dispatch(setSearchResults(res))
-                    setEmpty(res.length === 0)
+                    dispatch(setSearchResults(res.results))
+                    setEmpty(res.results.length === 0)
+                    setTotalPages(res.total_pages)
                 })
 
             return () => {
                 dispatch(setSearchResults([]));
             }
         }
-    },[keyword, locale]);
+    },[keyword, locale, currentPage]);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
 
     return (
         <Default title={t('searchResults')}>
+            {searchResults.length > 0 &&
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                />
+            }
             <section className={`grid${!isEmpty ? ' grid-cols-2 lg:grid-cols-3' : ''}`}>
                 {searchResults.map(((movie, key) => {
                     return (

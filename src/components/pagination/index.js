@@ -32,19 +32,26 @@ const Pagination = ({totalPages, currentPage, onPageChange}) => {
         } else {
             const currentPageIdx = currentPage - 1;
 
-            const startIdx = Math.max(0, currentPageIdx - siblingCount);
-            const endIdx = Math.min(totalPages - 1, currentPageIdx + siblingCount);
+            if (currentPage <= 2 + siblingCount) {
+                // If the current page is within the range of the first few pages, show the first 3 pages
+                for (let i = 0; i < 3; i++) {
+                    pageNumbersToShow.push(i + 1);
+                }
+            } else if (currentPage >= totalPages - 1 - siblingCount) {
+                // If the current page is within the range of the last few pages, show the last 3 pages
+                for (let i = totalPages - 2 * siblingCount - 2; i < totalPages; i++) {
+                    pageNumbersToShow.push(i + 1);
+                }
+            } else {
+                // For other cases, show the current page and its siblings
+                pageNumbersToShow.push(1);
+                pageNumbersToShow.push(DOTS);
 
-            if (startIdx > 1) {
-                pageNumbersToShow.push(1, DOTS);
-            }
+                for (let i = currentPageIdx - siblingCount; i <= currentPageIdx + siblingCount; i++) {
+                    pageNumbersToShow.push(i + 1);
+                }
 
-            for (let i = startIdx; i <= endIdx; i++) {
-                pageNumbersToShow.push(i + 1);
-            }
-
-            if (endIdx < totalPages - 2) {
-                pageNumbersToShow.push(DOTS, totalPages);
+                // pageNumbersToShow.push(DOTS, totalPages);
             }
         }
 
@@ -54,15 +61,6 @@ const Pagination = ({totalPages, currentPage, onPageChange}) => {
     return (
         <div className={styles.paginationWrapper}>
             <div className={styles.paginationContainer}>
-                {currentPage >= 5 && (
-                    <button className={classNames([styles.paginationItem, styles.paginationItemRewind])}
-                            onClick={() => onPageChange(1)}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" height="15" width="15" viewBox="0 0 512 512">
-                            <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z" />
-                        </svg>
-                    </button>
-                )}
                 <button className={styles.paginationItem} onClick={handlePrevPage}>
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
                         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
