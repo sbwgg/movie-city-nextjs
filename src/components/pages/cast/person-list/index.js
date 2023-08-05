@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.module.scss';
 import PersonCard from '@/components/person-card';
 
-const PersonList = props => {
+const Index = props => {
 	const {
 		person = [],
 		type = 'cast'
@@ -50,4 +50,4 @@ const PersonList = props => {
 	)
 }
 
-export default PersonList;
+export default Index;

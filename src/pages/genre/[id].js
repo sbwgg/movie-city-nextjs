@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
+import {useTranslation} from 'next-i18next';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import MovieList from '@/components/pages/genre/movie-list';
@@ -16,6 +17,8 @@ const Index = () => {
     const {genreResults} = useSelector(state => state.genre);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+
+    const {t} = useTranslation();
 
     useEffect(() => {
         setTotalPages(1);
@@ -42,13 +45,22 @@ const Index = () => {
     return (
         <Default
             secondary
+            title={`Movie City - ${t('genre')} - ${router.query.name}`}
         >
-            <Pagination
-                totalPages={totalPages}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-            />
-            <MovieList results={genreResults}/>
+            <div className="pt-10">
+                <h1>{router.query.name}</h1>
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                />
+                <MovieList results={genreResults}/>
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                />
+            </div>
         </Default>
     )
 }

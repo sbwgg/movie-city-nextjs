@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import styles from './index.module.scss';
 import classNames from 'classnames';
 
-const LanguageSwitch = () => {
+const Index = () => {
 	const router = useRouter();
 
 	return(
@@ -36,4 +36,4 @@ const LanguageSwitch = () => {
 	)
 };
 
-export default LanguageSwitch;
+export default Index;

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.module.scss';
 import MovieCard from '@/components/movie-card';
 
-const MovieList = props => {
+const Index = props => {
     const {results} = props;
 
     return (
@@ -21,4 +21,4 @@ const MovieList = props => {
     )
 }
 
-export default MovieList;
+export default Index;

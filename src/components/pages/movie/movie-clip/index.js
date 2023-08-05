@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.module.scss';
 import classNames from 'classnames';
 
-const MovieClip = props => {
+const Index = props => {
     const {clipKey} = props;
 
     return (
@@ -17,4 +17,4 @@ const MovieClip = props => {
     )
 }
 
-export default MovieClip;
+export default Index;

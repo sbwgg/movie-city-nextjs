@@ -12,7 +12,7 @@ import {extractYear} from '@/helpers';
 import NextLink from '@/components/UI/NextLink';
 import MovieClip from '@/components/pages/movie/movie-clip';
 
-const Footer = () => {
+const Index = () => {
 	const [details, setDetails] = useState([]);
 	const {footerMovie} = useSelector(state => state.global);
 	const locale = useCurrentLocale();
@@ -60,4 +60,4 @@ const Footer = () => {
 	)
 }
 
-export default Footer;
+export default Index;

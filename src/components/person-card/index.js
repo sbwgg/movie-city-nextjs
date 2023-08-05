@@ -7,7 +7,7 @@ import {IMAGE_PATH} from '@/constants';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
 import MaleFallback from '@/assets/svg/male-fallback.svg';
 
-const PersonCard = props => {
+const Index = props => {
     const {
         member,
         secondary
@@ -47,4 +47,4 @@ const PersonCard = props => {
     )
 }
 
-export default PersonCard;
+export default Index;

@@ -7,7 +7,6 @@ import styles from './index.module.scss';
 import useCurrentLocale from '@/hooks/useCurrentLocale';
 import useScrollDirection from '@/hooks/useScrollDirection';
 import useClickOutSide from '@/hooks/useClickOutSide';
-import useBreakpoint from '@/hooks/useBreakpoint';
 import {setGenres} from '@/redux/slices/genreSlice';
 import NextLink from '@/components/UI/NextLink';
 import Input from '@/components/UI/Input';
@@ -27,7 +26,6 @@ const Index = () => {
     const {t} = useTranslation();
     const locale = useCurrentLocale();
     const {genreList} = useSelector(state => state.genre);
-    const isMobile = useBreakpoint('(max-width: 1023.8px)');
 
     const slideRightVariants = {
         toIn: {
@@ -56,6 +54,10 @@ const Index = () => {
 
     const toggleGenresDropdown = () => {
         setShowGenres(!showGenres);
+    }
+
+    const searchQueryIsEmpty = () => {
+        return searchQuery.trim().length === 0;
     }
 
     useClickOutSide(mobileMenuContainer, closeMobileMenu, mobileMenuTrigger);
@@ -102,18 +104,29 @@ const Index = () => {
                                         value={searchQuery}
                                         onChange={handleSearchQuery}
                                     />
-                                    <NextLink href={`/search/${searchQuery}`}>
-                                        <Button design="primary">{t('global.search')}</Button>
+                                    <NextLink
+                                        href={`/search/${searchQuery}`}
+                                        className={searchQueryIsEmpty() ? 'disabled' : ''}
+                                    >
+                                        <Button
+                                            design="primary"
+                                            type={searchQueryIsEmpty() ? 'button' : 'submit'}
+                                        >
+                                            {t('global.search')}
+                                        </Button>
                                     </NextLink>
                                 </form>
                                 <ul className={styles.navList}>
                                     <li className={classNames([
                                         styles.navListItem,
-                                        (showGenres && isMobile) && styles.navListItemOpen
+                                        showGenres && styles.navListItemOpen
                                     ])}
                                         onClick={toggleGenresDropdown}>
+                                        <p className="gradient-text !absolute blur-[4px]">
+                                            {t('genres')}
+                                        </p>
                                         <p className="gradient-text">
-                                            {t('genre')}
+                                            {t('genres')}
                                         </p>
 
                                         <div className={classNames([
@@ -124,7 +137,7 @@ const Index = () => {
                                                 {genreList.map(genre => {
                                                     return (
                                                         <li key={genre.id}>
-                                                            <NextLink href={`/genre/${genre.id}`}>
+                                                            <NextLink href={`/genre/${genre.name}?id=${encodeURIComponent(genre.name)}`}>
                                                                 {genre.name}
                                                             </NextLink>
                                                         </li>

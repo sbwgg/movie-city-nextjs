@@ -33,7 +33,8 @@
     "cast": "Cast",
     "crew": "Crew"
   },
-  "genre": "Genres",
+  "genres": "Genres",
+  "genre": "Genre",
   "today": "Today",
   "week": "This Week",
   "trending": "Trending",

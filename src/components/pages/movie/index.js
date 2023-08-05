@@ -6,7 +6,7 @@ import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
 import classNames from 'classnames';
 
-const Movie = props => {
+const Index = props => {
     const {
         movie = {},
     } = props;
@@ -44,7 +44,9 @@ const Movie = props => {
                         <li>{t('movie.genre')}:
                             {movie.genres.map(genre => {
                                 return (
-                                    <NextLink key={genre.id} href={`/genre/${genre.id}`}>
+                                    <NextLink key={genre.id}
+                                              href={`/genre/${genre.id}?name=${encodeURIComponent(genre.name)}`}
+                                    >
                                         {genre.name}
                                     </NextLink>
                                 )
@@ -95,4 +97,4 @@ const Movie = props => {
     )
 }
 
-export default Movie;
+export default Index;

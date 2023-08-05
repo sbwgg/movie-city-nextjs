@@ -4,11 +4,12 @@ const Button = props => {
     const {
         children,
         design,
+        className,
         ...rest
     } = props;
 
     const classes = () => {
-        return `btn${design ? ` btn-${design}` : ''}`
+        return `btn${design ? ` btn-${design}` : ''} ${className}`
     }
 
     return (

@@ -1,10 +1,7 @@
 .default {
     &Container {
-        @apply grid gap-5 min-h-[100vh]
-        max-lg:px-[15px]
-        lg:max-xl:max-w-[94%]
-        lg:mx-auto lg:w-full lg:grid-cols-[1fr_.5fr]
-        xl:max-w-[1370px] xl:px-7;
+        @apply grid gap-5
+         lg:grid-cols-[1fr_.5fr];
 
         &Full {
             @apply block mt-[-80px] pt-[80px] pb-10

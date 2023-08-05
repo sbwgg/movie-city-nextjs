@@ -9,7 +9,7 @@ import {getPopularMovies} from '@/services/global';
 import { setPopularMovies } from '@/redux/slices/globalSlice';
 import {dispatch} from '@/helpers';
 
-const PopularMovies = () => {
+const Index = () => {
     const {popularMovies} = useSelector(state => state.global);
     const locale =  useCurrentLocale();
     const slidePrev = useRef(null);
@@ -64,4 +64,4 @@ const PopularMovies = () => {
     )
 };
 
-export default PopularMovies;
+export default Index;

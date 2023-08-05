@@ -10,7 +10,7 @@ import {IMAGE_PATH} from '@/constants';
 import {roundNumber} from '@/helpers';
 import {fadeInVariants, floatUpVariants} from '@/helpers/motion-animations';
 
-const MovieCard = props => {
+const Index = props => {
     const {
         movie,
         delay,
@@ -82,4 +82,4 @@ const MovieCard = props => {
     )
 }
 
-export default MovieCard;
+export default Index;

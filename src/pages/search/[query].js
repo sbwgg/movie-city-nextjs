@@ -42,14 +42,7 @@ const Query = () => {
 
     return (
         <Default title={t('searchResults')}>
-            {searchResults.length > 0 &&
-                <Pagination
-                    totalPages={totalPages}
-                    currentPage={currentPage}
-                    onPageChange={handlePageChange}
-                />
-            }
-            <section className={`grid${!isEmpty ? ' grid-cols-2 lg:grid-cols-3' : ''}`}>
+            <section className={`min-h-[70vh] min-h-[70dvh] grid${!isEmpty ? ' grid-cols-2 lg:grid-cols-3' : ''}`}>
                 {searchResults.map(((movie, key) => {
                     return (
                         <MovieCard
@@ -66,6 +59,13 @@ const Query = () => {
                     </h1>
                 }
             </section>
+            {!isEmpty &&
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                />
+            }
         </Default>
     )
 }

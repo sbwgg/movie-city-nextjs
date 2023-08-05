@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import {useTheme} from 'next-themes';
 import styles from './index.module.scss';
 
-const ThemeSwitch = () => {
+const Index = () => {
 	const {systemTheme, theme, setTheme} = useTheme();
 	const currentTheme = theme === 'system' ? systemTheme : theme;
 
@@ -23,4 +23,4 @@ const ThemeSwitch = () => {
 	)
 }
 
-export default ThemeSwitch;
+export default Index;

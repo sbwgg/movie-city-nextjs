@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import PersonList from '@/components/pages/cast/person-list';
 import {useTranslation} from 'next-i18next';
 
-const Cast = props => {
+const Index = props => {
 	const {
 		castData = [],
 		crewData = []
@@ -33,4 +33,4 @@ const Cast = props => {
 	)
 };
 
-export default Cast;
+export default Index;

@@ -8,7 +8,7 @@ import Pagination from '@/components/pagination';
 import MovieCard from '@/components/movie-card';
 import {dispatch} from '@/helpers';
 
-const MoviesPaginate = () => {
+const Index = () => {
     const locale = useCurrentLocale();
     const {paginatedList} = useSelector(state => state.home);
     const [currentPage, setCurrentPage] = useState(1);
@@ -56,4 +56,4 @@ const MoviesPaginate = () => {
     )
 }
 
-export default MoviesPaginate;
+export default Index;

@@ -1,3 +1,4 @@
 .listResults {
-    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+    @apply grid grid-cols-2
+    md:grid-cols-3 lg:grid-cols-4 min-h-[50vh] min-h-[80dvh];
 }

@@ -8,7 +8,7 @@ import CastCard from '@/components/person-card';
 import NextLink from '@/components/UI/NextLink';
 import {sliderListOptions} from '@/helpers';
 
-const SliderList = props => {
+const Index = props => {
     const {
         items = [],
         title,
@@ -76,4 +76,4 @@ const SliderList = props => {
     )
 }
 
-export default SliderList;
+export default Index;

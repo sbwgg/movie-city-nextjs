@@ -8,7 +8,7 @@ import {getTopMovies} from '@/services/global';
 import {setTopMovies} from '@/redux/slices/persistSlice';
 import {dispatch} from '@/helpers';
 
-const TopMovies = () => {
+const Index = () => {
 	const {topMovies} = useSelector(state => state.persist);
 	const locale = useCurrentLocale();
 
@@ -55,4 +55,4 @@ const TopMovies = () => {
 	)
 };
 
-export default TopMovies;
+export default Index;

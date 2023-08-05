@@ -35,13 +35,17 @@
     &Items {
         @apply flex items-start gap-5 flex-col pt-14 w-full
         lg:flex-row lg:items-center lg:pt-0 lg:w-[unset];
+
+        form button {
+            @apply [&:not(:hover)]:bg-primary-blue #{!important};
+        }
     }
 
     &Container {
         @apply h-[100dvh] w-10/12 flex flex-col items-center fixed top-0 z-10 py-7 px-4
         left-[-83.333333%] bg-[rgb(var(--header-bg))] transition-[left] duration-500
         lg:flex-row lg:justify-between lg:w-full lg:bg-[transparent] lg:h-full
-        lg:static lg:p-0;
+        lg:relative lg:top-[unset] lg:left-[unset] lg:p-0;
 
         @media screen and (max-width: 1023.8px) {
             box-shadow: 8px 5px 20px -10px rgba(0, 0, 0, 0.86);
@@ -72,14 +76,24 @@
 
             & > p {
                 @apply cursor-pointer pb-[5px] transition-[padding] duration-300
-                lg:pb-0;
+                lg:pb-0 relative;
+
+                &::before, &::after {
+                    @apply content-[''] bg-color-linear w-[12px] h-[1px]
+                    absolute top-[50%] translate-y-[-50%] right-0 lg:right-[-20px]
+                }
+
+                &::after {
+                    @apply rotate-90 transition-transform duration-300;
+                }
             }
 
             &Open {
                 @apply max-lg:pb-[15px];
 
                 p {
-                    @apply pb-[15px];
+                    @apply max-lg:pb-[15px]
+                    after:rotate-0;
                 }
             }
         }
@@ -87,18 +101,25 @@
 
     &Dropdown {
         @apply
-        max-lg:grid max-lg:grid-rows-[0fr] max-lg:transition-all max-lg:duration-[400ms]
+        max-lg:grid max-lg:grid-rows-[0fr] transition-all duration-[400ms]
 
         lg:backdrop-blur-[5px] lg:bg-header
         lg:border-solid lg:border-[1px] lg:border-primary-blue
-        lg:absolute lg:top-[83px] lg:p-4 lg:transition-all
-        lg:opacity-0 lg:invisible lg:translate-y-[-20px]
-        lg:pointer-events-none;
+        lg:absolute lg:top-[83px] lg:p-4 lg:transition-[clip-path]
+        lg:pointer-events-none lg:duration-300;
+
+        @media (min-width: 1024px) {
+            clip-path: inset(0 0 100% 0);
+        }
 
         &Active {
             @apply
             max-lg:grid-rows-[1fr]
-            lg:translate-y-0 lg:opacity-100 lg:visible lg:pointer-events-auto;
+            lg:pointer-events-auto;
+
+            @media (min-width: 1024px) {
+                clip-path: inset(0 0 0 0);
+            }
         }
 
         &Body {

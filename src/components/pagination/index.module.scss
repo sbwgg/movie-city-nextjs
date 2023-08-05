@@ -1,6 +1,6 @@
 .pagination {
     &Wrapper {
-        @apply relative;
+        @apply relative my-5;
     }
 
     &Container {
@@ -8,9 +8,7 @@
     }
 
     &Item {
-        @apply p-[8px_12px] bg-primary-blue text-white rounded-[6px]
-        flex items-center justify-center hover:bg-secondary-blue transition-colors;
-        box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
+        @apply text-[16px] leading-[unset];
 
         svg {
             @apply fill-white;

@@ -2,7 +2,7 @@ import React from 'react';
 import {useTranslation} from 'next-i18next';
 import styles from './index.module.scss';
 
-const Loader = () => {
+const Index = () => {
 	const {t} = useTranslation();
 
 	return (
@@ -13,4 +13,4 @@ const Loader = () => {
 	)
 };
 
-export default Loader;
+export default Index;

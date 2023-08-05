@@ -8,7 +8,7 @@ import {setTrending} from '@/redux/slices/homeSlice';
 import {dispatch} from '@/helpers';
 import SliderList from '@/components/slider-list';
 
-const Trending = () => {
+const Index = () => {
 	const [trendingBy, setTrendingBy] = useState('day');
 	const locale = useCurrentLocale();
 	const trendingList = useSelector(state => state.home.trendingMovies);
@@ -33,7 +33,7 @@ const Trending = () => {
 	];
 
 	return (
-		<div className={styles.trendingWrapper}>
+		<section className={styles.trendingWrapper}>
 			<div className={styles.trendingFilter}>
 				{trendingLabels.map(trending =>
 					<div key={trending.type}
@@ -56,8 +56,8 @@ const Trending = () => {
 				title="trending"
 				items={trendingList}
 			/>
-		</div>
+		</section>
 	)
 }
 
-export default Trending;
+export default Index;

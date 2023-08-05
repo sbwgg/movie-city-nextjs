@@ -6,7 +6,7 @@ import {IMAGE_PATH} from '@/constants';
 import {useTranslation} from 'next-i18next';
 import {extractYear} from '@/helpers';
 
-const MovieLabel = ({movie = {}}) => {
+const Index = ({movie = {}}) => {
 	const {t} = useTranslation();
 
 	return (
@@ -44,4 +44,4 @@ const MovieLabel = ({movie = {}}) => {
 	)
 }
 
-export default MovieLabel;
+export default Index;

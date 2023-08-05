@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import StarRatings from 'react-star-ratings/build/star-ratings';
 import {useTranslation} from 'next-i18next';
 
-const Reviews = props => {
+const Index = props => {
 	const {
 		movieTitle,
 		reviews = []
@@ -69,4 +69,4 @@ const Reviews = props => {
 	)
 }
 
-export default Reviews;
+export default Index;
