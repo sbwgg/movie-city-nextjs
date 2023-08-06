@@ -9,6 +9,7 @@ import ImageComponent from '@/components/UI/image-component';
 import {IMAGE_PATH} from '@/constants';
 import {roundNumber} from '@/helpers';
 import {fadeInVariants, floatUpVariants} from '@/helpers/motion-animations';
+import {lowercaseString} from '@/helpers';
 
 const Index = props => {
     const {
@@ -20,7 +21,7 @@ const Index = props => {
 
     return (
         <div className="h-full p-3">
-            <NextLink href={`/movie/${movie.id}`} className={styles.movie}>
+            <NextLink href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`} className={styles.movie}>
                 <figure className="full-figure">
                     <motion.div
                         className={classNames([

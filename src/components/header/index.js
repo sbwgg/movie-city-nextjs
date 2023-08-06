@@ -137,7 +137,7 @@ const Index = () => {
                                                 {genreList.map(genre => {
                                                     return (
                                                         <li key={genre.id}>
-                                                            <NextLink href={`/genre/${genre.name}?id=${encodeURIComponent(genre.name)}`}>
+                                                            <NextLink href={`/genre/${genre.id}?name=${encodeURIComponent(genre.name)}`}>
                                                                 {genre.name}
                                                             </NextLink>
                                                         </li>

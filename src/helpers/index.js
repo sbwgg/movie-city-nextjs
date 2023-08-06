@@ -41,3 +41,9 @@ export const throttle = (callbackFn, limit) => {
         }
     }
 }
+
+export const lowercaseString  = str => {
+    const replacedStr = str.replace(/[^a-zA-Z0-9]+/g, '-');
+
+    return replacedStr.toLowerCase();
+};

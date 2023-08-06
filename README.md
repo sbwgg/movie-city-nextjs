@@ -1,13 +1,15 @@
 # Getting Started with ***MovieCity***
 <p>
-    <img src="public/movie-city.svg" width="80"> &nbsp; &nbsp; &nbsp; &nbsp;    
+    <img src="public/movie-city.svg" width="80"> &nbsp; &nbsp; &nbsp; &nbsp;    <br/>
+    <img src="public/movie-city-preview.png" alt="preview">
 </p>
 
 ## ***Built With***
 
 <img src="public/next-js-logo.svg" width="80"> &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="public/redux-icon.svg" width="80"> &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="public/tailwind-css.svg" width="120">
+<img src="public/tailwind-css.svg" width="120"> &nbsp; &nbsp; &nbsp; &nbsp;
+<img src="public/tmdb-icon.svg" width="120">
 
 ## Getting Started
 

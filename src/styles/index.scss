@@ -73,6 +73,11 @@ body {
     @apply bg-primary-gray min-h-[100vh];
 }
 
+html,
+body {
+    scrollbar-gutter: stable;
+}
+
 .page {
     @apply pt-[80px] lg:pt-[94px];
 }

@@ -6,6 +6,7 @@ import NextLink from '@/components/UI/NextLink';
 import {IMAGE_PATH} from '@/constants';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
 import MaleFallback from '@/assets/svg/male-fallback.svg';
+import {lowercaseString} from '@/helpers';
 
 const Index = props => {
     const {
@@ -14,7 +15,7 @@ const Index = props => {
     } = props;
 
     return (
-        <NextLink href="/" className={classNames([
+        <NextLink href={`/person/${member.id}-${lowercaseString(member.name)}`} className={classNames([
             styles.personItem,
             secondary && 'card-label-hover w-full'
         ])}>

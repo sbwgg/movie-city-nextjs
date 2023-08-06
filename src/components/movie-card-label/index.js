@@ -8,6 +8,7 @@ import ImageComponent from '@/components/UI/image-component';
 import {IMAGE_PATH} from '@/constants';
 import {roundNumber} from '@/helpers';
 import {fadeInVariants} from '@/helpers/motion-animations';
+import {lowercaseString} from '@/helpers';
 
 const Index = props => {
     const {
@@ -27,7 +28,7 @@ const Index = props => {
             transition={{type: 'tween', delay: delay * 0.15}}
         >
             <NextLink
-                href={`/movie/${movie.id}`}
+                href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
                 className={classNames([styles.movieCardLabel, 'card-label-hover'])}
             >
                 <div className={styles.movieCardImage}>
