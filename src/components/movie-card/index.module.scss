@@ -41,7 +41,7 @@
     }
 
     &Image {
-        @apply relative h-full;
+        @apply relative h-auto;
         box-shadow: var(--popular-shadow);
 
         &::after {

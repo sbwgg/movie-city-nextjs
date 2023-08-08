@@ -7,7 +7,7 @@ const Index = props => {
 
     return (
         <section className={styles.listResults}>
-            {results.map((item, index) => {
+            {results && results.map((item, index) => {
                 return (
                     <MovieCard
                         detailed

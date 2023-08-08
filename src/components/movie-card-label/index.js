@@ -6,9 +6,8 @@ import styles from './index.module.scss';
 import NextLink from '@/components/UI/NextLink';
 import ImageComponent from '@/components/UI/image-component';
 import {IMAGE_PATH} from '@/constants';
-import {roundNumber} from '@/helpers';
+import {roundNumber, lowercaseString} from '@/helpers';
 import {fadeInVariants} from '@/helpers/motion-animations';
-import {lowercaseString} from '@/helpers';
 
 const Index = props => {
     const {

@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import styles from './index.module.scss';
 import useCurrentLocale from '@/hooks/useCurrentLocale';
-import {dispatch} from '@/helpers';
+import {dispatch, extractYear} from '@/helpers';
 import {getFooterMovie} from '@/services/global';
 import {setFooterMovie} from '@/redux/slices/globalSlice';
 import {BACKDROP_PATH} from '@/constants';
 import {$api} from '@/api';
 import {API_KEY} from '@/constants';
-import {extractYear} from '@/helpers';
 import NextLink from '@/components/UI/NextLink';
 import MovieClip from '@/components/pages/movie/movie-clip';
 
