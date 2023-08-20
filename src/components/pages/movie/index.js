@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from './index.module.scss';
-import ImageComponent from '@/components/UI/image-component';
-import NextLink from '@/components/UI/NextLink';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
 import classNames from 'classnames';
+import styles from './index.module.scss';
+import ImageComponent from '@/components/UI/image-component';
+import NextLink from '@/components/UI/NextLink';
+import {roundNumber} from '@/helpers';
 
 const Index = props => {
     const {
@@ -44,8 +45,9 @@ const Index = props => {
                         <li>{t('movie.genre')}:
                             {movie.genres.map(genre => {
                                 return (
-                                    <NextLink key={genre.id}
-                                              href={`/genre/${genre.id}?name=${encodeURIComponent(genre.name)}`}
+                                    <NextLink
+                                        key={genre.id}
+                                        href={`/genre/${genre.id}?name=${encodeURIComponent(genre.name)}`}
                                     >
                                         {genre.name}
                                     </NextLink>
@@ -85,7 +87,7 @@ const Index = props => {
                 />
                 <div className={styles.movieRatingsInfo}>
                     <p className="text-lg">
-                        {t('movie.rating')}: <strong>{movie.vote_average}</strong>
+                        {t('movie.rating')}: <strong>{roundNumber(movie.vote_average)}</strong>
                     </p>
                     <p className="text-sm">
                         {t('movie.totalVotes')}: <strong>{movie.vote_count}</strong>

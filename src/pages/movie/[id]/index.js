@@ -1,7 +1,7 @@
 import React from 'react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import { fetchMovieData } from '@/services/movie';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Movie from '@/components/pages/movie';
 import MovieClip from '@/components/pages/movie/movie-clip';
 import SliderList from '@/components/slider-list';

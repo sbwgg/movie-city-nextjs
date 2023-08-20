@@ -6,7 +6,7 @@ import MovieCardLabel from '@/components/movie-card-label';
 import Button from '@/components/UI/Button';
 import {getTopMovies} from '@/services/global';
 import {setTopMovies} from '@/redux/slices/persistSlice';
-import {dispatch} from '@/helpers';
+import {dispatch, getRandomInt} from '@/helpers';
 
 const Index = () => {
 	const {topMovies} = useSelector(state => state.persist);
@@ -26,7 +26,7 @@ const Index = () => {
 	const updateTopMovies = () => {
 		dispatch(setTopMovies({
 			...topMovies,
-			page: topMovies.page + 1
+			page: getRandomInt(1, 200)
 		}));
 	};
 

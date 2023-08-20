@@ -17,15 +17,24 @@ const Index = () => {
 	const locale = useCurrentLocale();
 
 	useEffect(() => {
-		async function fetchAndSetMovieData(locale) {
+		const fetchAndSetMovieData = async (locale) => {
 			try {
 				const res = await getFooterMovie(locale);
 				dispatch(setFooterMovie(res));
 
 				if (res && res.id) {
 					const response = await $api().get(`/movie/${res.id}/videos?api_key=${API_KEY}&language=${locale}`);
-					setDetails(response.data.results[0]);
+					const videos = response.data.results;
+					const firstTrailer = videos.find(video => video.type === 'Trailer');
+
+					if (!firstTrailer && locale === 'ru') {
+						const responseEn = await $api().get(`/movie/${res.id}/videos?api_key=${API_KEY}&language=en`);
+						setDetails(responseEn.data.results.find(video => video.type === 'Trailer'));
+					} else {
+						setDetails(firstTrailer);
+					}
 				}
+
 			} catch (error) {
 				console.log(error);
 			}
