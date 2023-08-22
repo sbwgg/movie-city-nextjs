@@ -7,23 +7,31 @@ export const getMovieById = (id, locale) => {
 		.catch((error) => console.error(error))
 };
 
-const getClip = async (id, locale) => {
-	try {
-		const response = await $api().get(`/movie/${id}/videos?api_key=${API_KEY}&language=${locale}`);
-		const videos = response.data.results;
-		const firstTrailer = videos.find(video => video.type === 'Trailer');
+const getClip = (id, locale) => {
+	const responsePromise = $api().get(`/movie/${id}/videos?api_key=${API_KEY}&language=${locale}`);
 
-		if (!firstTrailer && locale === 'ru') {
-			const responseEn = await $api().get(`/movie/${id}/videos?api_key=${API_KEY}&language=en`);
-			const videosEn = responseEn.data.results;
-			return videosEn.find(video => video.type === 'Trailer');
-		} else {
-			return firstTrailer;
-		}
+	return responsePromise
+		.then(response => {
+			const videos = response.data.results;
+			const firstTrailer = videos.find(video => video.type === 'Trailer');
 
-	} catch (error) {
-		console.error(error);
-	}
+			if (!firstTrailer && locale === 'ru') {
+				const responseEnPromise = $api().get(`/movie/${id}/videos?api_key=${API_KEY}&language=en`);
+				return responseEnPromise
+					.then(responseEn => {
+						const videosEn = responseEn.data.results;
+						return videosEn.find(video => video.type === 'Trailer');
+					})
+					.catch(error => {
+						console.error(error);
+					});
+			} else {
+				return firstTrailer;
+			}
+		})
+		.catch(error => {
+			console.error(error);
+		});
 };
 
 const getMovieCast = (id, locale) => {

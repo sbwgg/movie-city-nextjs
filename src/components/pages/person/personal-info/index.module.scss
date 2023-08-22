@@ -1,0 +1,34 @@
+.personalInfo {
+    @apply flex flex-col gap-2;
+
+    h3 {
+        @apply mb-0;
+    }
+
+    li {
+        @apply flex flex-col [&:not(:last-child)]:mb-4;
+    }
+
+    &Wrapper {
+        @apply pb-5;
+    }
+
+    &Container {}
+
+    &Avatar {
+        @apply rounded-[6px] overflow-hidden mb-5;
+        @apply w-fit #{!important};
+    }
+
+    &Media {
+        @apply flex gap-5 mb-5;
+
+        a {
+            @apply w-[35px] h-[35px] p-1;
+
+            * {
+                @apply w-full h-full;
+            }
+        }
+    }
+}

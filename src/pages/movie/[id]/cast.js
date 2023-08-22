@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
+// import {useRouter} from 'next/router';
+// import {useSelector} from 'react-redux';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import {useTranslation} from 'next-i18next';
 import Default from '@/layouts/Default';
 import Cast from '@/components/pages/cast';
 import MovieLabel from '@/components/pages/cast/movie-label';
-// import {useRouter} from 'next/router';
-// import {useSelector} from 'react-redux';
 // import {dispatch} from '@/helpers';
 import {fetchCastData} from '@/services/movie/cast';
 // import {storeCredits} from '@/redux/slices/movieSlice/castSlice';
-import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
-import {useTranslation} from 'next-i18next';
 
 const CastPage = ({ cast, crew, movieData }) => {
 

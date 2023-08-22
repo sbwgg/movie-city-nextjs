@@ -1,0 +1,6 @@
+.person {
+    &Container {
+        @apply grid gap-3 mt-7
+        lg:grid-cols-[.5fr_1fr] lg:gap-5;
+    }
+}

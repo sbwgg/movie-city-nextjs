@@ -8,7 +8,7 @@ const getCast = (id, locale) => {
 		.catch((error) => console.log(error))
 }
 
-const getCrew =  (id, locale) => {
+const getCrew = (id, locale) => {
 	return $api().get(`/movie/${id}/credits?api_key=${API_KEY}&language=${locale}`)
 		.then((response) => response.data.crew)
 		.catch((error) => console.log(error))
@@ -42,6 +42,5 @@ export const fetchCastData = async (id, locale) => {
 		};
 	} catch (error) {
 		console.error(error);
-		return null;
 	}
 };

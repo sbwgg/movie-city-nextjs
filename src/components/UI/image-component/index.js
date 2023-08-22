@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 import classNames from 'classnames';
 
 const Index = props => {
-    const {src, fallBackSrc = fallbackImage, ...rest} = props;
+    const {src, fallBackSrc = fallbackImage, wrapperClass, ...rest} = props;
     const [imgSrc, setImgSrc] = useState(src);
     const [isError, setError] = useState(false);
 
@@ -16,7 +16,11 @@ const Index = props => {
 
     return (
         <div className={
-            classNames([styles.ImageComponentContainer, isError && `${styles.ImageComponentFallback} fallback-img`])
+            classNames([
+                wrapperClass,
+                styles.ImageComponentContainer,
+                isError && `${styles.ImageComponentFallback} fallback-img`
+            ])
         }>
             <Image
                 src={src ? imgSrc : fallBackSrc}

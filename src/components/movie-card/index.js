@@ -20,7 +20,10 @@ const Index = props => {
 
     return (
         <div className="h-full p-3">
-            <NextLink href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`} className={styles.movie}>
+            <NextLink
+                className={styles.movie}
+                href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
+            >
                 <figure className="full-figure">
                     <motion.div
                         className={classNames([
