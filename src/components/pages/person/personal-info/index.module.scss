@@ -21,7 +21,7 @@
     }
 
     &Media {
-        @apply flex gap-5 mb-5;
+        @apply flex gap-5 mb-5 [&:empty]:hidden;
 
         a {
             @apply w-[35px] h-[35px] p-1;

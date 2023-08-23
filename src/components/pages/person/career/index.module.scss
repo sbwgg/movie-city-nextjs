@@ -1,0 +1,18 @@
+.career {
+    &Wrapper {
+        h1 {
+            @apply font-bold text-[20px] mb-4
+            lg:text-[35px];
+        }
+    }
+
+    &Container {
+        div:not(:last-child) {
+            @apply mb-7;
+        }
+    }
+
+    &Biography {}
+
+    &Known{}
+}

@@ -12,15 +12,6 @@ export const getTopMovies = async (locale, page) => {
     return await $api().get(`/movie/top_rated?api_key=${API_KEY}&language=${locale}&page=${page || 1}`)
         .then((response) => response.data.results.slice(0, 10))
         .catch((error) => console.log(error))
-
-    // const url = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=${locale}&page=${page || 1}`;
-    // const options = {method: 'GET', headers: {accept: 'application/json'}};
-    //
-    // return await fetch(url, options)
-    //     .then((res) => {
-    //         return res.json()
-    //     })
-    //     .catch(err => console.log(err))
 };
 
 export const getSearchResults = async (keyword, locale, page) => {
