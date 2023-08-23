@@ -39,7 +39,7 @@ const Index = props => {
                         <ImageComponent
                             className="transition-transform duration-500"
                             src={IMAGE_PATH(movie.poster_path)}
-                            width={300} height={450} alt={movie.title}
+                            width={300} height={450} alt={`Title - ${movie.title}`}
                         />
                         {detailed &&
                             <div className={styles.movieDetails}>

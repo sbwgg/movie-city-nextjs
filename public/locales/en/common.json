@@ -1,6 +1,8 @@
 {
   "global": {
-    "search": "Search"
+    "search": "Search",
+    "genre": "Genre",
+    "genres": "Genres"
   },
   "pageTitles": {
     "cast": "Cast & Crew"
@@ -10,7 +12,6 @@
     "originalTitle": "Original Title",
     "year": "Release Date",
     "tagline": "Tagline",
-    "genre": "Genre",
     "budget": "Budget",
     "duration": "Duration",
     "min": "Min",
@@ -33,8 +34,19 @@
     "cast": "Cast",
     "crew": "Crew"
   },
-  "genres": "Genres",
-  "genre": "Genre",
+  "person": {
+    "personal-info": "Personal Info",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "birthday": "Birthday",
+    "death": "Day of Death",
+    "years": "years",
+    "birthplace": "Place of Birth",
+    "known-as": "Also Known As",
+    "biography": "Biography",
+    "known-for": "Known For"
+  },
   "today": "Today",
   "week": "This Week",
   "trending": "Trending",

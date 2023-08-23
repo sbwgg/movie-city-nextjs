@@ -26,6 +26,15 @@ const Index = props => {
         }
     };
 
+    const formattedCurrency = value => {
+        return value.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+    };
+
     return (
         <section className={styles.movieWrapper}>
             <div className={styles.movieDetailsContainer}>
@@ -42,7 +51,7 @@ const Index = props => {
                     <li>{t('movie.year')}: <span>{movie.release_date}</span></li>
                     {movie.tagline && <li>{t('movie.tagline')}: <span>{movie.tagline}</span></li>}
                     {movie.genres &&
-                        <li>{t('movie.genre')}:
+                        <li>{t('global.genre')}:
                             {movie.genres.map(genre => {
                                 return (
                                     <NextLink
@@ -55,7 +64,7 @@ const Index = props => {
                             })}
                         </li>
                     }
-                    {movie.budget > 0 && <li>{t('movie.budget')}: <span>{movie.budget}$</span></li>}
+                    {movie.budget > 0 && <li>{t('movie.budget')}: <span>{formattedCurrency(movie.budget)}</span></li>}
                     <li>
                         {t('movie.duration')}:
                         <span>{movie.runtime} {t('movie.min')} / {toHoursAndMinutes(movie.runtime)}</span>

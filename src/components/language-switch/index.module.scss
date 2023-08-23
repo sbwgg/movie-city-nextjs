@@ -10,7 +10,7 @@
         }
 
         &Active button {
-            @apply bg-primary-gray;
+            @apply bg-primary-gray before:opacity-100;
             box-shadow: rgba(var(--color-black), 0.17) 0px -2px 23px 0px inset,
             rgba(var(--color-black), 0.09) 0px 4px 2px;
         }

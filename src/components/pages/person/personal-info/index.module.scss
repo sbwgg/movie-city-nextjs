@@ -13,7 +13,9 @@
         @apply pb-5;
     }
 
-    &Container {}
+    &Container {
+        @apply md:max-lg:grid md:max-lg:grid-cols-2;
+    }
 
     &Avatar {
         @apply rounded-[6px] overflow-hidden mb-5;

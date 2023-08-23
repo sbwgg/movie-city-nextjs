@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useTranslation} from 'next-i18next';
 import styles from './index.module.scss';
+import {truncateText} from '@/helpers';
 
 const Index = props => {
     const {
@@ -7,16 +9,30 @@ const Index = props => {
         biography
     } = props;
 
+    const {t} = useTranslation();
+    const [isTruncate, setIsTruncate] = useState(true);
+
+    const truncateLimit = 400;
+    const truncatedBiography = truncateText(biography, truncateLimit);
+
     return (
         <section className={styles.careerWrapper}>
             <h1>{name}</h1>
             <div className={styles.careerContainer}>
                 <div className={styles.careerBiography}>
-                    <h3>Biography</h3>
-                    <p>{biography}</p>
+                    <h3>{t('person.biography')}</h3>
+                    <p>{isTruncate ? truncatedBiography : biography}
+                        {isTruncate && biography.length > truncateLimit &&
+                            <span className="gradient-text"
+                                  onClick={() => setIsTruncate(false)}
+                            >
+                                Read More
+                            </span>
+                        }
+                    </p>
                 </div>
                 <div className={styles.careerKnown}>
-                    <h3>Known For</h3>
+                    <h3>{t('person.known-for')}</h3>
                 </div>
             </div>
         </section>

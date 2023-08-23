@@ -133,8 +133,21 @@
     }
 }
 
-.gradient-text {
+.gradient-text,
+.gradient-text-blurred {
     @apply bg-color-linear #{!important};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-blurred {
+    @apply relative hover:before:opacity-100;
+
+    &::before {
+        @apply content-[attr(data-text)] absolute blur-[3px]
+        opacity-0 transition-opacity duration-300;
+        background-image: inherit;
+        -webkit-background-clip: inherit;
+        -webkit-text-fill-color: inherit;
+    }
 }

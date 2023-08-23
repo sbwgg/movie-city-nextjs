@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'next-i18next';
 import styles from './index.module.scss';
 import ImageComponent from '@/components/UI/image-component';
 import {IMAGE_PATH} from '@/constants';
@@ -8,6 +9,7 @@ import Instagram from '@/assets/svg/instagram-icon.svg';
 import UrlIcon from '@/assets/svg/url-icon.svg';
 
 const Index = ({details, social}) => {
+    const {t} = useTranslation();
 
     const calculateAge = birthday => {
         const birthdate = new Date(birthday);
@@ -22,9 +24,9 @@ const Index = ({details, social}) => {
         return age;
     };
 
-    const calculateDeathAge = (birthdate, deathdate) => {
-        const birthDate = new Date(birthdate);
-        const deathDate = new Date(deathdate);
+    const calculateDeathAge = (birthday, death) => {
+        const birthDate = new Date(birthday);
+        const deathDate = new Date(death);
 
         let age = deathDate.getFullYear() - birthDate.getFullYear();
 
@@ -88,40 +90,44 @@ const Index = ({details, social}) => {
                                     rel="noopener"
                                     title="Visit Homepage"
                                 >
-                                    <ImageComponent src={UrlIcon} alt="url icon"/>
+                                    <ImageComponent src={UrlIcon} alt="url"/>
                                 </a>
                             }
                         </div>
                     }
-                    <h3>Personal Info</h3>
+                    <h3>{t('person.personal-info')}</h3>
                     <ul>
                         <li>
-                            <b>Known For</b>
+                            <b>{t('person.known-for')}</b>
                             <span>{details.known_for_department}</span>
                         </li>
+                        {(details.gender === 1 || 2) &&
+                            <li>
+                                <b>{t('person.gender')}</b>
+                                <span>
+                                    {details.gender === 2 ? t('person.male') : t('person.female')}
+                                </span>
+                            </li>
+                        }
                         <li>
-                            <b>Gender</b>
-                            <span>{details.gender === 2 ? 'Male' : 'Female'}</span>
-                        </li>
-                        <li>
-                            <b>Birthday</b>
+                            <b>{t('person.birthday')}</b>
                             <span>
                                 {details.birthday}
-                                {!details.deathday && <> ({calculateAge(details.birthday)} years)</>}
+                                {!details.deathday && <> ({calculateAge(details.birthday)} {t('person.years')})</>}
                             </span>
                         </li>
                         {details.deathday && <li>
-                            <b>Day of Death</b>
+                            <b>{t('person.death')}</b>
                             <span>
-                                {details.deathday} ({calculateDeathAge(details.birthday, details.deathday)} years)
+                                {details.deathday} ({calculateDeathAge(details.birthday, details.deathday)} {t('person.years')})
                             </span>
                         </li>}
                         <li>
-                            <b>Place of Birth</b>
+                            <b>{t('person.birthplace')}</b>
                             <span>{details.place_of_birth}</span>
                         </li>
                         <li>
-                            <b>Also Known As</b>
+                            <b>{t('person.known-as')}</b>
                             {details.also_known_as.map((item, index) => <span key={index}>{item}</span>)}
                         </li>
                     </ul>

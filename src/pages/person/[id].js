@@ -6,7 +6,6 @@ import PersonalInfo from '@/components/pages/person/personal-info';
 import Career from '@/components/pages/person/career';
 
 const Index = ({person}) => {
-
 	const {details, socialMedia} = person;
 
 	return (

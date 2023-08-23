@@ -43,9 +43,11 @@ export const throttle = (callbackFn, limit) => {
 }
 
 export const lowercaseString = str => {
-    const replacedStr = str.replace(/[^a-zA-Z0-9]+/g, '-');
+    if (str) {
+        const replacedStr = str.replace(/[^a-zA-Z0-9]+/g, '-');
 
-    return replacedStr.toLowerCase();
+        return replacedStr.toLowerCase();
+    }
 };
 
 export const capitalizeFirstLetter = text => {
@@ -56,4 +58,21 @@ export const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
+
+export const truncateText = (text, limit) => {
+    if (text.length > limit) {
+        const words = text.split(' ');
+        let truncatedText = '';
+        for (const word of words) {
+            if ((truncatedText + word).length <= limit - 3) {
+                truncatedText += word + ' ';
+            } else {
+                break;
+            }
+        }
+        return truncatedText.trim() + '...';
+    } else {
+        return text;
+    }
+};

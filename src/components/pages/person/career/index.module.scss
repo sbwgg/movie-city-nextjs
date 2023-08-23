@@ -12,7 +12,15 @@
         }
     }
 
-    &Biography {}
+    &Biography {
+        p {
+            @apply whitespace-pre-wrap;
+
+            span {
+                @apply font-bold cursor-pointer transition-opacity ml-1 hover:opacity-70;
+            }
+        }
+    }
 
     &Known{}
 }

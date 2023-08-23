@@ -49,6 +49,10 @@
     }
 
     &Content {
-        @apply text-[13px] italic break-words lg:px-3;
+        @apply text-[13px] italic break-words lg:px-3 flex flex-col;
+
+        &Full {
+            @apply italic font-bold text-[13px] mt-2 ml-auto;
+        }
     }
 }

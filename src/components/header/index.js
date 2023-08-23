@@ -123,10 +123,10 @@ const Index = () => {
                                     ])}
                                         onClick={toggleGenresDropdown}>
                                         <p className="gradient-text !absolute blur-[4px]">
-                                            {t('genres')}
+                                            {t('global.genres')}
                                         </p>
                                         <p className="gradient-text">
-                                            {t('genres')}
+                                            {t('global.genres')}
                                         </p>
 
                                         <div className={classNames([

@@ -1,10 +1,11 @@
-import React from 'react';
-import {IMAGE_PATH} from '@/constants';
-import ImageComponent from '@/components/UI/image-component';
-import styles from './index.module.scss';
+import React, {useState} from 'react';
+import {useTranslation} from 'next-i18next';
 import classNames from 'classnames';
 import StarRatings from 'react-star-ratings/build/star-ratings';
-import {useTranslation} from 'next-i18next';
+import {IMAGE_PATH} from '@/constants';
+import ImageComponent from '@/components/UI/image-component';
+import {truncateText} from '@/helpers';
+import styles from './index.module.scss';
 
 const Index = props => {
 	const {
@@ -13,6 +14,15 @@ const Index = props => {
 	} = props;
 
 	const {t} = useTranslation();
+	const [isTruncate, setIsTruncate] = useState([]);
+	const truncateLimit = 350;
+
+	const unTruncateString = id => {
+		setIsTruncate(
+			prevState => prevState.includes(id) ?
+				prevState.filter(item => item !== id) : [...prevState, id]
+		)
+	};
 
 	return (
 		<section className={classNames([
@@ -45,14 +55,25 @@ const Index = props => {
 													starEmptyColor="rgba(var(--color-black), 0.4)"
 													name="rating"
 												/>
-
 												<span>{review.author_details.rating}/10</span>
 											</div>
 										}
 									</div>
 								</div>
 								<div className={styles.reviewContent}>
-									{review.content}
+									<div dangerouslySetInnerHTML={{
+										__html: !isTruncate.includes(review.id) ?
+											truncateText(review.content, truncateLimit) : review.content
+									}}/>
+									{review.content.length > truncateLimit &&
+										<button
+											className={classNames(['gradient-text-blurred', styles.reviewContentFull])}
+											onClick={() => unTruncateString(review.id)}
+											data-text={!isTruncate.includes(review.id) ? 'Read More' : 'Read Less'}
+										>
+											{!isTruncate.includes(review.id) ? 'Read More' : 'Read Less'}
+										</button>
+									}
 								</div>
 							</div>
 						)

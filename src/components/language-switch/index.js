@@ -1,8 +1,8 @@
 import React from 'react';
 import {useRouter} from 'next/router';
 import Cookies from 'js-cookie';
-import styles from './index.module.scss';
 import classNames from 'classnames';
+import styles from './index.module.scss';
 
 const Index = () => {
 	const router = useRouter();
@@ -18,7 +18,8 @@ const Index = () => {
 				>
 					<button
 						type="button"
-						className="gradient-text"
+						className="gradient-text-blurred"
+						data-text={locale.toUpperCase()}
 						onClick={() => {
 							router.push({
 								pathname: router.pathname,

@@ -10,7 +10,7 @@ import {dispatch} from '@/helpers';
 import MovieCard from '@/components/movie-card';
 import Pagination from '@/components/pagination';
 
-const Query = () => {
+const Index = () => {
     const router = useRouter();
     const [isEmpty, setEmpty] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -70,7 +70,7 @@ const Query = () => {
     )
 }
 
-export default Query;
+export default Index;
 
 export const getServerSideProps = async ({ locale }) => ({
     props: {
