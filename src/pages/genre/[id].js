@@ -51,12 +51,12 @@ const Index = () => {
     return (
         <Default
             secondary
-            title={`Movie City - ${t('genre')} - ${genreItem && capitalizeFirstLetter(genreItem.name)}`}
-            description={`Movie City - ${t('genre')} - ${router.query.name}`}
+            title={`Movie City - ${t('global.genre')} - ${genreItem && capitalizeFirstLetter(genreItem.name)}`}
+            description={`Movie City - ${t('global.genre')} - ${router.query.name}`}
         >
             <div className="pt-10 genre-results">
                 <h1 className="text-right p-3">
-                    {t('genre')}:&nbsp;
+                    {t('global.genre')}:&nbsp;
                     <span className="gradient-text">
                         {genreItem && capitalizeFirstLetter(genreItem.name)}
                     </span>

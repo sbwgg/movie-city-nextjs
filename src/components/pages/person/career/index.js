@@ -21,15 +21,20 @@ const Index = props => {
             <div className={styles.careerContainer}>
                 <div className={styles.careerBiography}>
                     <h3>{t('person.biography')}</h3>
-                    <p>{isTruncate ? truncatedBiography : biography}
-                        {isTruncate && biography.length > truncateLimit &&
-                            <span className="gradient-text"
-                                  onClick={() => setIsTruncate(false)}
-                            >
+                    {biography ? (
+                        <p>{isTruncate ? truncatedBiography : biography}
+                            {isTruncate && biography.length > truncateLimit &&
+                                <span
+                                    className="gradient-text"
+                                    onClick={() => setIsTruncate(false)}
+                                >
                                 Read More
                             </span>
-                        }
-                    </p>
+                            }
+                        </p>
+                    ) : (
+                        <p>{t('person.missing-biography')} {name}</p>
+                    )}
                 </div>
                 <div className={styles.careerKnown}>
                     <h3>{t('person.known-for')}</h3>

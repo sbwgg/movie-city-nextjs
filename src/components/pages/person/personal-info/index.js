@@ -8,7 +8,12 @@ import Twitter from '@/assets/svg/twitter-icon.svg';
 import Instagram from '@/assets/svg/instagram-icon.svg';
 import UrlIcon from '@/assets/svg/url-icon.svg';
 
-const Index = ({details, social}) => {
+const Index = props => {
+    const {
+        details,
+        social
+    } = props;
+
     const {t} = useTranslation();
 
     const calculateAge = birthday => {
@@ -99,7 +104,7 @@ const Index = ({details, social}) => {
                     <ul>
                         <li>
                             <b>{t('person.known-for')}</b>
-                            <span>{details.known_for_department}</span>
+                            <span>{!details.known_for_department ? '-' : details.known_for_department}</span>
                         </li>
                         {(details.gender === 1 || 2) &&
                             <li>
@@ -111,10 +116,12 @@ const Index = ({details, social}) => {
                         }
                         <li>
                             <b>{t('person.birthday')}</b>
-                            <span>
-                                {details.birthday}
-                                {!details.deathday && <> ({calculateAge(details.birthday)} {t('person.years')})</>}
-                            </span>
+                            {details.birthday ? (
+                                <span>
+                                    {details.birthday}
+                                    {!details.deathday && <> ({calculateAge(details.birthday)} {t('person.years')})</>}
+                                </span>
+                            ) : (<span>-</span>)}
                         </li>
                         {details.deathday && <li>
                             <b>{t('person.death')}</b>
@@ -124,11 +131,15 @@ const Index = ({details, social}) => {
                         </li>}
                         <li>
                             <b>{t('person.birthplace')}</b>
-                            <span>{details.place_of_birth}</span>
+                            <span>{!details.place_of_birth ? '-' : details.place_of_birth}</span>
                         </li>
                         <li>
                             <b>{t('person.known-as')}</b>
-                            {details.also_known_as.map((item, index) => <span key={index}>{item}</span>)}
+                            {details.also_known_as.length > 0 ? (
+                                <>
+                                    {details.also_known_as.map((item, index) => <span key={index}>{item}</span>)}
+                                </>
+                            ) : (<span>-</span>)}
                         </li>
                     </ul>
                 </div>

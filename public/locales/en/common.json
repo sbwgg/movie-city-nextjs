@@ -45,7 +45,8 @@
     "birthplace": "Place of Birth",
     "known-as": "Also Known As",
     "biography": "Biography",
-    "known-for": "Known For"
+    "known-for": "Known For",
+    "missing-biography": "We don't have a biography for"
   },
   "today": "Today",
   "week": "This Week",
