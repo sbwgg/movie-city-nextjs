@@ -6,7 +6,8 @@ import PersonalInfo from '@/components/pages/person/personal-info';
 import Career from '@/components/pages/person/career';
 
 const Index = ({person}) => {
-	const {details, socialMedia} = person;
+	const {details, socialMedia, topPopularMovies} = person;
+	console.log(topPopularMovies);
 
 	return (
 		<Person
@@ -21,6 +22,7 @@ const Index = ({person}) => {
 			<Career
 				name={details.name}
 				biography={details.biography}
+				topMovies={topPopularMovies}
 			/>
 		</Person>
 	)

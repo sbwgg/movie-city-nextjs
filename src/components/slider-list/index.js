@@ -23,7 +23,7 @@ const Index = props => {
 
     return (
         <section className="slider-info-wrapper">
-            <h3>{t(title)}</h3>
+            {title && <h3>{t(title)}</h3>}
             <div className={styles.sliderListSlider}>
                 <Swiper
                     {...sliderListOptions}
@@ -60,9 +60,11 @@ const Index = props => {
                             }
                         </>
                     ) : (
-                        <h3 className={styles.sliderListEmpty}>
-                            {t(emptyMessage)} {movieTitle}
-                        </h3>
+                        <>
+                            {emptyMessage && <h3 className={styles.sliderListEmpty}>
+                                {t(emptyMessage)} {movieTitle}
+                            </h3>}
+                        </>
                     )}
                 </Swiper>
                 <button className={`swiper-nav-prev swiper-${listType}-prev`}>

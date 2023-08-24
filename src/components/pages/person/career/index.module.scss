@@ -1,26 +1,26 @@
 .career {
     &Wrapper {
+        @apply overflow-hidden;
+
         h1 {
             @apply font-bold text-[20px] mb-4
             lg:text-[35px];
         }
     }
 
-    &Container {
-        div:not(:last-child) {
-            @apply mb-7;
+    &Container > div:not(:last-child) {
+        @apply mb-7;
+    }
+
+    &Biography p {
+        @apply whitespace-pre-wrap;
+
+        span {
+            @apply font-bold cursor-pointer transition-opacity ml-1 hover:opacity-70;
         }
     }
 
-    &Biography {
-        p {
-            @apply whitespace-pre-wrap;
-
-            span {
-                @apply font-bold cursor-pointer transition-opacity ml-1 hover:opacity-70;
-            }
-        }
+    &Known section {
+        @apply py-1 bg-secondary-gray;
     }
-
-    &Known{}
 }

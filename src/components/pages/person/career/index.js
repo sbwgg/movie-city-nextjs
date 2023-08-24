@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import {useTranslation} from 'next-i18next';
 import styles from './index.module.scss';
 import {truncateText} from '@/helpers';
+import SliderList from '@/components/slider-list';
 
 const Index = props => {
     const {
         name,
-        biography
+        biography,
+        topMovies
     } = props;
 
     const {t} = useTranslation();
@@ -23,12 +25,12 @@ const Index = props => {
                     <h3>{t('person.biography')}</h3>
                     {biography ? (
                         <p>{isTruncate ? truncatedBiography : biography}
-                            {isTruncate && biography.length > truncateLimit &&
+                            {biography.length > truncateLimit &&
                                 <span
                                     className="gradient-text"
-                                    onClick={() => setIsTruncate(false)}
+                                    onClick={() => setIsTruncate(!isTruncate)}
                                 >
-                                Read More
+                                {isTruncate ? 'Read More' : 'Read Less'}
                             </span>
                             }
                         </p>
@@ -38,6 +40,10 @@ const Index = props => {
                 </div>
                 <div className={styles.careerKnown}>
                     <h3>{t('person.known-for')}</h3>
+                    <SliderList
+                        listType="top-popular-movies"
+                        items={topMovies}
+                    />
                 </div>
             </div>
         </section>
