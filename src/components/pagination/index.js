@@ -33,7 +33,7 @@ const Index = ({totalPages, currentPage, onPageChange}) => {
 		} else {
 			const currentPageIdx = currentPage - 1;
 
-			if (currentPage <= 2 + siblingCount) {
+			if (currentPage <= 2) {
 				// If the current page is within the range of the first few pages, show the first 3 pages
 				for (let i = 0; i < 3; i++) {
 					pageNumbersToShow.push(i + 1);

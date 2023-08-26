@@ -1,5 +1,3 @@
 .cinemaWrapper {
-    & > section {
-        @apply py-3 bg-secondary-gray;
-    }
+    @apply py-3 bg-secondary-gray;
 }

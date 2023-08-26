@@ -25,18 +25,16 @@
         --popular-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.19),
         0 6px 6px 0 rgba(0, 0, 0, 0.23);
         --inner-shadow: -2px -2px 92px -3px rgba(0, 0, 0, 0.23) inset;
-        --header-bg: 245, 245, 245;
+        --header-bg: rgba(245, 245, 245, 0.6);
+        --nav-bg: 245, 245, 245;
         --header-shadow: inset 4px -13px 50px -20px rgba(0, 0, 0, 0.66);
         --navigation-background: 0, 0, 0;
         --card-label-shadow: 0 14px 28px rgba(0, 0, 0, 0.2509803922),
         0 10px 10px rgba(0, 0, 0, 0.2196078431);
 
         --linear-gradient-main: linear-gradient(to right, rgb(250, 78, 147) 0, rgb(88, 181, 230) 100%);
+        --transparencyBackground: rgba(var(--color-white), 0.3);
     }
-}
-
-::selection {
-    @apply bg-primary-pink;
 }
 
 html {
@@ -56,12 +54,14 @@ html {
             --popular-shadow: 0 10px 20px 0 rgba(153, 153, 153, 0.19),
             0 6px 6px 0 rgba(41, 41, 41, 0.23);
             --inner-shadow: -2px -2px 92px -3px rgba(153, 153, 153, 0.19) inset;
-            --header-bg: 46, 48, 51;
+            --header-bg: rgba(46, 48, 51, 0.7);
+            --nav-bg: 46, 48, 51;
             --navigation-background: 249, 250, 251;
             --card-label-shadow: 0 14px 28px rgba(255, 255, 255, 0.2509803922),
             0 10px 10px rgba(255, 255, 255, 0.2196078431);
 
             --linear-gradient-main: linear-gradient(to right,rgb(88, 181, 230) 0, rgb(250, 78, 147) 100%);
+            --transparencyBackground: rgba(var(--color-white), 0.5);
         }
 
         .theme-switcher > span {
@@ -74,7 +74,7 @@ html {
 body {
     font-family: 'Montserrat', sans-serif;
     color: rgb(var(--foreground-rgb));
-    @apply bg-primary-gray min-h-[100vh];
+    @apply bg-primary-gray;
 }
 
 html,
@@ -82,9 +82,20 @@ body {
     scrollbar-gutter: stable;
 }
 
+::selection {
+    @apply bg-primary-pink;
+}
+
 .page {
-    @apply pt-[80px] lg:pt-[94px] relative z-[2];
-    background-color: inherit;
+    @apply pt-[80px] lg:pt-[94px] relative z-[2] bg-primary-gray;
+
+    &-container {
+        @apply min-h-[100vh]
+        max-lg:px-[15px]
+        lg:max-xl:max-w-[94%]
+        lg:mx-auto lg:w-full
+        xl:max-w-[1370px] xl:px-7;
+    }
 }
 
 .main-container {

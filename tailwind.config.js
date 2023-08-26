@@ -19,8 +19,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'header': 'rgba(var(--header-bg), 0.7)',
-        'mobileBackground': 'rgb(var(--navigation-background))'
+        'header': 'var(--header-bg)',
+        'mobileBackground': 'rgb(var(--navigation-background))',
+        'slight': 'var(--transparencyBackground)'
       },
       backgroundImage: {
         'main-radial': 'radial-gradient(circle, rgba(2,0,36,0) 0%, rgba(0,0,0,0.8015581232492998) 100%)',

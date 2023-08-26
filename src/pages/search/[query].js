@@ -25,7 +25,8 @@ const Index = () => {
         if (keyword) {
             getSearchResults(keyword, locale, currentPage)
                 .then(res => {
-                    dispatch(setSearchResults(res.results))
+                    const filtered = res.results.filter(item => item.poster_path !== null)
+                    dispatch(setSearchResults(filtered))
                     setEmpty(res.results.length === 0)
                     setTotalPages(res.total_pages)
                 })

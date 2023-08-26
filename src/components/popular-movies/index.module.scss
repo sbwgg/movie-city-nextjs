@@ -1,4 +1,6 @@
 .popularMovies {
+    @apply mb-7;
+
     &Slider {
         @apply py-2 relative z-[2] bg-primary-gray;
 

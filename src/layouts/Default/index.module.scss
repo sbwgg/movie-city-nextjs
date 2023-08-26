@@ -5,16 +5,14 @@
     }
 
     &Layout {
-        @apply pb-[50px] pt-7 bg-primary-gray;
+        @apply pb-[50px] pt-7;
 
-        &Poster {
-            &:has(> a) {
-                @apply relative;
-            }
+        &:has(> a) {
+            @apply relative;
+        }
 
-            & > div {
-                @apply relative z-[1];
-            }
+        & > div {
+            @apply relative z-[1];
         }
     }
 

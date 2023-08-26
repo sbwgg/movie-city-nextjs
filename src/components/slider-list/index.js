@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import {useTranslation} from 'next-i18next';
@@ -22,7 +23,7 @@ const Index = props => {
     const {t} = useTranslation();
 
     return (
-        <section className="slider-info-wrapper">
+        <section className={classNames(['slider-info-wrapper', props.className])}>
             {title && <h3>{t(title)}</h3>}
             <div className={styles.sliderListSlider}>
                 <Swiper

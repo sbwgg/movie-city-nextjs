@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-export const homeSlice = createSlice({
+export const index = createSlice({
     name: 'HOME',
     initialState: {
         trendingMovies: [],
@@ -18,6 +18,6 @@ export const homeSlice = createSlice({
    }
 });
 
-export const {setTrending, setPaginatedList} = homeSlice.actions;
+export const {setTrending, setPaginatedList} = index.actions;
 
-export default homeSlice.reducer;
+export default index.reducer;

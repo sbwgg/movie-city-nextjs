@@ -5,13 +5,12 @@ import SliderList from '@/components/slider-list';
 const Index = ({moviesListData}) => {
 
     return (
-        <section className={styles.cinemaWrapper}>
-            <SliderList
-                listType="cinema-movies"
-                title="toCinema"
-                items={moviesListData}
-            />
-        </section>
+        <SliderList
+            listType="cinema-movies"
+            title="toCinema"
+            items={moviesListData}
+            className={styles.cinemaWrapper}
+        />
     )
 }
 

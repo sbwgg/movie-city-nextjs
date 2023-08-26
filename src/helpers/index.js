@@ -1,5 +1,6 @@
 import store from '@/redux/store';
 import moment from 'moment';
+import {BACKDROP_PATH} from '@/constants';
 
 export const dispatch = action => {
     store.dispatch(action);
@@ -18,6 +19,14 @@ export const sliderListOptions = {
             slidesPerView: 4.5,
             slidesPerGroup: 4
         }
+    }
+};
+
+export const dynamicBackground = path => {
+    return {
+        backgroundImage: `
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(${BACKDROP_PATH(path)})`
     }
 }
 

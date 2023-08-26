@@ -42,13 +42,13 @@ const getMovieCast = (id, locale) => {
 
 const getSimilar = (id, locale) => {
 	return $api().get(`/movie/${id}/similar?api_key=${API_KEY}&language=${locale}`)
-		.then((response) => response.data.results)
+		.then((response) => response.data.results.filter(item => item.poster_path !== null))
 		.catch((error) => console.error(error))
 };
 
 const getRecommendations = (id, locale) => {
 	return $api().get(`/movie/${id}/recommendations?api_key=${API_KEY}&language=${locale}`)
-		.then((response) => response.data.results)
+		.then((response) => response.data.results.filter(item => item.poster_path !== null))
 		.catch((error) => console.error(error))
 };
 

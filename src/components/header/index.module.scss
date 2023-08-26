@@ -43,7 +43,7 @@
 
     &Container {
         @apply h-[100dvh] w-10/12 flex flex-col items-center fixed top-0 z-10 py-7 px-4
-        left-[-83.333333%] bg-[rgb(var(--header-bg))] transition-[left] duration-500
+        left-[-83.333333%] bg-[rgb(var(--nav-bg))] transition-[left] duration-500
         lg:flex-row lg:justify-between lg:w-full lg:bg-[transparent] lg:h-full
         lg:relative lg:top-[unset] lg:left-[unset] lg:p-0;
 
@@ -71,16 +71,18 @@
     }
 
     &List {
+        @apply max-lg:w-full;
+
         &Item {
             @apply max-lg:border-b-[2px] max-lg:border-solid max-lg:border-primary-blue;
 
             & > p {
                 @apply cursor-pointer pb-[5px] transition-[padding] duration-300
-                lg:pb-0 relative;
+                lg:pb-0 relative lg:pr-[25px];
 
                 &::before, &::after {
                     @apply content-[''] bg-color-linear w-[12px] h-[1px]
-                    absolute top-[50%] translate-y-[-50%] right-0 lg:right-[-20px]
+                    absolute top-[50%] translate-y-[-50%] right-0
                 }
 
                 &::after {
@@ -91,8 +93,12 @@
             &Open {
                 @apply max-lg:pb-[15px];
 
+                & > div {
+                    @apply max-lg:pt-[15px];
+                }
+
                 p {
-                    @apply max-lg:pb-[15px]
+                    @apply
                     after:rotate-0;
                 }
             }

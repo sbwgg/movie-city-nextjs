@@ -1,7 +1,28 @@
 .footer {
-    @apply h-[500px] w-full relative z-[1];
+    @apply h-[300px] lg:h-[450px] w-full relative z-[1];
 
     &Wrapper {
-        @apply w-full fixed left-0 bottom-0 z-[-1];
+        @apply w-full h-[inherit] fixed left-0 bottom-0 z-[-1]
+        flex flex-col items-center justify-center;
+
+        &:has(> a) > div {
+            @apply relative z-[1];
+        }
+    }
+
+    &Container {
+        @apply min-h-[unset] w-full;
+    }
+
+    &Main {
+        @apply flex flex-col items-center w-full py-7 px-5;
+
+        & > p {
+            @apply font-bold border-solid border-t-[1px] border-white py-2 mt-4 w-full text-center;
+        }
+    }
+
+    &Url {
+        @apply absolute w-full h-full top-0 left-0 z-[1];
     }
 }
