@@ -38,13 +38,15 @@ const Index = props => {
                         <p>{t('person.missing-biography')} {name}</p>
                     )}
                 </div>
-                <div className={styles.careerKnown}>
-                    <h3>{t('person.known-for')}</h3>
-                    <SliderList
-                        listType="top-popular-movies"
-                        items={topMovies}
-                    />
-                </div>
+                {topMovies.length > 0  &&
+                    <div className={styles.careerKnown}>
+                        <h3>{t('person.known-for')}</h3>
+                        <SliderList
+                            listType="top-popular-movies"
+                            items={topMovies}
+                        />
+                    </div>
+                }
             </div>
         </section>
     )

@@ -3,7 +3,7 @@ import {useRouter} from 'next/router';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
-import Default from '@/layouts/Default';
+import Empty from '@/layouts/Empty';
 import MovieList from '@/components/pages/genre/movie-list';
 import Pagination from '@/components/pagination';
 import {setGenreResults} from '@/redux/slices/genreSlice';
@@ -49,13 +49,12 @@ const Index = () => {
     };
 
     return (
-        <Default
-            secondary
+        <Empty
             title={`Movie City - ${t('global.genre')} - ${genreItem && capitalizeFirstLetter(genreItem.name)}`}
             description={`Movie City - ${t('global.genre')} - ${router.query.name}`}
         >
-            <div className="pt-10 genre-results">
-                <h1 className="text-right p-3">
+            <div className="genre-results">
+                <h1 className="text-right p-3 w-fit ml-auto">
                     {t('global.genre')}:&nbsp;
                     <span className="gradient-text">
                         {genreItem && capitalizeFirstLetter(genreItem.name)}
@@ -73,7 +72,7 @@ const Index = () => {
                     onPageChange={handlePageChange}
                 />
             </div>
-        </Default>
+        </Empty>
     )
 }
 

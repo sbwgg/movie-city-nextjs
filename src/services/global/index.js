@@ -24,8 +24,8 @@ export const getSearchResults = async (keyword, locale, page) => {
         .catch((error) => console.log(error))
 }
 
-export const getFooterMovie = async locale => {
-    return await $api().get(`/trending/movie/day?api_key=${API_KEY}&language=${locale}`)
+export const getPopularMovieOfDay = async () => {
+    return await $api().get(`/trending/movie/day?api_key=${API_KEY}`)
         .then((response) => response.data.results[0])
         .catch((error) => console.log(error))
 }

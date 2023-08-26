@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {useSelector} from 'react-redux';
+import {dispatch} from '@/helpers';
 import Default from '@/layouts/Default';
 import { fetchMovieData } from '@/services/movie';
 import Movie from '@/components/pages/movie';

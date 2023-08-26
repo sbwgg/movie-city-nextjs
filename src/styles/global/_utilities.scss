@@ -151,3 +151,11 @@
         -webkit-text-fill-color: inherit;
     }
 }
+
+.darken-background {
+    background-color: rgba(var(--color-white), 0.5);
+}
+
+.fixed-background {
+    @apply bg-no-repeat bg-center-top bg-fixed bg-cover;
+}

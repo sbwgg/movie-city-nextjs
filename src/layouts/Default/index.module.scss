@@ -2,18 +2,19 @@
     &Container {
         @apply grid gap-5
          lg:grid-cols-[1fr_.5fr];
-
-        &Full {
-            @apply block mt-[-80px] pt-[80px] pb-10
-            lg:mt-[-94px] lg:pt-[94px];
-        }
     }
 
     &Layout {
-        @apply bg-no-repeat bg-center-top bg-fixed bg-cover pb-[50px];
+        @apply pb-[50px] pt-7 bg-primary-gray;
 
-        &Poster > div {
-            @apply relative z-[1];
+        &Poster {
+            &:has(> a) {
+                @apply relative;
+            }
+
+            & > div {
+                @apply relative z-[1];
+            }
         }
     }
 
@@ -25,12 +26,11 @@
         @apply lg:p-2;
     }
 
-    &Left, &Right {
-        @apply mt-7;
-    }
-
     &Poster {
         @apply p-2;
-        background-color: rgba(var(--color-white), 0.5);
+    }
+
+    &Url {
+        @apply absolute w-full h-full top-0 left-0 z-[1];
     }
 }

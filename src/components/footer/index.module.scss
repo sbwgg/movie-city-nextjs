@@ -1,22 +1,7 @@
 .footer {
-    @apply h-[700px] w-full;
+    @apply h-[500px] w-full relative z-[1];
 
-    &Inner {
-        @apply h-full w-full flex flex-col items-center justify-center
-        bg-no-repeat bg-center-top bg-fixed bg-cover;
-
-        & > section {
-            @apply w-[90vw] h-[51vw] lg:w-[795px] lg:h-[470px] p-0 rounded-none mb-0;
-
-            iframe {
-                @apply w-full h-full;
-            }
-        }
-
-        & > a {
-            @apply font-bold italic text-[18px] mb-5
-            p-[10px_20px] rounded-[30px]
-            lg:text-[24px] bg-primary-gray;
-        }
+    &Wrapper {
+        @apply w-full fixed left-0 bottom-0 z-[-1];
     }
 }

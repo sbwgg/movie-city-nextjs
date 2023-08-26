@@ -35,6 +35,10 @@
     }
 }
 
+::selection {
+    @apply bg-primary-pink;
+}
+
 html {
     cursor: url('../assets/images/icons/mac-cursor.svg'), auto;
 
@@ -79,7 +83,8 @@ body {
 }
 
 .page {
-    @apply pt-[80px] lg:pt-[94px];
+    @apply pt-[80px] lg:pt-[94px] relative z-[2];
+    background-color: inherit;
 }
 
 .main-container {

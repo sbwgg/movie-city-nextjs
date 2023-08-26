@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 // import {useSelector} from 'react-redux';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import {useTranslation} from 'next-i18next';
-import Default from '@/layouts/Default';
+import Empty from '@/layouts/Empty';
 import Cast from '@/components/pages/cast';
 import MovieLabel from '@/components/pages/cast/movie-label';
 // import {dispatch} from '@/helpers';
@@ -19,7 +19,7 @@ const CastPage = ({ cast, crew, movieData }) => {
 	// 		const fetchData = async () => {
 	// 			try {
 	// 				const data = await fetchCastData(query, currentLocale);
-	{/*				data && dispatch(storeCredits(data));*/}
+	//				data && dispatch(storeCredits(data));
 
 	// 			} catch (error) {
 	// 				console.error(error);
@@ -39,8 +39,7 @@ const CastPage = ({ cast, crew, movieData }) => {
 	// }, [query, currentLocale]);
 
 	return (
-		<Default
-			secondary
+		<Empty
 			title={t('pageTitles.cast')}
 			description={`${movieData.title} - ${t('pageTitles.cast')}`}
 			image={movieData.backdrop_path}
@@ -51,7 +50,7 @@ const CastPage = ({ cast, crew, movieData }) => {
 				castData={cast}
 				crewData={crew}
 			/>
-		</Default>
+		</Empty>
 	)
 }
 
