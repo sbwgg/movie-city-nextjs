@@ -15,11 +15,11 @@ const Index = ({totalPages, currentPage, onPageChange}) => {
 
 	const handlePrevPage = useDebounce(() => {
 		currentPage > 1 && onPageChange(currentPage - 1);
-	}, 100);
+	}, 150);
 
 	const handleNextPage = useDebounce(() => {
 		currentPage < totalPages && onPageChange(currentPage + 1);
-	}, 100);
+	}, 150);
 
 	const siblingCount = 1; // Adjust this value to control the number of siblings to show on each side
 

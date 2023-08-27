@@ -25,7 +25,8 @@ const Index = () => {
         if (id) {
             getGenreResults(locale, id, currentPage)
                 .then(res => {
-                    dispatch(setGenreResults(res.results))
+                    const sortedResponse = res.results.sort((a, b) => b.vote_average - a.vote_average)
+                    dispatch(setGenreResults(sortedResponse))
                     setTotalPages(res.total_pages)
                 });
 

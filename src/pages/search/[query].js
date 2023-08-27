@@ -25,8 +25,9 @@ const Index = () => {
         if (keyword) {
             getSearchResults(keyword, locale, currentPage)
                 .then(res => {
-                    const filtered = res.results.filter(item => item.poster_path !== null)
-                    dispatch(setSearchResults(filtered))
+                    const filtered = res.results.filter(item => item.poster_path !== null);
+                    const sortedByPopularity = filtered.sort((a, b) => b.vote_average - a.vote_average)
+                    dispatch(setSearchResults(sortedByPopularity))
                     setEmpty(res.results.length === 0)
                     setTotalPages(res.total_pages)
                 })

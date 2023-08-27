@@ -17,7 +17,8 @@ const Index = () => {
     useEffect(() => {
         getMoviePaginations(locale, currentPage)
             .then(res => {
-                dispatch(setPaginatedList(res.results));
+                const sortedResults = res.results.sort((a, b) => b.vote_average - a.vote_average)
+                dispatch(setPaginatedList(sortedResults));
                 setTotalPages(res.total_pages);
             });
 
