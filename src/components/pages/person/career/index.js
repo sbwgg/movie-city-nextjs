@@ -1,14 +1,19 @@
 import React, {useState} from 'react';
+import classNames from 'classnames';
 import {useTranslation} from 'next-i18next';
-import styles from './index.module.scss';
-import {truncateText} from '@/helpers';
+import {lowercaseString, truncateText, extractYear} from '@/helpers';
 import SliderList from '@/components/slider-list';
+import NextLink from '@/components/UI/NextLink';
+import ImageComponent from '@/components/UI/image-component';
+import {IMAGE_PATH, BACKDROP_PATH} from '@/constants';
+import styles from './index.module.scss';
 
 const Index = props => {
     const {
         name,
         biography,
-        topMovies
+        topMovies,
+        careerList
     } = props;
 
     const {t} = useTranslation();
@@ -30,7 +35,7 @@ const Index = props => {
                                     className="gradient-text"
                                     onClick={() => setIsTruncate(!isTruncate)}
                                 >
-                                {isTruncate ? 'Read More' : 'Read Less'}
+                                {isTruncate ? t('global.more') : t('global.less')}
                             </span>
                             }
                         </p>
@@ -38,7 +43,7 @@ const Index = props => {
                         <p>{t('person.missing-biography')} {name}</p>
                     )}
                 </div>
-                {topMovies.length > 0  &&
+                {topMovies.length > 0 &&
                     <div className={styles.careerKnown}>
                         <h3>{t('person.known-for')}</h3>
                         <SliderList
@@ -48,7 +53,47 @@ const Index = props => {
                     </div>
                 }
             </div>
+
+            <div className={classNames([
+                styles.careerListWrapper, 'darken-background'
+            ])}>
+                <h3>{t('person.acting-career')}</h3>
+                <ul className={styles.careerList}>
+                    {careerList.map((movie, index) =>
+                        <li className={styles.careerListItem}
+                            key={`career-movie-${index}`}
+                        >
+                            <NextLink href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}>
+                                <ImageComponent
+                                    src={IMAGE_PATH(movie.poster_path)}
+                                    alt={`Title: ${movie.title}`}
+                                />
+                            </NextLink>
+                            <div className={styles.careerListDescription}>
+                                {movie.release_date && <span>{extractYear(movie.release_date)}</span>}
+                                <NextLink
+                                    className="font-bold w-fit"
+                                    href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
+                                >
+                                    {movie.title}
+                                </NextLink>
+                                <p>
+                                    {t('person.character')}:
+                                    <span className="font-bold"> {movie.character} </span>
+                                </p>
+                            </div>
+                            {movie.backdrop_path &&
+                                <div
+                                    className={styles.careerListItemBackground}
+                                    style={{backgroundImage: `url(${BACKDROP_PATH(movie.backdrop_path)})`}}
+                                />
+                            }
+                        </li>
+                    )}
+                </ul>
+            </div>
         </section>
+
     )
 }
 

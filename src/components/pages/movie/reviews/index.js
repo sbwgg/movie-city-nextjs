@@ -69,9 +69,9 @@ const Index = props => {
 										<button
 											className={classNames(['gradient-text-blurred', styles.reviewContentFull])}
 											onClick={() => unTruncateString(review.id)}
-											data-text={!isTruncate.includes(review.id) ? 'Read More' : 'Read Less'}
+											data-text={!isTruncate.includes(review.id) ? t('global.more') : t('global.less')}
 										>
-											{!isTruncate.includes(review.id) ? 'Read More' : 'Read Less'}
+											{!isTruncate.includes(review.id) ? t('global.more') : t('global.less')}
 										</button>
 									}
 								</div>

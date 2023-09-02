@@ -5,13 +5,13 @@ const getDetails = (id, locale) => {
     return $api().get(`/person/${id}?api_key=${API_KEY}&language=${locale}`)
         .then(response => response.data)
         .catch(error => console.error(error))
-}
+};
 
 const getSocialMedia = id => {
     return $api().get(`/person/${id}/external_ids?api_key=${API_KEY}`)
         .then(response => response.data)
         .catch(error => console.error(error))
-}
+};
 
 const getTopPopularMovies = (id, locale) => {
     return $api().get(`/person/${id}/movie_credits?api_key=${API_KEY}&language=${locale}`)
@@ -23,26 +23,46 @@ const getTopPopularMovies = (id, locale) => {
             return top8PopularMovies;
         })
         .catch(error => console.error(error))
-}
+};
+
+const getCareerList = (id, locale) => {
+    return $api().get(`/person/${id}/movie_credits?api_key=${API_KEY}&language=${locale}`)
+        .then(response => {
+            const movieList = response.data.cast
+                .filter(movie => movie.release_date && movie.poster_path)
+                .sort((a, b) => {
+                    const dateA = new Date(a.release_date);
+                    const dateB = new Date(b.release_date);
+
+                    return dateB - dateA;
+                });
+
+            return movieList;
+        })
+        .catch(error => console.error(error));
+};
 
 export const fetchPersonData = async (id, locale) => {
     const promises = [
         getDetails(id, locale),
         getSocialMedia(id),
-        getTopPopularMovies(id, locale)
+        getTopPopularMovies(id, locale),
+        getCareerList(id, locale)
     ];
 
     try {
         const [
             details,
             socialMedia,
-            topPopularMovies
+            topPopularMovies,
+            career
         ] = await Promise.all(promises);
 
        const personInformation = {
            details,
            socialMedia,
-           topPopularMovies
+           topPopularMovies,
+           career
        };
 
         return personInformation;

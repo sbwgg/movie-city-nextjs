@@ -2,7 +2,9 @@
   "global": {
     "search": "Search",
     "genre": "Genre",
-    "genres": "Genres"
+    "genres": "Genres",
+    "more": "Read More",
+    "less": "Read Less"
   },
   "pageTitles": {
     "cast": "Cast & Crew"
@@ -46,7 +48,9 @@
     "known-as": "Also Known As",
     "biography": "Biography",
     "known-for": "Known For",
-    "missing-biography": "We don't have a biography for"
+    "missing-biography": "We don't have a biography for",
+    "acting-career": "Acting Career",
+    "character": "As"
   },
   "today": "Today",
   "week": "This Week",

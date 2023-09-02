@@ -54,7 +54,7 @@ const getRecommendations = (id, locale) => {
 
 const getReviews = id => {
 	return $api().get(`/movie/${id}/reviews?api_key=${API_KEY}`)
-		.then((response) => response.data.results.slice(0, 10))
+		.then((response) => response.data.results)
 		.catch((error) => console.error(error))
 }
 

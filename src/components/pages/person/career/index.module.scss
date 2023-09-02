@@ -23,4 +23,41 @@
     &Known section {
         @apply py-1 bg-secondary-gray;
     }
+
+    &List {
+        @apply mt-5;
+
+        &Wrapper {
+            @apply p-5 mt-7 w-full h-full rounded-[6px] overflow-hidden;
+        }
+
+        &Item {
+            @apply grid grid-cols-[85px_1fr] relative
+            rounded-[8px] overflow-hidden z-[1]
+            [&:not(:last-child)]:mb-5;
+            box-shadow: rgba(var(--color-black) 0.1) 0px 10px 15px -3px, rgba(var(--color-black), 0.05) 0px 4px 6px -2px;
+
+            &::before {
+                @apply content-[''] w-full h-full absolute inset-0
+                bg-color-linear z-[-1] opacity-40;
+            }
+
+            &Background {
+                @apply absolute w-full h-full inset-0 z-[-1]
+                bg-no-repeat bg-cover bg-center opacity-40;
+            }
+        }
+
+        &Description {
+            @apply flex flex-col p-4 pt-2;
+
+            span, p {
+                @apply text-[14px];
+            }
+
+            span {
+                @apply mb-5 font-bold italic;
+            }
+        }
+    }
 }

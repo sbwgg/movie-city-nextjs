@@ -23,6 +23,7 @@ const Index = props => {
             <NextLink
                 className={styles.movie}
                 href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
+                title={movie.title}
             >
                 <figure className="full-figure">
                     <motion.div
