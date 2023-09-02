@@ -36,7 +36,11 @@ const getClip = (id, locale) => {
 
 const getMovieCast = (id, locale) => {
 	return $api().get(`/movie/${id}/credits?api_key=${API_KEY}&language=${locale}`)
-		.then((response) => response.data.cast.slice(0, 9))
+		.then((response) => {
+			const movieCast =  response.data.cast.filter(person => person.profile_path !== null)
+
+			return movieCast.slice(0, 9);
+		})
 		.catch((error) => console.error(error))
 };
 
