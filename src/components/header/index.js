@@ -39,26 +39,18 @@ const Index = () => {
         }
     };
 
-    const openMobileMenu = () => {
-      return setNavOpen(true);
-    };
+    const openMobileMenu = () => setNavOpen(true);
 
     const closeMobileMenu = () => {
         setNavOpen(false);
         setShowGenres(false);
     };
 
-    const handleSearchQuery = e => {
-        return setSearchQuery(e.target.value)
-    };
+    const handleSearchQuery = e => setSearchQuery(e.target.value);
 
-    const toggleGenresDropdown = () => {
-        setShowGenres(!showGenres);
-    }
+    const toggleGenresDropdown = () => setShowGenres(!showGenres);
 
-    const searchQueryIsEmpty = () => {
-        return searchQuery.trim().length === 0;
-    }
+    const isSearchQueryEmpty = searchQuery.trim().length === 0;
 
     useClickOutSide(mobileMenuContainer, closeMobileMenu, mobileMenuTrigger);
 
@@ -106,11 +98,11 @@ const Index = () => {
                                     />
                                     <NextLink
                                         href={`/search/${searchQuery}`}
-                                        className={searchQueryIsEmpty() ? 'disabled' : ''}
+                                        className={isSearchQueryEmpty ? 'disabled' : ''}
                                     >
                                         <Button
                                             design="primary"
-                                            type={searchQueryIsEmpty() ? 'button' : 'submit'}
+                                            type={isSearchQueryEmpty ? 'button' : 'submit'}
                                         >
                                             {t('global.search')}
                                         </Button>
@@ -134,15 +126,11 @@ const Index = () => {
                                             showGenres && styles.navDropdownActive
                                         ])}>
                                             <ul className={styles.navDropdownBody}>
-                                                {genreList.map(genre => {
-                                                    return (
-                                                        <li key={genre.id}>
-                                                            <NextLink href={`/genre/${genre.id}?name=${encodeURIComponent(genre.name)}`}>
-                                                                {genre.name}
-                                                            </NextLink>
-                                                        </li>
-                                                    )
-                                                })}
+                                                {genreList.map(genre => <li key={genre.id}>
+                                                    <NextLink href={`/genre/${genre.id}?name=${encodeURIComponent(genre.name)}`}>
+                                                        {genre.name}
+                                                    </NextLink>
+                                                </li>)}
                                             </ul>
                                         </div>
                                     </li>

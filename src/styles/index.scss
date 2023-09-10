@@ -38,6 +38,7 @@
 }
 
 html {
+    scroll-behavior: smooth;
     cursor: url('../assets/images/icons/mac-cursor.svg'), auto;
 
     &.dark {
@@ -126,7 +127,7 @@ figure {
 
     .full-sized & {
         & > div {
-            @apply h-full;
+            @apply h-auto;
         }
 
         .fallback-img {

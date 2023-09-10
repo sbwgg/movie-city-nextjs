@@ -30,13 +30,9 @@ export const dynamicBackground = path => {
     }
 }
 
-export const roundNumber = number => {
-    return Math.round(number * 100) / 100;
-};
+export const roundNumber = number => Math.round(number * 100) / 100;
 
-export const extractYear = date => {
-    return moment(date, 'YYYY/MM/DD').year();
-};
+export const extractYear = date => moment(date, 'YYYY/MM/DD').year();
 
 export const throttle = (callbackFn, limit) => {
     let wait = false;

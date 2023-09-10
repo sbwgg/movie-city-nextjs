@@ -76,9 +76,7 @@ const Index = props => {
                                 />
                             </div>
                         }
-                        <p className={classNames([styles.movieTitle, 'text-oneline'])}>
-                            {movie.title}
-                        </p>
+                        <p className={styles.movieTitle}>{movie.title}</p>
                     </motion.figcaption>
                 </figure>
             </NextLink>

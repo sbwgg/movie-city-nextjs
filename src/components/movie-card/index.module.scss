@@ -3,9 +3,10 @@
 
     &Details {
         @apply max-lg:hidden
-        absolute w-full h-full inset-0 z-[2] p-2 text-white
-        opacity-0 invisible transition-all duration-500;
-        background-color: rgba(0, 0, 0, 0.5);
+        absolute w-full h-full top-0 left-0 z-[2] p-2 text-white
+        backdrop-blur-sm translate-y-[100%];
+        background-color: rgba(0, 0, 0, 0.3);
+        transition: transform .3s ease;
 
         ul {
             @apply text-sm my-5;
@@ -41,7 +42,7 @@
     }
 
     &Image {
-        @apply relative h-auto;
+        @apply relative h-auto overflow-hidden;
         box-shadow: var(--popular-shadow);
 
         &::after {
@@ -50,22 +51,19 @@
             box-shadow: inset 0 0 25px 25px #000000;
         }
 
-        div {
-            @apply overflow-hidden;
-        }
-
         img {
             @apply w-full h-full object-cover;
-            transform: translateZ(0) scale(1.02);
+            //transform: translateZ(0) scale(1.02);
         }
 
         &Detailed:hover {
-            img {
-                @apply scale-[1.5];
-            }
-
+            //img {
+            //    @apply scale-[1.5];
+            //}
+            //
             & > div:not(:only-child):last-child {
-                @apply opacity-100 visible;
+                //@apply opacity-100 visible;
+                @apply translate-y-0;
             }
         }
     }

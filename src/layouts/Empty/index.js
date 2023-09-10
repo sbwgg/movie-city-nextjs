@@ -12,7 +12,7 @@ const Index = props => {
 		description,
 		children,
 		image,
-		backgroundPoster,
+		backgroundPoster
 	} = props;
 
 	return (
