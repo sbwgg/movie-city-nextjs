@@ -4,6 +4,7 @@ import Default from '@/layouts/Default';
 import { fetchMovieData } from '@/services/movie';
 import Movie from '@/components/pages/movie';
 import MovieClip from '@/components/pages/movie/movie-clip';
+import FullMovie from '@/components/pages/movie/FullMovie';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/movie/reviews';
 import Loader from '@/components/loader';
@@ -37,7 +38,8 @@ const Index = ({ movie }) => {
                 movieTitle={info.title}
                 items={cast}
             />
-            {clip ? <MovieClip clipKey={clip.key} /> : null}
+            {/*{clip ? <MovieClip clipKey={clip.key} /> : null}*/}
+            <FullMovie movieTitle={info.title} movieId={info.id}/>
             <SliderList
                 listType="recommended"
                 title="movie.recommendedMovies"
