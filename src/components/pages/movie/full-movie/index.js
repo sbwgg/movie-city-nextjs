@@ -3,11 +3,12 @@ import classNames from 'classnames';
 import styles from './index.module.scss';
 
 const Index = props => {
-	const {movieId} = props;
+	const {movieId, movieTitle} = props;
 
 	const kinoBoxOptions = {
 		search: {
 			imdb: movieId,
+			title: movieTitle
 		},
 		players: {
 			alloha: {
