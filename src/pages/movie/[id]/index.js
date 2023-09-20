@@ -19,7 +19,7 @@ const Index = ({ movie }) => {
         clip: movie.clip || null,
     };
 
-    const { info, clip, cast, recommendations, similar, reviews } = movieWithDefaultClip;
+    const { info, clip, cast, recommendations, similar, reviews, imdbId } = movieWithDefaultClip;
 
     return (
         <Default
@@ -39,7 +39,7 @@ const Index = ({ movie }) => {
                 items={cast}
             />
             {/*{clip ? <MovieClip clipKey={clip.key} /> : null}*/}
-            <FullMovie movieTitle={info.title} movieId={info.id}/>
+            <FullMovie movieTitle={info.title} movieId={imdbId.imdb_id}/>
             <SliderList
                 listType="recommended"
                 title="movie.recommendedMovies"
