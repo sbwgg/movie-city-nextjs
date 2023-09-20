@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import Script from 'next/script';
 import classNames from 'classnames';
 import styles from './index.module.scss';
 
@@ -44,7 +43,6 @@ const Index = props => {
 	return (
 		<section className={classNames([styles.clipContainer, 'movie-info-wrapper'])}>
 			<div className="kinobox_player"></div>
-			<Script src="https://kinobox.tv/kinobox.min.js"/>
 		</section>
 	)
 }

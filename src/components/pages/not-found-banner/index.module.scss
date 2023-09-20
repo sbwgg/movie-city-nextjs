@@ -1,26 +1,14 @@
 .notFound {
     &Wrapper {
         @apply h-[100vh] w-full;
+
+        & > a {
+            @apply w-full h-full absolute inset-0;
+        }
     }
 
     &Container {
-        @apply max-w-[80%] grid lg:grid-cols-2 h-full items-center gap-[20px]
-        lg:max-w-[95%] mx-auto overflow-hidden;
-
-        &::before {
-            @apply fixed inset-0 w-full h-full content-[''] bg-no-repeat bg-center bg-cover z-[-1] invisible;
-            background-image: url('../../../assets/images/scary-image.png');
-            animation: tilt-n-move-shaking .2s ease infinite;
-            box-shadow: 0 0 315px rgba(0,0,0,1) inset;
-        }
-
-        &Scare::before {
-            @apply visible;
-        }
-    }
-
-    &Text {
-        @apply text-center;
+        @apply text-center absolute z-[1] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
 
         h1 {
             @apply text-[150px] lg:text-[250px] font-bold leading-[normal];
@@ -35,35 +23,4 @@
             @apply max-w-[200px] mx-auto mt-5;
         }
     }
-
-    &Media {
-        @apply w-full h-full rounded-2xl overflow-hidden relative
-        lg:max-h-[500px] bg-color-linear p-1;
-
-        video {
-            @apply w-full h-full object-cover rounded-xl;
-        }
-
-        &Toggle {
-            @apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[2]
-            w-[80px] h-[80px] rounded-full hover:scale-90 transition-transform;
-            background: {
-                size: 25px 25px;
-                position: center;
-                repeat: no-repeat;
-                image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 384 512'%3E%3Cpath d='M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z'/%3E%3C/svg%3E");
-            }
-
-            &Active {}
-        }
-    }
-}
-@keyframes tilt-n-move-shaking {
-    0% { transform: translateX(0) scale(1) }
-    25% { transform: translateY(-9px)  scale(1.9)}
-    35% { transform: translateY(-9px) rotate(17deg)  scale(1.5)}
-    55% { transform: translateY(-9px) rotate(-17deg)  scale(2.2)}
-    65% { transform: translateY(-9px) rotate(17deg)  scale(1.7)}
-    75% { transform: translateY(-9px) rotate(-17deg)  scale(1.5)}
-    100% { transform: translateY(0) rotate(0) scale(1) }
 }

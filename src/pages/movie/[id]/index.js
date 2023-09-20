@@ -4,7 +4,7 @@ import Default from '@/layouts/Default';
 import { fetchMovieData } from '@/services/movie';
 import Movie from '@/components/pages/movie';
 import MovieClip from '@/components/pages/movie/movie-clip';
-import FullMovie from '@/components/pages/movie/FullMovie';
+import FullMovie from '@/components/pages/movie/full-movie';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/movie/reviews';
 import Loader from '@/components/loader';
