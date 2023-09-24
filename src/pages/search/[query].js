@@ -25,6 +25,7 @@ const Index = () => {
         if (keyword) {
             getSearchResults(keyword, locale, currentPage)
                 .then(res => {
+                    console.log(res);
                     const filtered = res.results.filter((item) => filterFetchResults(item));
                     const sortedByPopularity = filtered.sort((a, b) => b.vote_average - a.vote_average)
                     dispatch(setSearchResults(sortedByPopularity))
@@ -49,6 +50,7 @@ const Index = () => {
                     return (
                         <MediaCard
                             detailed
+                            mediaType={media.media_type}
                             media={media}
                             delay={key}
                             key={media.id}

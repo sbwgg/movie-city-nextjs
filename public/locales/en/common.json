@@ -3,6 +3,8 @@
     "search": "Search",
     "genre": "Genre",
     "genres": "Genres",
+    "genres_movies": "Genres",
+    "genres_tv": "TV Genres",
     "more": "Read More",
     "less": "Read Less"
   },
@@ -30,7 +32,13 @@
     "missingSimilars": "We don't have anything similar for",
     "missingCast": "We don't have the list of Cast and Crew for",
     "viewMore": "View More",
-    "back": "Back to main"
+    "back": "Back to main",
+    "number_of_episodes": "Number of Episodes",
+    "number_of_seasons": "Number of Seasons",
+    "first_air_date": "First air date",
+    "last_air_date": "Last air date",
+    "created_by": "Crated By",
+    "episode_run_time": "Episode runtime"
   },
   "cast": {
     "cast": "Cast",
@@ -54,7 +62,8 @@
   },
   "today": "Today",
   "week": "This Week",
-  "trending": "Trending",
+  "trendingMovies": "Trending Movies",
+  "trendingShows": "Trending Shows",
   "topMovies":  "Top Movies",
   "toCinema": "Now Playing",
   "searchResults": "Search Results for",

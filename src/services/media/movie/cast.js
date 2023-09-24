@@ -1,6 +1,6 @@
 import {$api} from '@/api';
 import {API_KEY} from '@/constants';
-import {getMovieById} from '@/services/movie/index';
+import {getMovieById} from '@/services/media/movie/index';
 
 const getCast = (id, locale) => {
 	return $api().get(`/movie/${id}/credits?api_key=${API_KEY}&language=${locale}`)

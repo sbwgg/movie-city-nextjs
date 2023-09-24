@@ -3,6 +3,8 @@
     "search": "Поиск",
     "genre": "Жанр",
     "genres": "Жанры",
+    "genres_movies": "Филмьмы",
+    "genres_tv": "Сериалы",
     "more": "Показать больше",
     "less": "Скрыть"
   },
@@ -22,7 +24,7 @@
     "totalVotes": "Общие отзывы",
     "about": "Описание",
     "similarMovies": "Похожие фильмы",
-    "recommendedMovies": "Рекомендуемые фильмы",
+    "recommendedMovies": "Рекомендуемые",
     "popularity": "Популярность",
     "reviews": "Отзывы",
     "missingReview": "У нас нет отзывов для",
@@ -30,7 +32,13 @@
     "missingSimilars": "У нас нет похожих на",
     "missingCast": "У нас нет список актерев на",
     "viewMore": "Подробно",
-    "back": "Вернуться на главную"
+    "back": "Вернуться на главную",
+    "number_of_episodes": "Kоличество серий",
+    "number_of_seasons": "Kоличество сезонов",
+    "first_air_date": "Первая серия",
+    "last_air_date": "Последняя серия",
+    "created_by": "Создатели",
+    "episode_run_time": "Episode runtime"
   },
   "cast": {
     "cast": "Актеры",
@@ -54,7 +62,8 @@
   },
   "today": "Сегодня",
   "week": "На этой неделе",
-  "trending": "В тренде",
+  "trendingMovies": "Трендовые Фильмы",
+  "trendingShows": "Трендовые Сериалы",
   "topMovies":  "Топовые фильмы",
   "toCinema": "В Кинотеатрах",
   "searchResults": "Результаты поиска",

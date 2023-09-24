@@ -19,7 +19,7 @@ export const getTopMovies = async (locale, page) => {
 };
 
 export const getSearchResults = async (keyword, locale, page) => {
-        return await $api().get(`/search/movie?api_key=${API_KEY}&language=${locale}&page=${page || 1}`, {
+        return await $api().get(`/search/multi?api_key=${API_KEY}&language=${locale}&page=${page || 1}`, {
                 params: {
                     query: keyword.query
                 }

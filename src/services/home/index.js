@@ -8,14 +8,15 @@ export const getMoviePaginations = async (locale, page) => {
         .catch((error) => console.error(error))
 }
 
-export const getCinema = async locale => {
-    return await $api().get(`/movie/now_playing?api_key=${API_KEY}&language=${locale}&page=1`)
+export const getTrendingMovie = async (locale, time) => {
+    return await $api().get(`/trending/movie/${time}?api_key=${API_KEY}&language=${locale}`)
         .then((response) => response.data.results.filter(item => filterFetchResults(item)))
         .catch((error) => console.error(error))
 }
 
-export const getTrending = async (locale, time) => {
-    return await $api().get(`/trending/movie/${time}?api_key=${API_KEY}&language=${locale}`)
+
+export const getTrendingTv = async (locale, time) => {
+    return await $api().get(`/trending/tv/${time}?api_key=${API_KEY}&language=${locale}`)
         .then((response) => response.data.results.filter(item => filterFetchResults(item)))
         .catch((error) => console.error(error))
 }

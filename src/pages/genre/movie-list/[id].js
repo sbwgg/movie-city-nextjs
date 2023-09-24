@@ -6,15 +6,15 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Empty from '@/layouts/Empty';
 import MovieList from '@/components/pages/genre/movie-list';
 import Pagination from '@/components/pagination';
-import {setGenreResults} from '@/redux/slices/genreSlice';
-import {getGenreResults} from '@/services/genre';
+import {setMovieGenreResults} from '@/redux/slices/genreSlice';
+import {getMovieGenreResults} from '@/services/genre';
 import {dispatch, capitalizeFirstLetter, filterFetchResults} from '@/helpers';
 
 const Index = () => {
     const router = useRouter();
     const id = router.query.id;
     const locale = router.locale;
-    const {genreResults, genreList} = useSelector(state => state.genre);
+    const {movieGenreResults, movieGenreList} = useSelector(state => state.genre);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [genreItem, setGenreItem] = useState({});
@@ -23,16 +23,16 @@ const Index = () => {
 
     useEffect(() => {
         if (id) {
-            getGenreResults(locale, id, currentPage)
+            getMovieGenreResults(locale, id, currentPage)
                 .then(res => {
                     const filteredResults = res.results.filter(item => filterFetchResults(item))
                     const sortedResponse = filteredResults.sort((a, b) => b.vote_average - a.vote_average)
-                    dispatch(setGenreResults(sortedResponse))
+                    dispatch(setMovieGenreResults(sortedResponse))
                     setTotalPages(res.total_pages)
                 });
 
             return () => {
-                dispatch(setGenreResults([]))
+                dispatch(setMovieGenreResults([]))
             }
         }
     }, [id, locale, currentPage]);
@@ -42,9 +42,9 @@ const Index = () => {
     }, [id])
 
     useEffect(() => {
-        const updatedGenreItem = genreList.find(item => item.id === Number(id));
+        const updatedGenreItem = movieGenreList.find(item => item.id === Number(id));
         setGenreItem(updatedGenreItem);
-    }, [genreList, id, locale]);
+    }, [movieGenreList, id, locale]);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
@@ -67,7 +67,7 @@ const Index = () => {
                     currentPage={currentPage}
                     onPageChange={handlePageChange}
                 />
-                <MovieList results={genreResults}/>
+                <MovieList results={movieGenreResults}/>
                 <Pagination
                     totalPages={totalPages}
                     currentPage={currentPage}

@@ -22,7 +22,7 @@ const NotFoundBanner = () => {
 		>
 			{popularMovie.backdrop_path &&
 				<NextLink
-					href={`/movie/${popularMovie.id}-${lowercaseString(popularMovie.original_title)}`}
+					href={`/media/movie/${popularMovie.id}-${lowercaseString(popularMovie.original_title)}`}
 				/>
 			}
 			<div className={styles.notFoundContainer}>

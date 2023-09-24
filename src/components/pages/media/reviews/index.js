@@ -26,7 +26,7 @@ const Index = props => {
 
 	return (
 		<section className={classNames([
-			styles.reviewWrapper, 'movie-info-wrapper'
+			styles.reviewWrapper, 'movie-list-info-wrapper'
 		])}>
 			<h3>{t('media.reviews')}</h3>
 			{reviews.length ? (

@@ -71,7 +71,7 @@
     }
 
     &List {
-        @apply max-lg:w-full;
+        @apply max-lg:w-full lg:flex lg:items-center lg:gap-8;
 
         &Item {
             @apply max-lg:border-b-[2px] max-lg:border-solid max-lg:border-primary-blue;

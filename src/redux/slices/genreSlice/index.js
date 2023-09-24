@@ -3,21 +3,31 @@ import {createSlice} from '@reduxjs/toolkit';
 export const genreSlice = createSlice({
     name: 'GENRE',
     initialState: {
-        genreList: [],
-        genreResults: []
+        movieGenreList: [],
+        tvGenreList: [],
+        movieGenreResults: [],
+        tvGenreResults: []
     },
 
     reducers: {
-        setGenres: (state, action) => {
-            state.genreList = action.payload;
+        setMovieGenres: (state, action) => {
+            state.movieGenreList = action.payload;
         },
 
-        setGenreResults: (state, action) => {
-            state.genreResults = action.payload;
+        setTvGenres: (state, action) => {
+            state.tvGenreList = action.payload;
+        },
+
+        setMovieGenreResults: (state, action) => {
+            state.movieGenreResults = action.payload;
+        },
+
+        setTvGenreResults: (state, action) => {
+            state.tvGenreResults = action.payload;
         }
     }
 })
 
-export const { setGenres, setGenreResults } = genreSlice.actions;
+export const { setMovieGenres, setTvGenres, setMovieGenreResults, setTvGenreResults } = genreSlice.actions;
 
 export default genreSlice.reducer;

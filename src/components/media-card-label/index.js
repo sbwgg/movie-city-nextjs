@@ -28,18 +28,18 @@ const Index = props => {
             transition={{type: 'tween', delay: delay * 0.15}}
         >
             <NextLink
-                href={`/${mediaType}/${media.id}-${lowercaseString(media.original_title)}`}
+                href={`/media/${mediaType}/${media.id}-${lowercaseString(media?.original_title || media?.original_name)}`}
                 className={classNames([styles.mediaCardLabel, 'card-label-hover'])}
             >
                 <div className={styles.mediaCardImage}>
                     <ImageComponent
                         src={IMAGE_PATH(media.poster_path)}
-                        alt={`Title: ${media.title}`}
+                        alt={`Title: ${media?.title || media?.name}`}
                     />
                 </div>
                 <div className={styles.mediaCardDetails}>
-                    <h4>{media.title}</h4>
-                    <p>{t('media.year')}: <strong>{media.release_date}</strong></p>
+                    <h4>{media?.title || media?.name}</h4>
+                    <p>{t('media.year')}: <strong>{media?.release_date || media?.first_air_date}</strong></p>
                     <p>{t('media.totalVotes')}: <strong>{media.vote_count}</strong></p>
                     <span className="vote-circle">
                         {roundNumber(media.vote_average)}

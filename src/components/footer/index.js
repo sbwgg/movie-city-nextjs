@@ -25,7 +25,7 @@ const Index = () => {
 			<div className={styles.footerWrapper}>
 				{popularMovie.backdrop_path &&
 					<NextLink
-						href={`/movie/${popularMovie.id}-${lowercaseString(popularMovie.original_title)}`}
+						href={`/media/movie/${popularMovie.id}-${lowercaseString(popularMovie.original_title)}`}
 						className={styles.footerUrl}
 					/>
 				}

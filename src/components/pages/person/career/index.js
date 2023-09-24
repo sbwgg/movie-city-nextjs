@@ -64,7 +64,7 @@ const Index = props => {
                             key={`career-movie-${index}`}
                         >
                             <NextLink
-                                href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
+                                href={`/media/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
                                 className={styles.careerListMedia}
                             >
                                 <ImageComponent

@@ -5,9 +5,9 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import {useTranslation} from 'next-i18next';
 import Empty from '@/layouts/Empty';
 import Cast from '@/components/pages/cast';
-import MovieLabel from '@/components/pages/cast/movie-label';
+import MovieLabel from '@/components/pages/cast/media-label';
 // import {dispatch} from '@/helpers';
-import {fetchCastData} from '@/services/movie/cast';
+import {fetchCastData} from '@/services/media/movie/cast';
 // import {storeCredits} from '@/redux/slices/movieSlice/castSlice';
 
 const CastPage = ({ cast, crew, movieData }) => {
@@ -45,7 +45,7 @@ const CastPage = ({ cast, crew, movieData }) => {
 			image={movieData.backdrop_path}
 			backgroundPoster={movieData.backdrop_path}
 		>
-			<MovieLabel movie={movieData}/>
+			<MovieLabel media={movieData}/>
 			<Cast
 				castData={cast}
 				crewData={crew}

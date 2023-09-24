@@ -34,7 +34,7 @@ const Index = props => {
                     <div className={ styles.defaultLayout}>
                         {(popularMovie.backdrop_path && !backgroundPoster) &&
                             <NextLink
-                                href={`/movie/${popularMovie.id}-${lowercaseString(popularMovie.original_title)}`}
+                                href={`/media/movie/${popularMovie.id}-${lowercaseString(popularMovie.original_title)}`}
                                 className={styles.defaultUrl}
                             />
                         }

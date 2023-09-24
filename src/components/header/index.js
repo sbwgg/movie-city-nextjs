@@ -3,29 +3,30 @@ import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import classNames from 'classnames';
 import {motion} from 'framer-motion';
-import styles from './index.module.scss';
 import useCurrentLocale from '@/hooks/useCurrentLocale';
 import useScrollDirection from '@/hooks/useScrollDirection';
 import useClickOutSide from '@/hooks/useClickOutSide';
-import {setGenres} from '@/redux/slices/genreSlice';
 import NextLink from '@/components/UI/NextLink';
 import Input from '@/components/UI/Input';
 import Button from '@/components/UI/Button';
 import LanguageSwitch from '@/components/language-switch';
 import ThemeSwitch from '@/components/theme-switch';
-import {getGenres} from '@/services/genre';
+import {getMovieGenres, getTvGenres} from '@/services/genre';
+import {setMovieGenres, setTvGenres} from '@/redux/slices/genreSlice';
 import {dispatch} from '@/helpers';
+import styles from './index.module.scss';
 
 const Index = () => {
     const [navOpen, setNavOpen] = useState(false);
-    const [showGenres, setShowGenres] = useState(false);
+    const [showMovieGenres, setShowMovieGenres] = useState(false);
+    const [showTvGenres, setShowTvGenres] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const {isDown} = useScrollDirection();
     const mobileMenuTrigger = useRef(null);
     const mobileMenuContainer = useRef(null);
     const {t} = useTranslation();
     const locale = useCurrentLocale();
-    const {genreList} = useSelector(state => state.genre);
+    const {movieGenreList, tvGenreList} = useSelector(state => state.genre);
 
     const slideRightVariants = {
         toIn: {
@@ -43,25 +44,37 @@ const Index = () => {
 
     const closeMobileMenu = () => {
         setNavOpen(false);
-        setShowGenres(false);
+        setShowTvGenres(false);
+        setShowMovieGenres(false);
     };
 
     const handleSearchQuery = e => setSearchQuery(e.target.value);
 
-    const toggleGenresDropdown = () => setShowGenres(!showGenres);
+    const toggleMovieGenreDropdown = () => {
+        setShowTvGenres(false);
+        setShowMovieGenres(!showMovieGenres)
+    };
+
+    const toggleTvGenreDropdown = () => {
+        setShowMovieGenres(false);
+        setShowTvGenres(!showTvGenres)
+    };
 
     const isSearchQueryEmpty = searchQuery.trim().length === 0;
 
     useClickOutSide(mobileMenuContainer, closeMobileMenu, mobileMenuTrigger);
 
     useEffect(() => {
-        getGenres(locale)
-            .then(res => dispatch(setGenres(res)));
+        getMovieGenres(locale)
+            .then(res => dispatch(setMovieGenres(res)));
+
+        getTvGenres(locale)
+            .then(res => dispatch(setTvGenres(res)));
 
     },[locale]);
 
     return (
-        <header className={classNames([styles.header, (isDown && !showGenres) ? styles.headerDown : ''])}>
+        <header className={classNames([styles.header, (isDown && (!showMovieGenres && !showTvGenres)) ? styles.headerDown : ''])}>
             <div className={classNames(styles.headerInner, 'main-container')}>
                 <nav className={styles.nav}>
                     <NextLink href="/" className="max-w-[55px] lg:max-w-[120px]">
@@ -111,23 +124,48 @@ const Index = () => {
                                 <ul className={styles.navList}>
                                     <li className={classNames([
                                         styles.navListItem,
-                                        showGenres && styles.navListItemOpen
+                                        showMovieGenres && styles.navListItemOpen
                                     ])}
-                                        onClick={toggleGenresDropdown}>
+                                        onClick={toggleMovieGenreDropdown}>
                                         <p className="gradient-text !absolute blur-[4px]">
-                                            {t('global.genres')}
+                                            {t('global.genres_movies')}
                                         </p>
                                         <p className="gradient-text">
-                                            {t('global.genres')}
+                                            {t('global.genres_movies')}
                                         </p>
 
                                         <div className={classNames([
                                             styles.navDropdown,
-                                            showGenres && styles.navDropdownActive
+                                            showMovieGenres && styles.navDropdownActive
                                         ])}>
                                             <ul className={styles.navDropdownBody}>
-                                                {genreList.map(genre => <li key={genre.id}>
-                                                    <NextLink href={`/genre/${genre.id}?name=${encodeURIComponent(genre.name)}`}>
+                                                {movieGenreList.map(genre => <li key={genre.id}>
+                                                    <NextLink href={`/genre/movie-list/${genre.id}?name=${encodeURIComponent(genre.name)}`}>
+                                                        {genre.name}
+                                                    </NextLink>
+                                                </li>)}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li className={classNames([
+                                        styles.navListItem,
+                                        showTvGenres && styles.navListItemOpen
+                                    ])}
+                                        onClick={toggleTvGenreDropdown}>
+                                        <p className="gradient-text !absolute blur-[4px]">
+                                            {t('global.genres_tv')}
+                                        </p>
+                                        <p className="gradient-text">
+                                            {t('global.genres_tv')}
+                                        </p>
+
+                                        <div className={classNames([
+                                            styles.navDropdown,
+                                            showTvGenres && styles.navDropdownActive
+                                        ])}>
+                                            <ul className={styles.navDropdownBody}>
+                                                {tvGenreList.map(genre => <li key={genre.id}>
+                                                    <NextLink href={`/genre/tv-list/${genre.id}?name=${encodeURIComponent(genre.name)}`}>
                                                         {genre.name}
                                                     </NextLink>
                                                 </li>)}

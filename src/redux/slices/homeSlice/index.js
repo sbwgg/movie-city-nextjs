@@ -4,12 +4,17 @@ export const index = createSlice({
     name: 'HOME',
     initialState: {
         trendingMovies: [],
+        trendingTv: [],
         paginatedList: []
     },
 
    reducers: {
-        setTrending: (state, action) => {
+        setTrendingMovie: (state, action) => {
            state.trendingMovies = action.payload;
+       },
+
+        setTrendingTv: (state, action) => {
+           state.trendingTv = action.payload;
        },
 
        setPaginatedList: (state, action) => {
@@ -18,6 +23,6 @@ export const index = createSlice({
    }
 });
 
-export const {setTrending, setPaginatedList} = index.actions;
+export const {setTrendingMovie, setTrendingTv, setPaginatedList} = index.actions;
 
 export default index.reducer;

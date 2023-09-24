@@ -1,17 +1,16 @@
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
-import {getCinema} from '@/services/home';
+import TrendingTv from '@/components/pages/home/trending-tv';
 import MoviesPaginate from '@/components/pages/home/movies-paginate';
-import ToCinema from '@/components/pages/home/to-cinema';
-import Trending from '@/components/pages/home/trending';
+import TrendingMovies from '@/components/pages/home/trending-movies';
 
-const Home = ({ locale, cinemaMovieData }) => {
+const Home = () => {
 
     return (
         <Default title="Movie City">
+            <TrendingTv/>
             <MoviesPaginate/>
-            <ToCinema moviesListData={cinemaMovieData}/>
-            <Trending />
+            <TrendingMovies />
         </Default>
     )
 }
@@ -19,12 +18,9 @@ const Home = ({ locale, cinemaMovieData }) => {
 export default Home;
 
 export const getServerSideProps = async ({ locale }) => {
-    const cinemaMovieData = await getCinema(locale);
 
     return {
         props: {
-            locale,
-            cinemaMovieData,
             ...(await serverSideTranslations(locale, ['common', 'homePage'])),
         },
     };

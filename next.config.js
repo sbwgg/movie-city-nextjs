@@ -22,7 +22,7 @@ const nextConfig = {
     },
 
     async redirects() {
-        const routes = ['movie', 'search', 'genre', 'person'];
+        const routes = ['media', 'media/tv', 'media/movie', 'search', 'genre', 'genre/movie-list', 'genre/tv-list', 'person'];
 
         const redirects = routes.map((redirect) => {
             return {

@@ -56,7 +56,7 @@ const Index = props => {
                                 return (
                                     <NextLink
                                         key={genre.id}
-                                        href={`/genre/${genre.id}?name=${encodeURIComponent(genre.name)}`}
+                                        href={`/genre/movie-list${genre.id}?name=${encodeURIComponent(genre.name)}`}
                                     >
                                         {genre.name}
                                     </NextLink>
@@ -81,7 +81,7 @@ const Index = props => {
                 </ul>
             </div>
             {movie.overview &&
-                <div className={classNames([styles.movieAbout, 'movie-info-wrapper'])}>
+                <div className={classNames([styles.movieAbout, 'movie-list-info-wrapper'])}>
                     <h3>{t('media.about')}</h3>
                     <p>{movie.overview}</p>
                 </div>

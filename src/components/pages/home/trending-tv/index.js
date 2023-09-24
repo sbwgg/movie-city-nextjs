@@ -3,21 +3,21 @@ import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import styles from './index.module.scss';
 import useCurrentLocale from '@/hooks/useCurrentLocale';
-import {getTrending} from '@/services/home';
-import {setTrending} from '@/redux/slices/homeSlice';
+import {getTrendingTv} from '@/services/home';
+import {setTrendingTv} from '@/redux/slices/homeSlice';
 import {dispatch} from '@/helpers';
 import SliderList from '@/components/slider-list';
 
 const Index = () => {
 	const [trendingBy, setTrendingBy] = useState('day');
 	const locale = useCurrentLocale();
-	const trendingList = useSelector(state => state.home.trendingMovies);
+	const {trendingTv} = useSelector(state => state.home);
 
 	const {t} = useTranslation();
 
 	useEffect(() => {
-		getTrending(locale, trendingBy)
-			.then(res => dispatch(setTrending(res)))
+		getTrendingTv(locale, trendingBy)
+			.then(res => dispatch(setTrendingTv(res)))
 
 	},[trendingBy, locale]);
 
@@ -52,9 +52,10 @@ const Index = () => {
 				)}
 			</div>
 			<SliderList
-				listType="trending"
-				title="trending"
-				items={trendingList}
+				listType="trending-tv"
+				title="trendingShows"
+				items={trendingTv}
+				mediaType="tv"
 			/>
 		</section>
 	)

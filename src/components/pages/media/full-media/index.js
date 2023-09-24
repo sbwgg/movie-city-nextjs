@@ -42,7 +42,7 @@ const Index = props => {
 	}, [mediaId]);
 
 	return (
-		<section className={classNames([styles.clipContainer, 'movie-info-wrapper'])}>
+		<section className={classNames([styles.clipContainer, 'movie-list-info-wrapper'])}>
 			<div className="kinobox_player"></div>
 		</section>
 	)

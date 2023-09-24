@@ -23,8 +23,8 @@ const Index = props => {
         <div className="h-full p-3">
             <NextLink
                 className={styles.media}
-                href={`/${mediaType}/${media.id}-${lowercaseString(media.original_title)}`}
-                title={media.title}
+                href={`/media/${mediaType}/${media.id}-${lowercaseString(media?.original_title || media?.original_name)}`}
+                title={media?.title || media?.name}
             >
                 <figure className="full-figure">
                     <motion.div
@@ -41,12 +41,14 @@ const Index = props => {
                         <ImageComponent
                             className="transition-transform duration-500"
                             src={IMAGE_PATH(media.poster_path)}
-                            width={300} height={450} alt={`Title - ${media.title}`}
+                            width={300} height={450} alt={`Title - ${media?.title || media?.name}`}
                         />
                         {detailed &&
                             <div className={styles.mediaDetails}>
                                 <ul>
-                                    <li><span>{t('media.year')}: </span>{media.release_date}</li>
+                                    <li><span>{t('media.year')}: </span>
+                                        {media?.release_date || media?.first_air_date}
+                                    </li>
                                     <li><span>{t('media.totalVotes')}: </span> {media.vote_count}</li>
                                     <li><span>{t('media.popularity')}: </span>{media.popularity}</li>
                                 </ul>
@@ -77,7 +79,7 @@ const Index = props => {
                                 />
                             </div>
                         }
-                        <p className={styles.mediaTitle}>{media.title}</p>
+                        <p className={styles.mediaTitle}>{media?.title || media?.name}</p>
                     </motion.figcaption>
                 </figure>
             </NextLink>

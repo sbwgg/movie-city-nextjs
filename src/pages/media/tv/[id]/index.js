@@ -1,25 +1,19 @@
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
-import { fetchMovieData } from '@/services/movie';
-import Movie from '@/components/pages/media/movie';
-import MovieClip from '@/components/pages/media/media-clip';
-import FullMovie from '@/components/pages/media/full-media';
+import {fetchTvData} from '@/services/media/tv';
+import Tv from '@/components/pages/media/tv';
+import FullMedia from '@/components/pages/media/full-media';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/media/reviews';
 import Loader from '@/components/loader';
 
-const Index = ({ movie }) => {
-    if (!movie.info) {
+const Index = ({ tv }) => {
+    if (!tv.info) {
         return <Loader/>;
     }
 
-    const movieWithDefaultClip = {
-        ...movie,
-        clip: movie.clip || null,
-    };
-
-    const { info, clip, cast, recommendations, similar, reviews, imdbId } = movieWithDefaultClip;
+    const { info, cast, recommendations, reviews, imdbId } = tv;
 
     return (
         <Default
@@ -28,33 +22,27 @@ const Index = ({ movie }) => {
             image={info.backdrop_path}
             backgroundPoster={info.backdrop_path}
         >
-            <Movie movie={info} />
+            <Tv tv={info} />
+            <FullMedia mediaTitle={info.name} mediaId={imdbId.imdb_id}/>
             <SliderList
                 listType="cast-members"
-                type="cast"
+                sliderType="cast"
                 title="cast.cast"
                 emptyMessage="media.missingCast"
                 mediaId={info.id}
-                mediaTitle={info.title}
+                mediaTitle={info.name}
+                mediaType="tv"
                 items={cast}
             />
-            {/*{clip ? <MovieClip clipKey={clip.key} /> : null}*/}
-            <FullMovie mediaTitle={info.title} mediaId={imdbId.imdb_id}/>
             <SliderList
                 listType="recommended"
                 title="media.recommendedMovies"
                 emptyMessage="media.missingRecommendations"
                 items={recommendations}
-                mediaTitle={info.title}
+                mediaTitle={info.name}
+                mediaType="tv"
             />
-            <SliderList
-                listType="similars"
-                title="media.similarMovies"
-                emptyMessage="media.missingSimilars"
-                items={similar}
-                mediaTitle={info.title}
-            />
-            <Reviews movieTitle={info.title} reviews={reviews} />
+            <Reviews movieTitle={info.name} reviews={reviews} />
         </Default>
     );
 };
@@ -69,11 +57,11 @@ export const getServerSideProps = async ({ locale, query }) => {
         };
     }
 
-    const movie = await fetchMovieData(queryId, locale);
+    const tv = await fetchTvData(queryId, locale);
 
     return {
         props: {
-            movie,
+            tv,
             ...(await serverSideTranslations(locale)),
         },
     };

@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import MediaCard from '@/components/media-card';
 
 const Index = props => {
-    const {results} = props;
+    const {results, mediaType = 'movie'} = props;
 
     return (
         <section className={styles.listResults}>
@@ -14,6 +14,7 @@ const Index = props => {
                         key={index}
                         media={item}
                         delay={index}
+                        mediaType={mediaType}
                     />
                 )
             })}

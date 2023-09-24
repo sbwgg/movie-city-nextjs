@@ -13,9 +13,10 @@ const Index = props => {
     const {
         items = [],
         title,
-        type = 'movie',
+        sliderType = 'movie',
         mediaId,
         mediaTitle,
+        mediaType = 'movie',
         emptyMessage,
         listType
     } = props;
@@ -40,20 +41,20 @@ const Index = props => {
                                 return (
                                     <SwiperSlide
                                         key={item.id}
-                                        className={`!h-auto full-sized${type === 'cast' ? ' p-3' : ''}`}
+                                        className={`!h-auto full-sized${sliderType === 'cast' ? ' p-3' : ''}`}
                                     >
-                                        {type === 'cast' ?
+                                        {sliderType === 'cast' ?
                                             <CastCard member={item}/> :
-                                            <MediaCard media={item} delay={index} />
+                                            <MediaCard media={item} delay={index} mediaType={mediaType}/>
                                         }
                                     </SwiperSlide>
                                 )
                             })}
-                            {type === 'cast' &&
+                            {sliderType === 'cast' &&
                                 <SwiperSlide className="!h-auto p-3">
                                     <NextLink
                                         className='view-more-link'
-                                        href={`/movie/${mediaId}/cast`}>
+                                        href={`/media/${mediaType}/${mediaId}/cast`}>
                                         <p>{t('media.viewMore')}</p>
                                     </NextLink>
                                 </SwiperSlide>
