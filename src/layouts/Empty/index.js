@@ -12,7 +12,8 @@ const Index = props => {
 		description,
 		children,
 		image,
-		backgroundPoster
+		backgroundPoster,
+		className
 	} = props;
 
 	return (
@@ -23,7 +24,7 @@ const Index = props => {
 				<div className={classNames(['page', backgroundPoster && 'fixed-background'])}
 					 style={backgroundPoster && dynamicBackground(backgroundPoster)}
 				>
-					<div className={styles.containerWrapper}>
+					<div className={classNames([styles.containerWrapper, className])}>
 						<div className={classNames([
 							'page-container', styles.container
 						])}>

@@ -63,8 +63,8 @@ export const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const truncateText = (text, limit) => {
-    if (text.length > limit) {
+export const truncateText = (text, limit, dots = true) => {
+    if (text && text.length > limit) {
         const words = text.split(' ');
         let truncatedText = '';
         for (const word of words) {
@@ -74,7 +74,7 @@ export const truncateText = (text, limit) => {
                 break;
             }
         }
-        return truncatedText.trim() + '...';
+        return !dots ? truncatedText.trim() : truncatedText.trim() + '...';
     } else {
         return text;
     }

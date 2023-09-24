@@ -12,10 +12,11 @@ const CastPage = ({ cast, crew, tvData }) => {
 
 	return (
 		<Empty
-			title={t('pageTitles.cast')}
+			title={`${tvData.name} - ${t('pageTitles.cast')}`}
 			description={`${tvData.name} - ${t('pageTitles.cast')}`}
 			image={tvData.backdrop_path}
 			backgroundPoster={tvData.backdrop_path}
+			className="transparent-bg"
 		>
 			<MediaLabel media={tvData} mediaType="tv"/>
 			<Cast

@@ -151,3 +151,7 @@
 .fixed-background {
     @apply bg-no-repeat bg-center-top bg-fixed bg-cover;
 }
+
+.transparent-bg {
+    background-color: transparent !important;
+}

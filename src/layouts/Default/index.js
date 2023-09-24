@@ -7,7 +7,7 @@ import Footer from '@/components/footer';
 import NextLink from '@/components/UI/NextLink';
 import PopularMovies from '@/components/popular-movies';
 import TopMovies from '@/components/top-movies';
-import { lowercaseString, dynamicBackground } from '@/helpers';
+import { lowercaseString, dynamicBackground, truncateText } from '@/helpers';
 import styles from './index.module.scss';
 
 const Index = props => {
@@ -25,7 +25,7 @@ const Index = props => {
 
     return (
         <>
-            <Seo title={title} description={description} image={image}/>
+            <Seo title={title} description={truncateText(description, 120)} image={image}/>
             <main>
                 <Header/>
                 <div className="page fixed-background"

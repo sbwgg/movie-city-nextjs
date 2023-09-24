@@ -17,7 +17,7 @@ const Index = ({ tv }) => {
 
     return (
         <Default
-            title={info.title}
+            title={info.name}
             description={info.overview}
             image={info.backdrop_path}
             backgroundPoster={info.backdrop_path}
