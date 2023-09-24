@@ -5,7 +5,7 @@ import useCurrentLocale from '@/hooks/useCurrentLocale';
 import {setPaginatedList} from '@/redux/slices/homeSlice';
 import {getMoviePaginations} from '@/services/home';
 import Pagination from '@/components/pagination';
-import MovieCard from '@/components/movie-card';
+import MediaCard from '@/components/media-card';
 import {dispatch} from '@/helpers';
 
 const Index = () => {
@@ -28,10 +28,10 @@ const Index = () => {
         setCurrentPage(page);
     };
 
-    const memoizedMovieCards = useMemo(
+    const memoizedMediaCards = useMemo(
         () =>
             paginatedList.map((movie, index) => (
-                <MovieCard detailed movie={movie} delay={index} key={movie.id} />
+                <MediaCard detailed media={movie} delay={index} key={movie.id} />
             )),
         [paginatedList]
     );
@@ -45,7 +45,7 @@ const Index = () => {
             />
 
             <div className="grid my-5 grid-cols-2 md:grid-cols-3">
-                {memoizedMovieCards}
+                {memoizedMediaCards}
             </div>
 
             <Pagination

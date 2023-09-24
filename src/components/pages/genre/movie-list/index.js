@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss';
-import MovieCard from '@/components/movie-card';
+import MediaCard from '@/components/media-card';
 
 const Index = props => {
     const {results} = props;
@@ -9,10 +9,10 @@ const Index = props => {
         <section className={styles.listResults}>
             {results && results.map((item, index) => {
                 return (
-                    <MovieCard
+                    <MediaCard
                         detailed
                         key={index}
-                        movie={item}
+                        media={item}
                         delay={index}
                     />
                 )

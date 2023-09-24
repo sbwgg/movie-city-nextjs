@@ -32,7 +32,7 @@
         }
 
         &Item {
-            @apply grid grid-cols-[85px_1fr] relative
+            @apply relative
             rounded-[8px] overflow-hidden z-[1]
             [&:not(:last-child)]:mb-5;
             box-shadow: rgba(var(--color-black) 0.1) 0px 10px 15px -3px, rgba(var(--color-black), 0.05) 0px 4px 6px -2px;
@@ -46,6 +46,10 @@
                 @apply absolute w-full h-full inset-0 z-[-1]
                 bg-no-repeat bg-cover bg-center opacity-40;
             }
+        }
+
+        &Media {
+            @apply grid grid-cols-[85px_1fr];
         }
 
         &Description {

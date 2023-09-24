@@ -11,7 +11,8 @@ import {fadeInVariants} from '@/helpers/motion-animations';
 
 const Index = props => {
     const {
-        movie,
+        media,
+        mediaType = 'movie',
         delay
     } = props;
 
@@ -19,7 +20,7 @@ const Index = props => {
 
     return (
         <motion.div
-            className={styles.movieCardLabelContainer}
+            className={styles.mediaCardLabelContainer}
             initial="hide"
             animate="show"
             exit="hide"
@@ -27,21 +28,21 @@ const Index = props => {
             transition={{type: 'tween', delay: delay * 0.15}}
         >
             <NextLink
-                href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
-                className={classNames([styles.movieCardLabel, 'card-label-hover'])}
+                href={`/${mediaType}/${media.id}-${lowercaseString(media.original_title)}`}
+                className={classNames([styles.mediaCardLabel, 'card-label-hover'])}
             >
-                <div className={styles.movieCardImage}>
+                <div className={styles.mediaCardImage}>
                     <ImageComponent
-                        src={IMAGE_PATH(movie.poster_path)}
-                        alt={`Title: ${movie.title}`}
+                        src={IMAGE_PATH(media.poster_path)}
+                        alt={`Title: ${media.title}`}
                     />
                 </div>
-                <div className={styles.movieCardDetails}>
-                    <h4>{movie.title}</h4>
-                    <p>{t('movie.year')}: <strong>{movie.release_date}</strong></p>
-                    <p>{t('movie.totalVotes')}: <strong>{movie.vote_count}</strong></p>
+                <div className={styles.mediaCardDetails}>
+                    <h4>{media.title}</h4>
+                    <p>{t('media.year')}: <strong>{media.release_date}</strong></p>
+                    <p>{t('media.totalVotes')}: <strong>{media.vote_count}</strong></p>
                     <span className="vote-circle">
-                        {roundNumber(movie.vote_average)}
+                        {roundNumber(media.vote_average)}
                     </span>
                 </div>
             </NextLink>

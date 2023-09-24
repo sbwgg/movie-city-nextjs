@@ -12,7 +12,8 @@ import {fadeInVariants, floatUpVariants} from '@/helpers/motion-animations';
 
 const Index = props => {
     const {
-        movie,
+        media,
+        mediaType = 'movie',
         delay,
         detailed
     } = props;
@@ -21,15 +22,15 @@ const Index = props => {
     return (
         <div className="h-full p-3">
             <NextLink
-                className={styles.movie}
-                href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
-                title={movie.title}
+                className={styles.media}
+                href={`/${mediaType}/${media.id}-${lowercaseString(media.original_title)}`}
+                title={media.title}
             >
                 <figure className="full-figure">
                     <motion.div
                         className={classNames([
-                            styles.movieImage,
-                            detailed && styles.movieImageDetailed
+                            styles.mediaImage,
+                            detailed && styles.mediaImageDetailed
                         ])}
                         initial="floatDown"
                         animate="floatUp"
@@ -39,20 +40,20 @@ const Index = props => {
                     >
                         <ImageComponent
                             className="transition-transform duration-500"
-                            src={IMAGE_PATH(movie.poster_path)}
-                            width={300} height={450} alt={`Title - ${movie.title}`}
+                            src={IMAGE_PATH(media.poster_path)}
+                            width={300} height={450} alt={`Title - ${media.title}`}
                         />
                         {detailed &&
-                            <div className={styles.movieDetails}>
+                            <div className={styles.mediaDetails}>
                                 <ul>
-                                    <li><span>{t('movie.year')}: </span>{movie.release_date}</li>
-                                    <li><span>{t('movie.totalVotes')}: </span> {movie.vote_count}</li>
-                                    <li><span>{t('movie.popularity')}: </span>{movie.popularity}</li>
+                                    <li><span>{t('media.year')}: </span>{media.release_date}</li>
+                                    <li><span>{t('media.totalVotes')}: </span> {media.vote_count}</li>
+                                    <li><span>{t('media.popularity')}: </span>{media.popularity}</li>
                                 </ul>
                                 <span className={classNames([
-                                    styles.movieDetailsAverage, 'vote-circle'
+                                    styles.mediaDetailsAverage, 'vote-circle'
                                 ])}>
-                                    {roundNumber(movie.vote_average)}
+                                    {roundNumber(media.vote_average)}
                                 </span>
                             </div>
                         }
@@ -66,9 +67,9 @@ const Index = props => {
                         transition={{type: 'tween', delay: delay * 0.15}}
                     >
                         {detailed &&
-                            <div className={styles.movieDetailsRatings}>
+                            <div className={styles.mediaDetailsRatings}>
                                 <StarRatings
-                                    rating={movie.vote_average || 0}
+                                    rating={media.vote_average || 0}
                                     starRatedColor="rgb(var(--color-primary-blue))"
                                     numberOfStars={10}
                                     starEmptyColor="rgba(var(--color-black), 0.4)"
@@ -76,7 +77,7 @@ const Index = props => {
                                 />
                             </div>
                         }
-                        <p className={styles.movieTitle}>{movie.title}</p>
+                        <p className={styles.mediaTitle}>{media.title}</p>
                     </motion.figcaption>
                 </figure>
             </NextLink>

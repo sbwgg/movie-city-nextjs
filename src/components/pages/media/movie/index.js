@@ -1,11 +1,11 @@
 import React from 'react';
+import classNames from 'classnames';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
-import classNames from 'classnames';
-import styles from './index.module.scss';
 import ImageComponent from '@/components/UI/image-component';
 import NextLink from '@/components/UI/NextLink';
 import {roundNumber} from '@/helpers';
+import styles from './index.module.scss';
 
 const Index = props => {
     const {
@@ -46,10 +46,10 @@ const Index = props => {
                     priority
                 />
                 <ul className={styles.movieDetails}>
-                    <li>{t('movie.title')}: <span>{movie.title}</span></li>
-                    <li>{t('movie.originalTitle')}: <span>{movie.original_title}</span></li>
-                    <li>{t('movie.year')}: <span>{movie.release_date}</span></li>
-                    {movie.tagline && <li>{t('movie.tagline')}: <span>{movie.tagline}</span></li>}
+                    <li>{t('media.title')}: <span>{movie.title}</span></li>
+                    <li>{t('media.originalTitle')}: <span>{movie.original_title}</span></li>
+                    <li>{t('media.year')}: <span>{movie.release_date}</span></li>
+                    {movie.tagline && <li>{t('media.tagline')}: <span>{movie.tagline}</span></li>}
                     {movie.genres &&
                         <li>{t('global.genre')}:
                             {movie.genres.map(genre => {
@@ -64,13 +64,13 @@ const Index = props => {
                             })}
                         </li>
                     }
-                    {movie.budget > 0 && <li>{t('movie.budget')}: <span>{formattedCurrency(movie.budget)}</span></li>}
+                    {movie.budget > 0 && <li>{t('media.budget')}: <span>{formattedCurrency(movie.budget)}</span></li>}
                     <li>
-                        {t('movie.duration')}:
-                        <span>{movie.runtime} {t('movie.min')} / {toHoursAndMinutes(movie.runtime)}</span>
+                        {t('media.duration')}:
+                        <span>{movie.runtime} {t('media.min')} / {toHoursAndMinutes(movie.runtime)}</span>
                     </li>
                     {movie.production_countries &&
-                        <li>{t('movie.country')}:
+                        <li>{t('media.country')}:
                             {movie.production_countries.map((country, key) => {
                                 return (
                                     <span key={`country-${key}`}>{country.iso_3166_1}</span>
@@ -82,7 +82,7 @@ const Index = props => {
             </div>
             {movie.overview &&
                 <div className={classNames([styles.movieAbout, 'movie-info-wrapper'])}>
-                    <h3>{t('movie.about')}</h3>
+                    <h3>{t('media.about')}</h3>
                     <p>{movie.overview}</p>
                 </div>
             }
@@ -96,10 +96,10 @@ const Index = props => {
                 />
                 <div className={styles.movieRatingsInfo}>
                     <p className="text-lg">
-                        {t('movie.rating')}: <strong>{roundNumber(movie.vote_average)}</strong>
+                        {t('media.rating')}: <strong>{roundNumber(movie.vote_average)}</strong>
                     </p>
                     <p className="text-sm">
-                        {t('movie.totalVotes')}: <strong>{movie.vote_count}</strong>
+                        {t('media.totalVotes')}: <strong>{movie.vote_count}</strong>
                     </p>
                 </div>
             </div>

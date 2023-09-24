@@ -7,7 +7,7 @@ import Default from '@/layouts/Default';
 import {getSearchResults} from '@/services/global';
 import {setSearchResults} from '@/redux/slices/globalSlice';
 import {dispatch, filterFetchResults} from '@/helpers';
-import MovieCard from '@/components/movie-card';
+import MediaCard from '@/components/media-card';
 import Pagination from '@/components/pagination';
 
 const Index = () => {
@@ -45,13 +45,13 @@ const Index = () => {
     return (
         <Default title={t('searchResults')}>
             <section className={`min-h-[70vh] min-h-[70dvh] grid${!isEmpty ? ' grid-cols-2 lg:grid-cols-3' : ''}`}>
-                {searchResults.map(((movie, key) => {
+                {searchResults.map(((media, key) => {
                     return (
-                        <MovieCard
+                        <MediaCard
                             detailed
-                            movie={movie}
+                            media={media}
                             delay={key}
-                            key={movie.id}
+                            key={media.id}
                         />
                     )
                 }))}

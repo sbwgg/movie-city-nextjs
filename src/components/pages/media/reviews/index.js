@@ -28,7 +28,7 @@ const Index = props => {
 		<section className={classNames([
 			styles.reviewWrapper, 'movie-info-wrapper'
 		])}>
-			<h3>{t('movie.reviews')}</h3>
+			<h3>{t('media.reviews')}</h3>
 			{reviews.length ? (
 				<>
 					{reviews.map((review) => {
@@ -82,7 +82,7 @@ const Index = props => {
 			) : (
 				<div className={styles.reviewItem}>
 					<p className={styles.reviewContent}>
-						{`${t('movie.missingReview')} ${movieTitle}`}
+						{`${t('media.missingReview')} ${movieTitle}`}
 					</p>
 				</div>
 			)}

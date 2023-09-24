@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import {useTranslation} from 'next-i18next';
 import styles from './index.module.scss';
-import MovieCard from '@/components/movie-card';
+import MediaCard from '@/components/media-card';
 import CastCard from '@/components/person-card';
 import NextLink from '@/components/UI/NextLink';
 import {sliderListOptions} from '@/helpers';
@@ -14,8 +14,8 @@ const Index = props => {
         items = [],
         title,
         type = 'movie',
-        movieId,
-        movieTitle,
+        mediaId,
+        mediaTitle,
         emptyMessage,
         listType
     } = props;
@@ -42,11 +42,10 @@ const Index = props => {
                                         key={item.id}
                                         className={`!h-auto full-sized${type === 'cast' ? ' p-3' : ''}`}
                                     >
-                                        {type === 'cast' ? (
-                                            <CastCard member={item}/>
-                                        ) : (
-                                            <MovieCard movie={item} delay={index} />
-                                        )}
+                                        {type === 'cast' ?
+                                            <CastCard member={item}/> :
+                                            <MediaCard media={item} delay={index} />
+                                        }
                                     </SwiperSlide>
                                 )
                             })}
@@ -54,8 +53,8 @@ const Index = props => {
                                 <SwiperSlide className="!h-auto p-3">
                                     <NextLink
                                         className='view-more-link'
-                                        href={`/movie/${movieId}/cast`}>
-                                        <p>{t('movie.viewMore')}</p>
+                                        href={`/movie/${mediaId}/cast`}>
+                                        <p>{t('media.viewMore')}</p>
                                     </NextLink>
                                 </SwiperSlide>
                             }
@@ -63,7 +62,7 @@ const Index = props => {
                     ) : (
                         <>
                             {emptyMessage && <h3 className={styles.sliderListEmpty}>
-                                {t(emptyMessage)} {movieTitle}
+                                {t(emptyMessage)} {mediaTitle}
                             </h3>}
                         </>
                     )}

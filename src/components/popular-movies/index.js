@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import styles from './index.module.scss';
 import useCurrentLocale from '@/hooks/useCurrentLocale';
-import MovieCard from '@/components/movie-card';
+import MediaCard from '@/components/media-card';
 import {getPopularMovies} from '@/services/global';
 import { setPopularMovies } from '@/redux/slices/globalSlice';
 import {dispatch} from '@/helpers';
@@ -48,7 +48,7 @@ const Index = () => {
                     {popularMovies.map((item, key) => {
                         return (
                             <SwiperSlide key={`popular-movie-${item.id}`}>
-                                <MovieCard movie={item} delay={key}/>
+                                <MediaCard media={item} delay={key}/>
                             </SwiperSlide>
                         )
                     })}

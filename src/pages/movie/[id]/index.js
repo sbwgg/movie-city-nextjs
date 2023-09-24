@@ -2,11 +2,11 @@ import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import { fetchMovieData } from '@/services/movie';
-import Movie from '@/components/pages/movie';
-import MovieClip from '@/components/pages/movie/movie-clip';
-import FullMovie from '@/components/pages/movie/full-movie';
+import Movie from '@/components/pages/media/movie';
+import MovieClip from '@/components/pages/media/media-clip';
+import FullMovie from '@/components/pages/media/full-media';
 import SliderList from '@/components/slider-list';
-import Reviews from '@/components/pages/movie/reviews';
+import Reviews from '@/components/pages/media/reviews';
 import Loader from '@/components/loader';
 
 const Index = ({ movie }) => {
@@ -33,26 +33,26 @@ const Index = ({ movie }) => {
                 listType="cast-members"
                 type="cast"
                 title="cast.cast"
-                emptyMessage="movie.missingCast"
-                movieId={info.id}
-                movieTitle={info.title}
+                emptyMessage="media.missingCast"
+                mediaId={info.id}
+                mediaTitle={info.title}
                 items={cast}
             />
             {/*{clip ? <MovieClip clipKey={clip.key} /> : null}*/}
-            <FullMovie movieTitle={info.title} movieId={imdbId.imdb_id}/>
+            <FullMovie mediaTitle={info.title} mediaId={imdbId.imdb_id}/>
             <SliderList
                 listType="recommended"
-                title="movie.recommendedMovies"
-                emptyMessage="movie.missingRecommendations"
+                title="media.recommendedMovies"
+                emptyMessage="media.missingRecommendations"
                 items={recommendations}
-                movieTitle={info.title}
+                mediaTitle={info.title}
             />
             <SliderList
                 listType="similars"
-                title="movie.similarMovies"
-                emptyMessage="movie.missingSimilars"
+                title="media.similarMovies"
+                emptyMessage="media.missingSimilars"
                 items={similar}
-                movieTitle={info.title}
+                mediaTitle={info.title}
             />
             <Reviews movieTitle={info.title} reviews={reviews} />
         </Default>

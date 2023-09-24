@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import styles from './index.module.scss';
 
 const Index = props => {
-	const {movieId, movieTitle} = props;
+	const {mediaId, mediaTitle} = props;
 
 	const kinoBoxOptions = {
 		search: {
-			imdb: movieId,
-			title: movieTitle
+			imdb: mediaId,
+			title: mediaTitle
 		},
 		players: {
 			alloha: {
@@ -39,7 +39,7 @@ const Index = props => {
 
 		typeof Kinobox === 'undefined' ? loadKinoboxScript() : initializeKinobox();
 
-	}, [movieId]);
+	}, [mediaId]);
 
 	return (
 		<section className={classNames([styles.clipContainer, 'movie-info-wrapper'])}>

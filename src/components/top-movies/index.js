@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import useCurrentLocale from '@/hooks/useCurrentLocale';
-import MovieCardLabel from '@/components/movie-card-label';
+import MediaCardLabel from '@/components/media-card-label';
 import Button from '@/components/UI/Button';
 import {getTopMovies} from '@/services/global';
 import {setTopMovies} from '@/redux/slices/persistSlice';
@@ -44,10 +44,10 @@ const Index = () => {
 			</div>
 			{topMovies.data.map((item, key) => {
 				return (
-					<MovieCardLabel
+					<MediaCardLabel
 						key={key}
 						delay={key}
-						movie={item}
+						media={item}
 					/>
 				)
 			})}

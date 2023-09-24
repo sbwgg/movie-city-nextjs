@@ -63,25 +63,23 @@ const Index = props => {
                         <li className={styles.careerListItem}
                             key={`career-movie-${index}`}
                         >
-                            <NextLink href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}>
+                            <NextLink
+                                href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
+                                className={styles.careerListMedia}
+                            >
                                 <ImageComponent
                                     src={IMAGE_PATH(movie.poster_path)}
                                     alt={`Title: ${movie.title}`}
                                 />
+                                <div className={styles.careerListDescription}>
+                                    {movie.release_date && <span>{extractYear(movie.release_date)}</span>}
+                                    <h4 className="font-bold w-fit">{movie.title}</h4>
+                                    <p>
+                                        {t('person.character')}:
+                                        <span className="font-bold"> {movie.character} </span>
+                                    </p>
+                                </div>
                             </NextLink>
-                            <div className={styles.careerListDescription}>
-                                {movie.release_date && <span>{extractYear(movie.release_date)}</span>}
-                                <NextLink
-                                    className="font-bold w-fit"
-                                    href={`/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
-                                >
-                                    {movie.title}
-                                </NextLink>
-                                <p>
-                                    {t('person.character')}:
-                                    <span className="font-bold"> {movie.character} </span>
-                                </p>
-                            </div>
                             {movie.backdrop_path &&
                                 <div
                                     className={styles.careerListItemBackground}
