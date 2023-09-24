@@ -1,5 +1,6 @@
 import {$api} from '@/api';
 import {API_KEY} from '@/constants';
+import {filterFetchResults} from '@/helpers';
 
 export const getMovieById = (id, locale) => {
 	return $api().get(`/movie/${id}?api_key=${API_KEY}&language=${locale}`)
@@ -11,7 +12,7 @@ const getMovieExternalIds = id => {
 	return $api().get(`/movie/${id}/external_ids?api_key=${API_KEY}`)
 		.then((response) => response.data)
 		.catch((error) => console.error(error))
-}
+};
 
 const getClip = (id, locale) => {
 	const responsePromise = $api().get(`/movie/${id}/videos?api_key=${API_KEY}&language=${locale}`);
@@ -52,13 +53,13 @@ const getMovieCast = (id, locale) => {
 
 const getSimilar = (id, locale) => {
 	return $api().get(`/movie/${id}/similar?api_key=${API_KEY}&language=${locale}`)
-		.then((response) => response.data.results.filter(item => item.poster_path !== null))
+		.then((response) => response.data.results.filter(item => filterFetchResults(item)))
 		.catch((error) => console.error(error))
 };
 
 const getRecommendations = (id, locale) => {
 	return $api().get(`/movie/${id}/recommendations?api_key=${API_KEY}&language=${locale}`)
-		.then((response) => response.data.results.filter(item => item.poster_path !== null))
+		.then((response) => response.data.results.filter(item => filterFetchResults(item)))
 		.catch((error) => console.error(error))
 };
 

@@ -2,9 +2,7 @@ import store from '@/redux/store';
 import moment from 'moment';
 import {BACKDROP_PATH} from '@/constants';
 
-export const dispatch = action => {
-    store.dispatch(action);
-};
+export const dispatch = action => store.dispatch(action);
 
 export const sliderListOptions = {
     slidesPerView: 2,
@@ -81,3 +79,15 @@ export const truncateText = (text, limit) => {
         return text;
     }
 };
+
+export const filterFetchResults = media => {
+    if (media) {
+        return (
+            media.vote_count > 1 &&
+            media.backdrop_path !== null &&
+            media.budget !== 0 &&
+            media.poster_path !== null &&
+            media.overview !== ''
+        )
+    }
+}

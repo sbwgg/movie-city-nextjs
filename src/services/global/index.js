@@ -1,17 +1,18 @@
 import {$api} from '@/api';
 import {API_KEY} from '@/constants';
+import {filterFetchResults} from '@/helpers';
 
 // GET
 export const getPopularMovies = async locale => {
         return await $api().get(`/movie/popular?api_key=${API_KEY}&language=${locale}&page=2`)
-            .then((response) => response.data.results.filter(item => item.poster_path !== null))
+            .then((response) => response.data.results.filter(item => filterFetchResults(item)))
             .catch((error) => console.log(error))
 };
 
 export const getTopMovies = async (locale, page) => {
     return await $api().get(`/movie/top_rated?api_key=${API_KEY}&language=${locale}&page=${page || 1}`)
         .then((response) => {
-            const filterItems = response.data.results.filter(item => item.poster_path !== null)
+            const filterItems = response.data.results.filter(item => filterFetchResults(item))
             return filterItems.slice(0, 10)
         })
         .catch((error) => console.log(error))

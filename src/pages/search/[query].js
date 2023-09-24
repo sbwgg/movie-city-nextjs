@@ -6,7 +6,7 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import {getSearchResults} from '@/services/global';
 import {setSearchResults} from '@/redux/slices/globalSlice';
-import {dispatch} from '@/helpers';
+import {dispatch, filterFetchResults} from '@/helpers';
 import MovieCard from '@/components/movie-card';
 import Pagination from '@/components/pagination';
 
@@ -25,7 +25,7 @@ const Index = () => {
         if (keyword) {
             getSearchResults(keyword, locale, currentPage)
                 .then(res => {
-                    const filtered = res.results.filter(item => item.poster_path !== null);
+                    const filtered = res.results.filter((item) => filterFetchResults(item));
                     const sortedByPopularity = filtered.sort((a, b) => b.vote_average - a.vote_average)
                     dispatch(setSearchResults(sortedByPopularity))
                     setEmpty(res.results.length === 0)

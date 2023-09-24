@@ -8,7 +8,7 @@ import MovieList from '@/components/pages/genre/movie-list';
 import Pagination from '@/components/pagination';
 import {setGenreResults} from '@/redux/slices/genreSlice';
 import {getGenreResults} from '@/services/genre';
-import {dispatch, capitalizeFirstLetter} from '@/helpers';
+import {dispatch, capitalizeFirstLetter, filterFetchResults} from '@/helpers';
 
 const Index = () => {
     const router = useRouter();
@@ -25,7 +25,8 @@ const Index = () => {
         if (id) {
             getGenreResults(locale, id, currentPage)
                 .then(res => {
-                    const sortedResponse = res.results.sort((a, b) => b.vote_average - a.vote_average)
+                    const filteredResults = res.results.filter(item => filterFetchResults(item))
+                    const sortedResponse = filteredResults.sort((a, b) => b.vote_average - a.vote_average)
                     dispatch(setGenreResults(sortedResponse))
                     setTotalPages(res.total_pages)
                 });
