@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 const Index = props => {
 	const {mediaId, mediaTitle} = props;
 
-	const kinoBoxOptions = {
+	const mediaPlayerOptions = {
 		search: {
 			imdb: mediaId,
 			title: mediaTitle
@@ -26,12 +26,12 @@ const Index = props => {
 
 	useEffect(() => {
 		const initializeKinobox = () => {
-			new Kinobox('.kinobox_player', kinoBoxOptions).init();
+			new Kinobox('.media_player', mediaPlayerOptions).init();
 		};
 
 		const loadKinoboxScript = () => {
 			const script = document.createElement('script');
-			script.src = process.env.FULL_MOVIE_URL;
+			script.src = process.env.MEDIA_API;
 			script.async = true;
 			script.onload = initializeKinobox;
 			document.body.appendChild(script);
@@ -43,7 +43,7 @@ const Index = props => {
 
 	return (
 		<section className={classNames([styles.clipContainer, 'movie-list-info-wrapper'])}>
-			<div className="kinobox_player"></div>
+			<div className="media_player"></div>
 		</section>
 	)
 }

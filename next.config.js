@@ -13,7 +13,7 @@ const nextConfig = {
         API_KEY: process.env.API_KEY,
         IMAGE_PATH: process.env.IMAGE_PATH,
         BACKDROP_PATH: process.env.BACKDROP_PATH,
-        FULL_MOVIE_URL: process.env.FULL_MOVIE_URL
+        MEDIA_API: process.env.MEDIA_API
     },
 
     images: {
