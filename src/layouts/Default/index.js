@@ -7,6 +7,7 @@ import Footer from '@/components/footer';
 import NextLink from '@/components/UI/NextLink';
 import PopularMovies from '@/components/popular-movies';
 import TopMovies from '@/components/top-movies';
+import MediaClip from '@/components/pages/media/media-clip';
 import { lowercaseString, dynamicBackground, truncateText } from '@/helpers';
 import styles from './index.module.scss';
 
@@ -57,6 +58,7 @@ const Index = props => {
                 </div>
                 <Footer/>
             </main>
+            <MediaClip/>
         </>
     );
 }

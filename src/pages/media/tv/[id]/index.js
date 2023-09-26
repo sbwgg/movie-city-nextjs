@@ -2,7 +2,7 @@ import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import {fetchTvData} from '@/services/media/tv';
-import Tv from '@/components/pages/media/tv';
+import Media from '@/components/pages/media';
 import FullMedia from '@/components/pages/media/full-media';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/media/reviews';
@@ -22,7 +22,7 @@ const Index = ({ tv }) => {
             image={info.backdrop_path}
             backgroundPoster={info.backdrop_path}
         >
-            <Tv tv={info} />
+            <Media data={info} type="tv" />
             <FullMedia mediaTitle={info.name} mediaId={imdbId.imdb_id}/>
             <SliderList
                 listType="cast-members"

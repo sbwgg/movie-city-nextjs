@@ -2,8 +2,7 @@ import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import { fetchMovieData } from '@/services/media/movie';
-import Movie from '@/components/pages/media/movie';
-import MovieClip from '@/components/pages/media/media-clip';
+import Media from '@/components/pages/media';
 import FullMovie from '@/components/pages/media/full-media';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/media/reviews';
@@ -28,8 +27,7 @@ const Index = ({ movie }) => {
             image={info.backdrop_path}
             backgroundPoster={info.backdrop_path}
         >
-            <Movie movie={info} />
-            {/*{clip ? <MovieClip clipKey={clip.key} /> : null}*/}
+            <Media data={info} clipKey={clip ? clip.key : null}/>
             <FullMovie mediaTitle={info.title} mediaId={imdbId.imdb_id}/>
             <SliderList
                 listType="cast-members"
