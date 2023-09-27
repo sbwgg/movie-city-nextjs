@@ -17,7 +17,7 @@ const Index = () => {
 
 	useEffect(() => {
 		getTrendingTv(locale, trendingBy)
-			.then(res => dispatch(setTrendingTv(res)))
+			.then(response => dispatch(setTrendingTv(response)))
 
 	},[trendingBy, locale]);
 

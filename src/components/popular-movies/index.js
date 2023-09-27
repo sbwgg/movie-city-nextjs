@@ -38,7 +38,7 @@ const Index = () => {
 
     useEffect(() => {
         getPopularMovies(locale)
-            .then(res => dispatch(setPopularMovies(res)));
+            .then(response => dispatch(setPopularMovies(response)));
     },[locale]);
 
     return (

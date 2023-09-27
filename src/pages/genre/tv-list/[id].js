@@ -24,16 +24,14 @@ const Id = () => {
 	useEffect(() => {
 		if (id) {
 			getTvGenreResults(locale, id, currentPage)
-				.then(res => {
-					const filteredResults = res.results.filter(item => filterFetchResults(item))
+				.then(response => {
+					const filteredResults = response.results.filter(item => filterFetchResults(item))
 					const sortedResponse = filteredResults.sort((a, b) => b.vote_average - a.vote_average)
 					dispatch(setTvGenreResults(sortedResponse))
-					setTotalPages(res.total_pages)
+					setTotalPages(response.total_pages)
 				});
 
-			return () => {
-				dispatch(setTvGenreResults([]))
-			}
+			return () => dispatch(setTvGenreResults([]))
 		}
 	}, [id, locale, currentPage]);
 

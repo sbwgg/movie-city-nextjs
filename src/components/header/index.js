@@ -66,10 +66,10 @@ const Index = () => {
 
     useEffect(() => {
         getMovieGenres(locale)
-            .then(res => dispatch(setMovieGenres(res)));
+            .then(response => dispatch(setMovieGenres(response)));
 
         getTvGenres(locale)
-            .then(res => dispatch(setTvGenres(res)));
+            .then(response => dispatch(setTvGenres(response)));
 
     },[locale]);
 
@@ -110,7 +110,10 @@ const Index = () => {
                                         onChange={handleSearchQuery}
                                     />
                                     <NextLink
-                                        href={`/search/${searchQuery}`}
+                                        href={{
+                                            pathname: '/search',
+                                            query: { query: searchQuery },
+                                        }}
                                         className={isSearchQueryEmpty ? 'disabled' : ''}
                                     >
                                         <Button

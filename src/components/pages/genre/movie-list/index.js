@@ -7,17 +7,15 @@ const Index = props => {
 
     return (
         <section className={styles.listResults}>
-            {results && results.map((item, index) => {
-                return (
-                    <MediaCard
-                        detailed
-                        key={index}
-                        media={item}
-                        delay={index}
-                        mediaType={mediaType}
-                    />
-                )
-            })}
+            {results && results.map((item, index) =>
+                <MediaCard
+                    detailed
+                    key={index}
+                    media={item}
+                    delay={index}
+                    mediaType={mediaType}
+                />
+            )}
         </section>
     )
 }

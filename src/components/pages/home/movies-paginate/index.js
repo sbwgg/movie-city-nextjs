@@ -16,10 +16,10 @@ const Index = () => {
 
     useEffect(() => {
         getMoviePaginations(locale, currentPage)
-            .then(res => {
-                const sortedResults = res.results.sort((a, b) => b.vote_average - a.vote_average)
+            .then(response => {
+                const sortedResults = response.results.sort((a, b) => b.vote_average - a.vote_average)
                 dispatch(setPaginatedList(sortedResults));
-                setTotalPages(res.total_pages);
+                setTotalPages(response.total_pages);
             });
 
     },[locale, currentPage]);

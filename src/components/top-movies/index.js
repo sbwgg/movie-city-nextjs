@@ -13,10 +13,10 @@ const Index = () => {
 	const locale = useCurrentLocale();
 
 	useEffect(() => {
-		getTopMovies(locale, topMovies.page).then((res) => {
+		getTopMovies(locale, topMovies.page).then((response) => {
 			dispatch(setTopMovies({
 				...topMovies,
-				data: res
+				data: response
 			}));
 		});
 	}, [locale, topMovies.page]);

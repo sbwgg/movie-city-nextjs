@@ -24,16 +24,14 @@ const Index = () => {
     useEffect(() => {
         if (id) {
             getMovieGenreResults(locale, id, currentPage)
-                .then(res => {
-                    const filteredResults = res.results.filter(item => filterFetchResults(item))
+                .then(response => {
+                    const filteredResults = response.results.filter(item => filterFetchResults(item))
                     const sortedResponse = filteredResults.sort((a, b) => b.vote_average - a.vote_average)
                     dispatch(setMovieGenreResults(sortedResponse))
-                    setTotalPages(res.total_pages)
+                    setTotalPages(response.total_pages)
                 });
 
-            return () => {
-                dispatch(setMovieGenreResults([]))
-            }
+            return () => dispatch(setMovieGenreResults([]));
         }
     }, [id, locale, currentPage]);
 
