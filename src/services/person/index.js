@@ -17,7 +17,7 @@ const getTopPopularMovies = (id, locale) => {
     return $api().get(`/person/${id}/movie_credits?api_key=${API_KEY}&language=${locale}`)
         .then(response => {
             const cast = response.data.cast;
-            cast.sort((a, b) => b.popularity - a.popularity);
+            cast.sort((a, b) => b.vote_count - a.vote_count);
             const top8PopularMovies = cast.slice(0, 8);
 
             return top8PopularMovies;
@@ -25,19 +25,32 @@ const getTopPopularMovies = (id, locale) => {
         .catch(error => console.error(error))
 };
 
-const getCareerList = (id, locale) => {
-    return $api().get(`/person/${id}/movie_credits?api_key=${API_KEY}&language=${locale}`)
-        .then(response => {
-            const movieList = response.data.cast
-                .filter(movie => movie.release_date && movie.poster_path)
-                .sort((a, b) => {
-                    const dateA = new Date(a.release_date);
-                    const dateB = new Date(b.release_date);
+const getMovieAndTVList = (id, locale) => {
+    const moviePromise = $api().get(`/person/${id}/movie_credits?api_key=${API_KEY}&language=${locale}`);
+    const tvPromise = $api().get(`/person/${id}/tv_credits?api_key=${API_KEY}&language=${locale}`);
 
-                    return dateB - dateA;
-                });
+    return Promise.all([moviePromise, tvPromise])
+        .then(responses => {
+            const combinedList = [];
 
-            return movieList;
+            responses.forEach((response, index) => {
+                const creditsList = response.data.cast
+                    .filter(credit => (credit.release_date || credit.first_air_date) && credit.poster_path)
+                    .map(credit => ({
+                        ...credit,
+                        type: index === 0 ? 'movie' : 'tv'
+                    }));
+
+                combinedList.push(...creditsList);
+            });
+
+            combinedList.sort((a, b) => {
+                const dateA = new Date(a.release_date || a.first_air_date);
+                const dateB = new Date(b.release_date || b.first_air_date);
+                return dateB - dateA;
+            });
+
+            return combinedList;
         })
         .catch(error => console.error(error));
 };
@@ -47,7 +60,7 @@ export const fetchPersonData = async (id, locale) => {
         getDetails(id, locale),
         getSocialMedia(id),
         getTopPopularMovies(id, locale),
-        getCareerList(id, locale)
+        getMovieAndTVList(id, locale)
     ];
 
     try {

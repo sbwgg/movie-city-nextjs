@@ -58,32 +58,35 @@ const Index = props => {
                 styles.careerListWrapper, 'darken-background'
             ])}>
                 <h3>{t('person.acting-career')}</h3>
+
                 <ul className={styles.careerList}>
-                    {careerList.map((movie, index) =>
+                    {careerList.map((media, index) =>
                         <li className={styles.careerListItem}
-                            key={`career-movie-${index}`}
+                            key={`career-media-${index}`}
                         >
                             <NextLink
-                                href={`/media/movie/${movie.id}-${lowercaseString(movie.original_title)}`}
+                                href={`/media/${media.type}/${media.id}-${lowercaseString(media.original_title || media.original_name)}`}
                                 className={styles.careerListMedia}
                             >
                                 <ImageComponent
-                                    src={IMAGE_PATH(movie.poster_path)}
-                                    alt={`Title: ${movie.title}`}
+                                    src={IMAGE_PATH(media.poster_path)}
+                                    alt={`Title: ${media.title || media.name}`}
                                 />
                                 <div className={styles.careerListDescription}>
-                                    {movie.release_date && <span>{extractYear(movie.release_date)}</span>}
-                                    <h4 className="font-bold w-fit">{movie.title}</h4>
+                                    {(media.release_date || media.first_air_date) &&
+                                        <span>{extractYear(media.release_date || media.first_air_date)}</span>
+                                    }
+                                    <h4 className="font-bold w-fit">{media.title || media.name}</h4>
                                     <p>
                                         {t('person.character')}:
-                                        <span className="font-bold"> {movie.character} </span>
+                                        <span className="font-bold"> {media.character} </span>
                                     </p>
                                 </div>
                             </NextLink>
-                            {movie.backdrop_path &&
+                            {media.backdrop_path &&
                                 <div
                                     className={styles.careerListItemBackground}
-                                    style={{backgroundImage: `url(${BACKDROP_PATH(movie.backdrop_path)})`}}
+                                    style={{backgroundImage: `url(${BACKDROP_PATH(media.backdrop_path)})`}}
                                 />
                             }
                         </li>

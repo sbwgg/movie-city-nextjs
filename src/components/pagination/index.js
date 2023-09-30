@@ -5,7 +5,8 @@ import useDebounce from '@/hooks/useDebounce';
 import Button from '@/components/UI/Button';
 
 const Index = ({totalPages, currentPage, onPageChange}) => {
-	const DOTS = '...'
+	const DOTS = '...';
+	const debounceTiming = 500;
 
 	useEffect(() => {
 		if (currentPage > totalPages) {
@@ -15,11 +16,13 @@ const Index = ({totalPages, currentPage, onPageChange}) => {
 
 	const handlePrevPage = useDebounce(() => {
 		currentPage > 1 && onPageChange(currentPage - 1);
-	}, 150);
+	}, debounceTiming);
 
 	const handleNextPage = useDebounce(() => {
 		currentPage < totalPages && onPageChange(currentPage + 1);
-	}, 150);
+	}, debounceTiming);
+
+	const handleNumericChange = useDebounce(number => onPageChange(number), debounceTiming);
 
 	const siblingCount = 1; // Adjust this value to control the number of siblings to show on each side
 
@@ -59,9 +62,9 @@ const Index = ({totalPages, currentPage, onPageChange}) => {
 		return pageNumbersToShow;
 	};
 
-	useEffect(() => {
-		document.body.scrollTop = document.documentElement.scrollTop = 0;
-	}, [currentPage]);
+	// useEffect(() => {
+	// 	document.body.scrollTop = document.documentElement.scrollTop = 0;
+	// }, [currentPage]);
 
 	return (
 		<div className={styles.paginationWrapper}>
@@ -78,11 +81,7 @@ const Index = ({totalPages, currentPage, onPageChange}) => {
 					</svg>
 				</Button>
 				{getPageNumbersToShow().map((pageNumber, key) => {
-					if (pageNumber === DOTS) {
-						return (
-							<p key={`dots_${key}`}>{DOTS}</p>
-						)
-					}
+					if (pageNumber === DOTS) return <p key={`dots_${key}`}>{DOTS}</p>
 
 					return (
 						<Button
@@ -92,7 +91,7 @@ const Index = ({totalPages, currentPage, onPageChange}) => {
 								styles.paginationItem,
 								pageNumber === currentPage && styles.paginationItemActive
 							])}
-							onClick={() => onPageChange(pageNumber)}
+							onClick={() => handleNumericChange(pageNumber)}
 						>
 							{pageNumber}
 						</Button>

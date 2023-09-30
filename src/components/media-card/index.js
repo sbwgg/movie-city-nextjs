@@ -17,6 +17,7 @@ const Index = props => {
         delay,
         detailed
     } = props;
+
     const {t} = useTranslation();
 
     return (

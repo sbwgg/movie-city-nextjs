@@ -16,6 +16,7 @@ const Index = props => {
         title,
         description,
         children,
+        staticImage,
         image,
         backgroundPoster
     } = props;
@@ -26,7 +27,7 @@ const Index = props => {
 
     return (
         <>
-            <Seo title={title} description={truncateText(description, 120)} image={image}/>
+            <Seo title={title} description={truncateText(description, 120)} image={image} staticImage={staticImage}/>
             <main>
                 <Header/>
                 <div className="page fixed-background"

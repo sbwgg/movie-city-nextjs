@@ -3,13 +3,13 @@ import {API_KEY} from '@/constants';
 import {getTvById} from '@/services/media/tv';
 
 const getCast = (id, locale) => {
-	return $api().get(`/tv/${id}/credits?api_key=${API_KEY}&language=${locale}`)
+	return $api().get(`/tv/${id}/aggregate_credits?api_key=${API_KEY}&language=${locale}`)
 		.then((response) => response.data.cast)
 		.catch((error) => console.log(error))
 }
 
 const getCrew = (id, locale) => {
-	return $api().get(`/tv/${id}/credits?api_key=${API_KEY}&language=${locale}`)
+	return $api().get(`/tv/${id}/aggregate_credits?api_key=${API_KEY}&language=${locale}`)
 		.then((response) => response.data.crew)
 		.catch((error) => console.log(error))
 }

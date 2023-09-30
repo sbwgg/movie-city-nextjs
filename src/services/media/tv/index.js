@@ -15,7 +15,7 @@ const getTvExternalIds = id => {
 };
 
 const getTvCast = (id, locale) => {
-	return $api().get(`/tv/${id}/credits?api_key=${API_KEY}&language=${locale}`)
+	return $api().get(`/tv/${id}/aggregate_credits?api_key=${API_KEY}&language=${locale}`)
 		.then((response) => {
 			const movieCast =  response.data.cast.filter(person => person.profile_path !== null)
 

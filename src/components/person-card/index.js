@@ -14,6 +14,8 @@ const Index = props => {
         secondary
     } = props;
 
+    console.log(member);
+
     return (
         <NextLink href={`/person/${member.id}-${lowercaseString(member.name)}`} className={classNames([
             styles.personItem,
@@ -41,7 +43,9 @@ const Index = props => {
                 )}
                 <figcaption className={secondary ? styles.personSecondaryInfo : styles.personPrimaryInfo}>
                     <h4 className="text-oneline">{member.name}</h4>
-                    <h5 className="text-oneline">{member.character ? member.character : member.job}</h5>
+                    <h5 className="text-oneline">
+                        {member.roles ? member.roles[0].character : member.character || member.job}
+                    </h5>
                 </figcaption>
             </figure>
         </NextLink>

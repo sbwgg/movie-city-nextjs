@@ -8,8 +8,9 @@
     "more": "Read More",
     "less": "Read Less"
   },
-  "pageTitles": {
-    "cast": "Cast & Crew"
+  "pageMetas": {
+    "castTitle": "Cast & Crew",
+    "homeDescription": "Join us and invite your friends to watch movies online for free in HD with MovieCity!"
   },
   "media": {
     "trailer": "Watch Trailer",

@@ -22,7 +22,7 @@ const Index = ({ movie }) => {
 
     return (
         <Default
-            title={info.title}
+            title={`Movie City | ${info.title}`}
             description={info.overview}
             image={info.backdrop_path}
             backgroundPoster={info.backdrop_path}

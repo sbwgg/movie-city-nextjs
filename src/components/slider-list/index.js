@@ -45,7 +45,7 @@ const Index = props => {
                                     >
                                         {sliderType === 'cast' ?
                                             <CastCard member={item}/> :
-                                            <MediaCard media={item} delay={index} mediaType={mediaType}/>
+                                            <MediaCard media={item} delay={index} mediaType={item.media_type || mediaType}/>
                                         }
                                     </SwiperSlide>
                                 )

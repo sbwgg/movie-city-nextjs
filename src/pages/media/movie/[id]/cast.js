@@ -40,8 +40,8 @@ const CastPage = ({ cast, crew, movieData }) => {
 
 	return (
 		<Empty
-			title={`${movieData.title} - ${t('pageTitles.cast')}`}
-			description={`${movieData.title} - ${t('pageTitles.cast')}`}
+			title={`${movieData.title} - ${t('pageMetas.castTitle')}`}
+			description={`${movieData.title} - ${t('pageMetas.castTitle')}`}
 			image={movieData.backdrop_path}
 			backgroundPoster={movieData.backdrop_path}
 			className="transparent-bg"
