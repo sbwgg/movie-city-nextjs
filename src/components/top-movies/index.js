@@ -24,10 +24,12 @@ const Index = () => {
 
 	const {t} = useTranslation();
 
-	const updateTopMovies = useDebounce(() => dispatch(setTopMovies({
-		...topMovies,
-		page: getRandomInt(1, 200)
-	})), 500);
+	const updateTopMovies = useDebounce(() => {
+		dispatch(setTopMovies({
+			...topMovies,
+			page: getRandomInt(1, 200)
+		}))
+	}, 1000);
 
 	return (
 		<section>
