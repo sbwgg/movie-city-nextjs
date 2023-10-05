@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
-import styles from './index.module.scss';
 import useCurrentLocale from '@/hooks/useCurrentLocale';
+import useDebounce from '@/hooks/useDebounce';
 import {getTrendingMovie} from '@/services/home';
 import {setTrendingMovie} from '@/redux/slices/homeSlice';
 import {dispatch} from '@/helpers';
 import SliderList from '@/components/slider-list';
+import styles from './index.module.scss';
 
 const Index = () => {
 	const [trendingBy, setTrendingBy] = useState('day');
@@ -32,6 +33,10 @@ const Index = () => {
 		}
 	];
 
+	const changeTrendingBy = useDebounce(type => {
+		setTrendingBy(type);
+	}, 500);
+
 	return (
 		<section className={styles.trendingWrapper}>
 			<div className={styles.trendingFilter}>
@@ -43,7 +48,7 @@ const Index = () => {
 							type="checkbox"
 							id={`trending-${trending.title}`}
 							className="hidden"
-							onChange={() => setTrendingBy(trending.type)}
+							onChange={() => changeTrendingBy(trending.type)}
 						/>
 						<label htmlFor={`trending-${trending.title}`}>
 							<span className="gradient-text">{t(trending.title)}</span>
