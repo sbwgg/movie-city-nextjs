@@ -14,8 +14,6 @@ const Index = props => {
         secondary
     } = props;
 
-    console.log(member);
-
     return (
         <NextLink href={`/person/${member.id}-${lowercaseString(member.name)}`} className={classNames([
             styles.personItem,

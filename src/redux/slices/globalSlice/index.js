@@ -6,7 +6,6 @@ export const index = createSlice({
         popularMovies: [],
         searchResults: [],
         popularMovie: {},
-        backgroundPoster: ''
     },
 
     reducers: {
@@ -20,10 +19,6 @@ export const index = createSlice({
 
         setPopularMovieOfDay: (state, action) => {
             state.popularMovie = action.payload;
-        },
-
-        setBackgroundPoster: (state, action) => {
-            state.backgroundPoster = action.payload;
         }
     }
 })
@@ -31,8 +26,7 @@ export const index = createSlice({
 export const {
     setPopularMovies,
     setSearchResults,
-    setPopularMovieOfDay,
-    setBackgroundPoster
+    setPopularMovieOfDay
 } = index.actions;
 
 export default index.reducer;

@@ -1,5 +1,6 @@
 import {combineReducers, configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
+import storageSession from 'redux-persist/lib/storage/session';
 import {persistReducer} from 'redux-persist';
 import globalSlice from './slices/globalSlice';
 import homeSlice from './slices/homeSlice';
@@ -9,8 +10,9 @@ import persistSlice from '@/redux/slices/persistSlice';
 import genreSlice from '@/redux/slices/genreSlice';
 
 const persistConfig = {
-    key: 'persist',
-    storage,
+    key: 'top-movies',
+    // storage, // for LocalStorage
+    storage: storageSession, //for SessionStorage
     whitelist: ['persist']
 };
 

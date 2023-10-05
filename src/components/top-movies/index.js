@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import useCurrentLocale from '@/hooks/useCurrentLocale';
+import useDebounce from '@/hooks/useDebounce';
 import MediaCardLabel from '@/components/media-card-label';
 import Button from '@/components/UI/Button';
 import {getTopMovies} from '@/services/global';
@@ -23,12 +24,10 @@ const Index = () => {
 
 	const {t} = useTranslation();
 
-	const updateTopMovies = () => {
-		dispatch(setTopMovies({
-			...topMovies,
-			page: getRandomInt(1, 200)
-		}));
-	};
+	const updateTopMovies = useDebounce(() => dispatch(setTopMovies({
+		...topMovies,
+		page: getRandomInt(1, 200)
+	})), 500);
 
 	return (
 		<section>
