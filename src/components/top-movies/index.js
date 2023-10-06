@@ -14,6 +14,11 @@ const Index = () => {
 	const locale = useCurrentLocale();
 
 	useEffect(() => {
+		dispatch(setTopMovies({
+			...topMovies,
+			data: []
+		}));
+
 		getTopMovies(locale, topMovies.page).then((response) => {
 			dispatch(setTopMovies({
 				...topMovies,

@@ -3,10 +3,10 @@
 
     input {
         @apply py-[6px] px-[12px] border-[1px] border-solid bg-[transparent] rounded-full
-        text-sm transition-colors focus:border-primary-blue text-black-white;
+        text-sm transition-colors focus:border-primary-blue text-white;
 
         &::placeholder {
-            @apply text-black-white #{!important};
+            @apply text-white #{!important};
         }
     }
 }

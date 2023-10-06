@@ -15,7 +15,7 @@ const Index = () => {
 
 		const isDaytime = hours >= 7 && hours <= 18;
 
-		isDaytime ? setTheme('light') : setTheme('dark');
+		theme === 'system' && setTheme(isDaytime ? 'light' : 'dark');
 	};
 
 	useEffect(() => setThemeByTimeOfDay(), []);

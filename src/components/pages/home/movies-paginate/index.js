@@ -15,14 +15,15 @@ const Index = () => {
     const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
+        dispatch(setPaginatedList([]));
+
         getMoviePaginations(locale, currentPage)
-            .then(response => {
-                const sortedResults = response.results.sort((a, b) => b.vote_average - a.vote_average)
+            .then((response) => {
+                const sortedResults = response.results.sort((a, b) => b.vote_average - a.vote_average);
                 dispatch(setPaginatedList(sortedResults));
                 setTotalPages(response.total_pages);
             });
-
-    },[locale, currentPage]);
+    }, [locale, currentPage]);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
