@@ -68,10 +68,10 @@ const Index = props => {
                         </>
                     )}
                 </Swiper>
-                <button className={`swiper-nav-prev swiper-${listType}-prev`}>
+                <button className={`swiper-nav-prev swiper-${listType}-prev`} aria-label="Slide Prev">
                     <span/>
                 </button>
-                <button className={`swiper-nav-next swiper-${listType}-next`}>
+                <button className={`swiper-nav-next swiper-${listType}-next`} aria-label="Slide Next">
                     <span/>
                 </button>
             </div>

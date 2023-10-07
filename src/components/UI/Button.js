@@ -9,7 +9,7 @@ const Button = props => {
     } = props;
 
     const classes = () => {
-        return `btn${design ? ` btn-${design}` : ''} ${className}`
+        return `btn${design ? ` btn-${design}` : ''}${className ? ` ${className}` : ''}`
     }
 
     return (

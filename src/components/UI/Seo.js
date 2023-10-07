@@ -27,7 +27,6 @@ const Seo = props => {
 			<meta property="twitter:title" content={title}/>
 			{description && <meta property="twitter:description" content={description}/>}
 			{(image || staticImage)  && <meta property="twitter:image" content={staticImage || IMAGE_PATH(image)}/>}
-			<link rel="canonical" href={router.asPath}/>
 			<title>{title || 'Movie City'}</title>
 		</Head>
 	)

@@ -1,12 +1,10 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import classNames from 'classnames';
 import Seo from '@/components/UI/Seo';
+import Header from '@/components/header/index';
+import Footer from '@/components/footer';
 import {dynamicBackground} from '@/helpers';
 import styles from './index.module.scss';
-
-const Header = dynamic(() => import('@/components/header/index'));
-const Footer = dynamic(() => import('@/components/footer'));
 
 const Index = props => {
 	const {
