@@ -46,11 +46,11 @@ const Index = () => {
 					>
 						<input
 							type="checkbox"
-							id={`trending-${trending.title}`}
+							id={`trending-movie-${trending.title}`}
 							className="hidden"
 							onChange={() => changeTrendingBy(trending.type)}
 						/>
-						<label htmlFor={`trending-${trending.title}`}>
+						<label htmlFor={`trending-movie-${trending.title}`}>
 							<span className="gradient-text">{t(trending.title)}</span>
 						</label>
 					</div>
