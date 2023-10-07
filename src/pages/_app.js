@@ -29,7 +29,7 @@ const MyApp = ({Component, pageProps}) => {
 						<link rel="apple-touch-icon" sizes="57x57 60x60 72x72 76x76 114x114 120x120 144x144 152x152"
 							  href="/favicon.png"/>
 						<link rel="icon" type="image/png" href="/favicon.png" sizes="16x16 32x32 64x64 128x128"/>
-						<link rel="canonical" href={router.asPath}/>
+						<link rel="canonical" href={process.env.APP_URL + router.asPath}/>
 					</Head>
 					<Component {...pageProps}/>
 				</ThemeProvider>

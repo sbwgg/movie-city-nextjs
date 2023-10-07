@@ -9,6 +9,7 @@ const nextConfig = {
     },
 
     env: {
+        APP_URL: process.env.APP_URL,
         BASE_URL: process.env.BASE_URL,
         API_KEY: process.env.API_KEY,
         IMAGE_PATH: process.env.IMAGE_PATH,
