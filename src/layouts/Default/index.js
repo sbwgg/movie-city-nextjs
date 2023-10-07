@@ -1,14 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 import {useSelector} from 'react-redux';
+import dynamic from 'next/dynamic';
 import Seo from '@/components/UI/Seo';
-import Header from '@/components/header/index';
-import Footer from '@/components/footer';
 import NextLink from '@/components/UI/NextLink';
-import PopularMovies from '@/components/popular-movies';
-import TopMovies from '@/components/top-movies';
-import MediaClip from '@/components/pages/media/media-clip';
-import { lowercaseString, dynamicBackground, truncateText } from '@/helpers';
+import {lowercaseString, dynamicBackground, truncateText} from '@/helpers';
+
+const Header = dynamic(() => import('@/components/header'));
+const Footer = dynamic(() => import('@/components/footer'));
+const PopularMovies = dynamic(() => import('@/components/popular-movies'));
+const TopMovies = dynamic(() => import('@/components/top-movies'));
+const MediaClip = dynamic(() => import('@/components/pages/media/media-clip'));
 import styles from './index.module.scss';
 
 const Index = props => {

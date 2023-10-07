@@ -1,10 +1,12 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import {useTranslation} from 'next-i18next';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
-import TrendingTv from '@/components/pages/home/trending-tv';
-import MoviesPaginate from '@/components/pages/home/movies-paginate';
-import TrendingMovies from '@/components/pages/home/trending-movies';
+
+const TrendingTv = dynamic(() => import('@/components/pages/home/trending-tv'));
+const MoviesPaginate = dynamic(() => import('@/components/pages/home/movies-paginate'));
+const TrendingMovies = dynamic(() => import('@/components/pages/home/trending-movies'));
 
 const Home = () => {
 
