@@ -4,7 +4,6 @@ import Empty from '@/layouts/Empty';
 import {fetchPersonData} from '@/services/person';
 import PersonalInfo from '@/components/pages/person/personal-info';
 import Career from '@/components/pages/person/career';
-import Loader from '@/components/loader';
 
 const Index = ({person}) => {
 	const {details, socialMedia, topPopularMovies, career} = person;

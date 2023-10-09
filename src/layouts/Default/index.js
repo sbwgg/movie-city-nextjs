@@ -33,7 +33,7 @@ const Index = props => {
                 <div className="page fixed-background"
                      style={layoutBackground && dynamicBackground(layoutBackground)}
                 >
-                    <div className={ styles.defaultLayout}>
+                    <div className={styles.defaultLayout}>
                         {(popularMovie.backdrop_path && !backgroundPoster) &&
                             <NextLink
                                 href={`/media/movie/${popularMovie.id}-${lowercaseString(popularMovie.original_title)}`}

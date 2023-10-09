@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 
 const Index = props => {
     const {
-        details,
+        details = {},
         topMovies,
         careerList
     } = props;
@@ -20,6 +20,17 @@ const Index = props => {
 
     const truncateLimit = 400;
     const truncatedBiography = truncateText(details.biography, truncateLimit);
+
+    const filterMap = (details, media) => {
+        const filteredItem = (details.birthday <= (media.release_date || media.first_air_date) &&
+            !(
+                media.character.includes('Self') ||
+                media.character.includes('Herself') ||
+                media.character.includes('Himself')
+            ));
+
+        return filteredItem;
+    };
 
     return (
         <section className={styles.careerWrapper}>
@@ -53,49 +64,51 @@ const Index = props => {
                 }
             </div>
 
-            <div className={classNames([
-                styles.careerListWrapper, 'darken-background'
-            ])}>
-                <h3>{t('person.acting-career')}</h3>
+            {careerList.length > 0 &&
+                <div className={classNames([
+                    styles.careerListWrapper, 'darken-background'
+                ])}>
+                    <h3>{t('person.acting-career')}</h3>
 
-				<ul className={styles.careerList}>
-					{careerList.map((media, index) =>
-						<>
-                            {details.birthday <= (media.release_date || media.first_air_date) &&
-                                <li className={styles.careerListItem}
-                                    key={`career-media-${index}`}
-                                >
-                                    <NextLink
-                                        href={`/media/${media.type}/${media.id}-${lowercaseString(media.original_title || media.original_name)}`}
-                                        className={styles.careerListMedia}
+                    <ul className={styles.careerList}>
+                        {careerList.map((media, index) =>
+                            <>
+                                {filterMap(details, media) &&
+                                    <li className={styles.careerListItem}
+                                        key={`career-media-${index}`}
                                     >
-                                        <ImageComponent
-                                            src={IMAGE_PATH(media.poster_path)}
-                                            alt={`Title: ${media.title || media.name}`}
-                                        />
-                                        <div className={styles.careerListDescription}>
-                                            {(media.release_date || media.first_air_date) &&
-                                                <span>{extractYear(media.release_date || media.first_air_date)}</span>
-                                            }
-                                            <h4 className="font-bold w-fit">{media.title || media.name}</h4>
-                                            <p>
-                                                {t('person.character')}:
-                                                <span className="font-bold"> {media.character} </span>
-                                            </p>
-                                        </div>
-                                    </NextLink>
-                                    {media.backdrop_path &&
-                                        <div
-                                            className={styles.careerListItemBackground}
-                                            style={{backgroundImage: `url(${BACKDROP_PATH(media.backdrop_path)})`}}
-                                        />
-                                    }
-                                </li>
-                            }
-						</>
-					)}
-				</ul>
-            </div>
+                                        <NextLink
+                                            href={`/media/${media.type}/${media.id}-${lowercaseString(media.original_title || media.original_name)}`}
+                                            className={styles.careerListMedia}
+                                        >
+                                            <ImageComponent
+                                                src={IMAGE_PATH(media.poster_path)}
+                                                alt={`Title: ${media.title || media.name}`}
+                                            />
+                                            <div className={styles.careerListDescription}>
+                                                {(media.release_date || media.first_air_date) &&
+                                                    <span>{extractYear(media.release_date || media.first_air_date)}</span>
+                                                }
+                                                <h4 className="font-bold w-fit">{media.title || media.name}</h4>
+                                                <p>
+                                                    {t('person.character')}:
+                                                    <span className="font-bold"> {media.character} </span>
+                                                </p>
+                                            </div>
+                                        </NextLink>
+                                        {media.backdrop_path &&
+                                            <div
+                                                className={styles.careerListItemBackground}
+                                                style={{backgroundImage: `url(${BACKDROP_PATH(media.backdrop_path)})`}}
+                                            />
+                                        }
+                                    </li>
+                                }
+                            </>
+                        )}
+                    </ul>
+                </div>
+            }
         </section>
 
     )
