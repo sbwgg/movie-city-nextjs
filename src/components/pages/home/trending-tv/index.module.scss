@@ -4,6 +4,10 @@
 
         & > section {
             @apply py-3 bg-secondary-gray;
+
+            & > h3 {
+                @apply max-[550px]:pt-10;
+            }
         }
     }
 

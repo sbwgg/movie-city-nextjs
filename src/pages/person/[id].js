@@ -4,6 +4,7 @@ import Empty from '@/layouts/Empty';
 import {fetchPersonData} from '@/services/person';
 import PersonalInfo from '@/components/pages/person/personal-info';
 import Career from '@/components/pages/person/career';
+import Loader from '@/components/loader';
 
 const Index = ({person}) => {
 	const {details, socialMedia, topPopularMovies, career} = person;
@@ -20,8 +21,7 @@ const Index = ({person}) => {
 					social={socialMedia}
 				/>
 				<Career
-					name={details.name}
-					biography={details.biography}
+					details={details}
 					topMovies={topPopularMovies}
 					careerList={career}
 				/>
@@ -41,6 +41,13 @@ export const getServerSideProps = async ({locale, query}) => {
 	}
 
 	const person = await fetchPersonData(queryId, locale);
+
+	// Check if career.movies is an array before filtering
+	if (Array.isArray(person.career.movies)) {
+		// Filter movies based on the condition
+		person.career.movies = person.career.movies
+			.filter(movie => movie.release_date >= person.details.birthday);
+	}
 
 	return {
 		props: {

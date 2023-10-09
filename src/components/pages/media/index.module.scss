@@ -33,8 +33,8 @@
             @apply flex flex-col gap-4 lg:flex-row;
 
             & > div {
-                @apply w-[59.33333%] mx-auto lg:mx-0 min-h-[41.57vw] max-h-[423px]
-                lg:min-h-[27.57vw] lg:max-h-[unset];
+                @apply mx-auto lg:mx-0
+                lg:min-h-[27.57vw] lg:max-h-[unset] lg:w-[59.33333%];
             }
         }
     }

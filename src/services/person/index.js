@@ -35,7 +35,7 @@ const getMovieAndTVList = (id, locale) => {
 
             responses.forEach((response, index) => {
                 const creditsList = response.data.cast
-                    .filter(credit => (credit.release_date || credit.first_air_date) && credit.poster_path)
+                    .filter(credit => (credit.release_date || credit.first_air_date) && (credit.poster_path && credit.character))
                     .map(credit => ({
                         ...credit,
                         type: index === 0 ? 'movie' : 'tv'

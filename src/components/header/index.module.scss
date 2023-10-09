@@ -36,8 +36,18 @@
         @apply flex items-start gap-5 flex-col pt-14 w-full
         lg:flex-row lg:items-center lg:pt-0 lg:w-[unset];
 
-        form button {
-            @apply [&:not(:hover)]:bg-primary-blue #{!important};
+        form {
+            button {
+                @apply [&:not(:hover)]:bg-primary-blue #{!important};
+            }
+
+            input {
+                @apply text-black-white lg:text-white;
+
+                &::placeholder {
+                    @apply text-black-white lg:text-white #{!important};
+                }
+            }
         }
     }
 

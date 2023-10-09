@@ -49,7 +49,7 @@
         }
 
         &Media {
-            @apply grid grid-cols-[85px_1fr];
+            @apply grid grid-cols-[.5fr_1fr] lg:grid-cols-[85px_1fr];
         }
 
         &Description {
