@@ -11,10 +11,12 @@ const Index = () => {
 	const {popularMovie} = useSelector(state => state.global);
 
 	useEffect(() => {
-		getPopularMovieOfDay()
-			.then(response => {
-				dispatch(setPopularMovieOfDay(response))
-			})
+		if (Object.keys(popularMovie).length === 0) {
+			getPopularMovieOfDay()
+				.then(response => {
+					dispatch(setPopularMovieOfDay(response))
+				})
+		}
 	},[]);
 
 

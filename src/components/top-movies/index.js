@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
-import useCurrentLocale from '@/hooks/useCurrentLocale';
+import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
 import useDebounce from '@/hooks/useDebounce';
 import MediaCardLabel from '@/components/media-card-label';
 import Button from '@/components/UI/Button';
@@ -10,26 +10,26 @@ import {setTopMovies} from '@/redux/slices/persistSlice';
 import {dispatch, getRandomInt} from '@/helpers';
 
 const Index = () => {
+	const [update, setUpdate] = useState(false);
+
 	const {topMovies} = useSelector(state => state.persist);
 	const locale = useCurrentLocale();
+	const prevLocale = usePreviousLocale(locale);
 
 	useEffect(() => {
-		dispatch(setTopMovies({
-			...topMovies,
-			data: []
-		}));
-
-		getTopMovies(locale, topMovies.page).then((response) => {
-			dispatch(setTopMovies({
-				...topMovies,
-				data: response
-			}));
-		});
-	}, [locale, topMovies.page]);
+		if (topMovies.data.length === 0 || (update || prevLocale !== locale)) {
+			getTopMovies(locale, topMovies.page)
+				.then((response) => {
+					dispatch(setTopMovies({ ...topMovies, data: response }));
+				});
+		}
+	}, [locale, topMovies.page, update]);
 
 	const {t} = useTranslation();
 
 	const updateTopMovies = useDebounce(() => {
+		setUpdate(true);
+
 		dispatch(setTopMovies({
 			...topMovies,
 			page: getRandomInt(1, 200)

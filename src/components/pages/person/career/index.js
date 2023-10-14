@@ -71,12 +71,10 @@ const Index = props => {
                     <h3>{t('person.acting-career')}</h3>
 
                     <ul className={styles.careerList}>
-                        {careerList.map((media, index) =>
-                            <>
-                                {filterMap(details, media) &&
-                                    <li className={styles.careerListItem}
-                                        key={`career-media-${index}`}
-                                    >
+                        {careerList.map(media => {
+                            if (filterMap(details, media)) {
+                                return (
+                                    <li className={styles.careerListItem} key={`career-media-${media.id}`}>
                                         <NextLink
                                             href={`/media/${media.type}/${media.id}-${lowercaseString(media.original_title || media.original_name)}`}
                                             className={styles.careerListMedia}
@@ -103,9 +101,10 @@ const Index = props => {
                                             />
                                         }
                                     </li>
-                                }
-                            </>
-                        )}
+                                );
+                            }
+                            return null;
+                        })}
                     </ul>
                 </div>
             }

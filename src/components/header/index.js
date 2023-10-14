@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import classNames from 'classnames';
 import {motion} from 'framer-motion';
-import useCurrentLocale from '@/hooks/useCurrentLocale';
+import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
 import useScrollDirection from '@/hooks/useScrollDirection';
 import useClickOutSide from '@/hooks/useClickOutSide';
 import NextLink from '@/components/UI/NextLink';
@@ -21,11 +21,14 @@ const Index = () => {
     const [showMovieGenres, setShowMovieGenres] = useState(false);
     const [showTvGenres, setShowTvGenres] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const {isDown} = useScrollDirection();
     const mobileMenuTrigger = useRef(null);
     const mobileMenuContainer = useRef(null);
-    const {t} = useTranslation();
+
+    const {isDown} = useScrollDirection();
     const locale = useCurrentLocale();
+    const prevLocale = usePreviousLocale(locale);
+    const {t} = useTranslation();
+
     const {movieGenreList, tvGenreList} = useSelector(state => state.genre);
 
     const slideRightVariants = {
@@ -65,13 +68,15 @@ const Index = () => {
     useClickOutSide(mobileMenuContainer, closeMobileMenu, mobileMenuTrigger);
 
     useEffect(() => {
-        getMovieGenres(locale)
-            .then(response => dispatch(setMovieGenres(response)));
+        if ((movieGenreList.length === 0 && tvGenreList.length === 0) || prevLocale !== locale) {
+            Promise.all([getMovieGenres(locale), getTvGenres(locale)])
+                .then(([movieGenres, tvGenres]) => {
+                    dispatch(setMovieGenres(movieGenres));
+                    dispatch(setTvGenres(tvGenres));
+                });
+        }
 
-        getTvGenres(locale)
-            .then(response => dispatch(setTvGenres(response)));
-
-    },[locale]);
+    }, [movieGenreList, tvGenreList, locale]);
 
     return (
         <header className={classNames([styles.header, (isDown && (!showMovieGenres && !showTvGenres)) ? styles.headerDown : ''])}>

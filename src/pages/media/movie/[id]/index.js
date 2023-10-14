@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import { fetchMovieData } from '@/services/media/movie';
@@ -9,6 +9,21 @@ import Reviews from '@/components/pages/media/reviews';
 import Loader from '@/components/loader';
 
 const Index = ({ movie }) => {
+    const [unmounted, setUnmounted] = useState(false);
+
+    // If the component is unmounted, clear the movie data
+    useEffect(() => {
+        return () => {
+            setUnmounted(true);
+        };
+    }, []);
+
+    // Check if the component is unmounted, and clear the movie data if needed
+    if (unmounted) {
+        return null; // Or you can render a different component or handle it as needed
+    }
+
+
     if (!movie.info) {
         return <Loader/>;
     }

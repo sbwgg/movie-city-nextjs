@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import styles from './index.module.scss';
-import useCurrentLocale from '@/hooks/useCurrentLocale';
+import {useCurrentLocale} from '@/hooks/useLocale';
 import {setPaginatedList} from '@/redux/slices/homeSlice';
 import {getMoviePaginations} from '@/services/home';
 import Pagination from '@/components/pagination';
@@ -9,10 +9,12 @@ import MediaCard from '@/components/media-card';
 import {dispatch} from '@/helpers';
 
 const Index = () => {
-    const locale = useCurrentLocale();
-    const {paginatedList} = useSelector(state => state.home);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const {paginatedList} = useSelector(state => state.home);
+
+    const locale = useCurrentLocale();
+
 
     useEffect(() => {
         dispatch(setPaginatedList([]));

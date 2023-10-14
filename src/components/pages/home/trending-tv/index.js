@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
-import useCurrentLocale from '@/hooks/useCurrentLocale';
+import {useCurrentLocale} from '@/hooks/useLocale';
 import useDebounce from '@/hooks/useDebounce';
 import {getTrendingTv} from '@/services/home';
 import {setTrendingTv} from '@/redux/slices/homeSlice';

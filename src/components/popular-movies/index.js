@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import styles from './index.module.scss';
-import useCurrentLocale from '@/hooks/useCurrentLocale';
+import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
 import MediaCard from '@/components/media-card';
 import {getPopularMovies} from '@/services/global';
 import { setPopularMovies } from '@/redux/slices/globalSlice';
@@ -12,8 +12,7 @@ import {dispatch} from '@/helpers';
 const Index = () => {
     const {popularMovies} = useSelector(state => state.global);
     const locale =  useCurrentLocale();
-    const slidePrev = useRef(null);
-    const slideNext = useRef(null);
+    const prevLocale = usePreviousLocale(locale);
 
     const swiperOptions = {
         slidesPerView: 2,
@@ -21,8 +20,8 @@ const Index = () => {
         speed: 800,
         modules: [Navigation],
         navigation: {
-            prevEl: slidePrev.current,
-            nextEl: slideNext.current
+            prevEl: '.popular-prev',
+            nextEl: '.popular-next'
         },
         breakpoints: {
             768: {
@@ -37,26 +36,30 @@ const Index = () => {
     };
 
     useEffect(() => {
-        getPopularMovies(locale)
-            .then(response => dispatch(setPopularMovies(response)));
+        if (popularMovies.length === 0 || prevLocale !== locale) {
+            getPopularMovies(locale)
+                .then(response => dispatch(setPopularMovies(response)));
+        }
     },[locale]);
 
     return (
         <section className={styles.popularMovies}>
             <div className={styles.popularMoviesSlider}>
-                <Swiper {...swiperOptions}>
-                    {popularMovies.map((item, key) => {
-                        return (
-                            <SwiperSlide key={`popular-movie-${item.id}`}>
-                                <MediaCard media={item} delay={key}/>
-                            </SwiperSlide>
-                        )
-                    })}
-                </Swiper>
-                <button ref={slidePrev} className="swiper-nav-prev">
+                {popularMovies.length !== 0 &&
+                    <Swiper {...swiperOptions}>
+                        {popularMovies.map((item, key) => {
+                            return (
+                                <SwiperSlide key={`popular-movie-${item.id}`}>
+                                    <MediaCard media={item} delay={key}/>
+                                </SwiperSlide>
+                            )
+                        })}
+                    </Swiper>
+                }
+                <button className="swiper-nav-prev popular-prev">
                     <span/>
                 </button>
-                <button ref={slideNext} className="swiper-nav-next">
+                <button className="swiper-nav-next popular-next">
                     <span/>
                 </button>
             </div>
