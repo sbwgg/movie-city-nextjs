@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import ImageComponent from '@/components/UI/image-component';
 import NextLink from '@/components/UI/NextLink';
 import {IMAGE_PATH} from '@/constants';
-import {extractYear, lowercaseString} from '@/helpers';
+import {extractYear, lowercaseString} from '@/helpers/stringHelpers';
 
 const Index = props => {
 	const {

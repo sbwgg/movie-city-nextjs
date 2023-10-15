@@ -5,7 +5,8 @@ import StarRatings from 'react-star-ratings/build/star-ratings';
 import ImageComponent from '@/components/UI/image-component';
 import NextLink from '@/components/UI/NextLink';
 import Button from '@/components/UI/Button';
-import {dispatch, roundNumber} from '@/helpers';
+import {dispatch} from '@/helpers';
+import {roundNumber} from '@/helpers/stringHelpers';
 import {setTrailerKey, setShowTrailer} from '@/redux/slices/movieSlice';
 import PlayIcon from '@/assets/images/icons/play-btn.svg';
 import styles from './index.module.scss';
@@ -88,11 +89,13 @@ const Index = props => {
 							<li>{t('media.year')}: <span>{data.release_date}</span></li>
 							{data.tagline && <li>{t('media.tagline')}: <span>{data.tagline}</span></li>}
 							{data.budget > 0 && <li>{t('media.budget')}: <span>{formattedCurrency(data.budget)}</span></li>}
-							<li>
-								{t('media.duration')}:
-								<span>{data.runtime} {t('media.min')} / {toHoursAndMinutes(data.runtime)}</span>
-							</li>
-							{data.production_countries &&
+							{data.runtime > 0 &&
+								<li>
+									{t('media.duration')}:
+									<span>{data.runtime} {t('media.min')} / {toHoursAndMinutes(data.runtime)}</span>
+								</li>
+							}
+							{data.production_countries.length > 0 &&
 								<li>{t('media.country')}:
 									{data.production_countries.map((country, key) =>
 										<span key={`country-${key}`}>{country.iso_3166_1}</span>)

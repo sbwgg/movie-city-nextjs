@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import NextLink from '@/components/UI/NextLink';
-import {dispatch, dynamicBackground, lowercaseString} from '@/helpers';
+import {dispatch, dynamicBackground} from '@/helpers';
+import {lowercaseString} from '@/helpers/stringHelpers';
 import {getPopularMovieOfDay} from '@/services/global';
 import {setPopularMovieOfDay} from '@/redux/slices/globalSlice';
 import styles from './index.module.scss';

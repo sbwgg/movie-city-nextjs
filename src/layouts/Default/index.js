@@ -8,7 +8,8 @@ import NextLink from '@/components/UI/NextLink';
 import PopularMovies from '@/components/popular-movies';
 import TopMovies from '@/components/top-movies';
 import MediaClip from '@/components/pages/media/media-clip';
-import { lowercaseString, dynamicBackground, truncateText } from '@/helpers';
+import {dynamicBackground} from '@/helpers';
+import {lowercaseString, truncateText} from '@/helpers/stringHelpers';
 import styles from './index.module.scss';
 
 const Index = props => {

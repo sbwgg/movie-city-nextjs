@@ -8,7 +8,8 @@ import MovieList from '@/components/pages/genre/movie-list';
 import Pagination from '@/components/pagination';
 import {setMovieGenreResults} from '@/redux/slices/genreSlice';
 import {getMovieGenreResults} from '@/services/genre';
-import {dispatch, capitalizeFirstLetter, filterFetchResults} from '@/helpers';
+import {dispatch, filterFetchResults} from '@/helpers';
+import {capitalizeFirstLetter} from '@/helpers/stringHelpers';
 
 const Index = () => {
     const router = useRouter();

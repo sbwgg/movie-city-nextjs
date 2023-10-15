@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import StarRatings from 'react-star-ratings/build/star-ratings';
 import {IMAGE_PATH} from '@/constants';
 import ImageComponent from '@/components/UI/image-component';
-import {truncateText} from '@/helpers';
+import {truncateText} from '@/helpers/stringHelpers';
 import styles from './index.module.scss';
 
 const Index = props => {

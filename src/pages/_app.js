@@ -1,14 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistStore} from 'redux-persist';
+import {ThemeProvider} from 'next-themes';
+import {appWithTranslation} from 'next-i18next';
+import NProgress from 'nprogress';
 import store from '../redux/store';
 import '../styles/index.scss';
-import { appWithTranslation } from 'next-i18next';
-import { ThemeProvider } from 'next-themes';
-import NProgress from 'nprogress';
 
 NProgress.configure({easing: 'linear', speed: 700, showSpinner: false});
 

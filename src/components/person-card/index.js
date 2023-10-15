@@ -6,7 +6,7 @@ import NextLink from '@/components/UI/NextLink';
 import {IMAGE_PATH} from '@/constants';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
 import MaleFallback from '@/assets/svg/male-fallback.svg';
-import {lowercaseString} from '@/helpers';
+import {lowercaseString} from '@/helpers/stringHelpers';
 
 const Index = props => {
     const {

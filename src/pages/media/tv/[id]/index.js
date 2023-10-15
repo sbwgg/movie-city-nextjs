@@ -1,5 +1,5 @@
-import React from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import React, {useEffect, useState} from 'react';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
 import {fetchTvData} from '@/services/media/tv';
 import Media from '@/components/pages/media';
@@ -9,6 +9,18 @@ import Reviews from '@/components/pages/media/reviews';
 import Loader from '@/components/loader';
 
 const Index = ({ tv }) => {
+    const [unmounted, setUnmounted] = useState(false);
+
+    useEffect(() => {
+        return () => {
+            setUnmounted(true);
+        };
+    }, []);
+
+    if (unmounted) {
+        return null;
+    }
+
     if (!tv.info) {
         return <Loader/>;
     }

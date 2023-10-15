@@ -5,7 +5,8 @@ import NextLink from '@/components/UI/NextLink';
 import {getPopularMovieOfDay} from '@/services/global';
 import {setPopularMovieOfDay} from '@/redux/slices/globalSlice';
 import styles from './index.module.scss';
-import {dispatch, dynamicBackground, lowercaseString} from '@/helpers';
+import {dispatch, dynamicBackground} from '@/helpers';
+import {lowercaseString} from '@/helpers/stringHelpers';
 
 const Index = () => {
 	const {popularMovie} = useSelector(state => state.global);

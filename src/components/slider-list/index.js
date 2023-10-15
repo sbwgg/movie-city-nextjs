@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 import MediaCard from '@/components/media-card';
 import CastCard from '@/components/person-card';
 import NextLink from '@/components/UI/NextLink';
-import {sliderListOptions} from '@/helpers';
+import {sliderListOptions} from '@/helpers/moduleHelpers';
 
 const Index = props => {
     const {

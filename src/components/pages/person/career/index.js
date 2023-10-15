@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import classNames from 'classnames';
 import {useTranslation} from 'next-i18next';
-import {lowercaseString, truncateText, extractYear} from '@/helpers';
+import {lowercaseString, truncateText, extractYear} from '@/helpers/stringHelpers';
 import SliderList from '@/components/slider-list';
 import NextLink from '@/components/UI/NextLink';
 import ImageComponent from '@/components/UI/image-component';
@@ -22,12 +22,9 @@ const Index = props => {
     const truncatedBiography = truncateText(details.biography, truncateLimit);
 
     const filterMap = (details, media) => {
+
         const filteredItem = (details.birthday <= (media.release_date || media.first_air_date) &&
-            !(
-                media.character.includes('Self') ||
-                media.character.includes('Herself') ||
-                media.character.includes('Himself')
-            ));
+            !['Self', 'Herself', 'Himself', 'self', 'archive footage'].some(str => media.character.includes(str)));
 
         return filteredItem;
     };
