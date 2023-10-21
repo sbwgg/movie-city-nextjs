@@ -19,7 +19,7 @@ const Index = props => {
 	const {t} = useTranslation();
 
 	const getTrendingDataForLocale = (data, localeIndex) => {
-		return data && data[localeIndex] ? data[localeIndex].trendingTv : [];
+		return data && data[localeIndex] ? data[localeIndex].trendingMovies : [];
 	};
 
 	// useEffect(() => {
