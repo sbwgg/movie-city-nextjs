@@ -22,9 +22,15 @@ const Index = props => {
     const truncatedBiography = truncateText(details.biography, truncateLimit);
 
     const filterMap = (details, media) => {
+        const mediaDate = new Date(media.release_date || media.first_air_date);
+        const birthday = new Date(details.birthday);
 
-        const filteredItem = (details.birthday <= (media.release_date || media.first_air_date) &&
-            !['Self', 'Herself', 'Himself', 'self', 'archive footage'].some(str => media.character.includes(str)));
+        if (isNaN(mediaDate) || isNaN(birthday)) {
+            return false;
+        }
+
+        const filteredItem = birthday <= mediaDate &&
+            !['Self', 'Herself', 'Himself', 'self', 'archive footage'].some(str => media.character.includes(str));
 
         return filteredItem;
     };
