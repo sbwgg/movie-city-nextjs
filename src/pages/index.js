@@ -29,8 +29,8 @@ const Home = ({trendingMoviesToday, trendingMoviesWeek, trendingTvToday, trendin
             description={t('pageMetas.homeDescription')}
             staticImage="/movie-city.svg"
         >
-            <TrendingTv byDay={trendingTvToday} byWeek={trendingTvWeek}/>
             <MoviesPaginate/>
+            <TrendingTv byDay={trendingTvToday} byWeek={trendingTvWeek}/>
             <TrendingMovies byDay={trendingMoviesToday} byWeek={trendingMoviesWeek}/>
         </Default>
     )

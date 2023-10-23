@@ -62,9 +62,9 @@ const Index = ({totalPages, currentPage, onPageChange}) => {
 		return pageNumbersToShow;
 	};
 
-	// useEffect(() => {
-	// 	document.body.scrollTop = document.documentElement.scrollTop = 0;
-	// }, [currentPage]);
+	useEffect(() => {
+		document.body.scrollTop = document.documentElement.scrollTop = 0;
+	}, [currentPage]);
 
 	return (
 		<div className={styles.paginationWrapper}>
