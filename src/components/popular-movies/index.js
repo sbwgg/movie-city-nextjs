@@ -18,6 +18,7 @@ const Index = () => {
         slidesPerView: 2,
         slidesPerGroup: 2,
         speed: 800,
+        loop: true,
         modules: [Navigation],
         navigation: {
             prevEl: '.popular-prev',

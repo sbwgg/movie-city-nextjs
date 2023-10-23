@@ -1,5 +1,5 @@
 .popularMovies {
-    @apply mb-7;
+    @apply mb-7 overflow-hidden;
 
     &Slider {
         @apply py-2 relative z-[2] bg-primary-gray;
