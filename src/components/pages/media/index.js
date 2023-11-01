@@ -41,12 +41,15 @@ const Index = props => {
 		});
 	};
 
-	const showTrailer = () => dispatch(setShowClip(true));
+	const showTrailer = () => {
+		dispatch(setShowClip(true));
+		clipKey && dispatch(setClipKey(clipKey));
+	};
 
 	useEffect(() => {
-		clipKey && dispatch(setClipKey(clipKey))
+		clipKey && dispatch(setClipKey(clipKey));
 
-		return () => dispatch(setClipKey(null))
+		return () => dispatch(setClipKey(null));
 	}, [data]);
 
 	return (
