@@ -4,7 +4,7 @@ import {useTranslation} from 'next-i18next';
 import {lowercaseString, truncateText, extractYear} from '@/helpers/stringHelpers';
 import SliderList from '@/components/slider-list';
 import NextLink from '@/components/UI/NextLink';
-import ImageComponent from '@/components/UI/image-component';
+import NextImage from '@/components/UI/next-image';
 import {IMAGE_PATH, BACKDROP_PATH} from '@/constants';
 import styles from './index.module.scss';
 
@@ -82,7 +82,7 @@ const Index = props => {
                                             href={`/media/${media.type}/${media.id}-${lowercaseString(media.original_title || media.original_name)}`}
                                             className={styles.careerListMedia}
                                         >
-                                            <ImageComponent
+                                            <NextImage
                                                 src={IMAGE_PATH(media.poster_path)}
                                                 alt={`Title: ${media.title || media.name}`}
                                             />

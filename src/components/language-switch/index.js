@@ -2,6 +2,7 @@ import React from 'react';
 import {useRouter} from 'next/router';
 import Cookies from 'js-cookie';
 import classNames from 'classnames';
+import Button from '@/components/UI/Button';
 import styles from './index.module.scss';
 
 const Index = () => {
@@ -16,8 +17,8 @@ const Index = () => {
 						locale === router.locale && styles.languageSwitchItemActive
 					])}
 				>
-					<button
-						type="button"
+					<Button
+						regular
 						className="gradient-text-blurred"
 						data-text={locale.toUpperCase()}
 						onClick={() => {
@@ -30,7 +31,7 @@ const Index = () => {
 						}}
 					>
 						{locale.toUpperCase()}
-					</button>
+					</Button>
 				</li>
 			))}
 		</ul>

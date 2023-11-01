@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'next-i18next';
 import styles from './index.module.scss';
-import ImageComponent from '@/components/UI/image-component';
+import NextImage from '@/components/UI/next-image';
 import NextLink from '@/components/UI/NextLink';
 import {IMAGE_PATH} from '@/constants';
 import {extractYear, lowercaseString} from '@/helpers/stringHelpers';
@@ -18,7 +18,7 @@ const Index = props => {
 		<section className={styles.mediaLabelWrapper}>
 			<figure className={styles.mediaLabel}>
 				<NextLink href={`/media/${mediaType}/${media.id}-${lowercaseString(media.original_title)}`}>
-					<ImageComponent
+					<NextImage
 						src={IMAGE_PATH(media.poster_path)}
 						width={150}
 						height={220}

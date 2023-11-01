@@ -3,7 +3,8 @@ import {useTranslation} from 'next-i18next';
 import classNames from 'classnames';
 import StarRatings from 'react-star-ratings/build/star-ratings';
 import {IMAGE_PATH} from '@/constants';
-import ImageComponent from '@/components/UI/image-component';
+import Button from '@/components/UI/Button';
+import NextImage from '@/components/UI/next-image';
 import {truncateText} from '@/helpers/stringHelpers';
 import styles from './index.module.scss';
 
@@ -37,7 +38,7 @@ const Index = props => {
 								 className={styles.reviewItem}
 							>
 								<div className={styles.reviewAuthor}>
-									<ImageComponent
+									<NextImage
 										src={IMAGE_PATH(review.author_details.avatar_path)}
 										alt={'avatar'}
 										width={70}
@@ -66,13 +67,13 @@ const Index = props => {
 											truncateText(review.content, truncateLimit) : review.content
 									}}/>
 									{review.content.length > truncateLimit &&
-										<button
+										<Button regular
 											className={classNames(['gradient-text-blurred', styles.reviewContentFull])}
 											onClick={() => unTruncateString(review.id)}
 											data-text={!isTruncate.includes(review.id) ? t('global.more') : t('global.less')}
 										>
 											{!isTruncate.includes(review.id) ? t('global.more') : t('global.less')}
-										</button>
+										</Button>
 									}
 								</div>
 							</div>

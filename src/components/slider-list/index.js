@@ -3,11 +3,12 @@ import classNames from 'classnames';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import {useTranslation} from 'next-i18next';
-import styles from './index.module.scss';
+import Button from '@/components/UI/Button';
 import MediaCard from '@/components/media-card';
 import CastCard from '@/components/person-card';
 import NextLink from '@/components/UI/NextLink';
 import {sliderListOptions} from '@/helpers/moduleHelpers';
+import styles from './index.module.scss';
 
 const Index = props => {
     const {
@@ -68,12 +69,20 @@ const Index = props => {
                         </>
                     )}
                 </Swiper>
-                <button className={`swiper-nav-prev swiper-${listType}-prev`} aria-label="Slide Prev">
+                <Button
+                    regular
+                    className={`swiper-nav-prev swiper-${listType}-prev`}
+                    aria-label="Slide Prev"
+                >
                     <span/>
-                </button>
-                <button className={`swiper-nav-next swiper-${listType}-next`} aria-label="Slide Next">
+                </Button>
+                <Button
+                    regular
+                    className={`swiper-nav-next swiper-${listType}-next`}
+                    aria-label="Slide Next"
+                >
                     <span/>
-                </button>
+                </Button>
             </div>
         </section>
     )

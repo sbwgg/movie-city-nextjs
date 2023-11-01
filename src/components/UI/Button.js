@@ -5,11 +5,12 @@ const Button = props => {
         children,
         design,
         className,
+        regular,
         ...rest
     } = props;
 
     const classes = () => {
-        return `btn${design ? ` btn-${design}` : ''}${className ? ` ${className}` : ''}`
+        return regular ? className : `btn${design ? ` btn-${design}` : ''}${className ? ` ${className}` : ''}`
     }
 
     return (

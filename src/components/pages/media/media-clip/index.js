@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import {useSelector} from 'react-redux';
 import {motion, AnimatePresence} from 'framer-motion';
 import {dispatch} from '@/helpers';
-import {setShowTrailer} from '@/redux/slices/movieSlice';
+import {setShowClip} from '@/redux/slices/movieSlice';
 import Button from '@/components/UI/Button';
 import styles from './index.module.scss';
 
 const Index = () => {
-	const {trailerKey, showTrailer} = useSelector(state => state.movie);
+	const {clipKey, showClip} = useSelector(state => state.movie);
 
-	const hideTrailer = () => dispatch(setShowTrailer(false));
+	const hideTrailer = () => dispatch(setShowClip(false));
 
 	const scaleInVariants = {
 		toIn: {
@@ -26,7 +26,7 @@ const Index = () => {
 
 	return (
 		<AnimatePresence>
-			{showTrailer &&
+			{showClip &&
 				<motion.section
 					initial={{opacity: 0}}
 					animate={{opacity: 1}}
@@ -45,7 +45,7 @@ const Index = () => {
 						onClick={hideTrailer}
 					>
 						<iframe width="560" height="315"
-								src={`https://www.youtube.com/embed/${trailerKey}`}
+								src={`https://www.youtube.com/embed/${clipKey}`}
 								title="YouTube video player" frameBorder="0"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 								allowFullScreen

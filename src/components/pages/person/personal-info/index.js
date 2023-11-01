@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'next-i18next';
 import styles from './index.module.scss';
-import ImageComponent from '@/components/UI/image-component';
+import NextImage from '@/components/UI/next-image';
 import {IMAGE_PATH} from '@/constants';
 import Facebook from '@/assets/svg/facebook-icon.svg';
 import Twitter from '@/assets/svg/twitter-icon.svg';
@@ -46,7 +46,7 @@ const Index = props => {
     return (
         <section className={styles.personalInfoWrapper}>
             <div className={styles.personalInfoContainer}>
-                <ImageComponent
+                <NextImage
                     wrapperClass={styles.personalInfoAvatar}
                     src={IMAGE_PATH(details.profile_path)}
                     alt={details.name}
@@ -62,7 +62,7 @@ const Index = props => {
                                     rel="noopener"
                                     title="Visit Facebook"
                                 >
-                                    <ImageComponent src={Facebook} alt="facebook"/>
+                                    <NextImage src={Facebook} alt="facebook"/>
                                 </a>
                             }
                             {social.twitter_id &&
@@ -73,7 +73,7 @@ const Index = props => {
                                     rel="noopener"
                                     title="Visit Twitter"
                                 >
-                                    <ImageComponent src={Twitter} alt="twitter"/>
+                                    <NextImage src={Twitter} alt="twitter"/>
                                 </a>
                             }
                             {social.instagram_id &&
@@ -84,7 +84,7 @@ const Index = props => {
                                     rel="noopener"
                                     title="Visit Instagram"
                                 >
-                                    <ImageComponent src={Instagram} alt="instagram"/>
+                                    <NextImage src={Instagram} alt="instagram"/>
                                 </a>
                             }
                             {details.homepage &&
@@ -95,7 +95,7 @@ const Index = props => {
                                     rel="noopener"
                                     title="Visit Homepage"
                                 >
-                                    <ImageComponent src={UrlIcon} alt="url"/>
+                                    <NextImage src={UrlIcon} alt="url"/>
                                 </a>
                             }
                         </div>

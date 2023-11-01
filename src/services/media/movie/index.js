@@ -14,7 +14,7 @@ const getMovieExternalIds = id => {
 		.catch((error) => console.error(error))
 };
 
-const getClip = (id, locale) => {
+const getMovieTrailer = (id, locale) => {
 	const responsePromise = $api().get(`/movie/${id}/videos?api_key=${API_KEY}&language=${locale}`);
 
 	return responsePromise
@@ -39,6 +39,14 @@ const getClip = (id, locale) => {
 		.catch(error => {
 			console.error(error);
 		});
+};
+
+const getMovieClipList = id => {
+	const responsePromise = $api().get(`/movie/${id}/videos?api_key=${API_KEY}&language=en`);
+
+	return responsePromise
+		.then(response => response.data.results)
+		.catch(error => console.error(error))
 };
 
 const getMovieCast = (id, locale) => {
@@ -72,12 +80,13 @@ const getReviews = id => {
 export const fetchMovieData = async (id, locale) => {
 	const promises = [
 		getMovieById(id, locale),
-		getClip(id, locale),
+		getMovieTrailer(id, locale),
 		getMovieCast(id, locale),
 		getSimilar(id, locale),
 		getRecommendations(id, locale),
 		getReviews(id),
-		getMovieExternalIds(id)
+		getMovieExternalIds(id),
+		getMovieClipList(id),
 	];
 
 	try {
@@ -88,7 +97,8 @@ export const fetchMovieData = async (id, locale) => {
 			similar,
 			recommendations,
 			reviews,
-			imdbId
+			imdbId,
+			clipList
 		] = await Promise.all(promises);
 
 		// Set clip to null if not available
@@ -99,7 +109,8 @@ export const fetchMovieData = async (id, locale) => {
 			similar,
 			recommendations,
 			reviews,
-			imdbId
+			imdbId,
+			clipList
 		};
 
 		return movieWithDefaultClip;

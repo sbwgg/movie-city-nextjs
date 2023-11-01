@@ -2,7 +2,6 @@ import {$api} from '@/api';
 import {API_KEY} from '@/constants';
 import {filterFetchResults} from '@/helpers';
 
-// GET
 export const getPopularMovies = async locale => {
         return await $api().get(`/movie/popular?api_key=${API_KEY}&language=${locale}&page=2`)
             .then((response) => response.data.results.filter(item => filterFetchResults(item)))

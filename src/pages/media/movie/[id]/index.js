@@ -4,6 +4,7 @@ import Default from '@/layouts/Default';
 import {fetchMovieData} from '@/services/media/movie';
 import Media from '@/components/pages/media';
 import FullMovie from '@/components/pages/media/full-media';
+import ClipCard from '@/components/pages/media/clip-card';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/media/reviews';
 import Loader from '@/components/loader';
@@ -30,7 +31,7 @@ const Index = ({ movie }) => {
         clip: movie.clip || null,
     };
 
-    const { info, clip, cast, recommendations, similar, reviews, imdbId } = movieWithDefaultClip;
+    const { info, clip,cast, recommendations, similar, reviews, imdbId, clipList } = movieWithDefaultClip;
 
     return (
         <Default
@@ -41,6 +42,7 @@ const Index = ({ movie }) => {
         >
             <Media data={info} clipKey={clip ? clip.key : null}/>
             <FullMovie mediaTitle={info.title} mediaId={imdbId.imdb_id}/>
+            {clipList && <ClipCard items={clipList}/>}
             <SliderList
                 listType="cast-members"
                 sliderType="cast"

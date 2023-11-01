@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './index.module.scss';
-import ImageComponent from '@/components/UI/image-component';
+import NextImage from '@/components/UI/next-image';
 import NextLink from '@/components/UI/NextLink';
 import {IMAGE_PATH} from '@/constants';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
@@ -21,7 +21,7 @@ const Index = props => {
         ])}>
             <figure className={secondary ? styles.personSecondary : styles.personPrimary}>
                 {secondary ? (
-                    <ImageComponent
+                    <NextImage
                         src={`https://image.tmdb.org/t/p/h632/${member.profile_path}`}
                         fallBackSrc={member.gender === 1 ? FemaleFallback : MaleFallback}
                         width={90}
@@ -30,7 +30,7 @@ const Index = props => {
                         alt={member.name}
                     />
                 ) : (
-                    <ImageComponent
+                    <NextImage
                         src={IMAGE_PATH(member.profile_path)}
                         fallBackSrc={member.gender === 1 ? FemaleFallback : MaleFallback}
                         width={300}

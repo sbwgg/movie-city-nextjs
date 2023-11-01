@@ -5,7 +5,7 @@ import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
 import styles from './index.module.scss';
 import NextLink from '@/components/UI/NextLink';
-import ImageComponent from '@/components/UI/image-component';
+import NextImage from '@/components/UI/next-image';
 import {IMAGE_PATH} from '@/constants';
 import {roundNumber, lowercaseString} from '@/helpers/stringHelpers';
 import {fadeInVariants, floatUpVariants} from '@/helpers/moduleHelpers';
@@ -39,7 +39,7 @@ const Index = props => {
                         variants={floatUpVariants}
                         transition={{type: 'spring', stiffness: 100, delay: delay * 0.12}}
                     >
-                        <ImageComponent
+                        <NextImage
                             className="transition-transform duration-500"
                             src={IMAGE_PATH(media.poster_path)}
                             width={300} height={450} alt={`Title - ${media?.title || media?.name}`}

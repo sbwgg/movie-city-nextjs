@@ -3,21 +3,21 @@ import {createSlice} from '@reduxjs/toolkit';
 export const index = createSlice({
 	name: 'MOVIE',
 	initialState: {
-		showTrailer: false,
-		trailerKey: null
+		showClip: false,
+		clipKey: null
 	},
 
 	reducers: {
-		setShowTrailer: (state, action) => {
-			state.showTrailer = action.payload;
+		setShowClip: (state, action) => {
+			state.showClip = action.payload;
 		},
 
-		setTrailerKey: (state, action) => {
-			state.trailerKey = action.payload;
+		setClipKey: (state, action) => {
+			state.clipKey = action.payload;
 		}
 	}
 })
 
-export const {setShowTrailer, setTrailerKey} = index.actions;
+export const {setShowClip, setClipKey} = index.actions;
 
 export default index.reducer;

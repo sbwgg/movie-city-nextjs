@@ -4,7 +4,7 @@ import {motion} from 'framer-motion';
 import classNames from 'classnames';
 import styles from './index.module.scss';
 import NextLink from '@/components/UI/NextLink';
-import ImageComponent from '@/components/UI/image-component';
+import NextImage from '@/components/UI/next-image';
 import {IMAGE_PATH} from '@/constants';
 import {roundNumber, lowercaseString} from '@/helpers/stringHelpers';
 import {fadeInVariants} from '@/helpers/moduleHelpers';
@@ -32,7 +32,7 @@ const Index = props => {
                 className={classNames([styles.mediaCardLabel, 'card-label-hover'])}
             >
                 <div className={styles.mediaCardImage}>
-                    <ImageComponent
+                    <NextImage
                         src={IMAGE_PATH(media.poster_path)}
                         alt={`Title: ${media?.title || media?.name}`}
                     />

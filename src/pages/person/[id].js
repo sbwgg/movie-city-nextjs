@@ -41,9 +41,7 @@ export const getServerSideProps = async ({locale, query}) => {
 
 	const person = await fetchPersonData(queryId, locale);
 
-	// Check if career.movies is an array before filtering
 	if (Array.isArray(person.career.movies)) {
-		// Filter movies based on the condition
 		person.career.movies = person.career.movies
 			.filter(movie => movie.release_date >= person.details.birthday);
 	}

@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import styles from './index.module.scss';
 import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
+import Button from '@/components/UI/Button';
 import MediaCard from '@/components/media-card';
 import {getPopularMovies} from '@/services/global';
 import { setPopularMovies } from '@/redux/slices/globalSlice';
 import {dispatch} from '@/helpers';
+import styles from './index.module.scss';
 
 const Index = () => {
     const {popularMovies} = useSelector(state => state.global);
@@ -57,12 +58,12 @@ const Index = () => {
                         })}
                     </Swiper>
                 }
-                <button className="swiper-nav-prev popular-prev">
+                <Button regular className="swiper-nav-prev popular-prev">
                     <span/>
-                </button>
-                <button className="swiper-nav-next popular-next">
+                </Button>
+                <Button regular className="swiper-nav-next popular-next">
                     <span/>
-                </button>
+                </Button>
             </div>
         </section>
     )

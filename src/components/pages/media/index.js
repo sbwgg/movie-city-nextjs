@@ -2,12 +2,12 @@ import React, {useEffect} from 'react';
 import classNames from 'classnames';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
-import ImageComponent from '@/components/UI/image-component';
+import NextImage from '@/components/UI/next-image';
 import NextLink from '@/components/UI/NextLink';
 import Button from '@/components/UI/Button';
 import {dispatch} from '@/helpers';
 import {roundNumber} from '@/helpers/stringHelpers';
-import {setTrailerKey, setShowTrailer} from '@/redux/slices/movieSlice';
+import {setClipKey, setShowClip} from '@/redux/slices/movieSlice';
 import PlayIcon from '@/assets/images/icons/play-btn.svg';
 import styles from './index.module.scss';
 
@@ -41,19 +41,19 @@ const Index = props => {
 		});
 	};
 
-	const showTrailer = () => dispatch(setShowTrailer(true));
+	const showTrailer = () => dispatch(setShowClip(true));
 
 	useEffect(() => {
-		clipKey && dispatch(setTrailerKey(clipKey))
+		clipKey && dispatch(setClipKey(clipKey))
 
-		return () => dispatch(setTrailerKey(null))
+		return () => dispatch(setClipKey(null))
 	}, [data]);
 
 	return (
 		<section className={styles.mediaWrapper}>
 			<div className={styles.mediaDetailsContainer}>
 				<div className="flex flex-col gap-2.5">
-					<ImageComponent
+					<NextImage
 						src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
 						alt={`Title: ${data.title || data.name}`}
 						width={500}
@@ -63,7 +63,7 @@ const Index = props => {
 					{type !== 'tv' &&
 						<Button design="secondary" onClick={showTrailer} className="flex items-center gap-2">
 							<span className="font-bold">{t('media.trailer')}</span>
-							<ImageComponent
+							<NextImage
 								wrapperClass="!w-[unset]"
 								src={PlayIcon} alt="play-icon" width={25} height={25}
 							/>

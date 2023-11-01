@@ -1,9 +1,10 @@
 @forward './global/fonts';
 @forward './global/reset';
 @forward './global/utilities';
-@forward 'node_modules/swiper/swiper.min.css';
-@forward 'node_modules/swiper/modules/navigation';
 @forward 'node_modules/nprogress/nprogress.css';
+@import 'node_modules/swiper/swiper';
+@import 'node_modules/swiper/modules/pagination';
+@import 'node_modules/swiper/modules/navigation';
 
 @tailwind base;
 @tailwind components;
@@ -115,8 +116,6 @@ h3 {
 }
 
 figure {
-    //@apply flex flex-col h-full;
-
     .fallback-img {
         @apply lg:w-full lg:h-full;
 
