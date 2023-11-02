@@ -12,9 +12,7 @@ const Index = ({ tv }) => {
     const [unmounted, setUnmounted] = useState(false);
 
     useEffect(() => {
-        return () => {
-            setUnmounted(true);
-        };
+        return () => setUnmounted(true);
     }, []);
 
     if (unmounted) {
@@ -29,7 +27,7 @@ const Index = ({ tv }) => {
 
     return (
         <Default
-            title={info.name}
+            title={`Movie City | ${info.name}`}
             description={info.overview}
             image={info.backdrop_path}
             backgroundPoster={info.backdrop_path}

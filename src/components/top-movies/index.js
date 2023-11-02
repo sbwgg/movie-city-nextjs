@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
@@ -48,15 +48,7 @@ const Index = () => {
 					</svg>
 				</Button>
 			</div>
-			{topMovies.data.map((item, key) => {
-				return (
-					<MediaCardLabel
-						key={key}
-						delay={key}
-						media={item}
-					/>
-				)
-			})}
+			{topMovies.data.map((item, key) => <MediaCardLabel key={key} delay={key} media={item}/>)}
 		</section>
 	)
 };

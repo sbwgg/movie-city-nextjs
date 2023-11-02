@@ -67,7 +67,7 @@ const Index = props => {
 						<Button design="secondary" onClick={showTrailer} className="flex items-center gap-2">
 							<span className="font-bold">{t('media.trailer')}</span>
 							<NextImage
-								wrapperClass="!w-[unset]"
+								wrapperClass="!w-[25px] !h-[25px] rounded-full overflow-hidden"
 								src={PlayIcon} alt="play-icon" width={25} height={25}
 							/>
 						</Button>
