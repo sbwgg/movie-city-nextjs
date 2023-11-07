@@ -1,33 +1,28 @@
 import React, {useEffect, useState} from 'react';
-// import {useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import {useCurrentLocale} from '@/hooks/useLocale';
 import useDebounce from '@/hooks/useDebounce';
-// import {getTrendingMovie} from '@/services/home';
-// import {setTrendingMovie} from '@/redux/slices/homeSlice';
-// import {dispatch} from '@/helpers';
+import {getTrendingMovie} from '@/services/home';
+import {setTrending} from '@/redux/slices/homeSlice';
+import {dispatch} from '@/helpers';
 import SliderList from '@/components/slider-list';
 import styles from './index.module.scss';
 
-const Index = props => {
-	const {byDay, byWeek} = props;
-
+const Index = () => {
 	const [trendingBy, setTrendingBy] = useState('day');
 	const locale = useCurrentLocale();
-	// const {trendingMovies} = useSelector(state => state.home);
+	const {trending} = useSelector(state => state.home);
 
 	const {t} = useTranslation();
 
-	const getTrendingDataForLocale = (data, localeIndex) => {
-		return data && data[localeIndex] ? data[localeIndex].trendingMovies : [];
-	};
+	useEffect(() => {
+		getTrendingMovie(locale, trendingBy)
+			.then(response => dispatch(setTrending({
+				movies: response
+			})))
 
-	// useEffect(() => {
-	// 	getTrendingMovie(locale, trendingBy)
-	// 		.then(response => dispatch(setTrendingMovie(response)))
-	//
-	// },[trendingBy, locale]);
-
+	},[trendingBy, locale]);
 
 	const trendingLabels = [
 		{
@@ -67,10 +62,7 @@ const Index = props => {
 			<SliderList
 				listType="trending-movies"
 				title="trendingMovies"
-				items={getTrendingDataForLocale(
-					trendingBy === 'day' ? byDay : byWeek,
-					locale === 'en' ? 0 : 1
-				)}
+				items={trending.movies}
 			/>
 		</section>
 	)

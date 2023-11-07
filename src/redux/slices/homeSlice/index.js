@@ -3,19 +3,17 @@ import {createSlice} from '@reduxjs/toolkit';
 export const index = createSlice({
     name: 'HOME',
     initialState: {
-        trendingMovies: [],
-        trendingTv: [],
+        trending: {
+            movies: [],
+            tv: []
+        },
         paginatedList: []
     },
 
    reducers: {
-        setTrendingMovie: (state, action) => {
-           state.trendingMovies = action.payload;
-       },
-
-        setTrendingTv: (state, action) => {
-           state.trendingTv = action.payload;
-       },
+        setTrending: (state, {payload}) => {
+            state.trending = {...state.trending,...payload};
+        },
 
        setPaginatedList: (state, action) => {
             state.paginatedList = action.payload;
@@ -23,6 +21,6 @@ export const index = createSlice({
    }
 });
 
-export const {setTrendingMovie, setTrendingTv, setPaginatedList} = index.actions;
+export const {setTrending, setPaginatedList} = index.actions;
 
 export default index.reducer;

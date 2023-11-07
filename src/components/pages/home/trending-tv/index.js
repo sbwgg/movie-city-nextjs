@@ -1,21 +1,28 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
 import {useCurrentLocale} from '@/hooks/useLocale';
 import useDebounce from '@/hooks/useDebounce';
+import {getTrendingTv} from '@/services/home';
+import {setTrending} from '@/redux/slices/homeSlice';
+import {dispatch} from '@/helpers';
 import SliderList from '@/components/slider-list';
 import styles from './index.module.scss';
 
-const Index = props => {
-	const {byDay, byWeek} = props;
-	const locale = useCurrentLocale();
-
+const Index = () => {
 	const [trendingBy, setTrendingBy] = useState('day');
+	const locale = useCurrentLocale();
+	const {trending} = useSelector(state => state.home);
 
 	const {t} = useTranslation();
 
-	const getTrendingDataForLocale = (data, localeIndex) => {
-		return data && data[localeIndex] ? data[localeIndex].trendingTv : [];
-	};
+	useEffect(() => {
+		getTrendingTv(locale, trendingBy)
+			.then(response => dispatch(setTrending({
+				tv: response
+			})))
+
+	},[trendingBy, locale]);
 
 	const trendingLabels = [
 		{
@@ -55,10 +62,7 @@ const Index = props => {
 			<SliderList
 				listType="trending-tv"
 				title="trendingShows"
-				items={getTrendingDataForLocale(
-					trendingBy === 'day' ? byDay : byWeek,
-					locale === 'en' ? 0 : 1
-				)}
+				items={trending.tv}
 				mediaType="tv"
 			/>
 		</section>

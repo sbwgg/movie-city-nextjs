@@ -5,22 +5,8 @@ import Default from '@/layouts/Default';
 import TrendingTv from '@/components/pages/home/trending-tv';
 import MoviesPaginate from '@/components/pages/home/movies-paginate';
 import TrendingMovies from '@/components/pages/home/trending-movies';
-import {getTrendingMovie, getTrendingTv} from '@/services/home';
 
-const supportedLocales = ['en', 'ru'];
-
-const getTrendingData = async (locale, time) => {
-    try {
-        const trendingMovies = await getTrendingMovie(locale, time);
-        const trendingTv = await getTrendingTv(locale, time);
-        return { trendingMovies, trendingTv };
-    } catch (error) {
-        console.error(error);
-        return { trendingMovies: [], trendingTv: [] };
-    }
-};
-
-const Home = ({trendingMoviesToday, trendingMoviesWeek, trendingTvToday, trendingTvWeek,}) => {
+const Home = () => {
     const {t} = useTranslation();
 
     return (
@@ -30,8 +16,8 @@ const Home = ({trendingMoviesToday, trendingMoviesWeek, trendingTvToday, trendin
             staticImage="/movie-city.svg"
         >
             <MoviesPaginate/>
-            <TrendingTv byDay={trendingTvToday} byWeek={trendingTvWeek}/>
-            <TrendingMovies byDay={trendingMoviesToday} byWeek={trendingMoviesWeek}/>
+            <TrendingTv/>
+            <TrendingMovies/>
         </Default>
     )
 }
@@ -39,30 +25,10 @@ const Home = ({trendingMoviesToday, trendingMoviesWeek, trendingTvToday, trendin
 export default Home;
 
 export const getStaticProps = async ({ locale }) => {
-    const trendingMoviesToday = await Promise.all(
-        supportedLocales.map(async (locale) => await getTrendingData(locale, 'day'))
-    );
-
-    const trendingMoviesWeek = await Promise.all(
-        supportedLocales.map(async (locale) => await getTrendingData(locale, 'week'))
-    );
-
-    const trendingTvToday = await Promise.all(
-        supportedLocales.map(async (locale) => await getTrendingData(locale, 'day'))
-    );
-
-    const trendingTvWeek = await Promise.all(
-        supportedLocales.map(async (locale) => await getTrendingData(locale, 'week'))
-    );
-
     const translations = await serverSideTranslations(locale, ['common', 'homePage']);
 
     return {
         props: {
-            trendingMoviesToday,
-            trendingMoviesWeek,
-            trendingTvToday,
-            trendingTvWeek,
             ...translations
         },
     };
