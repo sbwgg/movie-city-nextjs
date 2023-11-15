@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {dispatch} from '@/helpers';
+import React, {useEffect} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination} from 'swiper/modules';
 import NextImage from '@/components/UI/next-image';
+import {dispatch} from '@/helpers';
 import {setClipKey, setShowClip} from '@/redux/slices/movieSlice';
 import {CLIP_THUMBNAIL} from '@/constants';
 import PlayIcon from '@/assets/images/icons/play-btn.svg';

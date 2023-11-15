@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
-import {fetchTvData} from '@/services/media/tv';
 import Media from '@/components/pages/media';
 import FullMedia from '@/components/pages/media/full-media';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/media/reviews';
 import Loader from '@/components/loader';
+import {fetchTvData} from '@/services/media/tv';
 
 const Index = ({ tv }) => {
     const [unmounted, setUnmounted] = useState(false);

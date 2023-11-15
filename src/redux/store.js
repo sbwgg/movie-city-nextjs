@@ -1,11 +1,11 @@
-import {combineReducers, configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import {combineReducers, configureStore} from '@reduxjs/toolkit';
 // import storage from 'redux-persist/lib/storage';
 import storageSession from 'redux-persist/lib/storage/session';
 import {persistReducer} from 'redux-persist';
-import globalSlice from './slices/globalSlice';
-import homeSlice from './slices/homeSlice';
+import globalSlice from '@/redux/slices/globalSlice';
+import homeSlice from '@/redux/slices/homeSlice';
 import movieSlice from '@/redux/slices/movieSlice';
-import castSlice from './slices/movieSlice/castSlice';
+import castSlice from '@/redux/slices/movieSlice/castSlice';
 import persistSlice from '@/redux/slices/persistSlice';
 import genreSlice from '@/redux/slices/genreSlice';
 
@@ -25,14 +25,12 @@ const combinedReducers = combineReducers({
     genre: genreSlice,
 });
 
-const customizedMiddleware = getDefaultMiddleware({
-    immutableCheck: false,
-    serializableCheck: false,
-});
-
 const persistedReducer = persistReducer(persistConfig, combinedReducers);
 
 export default configureStore({
     reducer: persistedReducer,
-    middleware: customizedMiddleware
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        immutableCheck: false,
+        serializableCheck: false,
+    })
 });

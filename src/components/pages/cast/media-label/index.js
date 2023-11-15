@@ -1,10 +1,10 @@
 import React from 'react';
 import {useTranslation} from 'next-i18next';
-import styles from './index.module.scss';
 import NextImage from '@/components/UI/next-image';
 import NextLink from '@/components/UI/NextLink';
-import {IMAGE_PATH} from '@/constants';
 import {extractYear, lowercaseString} from '@/helpers/stringHelpers';
+import {IMAGE_PATH} from '@/constants';
+import styles from './index.module.scss';
 
 const Index = props => {
 	const {

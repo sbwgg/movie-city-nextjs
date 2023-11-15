@@ -7,7 +7,7 @@ import {persistStore} from 'redux-persist';
 import {ThemeProvider} from 'next-themes';
 import {appWithTranslation} from 'next-i18next';
 import NProgress from 'nprogress';
-import store from '../redux/store';
+import store from '@/redux/store';
 import '../styles/index.scss';
 
 NProgress.configure({easing: 'linear', speed: 700, showSpinner: false});

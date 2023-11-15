@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './index.module.scss';
 import MediaCard from '@/components/media-card';
+import styles from './index.module.scss';
 
 const Index = props => {
     const {results, mediaType = 'movie'} = props;

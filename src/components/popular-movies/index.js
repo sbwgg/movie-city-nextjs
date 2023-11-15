@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
 import Button from '@/components/UI/Button';
 import MediaCard from '@/components/media-card';
+import {dispatch} from '@/helpers';
+import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
 import {getPopularMovies} from '@/services/global';
 import { setPopularMovies } from '@/redux/slices/globalSlice';
-import {dispatch} from '@/helpers';
 import styles from './index.module.scss';
 
 const Index = () => {

@@ -2,9 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import {useSelector} from 'react-redux';
 import {motion, AnimatePresence} from 'framer-motion';
+import Button from '@/components/UI/Button';
 import {dispatch} from '@/helpers';
 import {setShowClip, setClipKey} from '@/redux/slices/movieSlice';
-import Button from '@/components/UI/Button';
 import styles from './index.module.scss';
 
 const Index = () => {

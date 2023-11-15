@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import {motion} from 'framer-motion';
 import {useTranslation} from 'next-i18next';
 import StarRatings from 'react-star-ratings/build/star-ratings';
-import styles from './index.module.scss';
 import NextLink from '@/components/UI/NextLink';
 import NextImage from '@/components/UI/next-image';
 import {IMAGE_PATH} from '@/constants';
 import {roundNumber, lowercaseString} from '@/helpers/stringHelpers';
 import {fadeInVariants, floatUpVariants} from '@/helpers/moduleHelpers';
+import styles from './index.module.scss';
 
 const Index = props => {
     const {

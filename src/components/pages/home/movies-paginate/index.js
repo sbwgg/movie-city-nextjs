@@ -1,12 +1,12 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import {useSelector} from 'react-redux';
-import styles from './index.module.scss';
-import {useCurrentLocale} from '@/hooks/useLocale';
-import {setPaginatedList} from '@/redux/slices/homeSlice';
-import {getMoviePaginations} from '@/services/home';
 import Pagination from '@/components/pagination';
 import MediaCard from '@/components/media-card';
 import {dispatch} from '@/helpers';
+import {useCurrentLocale} from '@/hooks/useLocale';
+import {setPaginatedList} from '@/redux/slices/homeSlice';
+import {getMoviePaginations} from '@/services/home';
+import styles from './index.module.scss';
 
 const Index = () => {
     const [currentPage, setCurrentPage] = useState(1);

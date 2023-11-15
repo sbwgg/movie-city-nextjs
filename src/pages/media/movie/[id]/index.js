@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Default from '@/layouts/Default';
-import {fetchMovieData} from '@/services/media/movie';
 import Media from '@/components/pages/media';
 import FullMovie from '@/components/pages/media/full-media';
 import ClipCard from '@/components/pages/media/clip-card';
 import SliderList from '@/components/slider-list';
 import Reviews from '@/components/pages/media/reviews';
 import Loader from '@/components/loader';
+import {fetchMovieData} from '@/services/media/movie';
 
 const Index = ({ movie }) => {
     const [unmounted, setUnmounted] = useState(false);

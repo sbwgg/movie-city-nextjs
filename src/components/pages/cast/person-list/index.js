@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './index.module.scss';
 import PersonCard from '@/components/person-card';
+import styles from './index.module.scss';
 
 const Index = props => {
 	const {

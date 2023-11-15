@@ -53,18 +53,10 @@
 
         img {
             @apply w-full h-full object-cover;
-            //transform: translateZ(0) scale(1.02);
         }
 
-        &Detailed:hover {
-            //img {
-            //    @apply scale-[1.5];
-            //}
-            //
-            & > div:not(:only-child):last-child {
-                //@apply opacity-100 visible;
-                @apply translate-y-0;
-            }
+        &Detailed:hover > div:not(:only-child):last-child {
+            @apply translate-y-0;
         }
     }
 

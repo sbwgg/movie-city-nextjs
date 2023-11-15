@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
-import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
-import useDebounce from '@/hooks/useDebounce';
 import MediaCardLabel from '@/components/media-card-label';
 import Button from '@/components/UI/Button';
+import {dispatch, getRandomInt} from '@/helpers';
+import {useCurrentLocale, usePreviousLocale} from '@/hooks/useLocale';
+import useDebounce from '@/hooks/useDebounce';
 import {getTopMovies} from '@/services/global';
 import {setTopMovies} from '@/redux/slices/persistSlice';
-import {dispatch, getRandomInt} from '@/helpers';
 
 const Index = () => {
 	const [update, setUpdate] = useState(false);

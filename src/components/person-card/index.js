@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './index.module.scss';
 import NextImage from '@/components/UI/next-image';
 import NextLink from '@/components/UI/NextLink';
+import {lowercaseString} from '@/helpers/stringHelpers';
 import {IMAGE_PATH} from '@/constants';
 import FemaleFallback from '@/assets/svg/female-fallback.svg';
 import MaleFallback from '@/assets/svg/male-fallback.svg';
-import {lowercaseString} from '@/helpers/stringHelpers';
+import styles from './index.module.scss';
 
 const Index = props => {
     const {

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'next-i18next';
+import SliderList from '@/components/slider-list';
+import {dispatch} from '@/helpers';
 import {useCurrentLocale} from '@/hooks/useLocale';
 import useDebounce from '@/hooks/useDebounce';
 import {getTrendingMovie} from '@/services/home';
 import {setTrending} from '@/redux/slices/homeSlice';
-import {dispatch} from '@/helpers';
-import SliderList from '@/components/slider-list';
 import styles from './index.module.scss';
 
 const Index = () => {

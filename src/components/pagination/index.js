@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import classNames from 'classnames';
-import styles from './index.module.scss';
-import useDebounce from '@/hooks/useDebounce';
 import Button from '@/components/UI/Button';
+import useDebounce from '@/hooks/useDebounce';
+import styles from './index.module.scss';
 
 const Index = ({totalPages, currentPage, onPageChange}) => {
 	const DOTS = '...';

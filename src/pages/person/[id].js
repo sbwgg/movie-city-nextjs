@@ -1,9 +1,9 @@
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Empty from '@/layouts/Empty';
-import {fetchPersonData} from '@/services/person';
 import PersonalInfo from '@/components/pages/person/personal-info';
 import Career from '@/components/pages/person/career';
+import {fetchPersonData} from '@/services/person';
 
 const Index = ({person}) => {
 	const {details, socialMedia, topPopularMovies, career} = person;

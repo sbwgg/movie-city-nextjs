@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './index.module.scss';
 import classNames from 'classnames';
 import {DebounceInput} from 'react-debounce-input';
+import styles from './index.module.scss';
 
 const Index = props => {
     const {

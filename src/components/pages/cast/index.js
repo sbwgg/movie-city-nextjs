@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './index.module.scss';
-import PersonList from '@/components/pages/cast/person-list';
 import {useTranslation} from 'next-i18next';
+import PersonList from '@/components/pages/cast/person-list';
+import styles from './index.module.scss';
 
 const Index = props => {
 	const {

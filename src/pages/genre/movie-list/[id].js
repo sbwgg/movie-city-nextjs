@@ -6,10 +6,10 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Empty from '@/layouts/Empty';
 import MovieList from '@/components/pages/genre/movie-list';
 import Pagination from '@/components/pagination';
-import {setMovieGenreResults} from '@/redux/slices/genreSlice';
-import {getMovieGenreResults} from '@/services/genre';
 import {dispatch, filterFetchResults} from '@/helpers';
 import {capitalizeFirstLetter} from '@/helpers/stringHelpers';
+import {setMovieGenreResults} from '@/redux/slices/genreSlice';
+import {getMovieGenreResults} from '@/services/genre';
 
 const Index = () => {
     const router = useRouter();
